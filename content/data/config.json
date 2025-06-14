@@ -79,7 +79,7 @@
                 "label": "VERSENOVA",
                 "altText": "versenova",
                 "url": "https://versenova.netlify.app",
-                "showIcon": false,
+                "showIcon": true,
                 "icon": "arrowUpRight",
                 "iconPosition": "right",
                 "elementId": ""
