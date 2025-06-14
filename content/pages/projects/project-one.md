@@ -43,7 +43,7 @@ metaTags:
     content: Smart Plastic Waste Management
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: 'https://plastecure.netlify.app'
   - type: MetaTag
     property: 'og:title'
     content: ''
