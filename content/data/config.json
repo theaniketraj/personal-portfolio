@@ -89,7 +89,7 @@
                 "label": "NEXTVAULT",
                 "altText": "NextVault",
                 "url": "https://nxtvault.netlify.app",
-                "showIcon": false,
+                "showIcon": true,
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "elementId": ""
