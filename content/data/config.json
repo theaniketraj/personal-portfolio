@@ -72,6 +72,16 @@
                 "label": "CEIE",
                 "url": "https://ceie-docs.netlify.app",
                 "altText": "CEIE"
+            },
+            {
+                "type": "Link",
+                "label": "Learn more",
+                "altText": "",
+                "url": "https://versenova.netlify.app",
+                "showIcon": false,
+                "icon": "arrowRight",
+                "iconPosition": "right",
+                "elementId": ""
             }
         ],
         "contacts": {
