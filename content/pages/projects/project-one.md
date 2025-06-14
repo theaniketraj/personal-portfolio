@@ -69,7 +69,7 @@ metaTags:
     property: 'twitter:site'
     content: 'https://plastecure.netlify.app'
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:card'
     content: ''
 ---
 ###### **TL;DR –**  ♻️🔬
