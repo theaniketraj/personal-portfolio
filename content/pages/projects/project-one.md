@@ -54,7 +54,7 @@ metaTags:
     property: 'og:url'
     content: 'https://www.npmjs.com/~theaniketraj'
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:title'
     content: ''
   - type: MetaTag
     property: 'og:title'
