@@ -57,7 +57,7 @@ metaTags:
     property: 'twitter:title'
     content: Plastecure
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
