@@ -67,7 +67,7 @@ metaTags:
     content: devxaniket
   - type: MetaTag
     property: 'twitter:site'
-    content: ''
+    content: 'https://plastecure.netlify.app'
   - type: MetaTag
     property: 'og:title'
     content: ''
