@@ -1,29 +1,144 @@
 ---
 type: ProjectLayout
-title: A very cool code project
-colors: colors-a
-date: '2021-10-15'
-client: Awesome client
+title: Plastecure
+date: '2024-11-09'
+client: Aniket Raj
 description: >-
-  It’s hard to imagine that I’ve that I wrote all this code by myself, probably because I worked with an entire team :) but they definitely followed my lead most of the time.
+  An innovative platform that simplifies the process of plastic waste 
+  dispensing.
 featuredImage:
   type: ImageBlock
-  url: /images/bg1.jpg
+  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
   altText: Project thumbnail image
+  caption: ''
+  elementId: ''
 media:
   type: ImageBlock
-  url: /images/bg1.jpg
+  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
   altText: Project image
+  caption: Caption of the image
+  elementId: ''
+addTitleSuffix: true
+colors: colors-a
+backgroundImage:
+  type: BackgroundImage
+  url: /images/bg2.jpg
+  backgroundSize: cover
+  backgroundPosition: center
+  backgroundRepeat: no-repeat
+  opacity: 100
+metaTitle: >-
+  Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's 
+  Project
+metaDescription: >-
+  Plastecure is an AI-driven smart recycling system that automates plastic
+  waste  management using IoT and intelligent sorting technology.
+  Revolutionizing  sustainability with tech.
 ---
+###### **TL;DR –**  ♻️🔬
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Curabitur at auctor sapien. Etiam at cursus enim. Suspendisse sed augue tortor. Nunc eu magna vitae lorem pellentesque fermentum. Sed in facilisis dui. Nulla molestie risus in mi dapibus, eget porta lorem semper. Donec sed facilisis nibh. Curabitur eget dui in libero euismod commodo nec sit amet est. Etiam id ipsum aliquam, vehicula erat sit amet, consequat tortor.
+Plastecure is an **IoT-powered plastic recycling solution** designed to streamline waste management. It integrates **Arduino, ESP32, and Supabase** to track, categorize, and process plastic waste efficiently. By leveraging real-time data collection and automation, Plastecure promotes **sustainable recycling practices** and **eco-friendly innovation**.
 
-Etiam facilisis lacus nec pretium lobortis. Praesent dapibus justo non efficitur efficitur. Nullam viverra justo arcu, eget egestas tortor pretium id. Sed imperdiet mattis eleifend. Vivamus suscipit et neque imperdiet venenatis. In malesuada sed urna eget vehicula. Donec fermentum tortor sit amet nisl elementum fringilla. Pellentesque dapibus suscipit faucibus. Nullam malesuada sed urna quis rutrum. Donec facilisis lorem id maximus mattis. Vestibulum quis elit magna. Vestibulum accumsan blandit consequat. Phasellus quis posuere quam.
+# **Plastecure - Smart Plastic Waste Management System**
 
-> “Everybody should learn to program a computer, because it teaches you how to think.”
+### **Project Overview**
 
-Vestibulum ullamcorper risus auctor eleifend consequat. Vivamus mollis in tellus ac ullamcorper. Vestibulum sit amet bibendum ipsum, vitae rutrum ex. Nullam cursus, urna et dapibus aliquam, urna leo euismod metus, eu luctus justo mi eget mauris. Proin felis leo, volutpat et purus in, lacinia luctus eros. Pellentesque lobortis massa scelerisque lorem ullamcorper, sit amet elementum nulla scelerisque. In volutpat efficitur nulla, aliquam ornare lectus ultricies ac. Mauris sagittis ornare dictum. Nulla vel felis ut purus fermentum pretium. Sed id lectus ac diam aliquet venenatis. Etiam ac auctor enim. Nunc velit mauris, viverra vel orci ut, egestas rhoncus diam. Morbi scelerisque nibh tellus, vel varius urna malesuada sed. Etiam ultricies sem consequat, posuere urna non, maximus ex. Mauris gravida diam sed augue condimentum pulvinar vel ac dui. Integer vel convallis justo.
+Plastecure is an innovative **IoT-based plastic waste management system** designed to automate and optimize the collection, segregation, and recycling of plastic waste. The project integrates **hardware sensors, cloud-based analytics, and an interactive user interface** to create a seamless solution for tackling plastic pollution effectively.
 
-Nam rutrum magna sed pellentesque lobortis. Etiam quam mauris, iaculis eget ex ac, rutrum scelerisque nisl. Cras finibus dictum ex sed tincidunt. Morbi facilisis neque porta, blandit mauris quis, pharetra odio. Aliquam dictum quam quis elit auctor, at vestibulum ex pulvinar. Quisque lobortis a lectus quis faucibus. Nulla vitae pellentesque nibh, et fringilla erat. Praesent placerat ac est at tincidunt. Praesent ultricies a ex at ultrices. Etiam sed tincidunt elit. Nulla sagittis neque neque, ultrices dignissim sapien pellentesque faucibus. Donec tempor orci sed consectetur dictum. Ut viverra ut enim ac semper. Integer lacinia sem in arcu tempor faucibus eget non urna. Praesent vel nunc eu libero aliquet interdum non vitae elit. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.
+### **Project Motivation**
 
-Aenean scelerisque ullamcorper est aliquet blandit. Donec ac tellus enim. Vivamus quis leo mattis, varius arcu at, convallis diam. Donec ac leo at nunc viverra molestie ac viverra nisi. Proin interdum at turpis at varius. Nunc sit amet ex suscipit, convallis ligula eu, pretium turpis. Sed ultricies neque vel mi malesuada, et mollis risus lobortis. Sed condimentum venenatis mauris, id elementum dolor gravida ac. Sed sodales tempus neque, quis iaculis arcu tincidunt ut. Donec vitae faucibus dui. In hac habitasse platea dictumst. Donec erat ex, ullamcorper a massa a, porttitor porta ligula.
+Plastic pollution is one of the biggest environmental concerns of our time. Traditional waste management systems often lack efficiency in handling plastic waste, leading to improper disposal and environmental hazards. **Plastecure was developed to address this issue by leveraging smart technology to streamline the recycling process** and encourage responsible waste disposal practices.
+
+### **Key Features & Implementation**
+
+#### **1. IoT-Enabled Smart Segregation System**
+
+*   **Hardware:** The project utilizes **ESP32 microcontrollers** to manage sensors and communicate data to the cloud.
+
+*   **Sensors Used:**
+
+    *   **IR Sensors** to detect the presence of plastic waste.
+
+    *   **Weight Sensors** to measure the quantity of collected plastic.
+
+    *   **AI-Based Camera Module** for identifying different types of plastic.
+
+*   **Process:**
+
+    *   When a user disposes of plastic waste, the system **automatically scans and categorizes** it.
+
+    *   The collected data is sent to the cloud for further processing and tracking.
+
+#### **2. Supabase Integration for Cloud Storage**
+
+*   The project required a **real-time, scalable backend**, and **Supabase was chosen** to store and manage data efficiently.
+
+*   All sensor data and user interactions were logged into **Supabase's PostgreSQL database**, making the system **fast and reliable**.
+
+*   The **ESP32 microcontroller was successfully connected to Supabase**, ensuring seamless data synchronization.
+
+#### **3. User Dashboard for Monitoring & Analytics**
+
+*   Built an **ultra-modern, interactive UI** for waste tracking.
+
+*   Dashboard Features:
+
+    *   **Real-time waste tracking** – Users could monitor the amount of plastic collected.
+
+    *   **Segregation insights** – Displays detailed reports on different plastic types.
+
+    *   **Environmental Impact Metrics** – Estimates the reduction in plastic waste pollution.
+
+*   Designed with **responsive, futuristic UI elements**, following a **clean and intuitive layout**.
+
+#### **4. Reward-Based System for Encouraging Plastic Recycling**
+
+*   Users were encouraged to **recycle plastic responsibly** through an integrated reward system.
+
+*   Based on the amount of plastic disposed of, users earned **points redeemable for discounts or incentives**.
+
+*   The system aimed to promote **active participation in waste management efforts**.
+
+#### **5. Automated Collection & Notification System**
+
+*   Once the bin reaches a pre-defined capacity, **Plastecure sends automated notifications** to waste collection teams.
+
+*   Integrated **SMS/Email Alerts** for timely pickups and optimized waste collection routes.
+
+### **Challenges & How We Overcame Them**
+
+*   **IoT Connectivity Issues:** Initially, there were **latency issues in transmitting data from ESP32 to Supabase**. We optimized the **MQTT communication protocol** and reduced data packet sizes for **better efficiency**.
+
+*   **Sensor Calibration:** Fine-tuning **IR and weight sensors** was challenging due to environmental interference. We implemented **dynamic recalibration algorithms** to improve accuracy.
+
+*   **Ensuring Real-Time Updates:** To achieve **seamless real-time synchronization**, we optimized **Supabase queries** and used **WebSockets** for instant dashboard updates.
+
+*   **UI/UX Optimization:** The initial dashboard design felt **cluttered**, so we redesigned it using a **minimalist, data-driven approach** with **interactive visualization elements**.
+
+### **Project Outcome & Achievements**
+
+*   Successfully deployed a **working prototype** with full integration of **hardware, cloud, and UI components**.
+
+*   Demonstrated real-time **plastic waste segregation, monitoring, and incentivization**.
+
+*   **Won appreciation for its innovation** in waste management during presentations.
+
+*   Proved that **technology-driven solutions can significantly improve plastic recycling efficiency**.
+
+### **Tech Stack & Tools Used**
+
+*   **Hardware:** ESP32, IR Sensors, Weight Sensors, AI-Based Camera Module
+
+*   **Backend:** Supabase (PostgreSQL), MQTT for IoT communication
+
+*   **Frontend:** HTML, CSS, JavaScript (for the interactive dashboard)
+
+*   **Other Tools:** Python (for AI-based plastic recognition), Firebase (for real-time notifications)
+
+At **Plastecure**, we **believe** in using **technology** for **environmental impact**. Join us as **we reshape the future of waste management** with **innovation and responsibility**! 🌱♻️
+
+Award 🏆: **Excellence Award in collaborative Technical Project** (**1st Place**) ( MBA + CSE ) Department
+
+# Go-To
+
+[Plastecure ↗](https://plastecure.netlify.app) 
