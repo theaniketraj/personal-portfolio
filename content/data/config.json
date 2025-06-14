@@ -74,7 +74,8 @@
                 "url": "https://ceie-docs.netlify.app",
                 "altText": "CEIE",
                 "showIcon": true,
-                "icon": "arrowUpRight"
+                "icon": "arrowUpRight",
+                "iconPosition": "right"
             },
             {
                 "type": "Link",
