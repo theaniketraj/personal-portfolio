@@ -70,7 +70,7 @@
             {
                 "type": "Link",
                 "label": "CEIE",
-                "url": "https://github.com/netlify-templates",
+                "url": "https://ceie-docs.netlify.app",
                 "altText": "CEIE"
             }
         ],
