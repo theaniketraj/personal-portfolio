@@ -4,8 +4,8 @@ title: Plastecure
 date: '2024-11-09'
 client: Aniket Raj
 description: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+  An innovative platform that simplifies the process of plastic waste 
+  dispensing.
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
