@@ -73,7 +73,7 @@
                 "label": "CEIE",
                 "url": "https://ceie-docs.netlify.app",
                 "altText": "CEIE",
-                "showIcon": false,
+                "showIcon": true,
                 "icon": "arrowUpRight",
                 "iconPosition": "right"
             },
