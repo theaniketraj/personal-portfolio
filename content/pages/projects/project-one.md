@@ -63,7 +63,7 @@ metaTags:
       waste  management using IoT and intelligent sorting technology.
       Revolutionizing  sustainability with tech.
   - type: MetaTag
-    property: 'twitter:description'
+    property: 'twitter:creator'
     content: ''
   - type: MetaTag
     property: 'og:title'
