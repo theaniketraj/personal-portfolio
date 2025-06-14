@@ -40,7 +40,7 @@ metaTags:
     content: Plastecure
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: Smart Plastic Waste Management
   - type: MetaTag
     property: 'og:title'
     content: ''
