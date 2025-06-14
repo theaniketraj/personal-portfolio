@@ -46,7 +46,7 @@ metaTags:
     content: 'https://plastecure.netlify.app'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://github.com/theaniketraj'
 ---
 ###### **TL;DR –**  ♻️🔬
 
