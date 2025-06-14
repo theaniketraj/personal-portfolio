@@ -30,6 +30,10 @@ backgroundImage:
 metaTitle: >-
   Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's 
   Project
+metaDescription: >-
+  Plastecure is an AI-driven smart recycling system that automates plastic
+  waste  management using IoT and intelligent sorting technology.
+  Revolutionizing  sustainability with tech.
 ---
 ###### **TL;DR –**  ♻️🔬
 
