@@ -76,7 +76,7 @@
             {
                 "type": "Link",
                 "label": "VERSENOVA",
-                "altText": "",
+                "altText": "versenova",
                 "url": "https://versenova.netlify.app",
                 "showIcon": false,
                 "icon": "arrowRight",
