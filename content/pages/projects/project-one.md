@@ -39,7 +39,7 @@ metaTags:
     property: 'og:title'
     content: Plastecure
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
   - type: MetaTag
     property: 'og:title'
