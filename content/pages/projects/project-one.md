@@ -34,6 +34,43 @@ metaDescription: >-
   Plastecure is an AI-driven smart recycling system that automates plastic
   waste  management using IoT and intelligent sorting technology.
   Revolutionizing  sustainability with tech.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: Plastecure
+  - type: MetaTag
+    property: 'og:type'
+    content: Smart Plastic Waste Management
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://plastecure.netlify.app'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://github.com/theaniketraj'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://www.linkedin.com/in/theaniketraj/'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://www.npmjs.com/~theaniketraj'
+  - type: MetaTag
+    property: 'twitter:title'
+    content: Plastecure
+  - type: MetaTag
+    property: 'twitter:description'
+    content: >-
+      Plastecure is an AI-driven smart recycling system that automates plastic
+      waste  management using IoT and intelligent sorting technology.
+      Revolutionizing  sustainability with tech.
+  - type: MetaTag
+    property: 'twitter:creator'
+    content: devxaniket
+  - type: MetaTag
+    property: 'twitter:site'
+    content: 'https://plastecure.netlify.app'
+  - type: MetaTag
+    property: 'twitter:card'
+    content: summary_large_image
 ---
 ###### **TL;DR –**  ♻️🔬
 
