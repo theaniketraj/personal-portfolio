@@ -100,7 +100,7 @@
             "phoneNumber": "",
             "phoneAltText": "",
             "email": "",
-            "emailAltText": "My email",
+            "emailAltText": "",
             "address": "312 Lovely Street, Brooklyn, NY, 123456",
             "addressAltText": "My address"
         },
