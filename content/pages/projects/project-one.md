@@ -34,6 +34,10 @@ metaDescription: >-
   Plastecure is an AI-driven smart recycling system that automates plastic
   waste  management using IoT and intelligent sorting technology.
   Revolutionizing  sustainability with tech.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 ###### **TL;DR –**  ♻️🔬
 
