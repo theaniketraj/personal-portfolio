@@ -2,7 +2,7 @@
 type: ProjectLayout
 title: Plastecure
 date: '2024-11-09'
-client: Awesome client
+client: Aniket Raj
 description: >-
   Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
   condimentum dignissim justo vel faucibus.
