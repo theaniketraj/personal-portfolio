@@ -87,7 +87,7 @@
             {
                 "type": "Link",
                 "label": "NEXTVAULT",
-                "altText": "",
+                "altText": "NextVault",
                 "url": "https://nxtvault.netlify.app",
                 "showIcon": false,
                 "icon": "arrowRight",
