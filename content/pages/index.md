@@ -35,13 +35,7 @@ sections:
     actions: []
   - type: TextSection
     title: ''
-    text: >-
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-      doloremque laudantium, totam rem aperiam. Eaque ipsa quae ab illo
-      inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-      Sed ut perspiciatis undeomnis iste natus error sit voluptatem accusantium
-      doloremque laudantium, totam rem aperiam. Eaque ipsa quae ab illo
-      inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    text: "```\nfun main() {\n```\n\n```\n  val developer = Developer(\n        name = \"Aniket Raj\",\n        expertise = listOf(\"Kotlin\", \"UI/UX Design\", \"CI/CD Pipeline\", \"Gradle Optimization\"),\n        interests = listOf(\"Mobile App Development\", \"Custom Project Versioning\", \"Database Management\")\n  )\n```\n\n```\n  developer. Welcome()\n\n```\n\n```\n}\n```\n\n```\nclass Developer(\n```\n\n```\n   val name: String,\n   val expertise: List,\n   val interests: List\n```\n\n```\n) {\n```\n\n```\nfun welcome() { \n      println(\"Welcome to $name's Portfolio!\")\n      println(\"Passionate about writing clean, scalable, and efficient Kotlin code.\")\n      println(\"Exploring the intersection of ${expertise.joinToString(\", \")}.\")\n      println(\"Always eager to innovate in ${interests.joinToString(\", \")}.\")\n      println(\"Feel free to explore my work and connect for exciting discussions! \U0001F680\")\n}\n```\n\n```\n}\n```\n\n"
     colors: colors-f
     variant: variant-a
     elementId: ''
