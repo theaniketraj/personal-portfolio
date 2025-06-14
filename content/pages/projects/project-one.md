@@ -51,7 +51,7 @@ metaTags:
     property: 'og:url'
     content: 'https://www.linkedin.com/in/theaniketraj/'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
   - type: MetaTag
     property: 'og:title'
