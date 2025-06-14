@@ -55,7 +55,7 @@ metaTags:
     content: 'https://www.npmjs.com/~theaniketraj'
   - type: MetaTag
     property: 'twitter:title'
-    content: ''
+    content: Plastecure
   - type: MetaTag
     property: 'og:title'
     content: ''
