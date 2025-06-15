@@ -50,7 +50,7 @@ sections:
         borderStyle: solid
   - type: MediaGallerySection
     colors: colors-f
-    subtitle: 'I worked with these folks:'
+    subtitle: Fluency
     images:
       - type: ImageBlock
         url: /images/logo1.svg
