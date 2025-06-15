@@ -184,7 +184,7 @@ sections:
       - type: Label
         label: Kotlin
       - type: Label
-        label: Next.js
+        label: UI/UX
       - type: Label
         label: Netlify
       - type: Label
