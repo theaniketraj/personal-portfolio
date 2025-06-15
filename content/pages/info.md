@@ -125,7 +125,7 @@ sections:
         actions:
           - type: Link
             label: Dev.To
-            url: ''
+            url: 'https://dev.to/theaniketraj'
         styles:
           self:
             textAlign: left
