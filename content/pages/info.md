@@ -137,6 +137,7 @@ sections:
           - type: Link
             label: X
             url: 'https://x.com/devxaniket'
+            showIcon: true
         styles:
           self:
             textAlign: left
