@@ -150,6 +150,7 @@ sections:
             url: 'https://www.linkedin.com/in/theaniketraj/'
             showIcon: true
             icon: linkedin
+            iconPosition: right
         styles:
           self:
             textAlign: left
