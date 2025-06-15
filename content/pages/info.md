@@ -149,6 +149,7 @@ sections:
             label: ''
             url: 'https://www.linkedin.com/in/theaniketraj/'
             showIcon: true
+            icon: linkedin
         styles:
           self:
             textAlign: left
