@@ -157,7 +157,7 @@ sections:
       - type: FeaturedItem
         actions:
           - type: Link
-            label: ''
+            label: Discord
             url: 'https://discord.com/theaniketraj#8007'
             showIcon: true
             icon: arrowUpRight
