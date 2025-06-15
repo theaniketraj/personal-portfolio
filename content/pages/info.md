@@ -138,6 +138,7 @@ sections:
             label: X
             url: 'https://x.com/devxaniket'
             showIcon: true
+            icon: twitter
         styles:
           self:
             textAlign: left
