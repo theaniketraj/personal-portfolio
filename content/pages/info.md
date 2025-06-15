@@ -158,7 +158,7 @@ sections:
         actions:
           - type: Link
             label: ''
-            url: 'https://www.instagram.com/'
+            url: 'https://discord.com/theaniketraj#8007'
         styles:
           self:
             textAlign: left
