@@ -114,7 +114,7 @@ sections:
         actions:
           - type: Link
             label: Gradle
-            url: 'https://twitter.com/'
+            url: 'https://plugins.gradle.org/u/theaniketraj'
         styles:
           self:
             textAlign: left
