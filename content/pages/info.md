@@ -136,7 +136,7 @@ sections:
         actions:
           - type: Link
             label: X
-            url: 'https://codepen.io/'
+            url: 'https://x.com/devxaniket'
         styles:
           self:
             textAlign: left
