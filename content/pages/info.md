@@ -108,6 +108,7 @@ sections:
             label: NPM
             url: 'https://www.npmjs.com/~theaniketraj'
             showIcon: true
+            iconPosition: right
         styles:
           self:
             textAlign: left
