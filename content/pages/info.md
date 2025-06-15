@@ -146,7 +146,7 @@ sections:
       - type: FeaturedItem
         actions:
           - type: Link
-            label: Discord
+            label: ''
             url: 'https://discord.com/'
         styles:
           self:
