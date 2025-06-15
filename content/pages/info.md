@@ -105,7 +105,7 @@ sections:
       - type: FeaturedItem
         actions:
           - type: Link
-            label: GitHub
+            label: NPM
             url: 'https://github.com/'
         styles:
           self:
