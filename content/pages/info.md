@@ -188,7 +188,7 @@ sections:
       - type: Label
         label: Android Studio
       - type: Label
-        label: Pancakes
+        label: CI/CD Pipeline
       - type: Label
         label: C++
       - type: Label
