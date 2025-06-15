@@ -37,23 +37,25 @@ Raptor is a **smart helmet** equipped with **accident detection** and an **emerg
 Raptor is an **AI-powered smart helmet** designed to enhance rider safety through real-time accident detection and emergency alert systems. The helmet integrates IoT sensors, AI-based crash detection, and automated emergency response mechanisms to ensure immediate assistance in case of an accident.
 With the rising number of road accidents involving two-wheelers, many riders fail to receive timely medical attention, leading to severe consequences. Raptor aims to solve this by automatically detecting crashes and alerting emergency contacts with real-time location details.
 
-\### Project Motivation
+## Project Motivation
 
-Road safety is a \*\*critical issue worldwide\*\*, especially for motorcyclists. While conventional helmets provide physical protection, \*\*they lack smart features to assist riders in emergencies\*\*.
+Road safety is a critical issue worldwide, especially for motorcyclists. While conventional helmets provide physical protection, they lack smart features to assist riders in emergencies.
 
-\*\*Raptor goes beyond traditional helmet designs by integrating AI-driven crash detection and real-time communication to save lives.\*\*
+Raptor goes beyond traditional helmet designs by integrating AI-driven crash detection and real-time communication to save lives.
 
-\### \*\*Key Features & Implementation\*\*
+### Key Features & Implementation
 
-\#### \*\*1. AI-Based Crash Detection System\*\*
-\*   \*\*Accelerometer & Gyroscope Sensors\*\* detect \*\*sudden impact, abrupt motion changes, and helmet tilt angles\*\*, determining if a crash has occurred.
-\*   AI algorithms \*\*analyze sensor data\*\* to distinguish between a normal fall and a \*\*severe accident\*\*.
-\*   The system prevents false alarms by using \*\*ML models trained on real-world riding data\*\*.
+#### 1. AI-Based Crash Detection System
 
-\#### \*\*2. Emergency Alert & Live Location Sharing\*\*
-\*   Upon detecting an accident, \*\*Raptor automatically sends an SOS alert\*\* to emergency contacts.
-\*   The \*\*alert includes the rider’s live GPS location\*\*, allowing responders to reach the accident site quickly.
-\*   Uses \*\*ESP-32 module\*\* for real-time location tracking, even in low-connectivity areas.
+Accelerometer & Gyroscope Sensors detect sudden impact, abrupt motion changes, and helmet tilt angles, determining if a crash has occurred.
+AI algorithms analyze sensor data to distinguish between a normal fall and a severe accident.
+The system prevents false alarms by using ML models trained on real-world riding data.
+
+#### 2. Emergency Alert & Live Location Sharing
+
+Upon detecting an accident, Raptor automatically sends an SOS alert to emergency contacts.
+The alert includes the rider’s live GPS location, allowing responders to reach the accident site quickly.
+Uses ESP-32 module for real-time location tracking, even in low-connectivity areas.
 
 \#### \*\*3. Fall & Unconsciousness Detection\*\*
 \*   If a rider \*\*falls but doesn’t move for a certain period\*\*, the system assumes unconsciousness and triggers emergency alerts.
