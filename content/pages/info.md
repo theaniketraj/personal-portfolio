@@ -72,7 +72,7 @@ sections:
         url: /images/logo5.svg
         altText: Logo five
         caption: Logo five
-    spacing: 3
+    spacing: 0
     columns: 5
     aspectRatio: auto
     showCaption: false
