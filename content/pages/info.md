@@ -124,7 +124,7 @@ sections:
       - type: FeaturedItem
         actions:
           - type: Link
-            label: Dev.
+            label: Dev.To
             url: 'https://www.linkedin.com/'
         styles:
           self:
