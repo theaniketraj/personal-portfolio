@@ -128,6 +128,7 @@ sections:
             url: 'https://dev.to/theaniketraj'
             showIcon: true
             icon: arrowUpRight
+            iconPosition: right
         styles:
           self:
             textAlign: left
