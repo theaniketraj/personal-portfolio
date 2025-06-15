@@ -115,7 +115,7 @@ sections:
           - type: Link
             label: Gradle
             url: 'https://plugins.gradle.org/u/theaniketraj'
-            icon: chevronRight
+            icon: arrowUpRight
             showIcon: true
             iconPosition: right
         styles:
