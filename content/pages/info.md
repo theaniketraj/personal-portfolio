@@ -109,6 +109,7 @@ sections:
             url: 'https://www.npmjs.com/~theaniketraj'
             showIcon: true
             iconPosition: right
+            icon: arrowRightCircle
         styles:
           self:
             textAlign: left
