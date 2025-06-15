@@ -190,7 +190,7 @@ sections:
       - type: Label
         label: CI/CD Pipeline
       - type: Label
-        label: C++
+        label: Creative Writing
       - type: Label
         label: Swift
   - type: DividerSection
