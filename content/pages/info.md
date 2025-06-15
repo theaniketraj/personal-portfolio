@@ -193,6 +193,9 @@ sections:
         label: Creative Writing
       - type: Label
         label: Netlify
+      - type: Label
+        label: GSAP
+        url: ''
   - type: DividerSection
     styles:
       self:
