@@ -57,39 +57,45 @@ Upon detecting an accident, Raptor automatically sends an SOS alert to emergency
 The alert includes the rider’s live GPS location, allowing responders to reach the accident site quickly.
 Uses ESP-32 module for real-time location tracking, even in low-connectivity areas.
 
-\#### \*\*3. Fall & Unconsciousness Detection\*\*
-\*   If a rider \*\*falls but doesn’t move for a certain period\*\*, the system assumes unconsciousness and triggers emergency alerts.
-\*   Integrated \*\*pulse sensor & body temperature monitor\*\* can detect abnormal rider conditions.
+#### 3. Fall & Unconsciousness Detection
 
-\#### \*\*4. Smart Helmet Lock System (Prevention Feature)\*\*
-\*   The helmet has an \*\*ignition-locking mechanism\*\*, ensuring the bike won’t start unless the helmet is worn.
-\*   Uses \*\*RFID/NFC authentication\*\* for \*\*secure user verification\*\* before ignition.
+If a rider falls but doesn’t move for a certain period, the system assumes unconsciousness and triggers emergency alerts.
+Integrated pulse sensor & body temperature monitor can detect abnormal rider conditions.
 
-\#### \*\*5. Mobile App Integration for Alerts & Tracking\*\*
-\*   The helmet connects to a \*\*mobile app via Bluetooth\*\*, allowing riders to:
-    \*   View ride analytics & helmet status.
-    \*   Receive \*\*battery & sensor health alerts\*\*.
-    \*   Customize emergency contact details.
-\*   The app is designed with a \*\*clean, user-friendly UI\*\*, ensuring easy navigation and real-time monitoring.
+4\. Smart Helmet Lock System (Prevention Feature)
+The helmet has an ignition-locking mechanism, ensuring the bike won’t start unless the helmet is worn.
+Uses RFID/NFC authentication for secure user verification before ignition.
 
-\#### \*\*6. Voice Assistance & Hands-Free Communication\*\*
-\*   Built-in \*\*Bluetooth speakers & microphone\*\* allow for hands-free calls and navigation assistance.
-\*   \*\*AI voice commands\*\* enable riders to control features without distraction.
+#### 5. Mobile App Integration for Alerts & Tracking
 
-\### \*\*Challenges & Solutions\*\*
-\*   \*\*Accurate Crash Detection:\*\* Implemented \*\*AI-driven pattern recognition\*\* to reduce false positives.
-\*   \*\*Ensuring Instant Emergency Response:\*\* Optimized GPS & GSM module for \*\*fast and reliable connectivity\*\*.
-\*   \*\*User Comfort & Battery Life:\*\* Used a \*\*lightweight battery pack with optimized power consumption\*\*, ensuring long-lasting operation without adding extra weight.
+The helmet connects to a mobile app via Bluetooth, allowing riders to:
+       View ride analytics & helmet status.
+       Receive battery & sensor health alerts.
+       Customize emergency contact details.
+The app is designed with a clean, user-friendly UI, ensuring easy navigation and real-time monitoring.
 
-\### \*\*Expected Impact & Real-World Application\*\*
-\*   \*\*Increases rider safety\*\* by ensuring quick medical response.
-\*   \*\*Prevents unauthorized ignition\*\* through helmet authentication.
-\*   \*\*Reduces accident fatalities\*\* by leveraging AI for faster emergency assistance.
+#### 6. Voice Assistance & Hands-Free Communication
 
-\### \*\*Tech Stack & Tools Used\*\*
-\*   \*\*Hardware:\*\* \*\*ESP32\*\*, \*\*MPU6050\*\* (Accelerometer & Gyroscope), \*\*RFID/NFC\*\* Sensor, \*\*Pulse\*\* Sensor.
-\*   \*\*Software:\*\* \*\*C\*\* (for AI crash detection algorithms).
-\*   \*\*Database & Cloud:\*\* \*\*Firebase\*\* for real-time alerts & \*\*Supa base\*\* for emergency logs.
+Built-in Bluetooth speakers & microphone allow for hands-free calls and navigation assistance.
+AI voice commands enable riders to control features without distraction.
+
+### Challenges & Solutions
+
+Accurate Crash Detection: Implemented AI-driven pattern recognition to reduce false positives.
+Ensuring Instant Emergency Response: Optimized GPS & GSM module for fast and reliable connectivity.
+User Comfort & Battery Life: Used a lightweight battery pack with optimized power consumption, ensuring long-lasting operation without adding extra weight.
+
+### Expected Impact & Real-World Application
+
+Increases rider safety by ensuring quick medical response.
+Prevents unauthorized ignition through helmet authentication.
+Reduces accident fatalities by leveraging AI for faster emergency assistance.
+
+### Tech Stack & Tools Used
+
+Hardware: ESP32, MPU6050 (Accelerometer & Gyroscope), RFID/NFC Sensor, Pulse Sensor.
+Software: C (for AI crash detection algorithms).
+Database & Cloud: Firebase for real-time alerts & Supa base for emergency logs.
 
 \# Go-To
 \[Raptor]\(<https://raptorai.netlify.app>) ↗
