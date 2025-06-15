@@ -14,10 +14,12 @@ sections:
     colors: colors-f
     backgroundSize: full
     text: >+
-      # Hey I’m a developer. I’ve been born and raised in the world, and that’s
-      also where I’m based. I’m currently a free agent, ex-this, ex-that,
-      ex-super big name. When I’m not coding, writing or creating, I eat
-      cereals. I have a dog, check her out [@mygod](https://www.stackbit.com/).
+      #### Hey, I’m a third-year B.Tech student specializing in Computer Science
+      and Engineering. With a strong foundation in programming, data structures
+      and algorithms, I’m passionate about leveraging technology to solve
+      real-world problems. I’m driven by curiosity and a desire to innovate. Be
+      it developing a new app, optimizing an algorithm, or exploring the latest
+      trends in AI and machine learning, I’m always eager to learn and grow.
 
     styles:
       self:
