@@ -182,7 +182,7 @@ sections:
       - type: Label
         label: Java
       - type: Label
-        label: Microsoft Office
+        label: Kotlin
       - type: Label
         label: Next.js
       - type: Label
