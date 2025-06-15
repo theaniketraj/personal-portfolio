@@ -1,29 +1,103 @@
 ---
 type: ProjectLayout
-title: Another cool project
-colors: colors-a
-date: '2021-12-20'
-client: Awesome client
+title: Raptor
+date: '2025-02-01'
+client: Aniket Raj
 description: >-
-  It’s hard to imagine that I’ve that I wrote all this code by myself, probably because I worked with an entire team :) but they definitely followed my lead most of the time.
+  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
+  condimentum dignissim justo vel faucibus.
 featuredImage:
   type: ImageBlock
-  url: /images/bg2.jpg
+  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
   altText: Project thumbnail image
+  caption: ''
+  elementId: ''
 media:
   type: ImageBlock
-  url: /images/bg2.jpg
+  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
   altText: Project image
+  caption: Caption of the image
+  elementId: ''
+addTitleSuffix: true
+colors: colors-a
+backgroundImage:
+  type: BackgroundImage
+  url: /images/bg2.jpg
+  backgroundSize: cover
+  backgroundPosition: center
+  backgroundRepeat: no-repeat
+  opacity: 100
 ---
+TL;DR – 🚀🏍️
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Curabitur at auctor sapien. Etiam at cursus enim. Suspendisse sed augue tortor. Nunc eu magna vitae lorem pellentesque fermentum. Sed in facilisis dui. Nulla molestie risus in mi dapibus, eget porta lorem semper. Donec sed facilisis nibh. Curabitur eget dui in libero euismod commodo nec sit amet est. Etiam id ipsum aliquam, vehicula erat sit amet, consequat tortor.
+Raptor is a **smart helmet** equipped with **accident detection** and an **emergency alert system** to enhance rider safety. Using **real-time sensors** and **AI-based crash detection**, it automatically sends distress signals to emergency contacts and authorities in case of an accident. Designed for **seamless integration with modern mobility**, Raptor ensures swift response times and improved road safety.
 
-Etiam facilisis lacus nec pretium lobortis. Praesent dapibus justo non efficitur efficitur. Nullam viverra justo arcu, eget egestas tortor pretium id. Sed imperdiet mattis eleifend. Vivamus suscipit et neque imperdiet venenatis. In malesuada sed urna eget vehicula. Donec fermentum tortor sit amet nisl elementum fringilla. Pellentesque dapibus suscipit faucibus. Nullam malesuada sed urna quis rutrum. Donec facilisis lorem id maximus mattis. Vestibulum quis elit magna. Vestibulum accumsan blandit consequat. Phasellus quis posuere quam.
+# Raptor – Smart Helmet with Accident Detection & Emergency Alert
 
-> “Everybody should learn to program a computer, because it teaches you how to think.”
+Raptor is an **AI-powered smart helmet** designed to enhance rider safety through real-time accident detection and emergency alert systems. The helmet integrates IoT sensors, AI-based crash detection, and automated emergency response mechanisms to ensure immediate assistance in case of an accident.
+With the rising number of road accidents involving two-wheelers, many riders fail to receive timely medical attention, leading to severe consequences. Raptor aims to solve this by automatically detecting crashes and alerting emergency contacts with real-time location details.
 
-Vestibulum ullamcorper risus auctor eleifend consequat. Vivamus mollis in tellus ac ullamcorper. Vestibulum sit amet bibendum ipsum, vitae rutrum ex. Nullam cursus, urna et dapibus aliquam, urna leo euismod metus, eu luctus justo mi eget mauris. Proin felis leo, volutpat et purus in, lacinia luctus eros. Pellentesque lobortis massa scelerisque lorem ullamcorper, sit amet elementum nulla scelerisque. In volutpat efficitur nulla, aliquam ornare lectus ultricies ac. Mauris sagittis ornare dictum. Nulla vel felis ut purus fermentum pretium. Sed id lectus ac diam aliquet venenatis. Etiam ac auctor enim. Nunc velit mauris, viverra vel orci ut, egestas rhoncus diam. Morbi scelerisque nibh tellus, vel varius urna malesuada sed. Etiam ultricies sem consequat, posuere urna non, maximus ex. Mauris gravida diam sed augue condimentum pulvinar vel ac dui. Integer vel convallis justo.
+## Project Motivation
 
-Nam rutrum magna sed pellentesque lobortis. Etiam quam mauris, iaculis eget ex ac, rutrum scelerisque nisl. Cras finibus dictum ex sed tincidunt. Morbi facilisis neque porta, blandit mauris quis, pharetra odio. Aliquam dictum quam quis elit auctor, at vestibulum ex pulvinar. Quisque lobortis a lectus quis faucibus. Nulla vitae pellentesque nibh, et fringilla erat. Praesent placerat ac est at tincidunt. Praesent ultricies a ex at ultrices. Etiam sed tincidunt elit. Nulla sagittis neque neque, ultrices dignissim sapien pellentesque faucibus. Donec tempor orci sed consectetur dictum. Ut viverra ut enim ac semper. Integer lacinia sem in arcu tempor faucibus eget non urna. Praesent vel nunc eu libero aliquet interdum non vitae elit. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.
+Road safety is a critical issue worldwide, especially for motorcyclists. While conventional helmets provide physical protection, they lack smart features to assist riders in emergencies.
 
-Aenean scelerisque ullamcorper est aliquet blandit. Donec ac tellus enim. Vivamus quis leo mattis, varius arcu at, convallis diam. Donec ac leo at nunc viverra molestie ac viverra nisi. Proin interdum at turpis at varius. Nunc sit amet ex suscipit, convallis ligula eu, pretium turpis. Sed ultricies neque vel mi malesuada, et mollis risus lobortis. Sed condimentum venenatis mauris, id elementum dolor gravida ac. Sed sodales tempus neque, quis iaculis arcu tincidunt ut. Donec vitae faucibus dui. In hac habitasse platea dictumst. Donec erat ex, ullamcorper a massa a, porttitor porta ligula.
+Raptor goes beyond traditional helmet designs by integrating AI-driven crash detection and real-time communication to save lives.
+
+### Key Features & Implementation
+
+#### 1. AI-Based Crash Detection System
+
+Accelerometer & Gyroscope Sensors detect sudden impact, abrupt motion changes, and helmet tilt angles, determining if a crash has occurred.
+AI algorithms analyze sensor data to distinguish between a normal fall and a severe accident.
+The system prevents false alarms by using ML models trained on real-world riding data.
+
+#### 2. Emergency Alert & Live Location Sharing
+
+Upon detecting an accident, Raptor automatically sends an SOS alert to emergency contacts.
+The alert includes the rider’s live GPS location, allowing responders to reach the accident site quickly.
+Uses ESP-32 module for real-time location tracking, even in low-connectivity areas.
+
+#### 3. Fall & Unconsciousness Detection
+
+If a rider falls but doesn’t move for a certain period, the system assumes unconsciousness and triggers emergency alerts.
+Integrated pulse sensor & body temperature monitor can detect abnormal rider conditions.
+
+4\. Smart Helmet Lock System (Prevention Feature)
+The helmet has an ignition-locking mechanism, ensuring the bike won’t start unless the helmet is worn.
+Uses RFID/NFC authentication for secure user verification before ignition.
+
+#### 5. Mobile App Integration for Alerts & Tracking
+
+The helmet connects to a mobile app via Bluetooth, allowing riders to:
+       View ride analytics & helmet status.
+       Receive battery & sensor health alerts.
+       Customize emergency contact details.
+The app is designed with a clean, user-friendly UI, ensuring easy navigation and real-time monitoring.
+
+#### 6. Voice Assistance & Hands-Free Communication
+
+Built-in Bluetooth speakers & microphone allow for hands-free calls and navigation assistance.
+AI voice commands enable riders to control features without distraction.
+
+### Challenges & Solutions
+
+Accurate Crash Detection: Implemented AI-driven pattern recognition to reduce false positives.
+Ensuring Instant Emergency Response: Optimized GPS & GSM module for fast and reliable connectivity.
+User Comfort & Battery Life: Used a lightweight battery pack with optimized power consumption, ensuring long-lasting operation without adding extra weight.
+
+### Expected Impact & Real-World Application
+
+Increases rider safety by ensuring quick medical response.
+Prevents unauthorized ignition through helmet authentication.
+Reduces accident fatalities by leveraging AI for faster emergency assistance.
+
+### Tech Stack & Tools Used
+
+Hardware: ESP32, MPU6050 (Accelerometer & Gyroscope), RFID/NFC Sensor, Pulse Sensor.
+Software: C (for AI crash detection algorithms).
+Database & Cloud: Firebase for real-time alerts & Supa base for emergency logs.
+
+## # Go-To
+
+[Raptor](https://raptorai.netlify.app) ↗
+
