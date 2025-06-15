@@ -106,7 +106,7 @@ sections:
         actions:
           - type: Link
             label: NPM
-            url: 'https://github.com/'
+            url: 'https://www.npmjs.com/~theaniketraj'
         styles:
           self:
             textAlign: left
