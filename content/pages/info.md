@@ -186,7 +186,7 @@ sections:
       - type: Label
         label: UI/UX
       - type: Label
-        label: Netlify
+        label: Android Studio
       - type: Label
         label: Pancakes
       - type: Label
