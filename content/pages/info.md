@@ -159,6 +159,7 @@ sections:
           - type: Link
             label: ''
             url: 'https://discord.com/theaniketraj#8007'
+            showIcon: true
         styles:
           self:
             textAlign: left
