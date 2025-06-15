@@ -125,7 +125,7 @@ sections:
         actions:
           - type: Link
             label: Dev.To
-            url: 'https://www.linkedin.com/'
+            url: ''
         styles:
           self:
             textAlign: left
