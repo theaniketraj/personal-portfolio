@@ -14,7 +14,7 @@ sections:
     colors: colors-f
     backgroundSize: full
     text: >+
-      # Hey, I’m a third-year B.Tech student specializing in Computer Science
+      ## Hey, I’m a third-year B.Tech student specializing in Computer Science
       and Engineering. With a strong foundation in programming, data structures
       and algorithms, I’m passionate about leveraging technology to solve
       real-world problems. I’m driven by curiosity and a desire to innovate. Be
