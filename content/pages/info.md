@@ -107,6 +107,7 @@ sections:
           - type: Link
             label: NPM
             url: 'https://www.npmjs.com/~theaniketraj'
+            showIcon: true
         styles:
           self:
             textAlign: left
