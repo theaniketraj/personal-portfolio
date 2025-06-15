@@ -127,6 +127,7 @@ sections:
             label: Dev.To
             url: 'https://dev.to/theaniketraj'
             showIcon: true
+            icon: arrowUpRight
         styles:
           self:
             textAlign: left
