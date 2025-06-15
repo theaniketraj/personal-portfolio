@@ -147,7 +147,7 @@ sections:
         actions:
           - type: Link
             label: ''
-            url: 'https://discord.com/'
+            url: 'https://www.linkedin.com/in/theaniketraj/'
         styles:
           self:
             textAlign: left
