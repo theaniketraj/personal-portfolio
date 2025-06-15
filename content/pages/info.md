@@ -160,6 +160,7 @@ sections:
             label: ''
             url: 'https://discord.com/theaniketraj#8007'
             showIcon: true
+            icon: arrowUpRight
         styles:
           self:
             textAlign: left
