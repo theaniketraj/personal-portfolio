@@ -192,7 +192,7 @@ sections:
       - type: Label
         label: Creative Writing
       - type: Label
-        label: Swift
+        label: Netlify
   - type: DividerSection
     styles:
       self:
