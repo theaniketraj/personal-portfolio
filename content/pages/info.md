@@ -117,6 +117,7 @@ sections:
             url: 'https://plugins.gradle.org/u/theaniketraj'
             icon: chevronRight
             showIcon: true
+            iconPosition: right
         styles:
           self:
             textAlign: left
