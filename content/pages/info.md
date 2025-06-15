@@ -135,7 +135,7 @@ sections:
       - type: FeaturedItem
         actions:
           - type: Link
-            label: X
+            label: ''
             url: 'https://x.com/devxaniket'
             showIcon: true
             icon: twitter
