@@ -149,7 +149,7 @@ sections:
       - type: FeaturedItem
         actions:
           - type: Link
-            label: ''
+            label: LinkedIN
             url: 'https://www.linkedin.com/in/theaniketraj/'
             showIcon: false
             icon: linkedin
