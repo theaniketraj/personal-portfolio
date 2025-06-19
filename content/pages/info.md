@@ -271,7 +271,7 @@ sections:
 
         styles:
           self:
-            textAlign: center
+            textAlign: left
     columns: 2
     spacingX: 60
     spacingY: 60
