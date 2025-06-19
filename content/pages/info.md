@@ -246,18 +246,29 @@ sections:
     items:
       - type: FeaturedItem
         subtitle: 'Education:'
-        text: |-
-          **2015-2018**
+        text: |+
+          **2022 - present**
 
-          * ba computer sciense at a semi fancy school
+          *   Durgapur Institute of Advanced Technology and Management
 
-          **2014**
+          *   B. Tech CSE
 
-          * react certificate somewhere
+          **2020 - 2022**
 
-          **2011**
+          *   Bhagwat Vidyapeeth, Chapra
 
-          * my highschool
+          *   Intermediate, Science
+
+          *   Grade: A+
+
+          **2018 - 2020**
+
+          *   Bhagwat Vidyapeeth, Chapra
+
+          *   Matriculation, Science
+
+          *   Grade: A+
+
         styles:
           self:
             textAlign: left
