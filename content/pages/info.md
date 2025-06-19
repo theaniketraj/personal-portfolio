@@ -140,7 +140,7 @@ sections:
           - type: Link
             label: ''
             url: 'https://x.com/devxaniket'
-            showIcon: true
+            showIcon: false
             icon: twitter
             iconPosition: right
         styles:
