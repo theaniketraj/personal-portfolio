@@ -14,15 +14,13 @@ sections:
     colors: colors-f
     backgroundSize: full
     text: >+
-      # Hey I’m a developer. I’ve been born and raised in the world, and that’s
-      also where I’m based. I’m currently a free agent, ex-this, ex-that,
-      ex-super big name. When I’m not coding, writing or creating, I eat
-      cereals. I have a dog, check her out [@mygod](https://www.stackbit.com/).
+      ## Hey, I’m a third-year B.Tech student specializing in Computer Science
+      and Engineering. With a strong foundation in programming, data structures
+      and algorithms, I’m passionate about leveraging technology to solve
+      real-world problems. I’m driven by curiosity and a desire to innovate. Be
+      it developing a new app, optimizing an algorithm, or exploring the latest
+      trends in AI and machine learning, I’m always eager to learn and grow.
 
-    media:
-      type: ImageBlock
-      url: /images/about.jpg
-      altText: Hero image
     styles:
       self:
         height: auto
@@ -37,7 +35,7 @@ sections:
           - pb-12
           - pl-4
           - pr-4
-        textAlign: left
+        textAlign: center
     type: HeroSection
   - type: DividerSection
     styles:
@@ -52,7 +50,7 @@ sections:
         borderStyle: solid
   - type: MediaGallerySection
     colors: colors-f
-    subtitle: 'I worked with these folks:'
+    subtitle: Fluency
     images:
       - type: ImageBlock
         url: /images/logo1.svg
@@ -74,11 +72,11 @@ sections:
         url: /images/logo5.svg
         altText: Logo five
         caption: Logo five
-    spacing: 3
+    spacing: 0
     columns: 5
     aspectRatio: auto
     showCaption: false
-    enableHover: false
+    enableHover: true
     styles:
       self:
         width: wide
@@ -88,7 +86,7 @@ sections:
           - pb-8
           - pl-4
           - pr-4
-        textAlign: left
+        textAlign: center
   - type: DividerSection
     styles:
       self:
@@ -107,32 +105,55 @@ sections:
       - type: FeaturedItem
         actions:
           - type: Link
-            label: GitHub
-            url: 'https://github.com/'
+            label: NPM
+            url: 'https://www.npmjs.com/~theaniketraj'
+            showIcon: true
+            iconPosition: right
+            icon: arrowUpRight
         styles:
           self:
             textAlign: left
       - type: FeaturedItem
         actions:
           - type: Link
-            label: Twitter
-            url: 'https://twitter.com/'
+            label: Gradle
+            url: 'https://plugins.gradle.org/u/theaniketraj'
+            icon: arrowUpRight
+            showIcon: true
+            iconPosition: right
         styles:
           self:
             textAlign: left
       - type: FeaturedItem
         actions:
           - type: Link
-            label: LinkedIn
-            url: 'https://www.linkedin.com/'
+            label: Dev.To
+            url: 'https://dev.to/theaniketraj'
+            showIcon: true
+            icon: arrowUpRight
+            iconPosition: right
         styles:
           self:
             textAlign: left
       - type: FeaturedItem
         actions:
           - type: Link
-            label: CodePen
-            url: 'https://codepen.io/'
+            label: ''
+            url: 'https://x.com/devxaniket'
+            showIcon: true
+            icon: twitter
+            iconPosition: right
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        actions:
+          - type: Link
+            label: ''
+            url: 'https://www.linkedin.com/in/theaniketraj/'
+            showIcon: true
+            icon: linkedin
+            iconPosition: right
         styles:
           self:
             textAlign: left
@@ -140,15 +161,9 @@ sections:
         actions:
           - type: Link
             label: Discord
-            url: 'https://discord.com/'
-        styles:
-          self:
-            textAlign: left
-      - type: FeaturedItem
-        actions:
-          - type: Link
-            label: Instagram
-            url: 'https://www.instagram.com/'
+            url: 'https://discord.com/theaniketraj#8007'
+            showIcon: true
+            icon: arrowUpRight
         styles:
           self:
             textAlign: left
@@ -182,19 +197,22 @@ sections:
       - type: Label
         label: 'WEB 1, 2, 3'
       - type: Label
-        label: React
+        label: Java
       - type: Label
-        label: Microsoft Office
+        label: Kotlin
       - type: Label
-        label: Next.js
+        label: UI/UX
+      - type: Label
+        label: Android Studio
+      - type: Label
+        label: CI/CD Pipeline
+      - type: Label
+        label: Creative Writing
       - type: Label
         label: Netlify
       - type: Label
-        label: Pancakes
-      - type: Label
-        label: C++
-      - type: Label
-        label: Swift
+        label: GSAP
+        url: ''
   - type: DividerSection
     styles:
       self:
@@ -226,31 +244,6 @@ sections:
   - type: FeaturedItemsSection
     colors: colors-f
     items:
-      - type: FeaturedItem
-        subtitle: 'Experience:'
-        text: |-
-          **Current**
-
-          * freelance @freelance.me
-
-          **2018-2021**
-
-          * fullstack at this startup
-
-          **2015**
-
-          * senior front-end at this place
-
-          **2013**
-
-          * intern developer at a big company
-
-          **2011**
-
-          * flipping burgers
-        styles:
-          self:
-            textAlign: left
       - type: FeaturedItem
         subtitle: 'Education:'
         text: |-
