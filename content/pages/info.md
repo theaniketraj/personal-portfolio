@@ -138,9 +138,9 @@ sections:
       - type: FeaturedItem
         actions:
           - type: Link
-            label: ''
+            label: X
             url: 'https://x.com/devxaniket'
-            showIcon: true
+            showIcon: false
             icon: twitter
             iconPosition: right
         styles:
@@ -149,14 +149,15 @@ sections:
       - type: FeaturedItem
         actions:
           - type: Link
-            label: ''
+            label: LinkedIN
             url: 'https://www.linkedin.com/in/theaniketraj/'
-            showIcon: true
+            showIcon: false
             icon: linkedin
             iconPosition: right
         styles:
           self:
             textAlign: left
+        title: ''
       - type: FeaturedItem
         actions:
           - type: Link
