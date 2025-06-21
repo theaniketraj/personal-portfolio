@@ -3,9 +3,7 @@ type: ProjectLayout
 title: Raptor
 date: '2025-02-01'
 client: Aniket Raj
-description: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+description: Advanced helmet equipped with accident detection and emergency alert features.
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
