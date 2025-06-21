@@ -3,9 +3,7 @@ type: ProjectLayout
 title: CEIE
 date: '2025-02-26'
 client: Awesome client
-description: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+description: A fully automated repository setup tool for seamless Git workflow management.
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
