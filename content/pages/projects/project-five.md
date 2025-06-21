@@ -87,12 +87,10 @@ Under the hood, VISTA leverages:
 Add VISTA to your Gradle project by updating your `settings.gradle.kts` or `build.gradle.kts`:
 
 ```
-
 plugins {
 id("io.github.theaniketraj.vista") version "1.0.7" 
 // Always use latest Version
 }
-
 ```
 
 Gradle will fetch the plugin from the Gradle Plugin Portal at build time.
@@ -102,7 +100,6 @@ Gradle will fetch the plugin from the Gradle Plugin Portal at build time.
 Use the `vista { … }` extension block to customize behavior:
 
 ```
-
 vista {
 // Optional override file (highest priority)
 versionFile.set(file("version.properties"))
@@ -115,7 +112,6 @@ tagPrefix.set("v")
 // Property name to apply to project.version
 propertyName.set("projectVersion")
 }
-
 ```
 
 | Property        | Description                                                                                    |
@@ -131,10 +127,8 @@ propertyName.set("projectVersion")
 Place a `version.properties` file in your project root to force a specific version:
 
 ```
-
 version=2.3.0
 buildMetadata=20250426.1423
-
 ```
 
 When detected, VISTA will respect this explicit version rather than calculating one automatically—ideal for hotfixes or emergency patches.
@@ -155,7 +149,6 @@ VISTA contributes four primary Gradle tasks:
 ### GitHub Actions Example
 
 ```
-
 name: Release
 on:
 push:
@@ -178,7 +171,6 @@ run: ./gradlew vistaRelease
 - name: Rollback (if needed)
 if: failure()
 run: ./gradlew vistaRollback
-
 ```
 
 This pipeline ensures:
@@ -221,3 +213,4 @@ VISTA (CEIE 4.0) brings automated, semantically correct version management into 
 
 | [Repo ↗](https://github.com/theaniketraj/VISTA) | [Portal ↗](https://plugins.gradle.org/plugin/io.github.theaniketraj.vista) | [Docs ↗](https://ceie-docs.netlify.app/) |
 | ----------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
+
