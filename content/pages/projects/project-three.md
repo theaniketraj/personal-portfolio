@@ -126,5 +126,6 @@ CEIE simplifies Git repository management by providing a structured, automated w
 
 # Go-to
 
-| [Repo↗] (https://github.com/theaniketraj/git-setup-ceie) | [Portal ↗] (https://www.npmjs.com/package/git-setup-ceie) | [Docs ↗] (https://ceie-docs.netlify.app/) |
+| [Repo↗](https://github.com/theaniketraj/git-setup-ceie) | [Portal ↗](https://www.npmjs.com/package/git-setup-ceie) | [Docs ↗](https://ceie-docs.netlify.app/) |
 | ------------------------------------------------------- | -------------------------------------------------------- | ---------------------------------------- |
+
