@@ -50,7 +50,7 @@ sections:
           - pr-4
         textAlign: left
         borderColor: border-(--theme-light)
-        borderWidth: 8
+        borderWidth: 0
   - type: ContactSection
     colors: colors-f
     backgroundSize: full
