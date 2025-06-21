@@ -3,9 +3,7 @@ type: ProjectLayout
 title: GIT SETUP CEIE
 date: '2025-02-22'
 client: Awesome client
-description: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+description: 'CEIE: Controlled & Isolated Environment for Efficient Git Workflow'
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
