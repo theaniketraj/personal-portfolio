@@ -1,29 +1,131 @@
 ---
 type: ProjectLayout
-title: One more cool project
-colors: colors-a
-date: '2022-01-22'
-client: Awesome client
-description: >-
-  It’s hard to imagine that I’ve that I wrote all this code by myself, probably because I worked with an entire team :) but they definitely followed my lead most of the time.
+title: GIT SETUP CEIE
+date: '2025-02-22'
+client: Aniket Raj
+description: 'CEIE: Controlled & Isolated Environment for Efficient Git Workflow'
 featuredImage:
   type: ImageBlock
-  url: /images/bg3.jpg
+  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
   altText: Project thumbnail image
+  caption: ''
+  elementId: ''
 media:
   type: ImageBlock
-  url: /images/bg3.jpg
+  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
   altText: Project image
+  caption: Caption of the image
+  elementId: ''
+addTitleSuffix: true
+colors: colors-a
+backgroundImage:
+  type: BackgroundImage
+  url: /images/bg2.jpg
+  backgroundSize: cover
+  backgroundPosition: center
+  backgroundRepeat: no-repeat
+  opacity: 100
 ---
+# **Introduction**
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Curabitur at auctor sapien. Etiam at cursus enim. Suspendisse sed augue tortor. Nunc eu magna vitae lorem pellentesque fermentum. Sed in facilisis dui. Nulla molestie risus in mi dapibus, eget porta lorem semper. Donec sed facilisis nibh. Curabitur eget dui in libero euismod commodo nec sit amet est. Etiam id ipsum aliquam, vehicula erat sit amet, consequat tortor.
+Git is an essential tool for version control, but managing multiple branches effectively can be challenging—especially in team environments where different levels of review and isolation are required before merging changes into the main codebase. **CEIE (Controlled & Isolated Environment for Efficient Git Workflow)** automates the setup of a structured Git repository by initializing three distinct branches:
 
-Etiam facilisis lacus nec pretium lobortis. Praesent dapibus justo non efficitur efficitur. Nullam viverra justo arcu, eget egestas tortor pretium id. Sed imperdiet mattis eleifend. Vivamus suscipit et neque imperdiet venenatis. In malesuada sed urna eget vehicula. Donec fermentum tortor sit amet nisl elementum fringilla. Pellentesque dapibus suscipit faucibus. Nullam malesuada sed urna quis rutrum. Donec facilisis lorem id maximus mattis. Vestibulum quis elit magna. Vestibulum accumsan blandit consequat. Phasellus quis posuere quam.
+1.  **Main** – The primary branch where production-ready code resides.
 
-> “Everybody should learn to program a computer, because it teaches you how to think.”
+2.  **Controlled Environment** – A review stage where code changes undergo evaluation before merging.
 
-Vestibulum ullamcorper risus auctor eleifend consequat. Vivamus mollis in tellus ac ullamcorper. Vestibulum sit amet bibendum ipsum, vitae rutrum ex. Nullam cursus, urna et dapibus aliquam, urna leo euismod metus, eu luctus justo mi eget mauris. Proin felis leo, volutpat et purus in, lacinia luctus eros. Pellentesque lobortis massa scelerisque lorem ullamcorper, sit amet elementum nulla scelerisque. In volutpat efficitur nulla, aliquam ornare lectus ultricies ac. Mauris sagittis ornare dictum. Nulla vel felis ut purus fermentum pretium. Sed id lectus ac diam aliquet venenatis. Etiam ac auctor enim. Nunc velit mauris, viverra vel orci ut, egestas rhoncus diam. Morbi scelerisque nibh tellus, vel varius urna malesuada sed. Etiam ultricies sem consequat, posuere urna non, maximus ex. Mauris gravida diam sed augue condimentum pulvinar vel ac dui. Integer vel convallis justo.
+3.  **Isolated Environment** – A developer’s private workspace for experimentation and offline work, pushed to GitHub but not directly merged into Main.
 
-Nam rutrum magna sed pellentesque lobortis. Etiam quam mauris, iaculis eget ex ac, rutrum scelerisque nisl. Cras finibus dictum ex sed tincidunt. Morbi facilisis neque porta, blandit mauris quis, pharetra odio. Aliquam dictum quam quis elit auctor, at vestibulum ex pulvinar. Quisque lobortis a lectus quis faucibus. Nulla vitae pellentesque nibh, et fringilla erat. Praesent placerat ac est at tincidunt. Praesent ultricies a ex at ultrices. Etiam sed tincidunt elit. Nulla sagittis neque neque, ultrices dignissim sapien pellentesque faucibus. Donec tempor orci sed consectetur dictum. Ut viverra ut enim ac semper. Integer lacinia sem in arcu tempor faucibus eget non urna. Praesent vel nunc eu libero aliquet interdum non vitae elit. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.
+With **CEIE**, developers can enforce a systematic, layered approach to version control, improving code quality and collaboration efficiency.
 
-Aenean scelerisque ullamcorper est aliquet blandit. Donec ac tellus enim. Vivamus quis leo mattis, varius arcu at, convallis diam. Donec ac leo at nunc viverra molestie ac viverra nisi. Proin interdum at turpis at varius. Nunc sit amet ex suscipit, convallis ligula eu, pretium turpis. Sed ultricies neque vel mi malesuada, et mollis risus lobortis. Sed condimentum venenatis mauris, id elementum dolor gravida ac. Sed sodales tempus neque, quis iaculis arcu tincidunt ut. Donec vitae faucibus dui. In hac habitasse platea dictumst. Donec erat ex, ullamcorper a massa a, porttitor porta ligula.
+## Features
+
+*   **Automated Git Repository Setup**: Initializes a new Git repository with three structured branches.
+
+*   **Predefined Branching Model**: Ensures a controlled flow of changes through separate environments.
+
+*   **Error Handling & Stability**: Skips steps if a repository already exists and prevents unnecessary reinitialization.
+
+*   **Cross-Platform Support**: Works seamlessly across Windows, macOS, and Linux.
+
+*   **Custom Git Command (`git-setup-ceie`)**: Provides a one-command setup experience for teams and individual developers.
+
+*   **NPM Global Package**: CEIE is published on **npm**, allowing easy global installation and usage.
+
+## Installation
+
+To install CEIE globally via **npm**, run:
+
+```
+npm install -g git-setup-ceie
+
+```
+
+## Usage
+
+Once installed, simply navigate to your project directory and run:
+
+```
+git-setup-ceie
+
+```
+
+This command will:
+
+1.  Initialize a Git repository (if not already initialized).
+
+2.  Create an initial commit (if not already committed).
+
+3.  Set up three branches: **Main**, **Controlled Environment**, and **Isolated Environment**.
+
+4.  Switch back to the **Main** branch.
+
+## Workflow Benefits
+
+*   **Structured Development Process**: Encourages an organized approach to pushing, reviewing, and merging code.
+
+*   **Prevents Direct Production Modifications**: Code does not go into the `main` branch without passing through `controlled-environment`.
+
+*   **Encourages Experimental Development**: The `isolated-environment` branch allows developers to work on new features safely before submitting changes for review.
+
+*   **Ideal for Team Collaboration**: Ensures that every update undergoes a review cycle before integration.
+
+## How It Works Internally
+
+### Steps Performed by CEIE:
+
+1.  Initializes a **Git repository** (`git init`).
+
+2.  Creates a **README.md** file and makes an initial commit.
+
+3.  Ensures that the `main` branch exists.
+
+4.  Creates and switches to `controlled-environment` and `isolated-environment` branches.
+
+5.  Switches back to the `main` branch to complete the setup.
+
+### Error Handling
+
+*   If Git is already initialized, the setup continues without re-initialization.
+
+*   If the `main` branch does not exist, CEIE ensures it is created and has an initial commit.
+
+*   If branches already exist, the script skips them instead of failing.
+
+## Future Enhancements
+
+*   **Configurable Branch Names**: Allow users to define their own branch names instead of default ones.
+
+*   **Support for Additional Git Workflows**: Expanding support for different branching strategies.
+
+*   **Integration with CI/CD Pipelines**: Automating deployments based on branch merges.
+
+## Conclusion
+
+CEIE simplifies Git repository management by providing a structured, automated workflow that ensures efficient collaboration, stability, and code organization. Whether you're working solo or as part of a team, **CEIE helps enforce best practices while saving time on manual Git setup**.
+
+# Go-to
+
+| [Repo↗](https://github.com/theaniketraj/git-setup-ceie) | [Portal ↗](https://www.npmjs.com/package/git-setup-ceie) | [Docs ↗](https://ceie-docs.netlify.app/) |
+| ------------------------------------------------------- | -------------------------------------------------------- | ---------------------------------------- |
+
