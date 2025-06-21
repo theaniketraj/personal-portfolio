@@ -2,7 +2,7 @@
 type: ProjectLayout
 title: GIT SETUP CEIE
 date: '2025-02-22'
-client: Awesome client
+client: Aniket Raj
 description: 'CEIE: Controlled & Isolated Environment for Efficient Git Workflow'
 featuredImage:
   type: ImageBlock
