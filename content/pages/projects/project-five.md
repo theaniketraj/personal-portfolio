@@ -2,7 +2,7 @@
 type: ProjectLayout
 title: VISTA
 date: '2025-04-26'
-client: Awesome client
+client: Aniket Raj
 description: >-
   Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
   condimentum dignissim justo vel faucibus.
