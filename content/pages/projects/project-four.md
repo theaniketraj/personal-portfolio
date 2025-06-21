@@ -2,7 +2,7 @@
 type: ProjectLayout
 title: CEIE
 date: '2025-02-26'
-client: Awesome client
+client: Aniket Raj
 description: A fully automated repository setup tool for seamless Git workflow management.
 featuredImage:
   type: ImageBlock
