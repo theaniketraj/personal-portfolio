@@ -49,6 +49,7 @@ sections:
           - pl-4
           - pr-4
         textAlign: left
+        borderColor: border-(--theme-complementary)
   - type: ContactSection
     colors: colors-f
     backgroundSize: full
