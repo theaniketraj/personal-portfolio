@@ -30,7 +30,7 @@ sections:
           - pl-4
           - pr-4
         flexDirection: row-reverse
-        textAlign: left
+        textAlign: center
     type: HeroSection
     actions: []
   - type: TextSection
@@ -49,60 +49,8 @@ sections:
           - pl-4
           - pr-4
         textAlign: left
-  - colors: colors-f
-    type: FeaturedProjectsSection
-    elementId: ''
-    actions:
-      - type: Link
-        label: See all projects
-        url: /projects
-    showDate: false
-    showDescription: true
-    showFeaturedImage: true
-    showReadMoreLink: true
-    variant: variant-b
-    projects:
-      - content/pages/projects/project-two.md
-      - content/pages/projects/project-three.md
-      - content/pages/projects/project-one.md
-    styles:
-      self:
-        height: auto
-        width: wide
-        padding:
-          - pt-24
-          - pb-24
-          - pl-4
-          - pr-4
-        textAlign: left
-    subtitle: Projects
-  - type: FeaturedPostsSection
-    elementId: ''
-    colors: colors-f
-    variant: variant-d
-    subtitle: Featured Posts
-    showFeaturedImage: false
-    actions:
-      - type: Link
-        label: See all posts
-        url: /blog
-    posts:
-      - content/pages/blog/post-six.md
-      - content/pages/blog/post-four.md
-      - content/pages/blog/post-three.md
-    showDate: true
-    showExcerpt: true
-    showReadMoreLink: true
-    styles:
-      self:
-        height: auto
-        width: narrow
-        padding:
-          - pt-28
-          - pb-48
-          - pl-4
-          - pr-4
-        textAlign: left
+        borderColor: border-(--theme-light)
+        borderWidth: 0
   - type: ContactSection
     colors: colors-f
     backgroundSize: full
