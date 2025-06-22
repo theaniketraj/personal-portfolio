@@ -5,7 +5,8 @@ colors: colors-b
 date: '2024-01-01'
 author: content/data/team/doris-soto.json
 excerpt: >-
-  More context that may or may not be helpful
+  In a world that’s moving at the speed of innovation, composable architecture 
+  is the bridge to the future. And it’s just getting started.
 featuredImage:
   type: ImageBlock
   url: /images/featured-Image3.jpg
@@ -41,7 +42,7 @@ bottomSections:
     showReadMoreLink: true
   - type: ContactSection
     backgroundSize: full
-    title: 'Stay up-to-date with my words ✍️'
+    title: Stay up-to-date with my words ✍️
     colors: colors-f
     form:
       type: FormBlock
