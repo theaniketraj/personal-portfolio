@@ -1,11 +1,12 @@
 ---
 type: PostLayout
-title: How to Structure and Organize a Next.js Project 🗂️
+title: "How to Structure and Organize a Next.js Project \U0001F5C2️"
 colors: colors-a
 date: '2024-06-03'
 author: content/data/team/doris-soto.json
 excerpt: >-
-  More context that may or may not be helpful
+  Structuring a Next.js project efficiently ensures scalability,
+  maintainability, and developer productivity.
 featuredImage:
   type: ImageBlock
   url: /images/featured-Image6.jpg
@@ -34,7 +35,7 @@ bottomSections:
     showReadMoreLink: true
   - type: ContactSection
     backgroundSize: full
-    title: 'Stay up-to-date with my words ✍️'
+    title: Stay up-to-date with my words ✍️
     colors: colors-f
     form:
       type: FormBlock
@@ -82,13 +83,131 @@ bottomSections:
         flexDirection: row
         textAlign: left
 ---
+Next.js is a powerful React framework that enables **server-side rendering (SSR)**, **static site generation (SSG)**, and **API routes**, making it a preferred choice for modern web development. However, as a project grows, **maintaining a well-structured codebase** becomes crucial for scalability, maintainability, and efficiency. In this article, we will explore the best way to **structure and organize** a Next.js project for optimal performance.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Curabitur at auctor sapien. Etiam at cursus enim. Suspendisse sed augue tortor. Nunc eu magna vitae lorem pellentesque fermentum. Sed in facilisis dui. Nulla molestie risus in mi dapibus, eget porta lorem semper. Donec sed facilisis nibh. Curabitur eget dui in libero euismod commodo nec sit amet est. Etiam id ipsum aliquam, vehicula erat sit amet, consequat tortor.
+**1. Understanding the Root Directory**
 
-Etiam facilisis lacus nec pretium lobortis. Praesent dapibus justo non efficitur efficitur. Nullam viverra justo arcu, eget egestas tortor pretium id. Sed imperdiet mattis eleifend. Vivamus suscipit et neque imperdiet venenatis. In malesuada sed urna eget vehicula. Donec fermentum tortor sit amet nisl elementum fringilla. Pellentesque dapibus suscipit faucibus. Nullam malesuada sed urna quis rutrum. Donec facilisis lorem id maximus mattis. Vestibulum quis elit magna. Vestibulum accumsan blandit consequat. Phasellus quis posuere quam.
+At the root level of a Next.js project, you'll find essential files and folders:
 
-Vestibulum ullamcorper risus auctor eleifend consequat. Vivamus mollis in tellus ac ullamcorper. Vestibulum sit amet bibendum ipsum, vitae rutrum ex. Nullam cursus, urna et dapibus aliquam, urna leo euismod metus, eu luctus justo mi eget mauris. Proin felis leo, volutpat et purus in, lacinia luctus eros. Pellentesque lobortis massa scelerisque lorem ullamcorper, sit amet elementum nulla scelerisque. In volutpat efficitur nulla, aliquam ornare lectus ultricies ac. Mauris sagittis ornare dictum. Nulla vel felis ut purus fermentum pretium. Sed id lectus ac diam aliquet venenatis. Etiam ac auctor enim. Nunc velit mauris, viverra vel orci ut, egestas rhoncus diam. Morbi scelerisque nibh tellus, vel varius urna malesuada sed. Etiam ultricies sem consequat, posuere urna non, maximus ex. Mauris gravida diam sed augue condimentum pulvinar vel ac dui. Integer vel convallis justo.
+```
+/my-next-app
+|- /public
+|- /src
+|- .env.local
+|- .gitignore
+|- next.config.js
+|- package.json
+|- tsconfig.json
+|- README.md
+```
 
-Nam rutrum magna sed pellentesque lobortis. Etiam quam mauris, iaculis eget ex ac, rutrum scelerisque nisl. Cras finibus dictum ex sed tincidunt. Morbi facilisis neque porta, blandit mauris quis, pharetra odio. Aliquam dictum quam quis elit auctor, at vestibulum ex pulvinar. Quisque lobortis a lectus quis faucibus. Nulla vitae pellentesque nibh, et fringilla erat. Praesent placerat ac est at tincidunt. Praesent ultricies a ex at ultrices. Etiam sed tincidunt elit. Nulla sagittis neque neque, ultrices dignissim sapien pellentesque faucibus. Donec tempor orci sed consectetur dictum. Ut viverra ut enim ac semper. Integer lacinia sem in arcu tempor faucibus eget non urna. Praesent vel nunc eu libero aliquet interdum non vitae elit. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.
+*   `next.config.js` : Configures Next.js behavior.
 
-Aenean scelerisque ullamcorper est aliquet blandit. Donec ac tellus enim. Vivamus quis leo mattis, varius arcu at, convallis diam. Donec ac leo at nunc viverra molestie ac viverra nisi. Proin interdum at turpis at varius. Nunc sit amet ex suscipit, convallis ligula eu, pretium turpis. Sed ultricies neque vel mi malesuada, et mollis risus lobortis. Sed condimentum venenatis mauris, id elementum dolor gravida ac. Sed sodales tempus neque, quis iaculis arcu tincidunt ut. Donec vitae faucibus dui. In hac habitasse platea dictumst. Donec erat ex, ullamcorper a massa a, porttitor porta ligula.
+*   `.env.local` : Stores environment variables (API keys, database credentials).
+
+*   `package.json` : Defines dependencies and scripts.
+
+*   `tsconfig.json` : TypeScript configuration (if applicable).
+
+**2. `public/` - Static Assets**
+
+The `public` folder is used for storing static assets like images, fonts, and favicon files. Files here can be accessed directly via `/images/logo.png` instead of an import.
+
+```
+/public
+|- /images
+|- /icons
+|- favicon.ico
+```
+
+**3. `src/` - Main Application Code**
+
+To keep the root directory clean, place all development files inside `src/`.
+
+**a) `pages/` - Routing System**
+
+Next.js follows a file-based routing system inside `pages/`.
+
+```
+/src/pages
+|- index.tsx (Home Page)
+|- about.tsx
+|- contact.tsx
+|- _app.tsx (Custom App Component)
+|- _document.tsx (Custom Document)
+|- api/
+|   |- hello.ts (API Route Example)
+```
+
+*   `_app.tsx`: Custom global layout and state management.
+
+*   `_document.tsx`: Modifies the HTML structure (useful for adding fonts, styles).
+
+*   `api/`: Stores API routes that run on the server.
+
+**b) `components/` - Reusable UI Components**
+
+Organize UI elements as separate reusable components.
+
+```
+/src/components
+|- /Button
+|  |- Button.tsx
+|  |- Button.module.css
+|- /Navbar
+|  |- Navbar.tsx
+|  |- Navbar.module.css 
+```
+
+**c)  `layouts/` - Page Layouts**
+
+If multiple pages share a common layout, define it in `/layouts/`.
+
+```
+/src/layouts
+|- MainLayout.tsx
+|- DashboardLayout.tsx
+```
+
+**d) `styles/` - Global & Module Styles**
+
+Next.js supports CSS Modules and global stylesheets.
+
+```
+/src/styles
+|- global.css
+|- variables.css
+```
+
+**e) `hooks/` - Custom React Hooks**
+
+Encapsulates reusable logic inside custom hooks.
+
+```
+/src/hooks
+|- useAuth.ts
+|- useFetch.ts
+```
+
+**f) `utils/` - Utility Functions**
+
+For helper functions like date formatting, data transformation, etc.
+
+```
+/src/utils
+|- dateFormatter.ts
+|- fetchData.ts
+```
+
+**4. Best Practices for Organization**
+
+1.  Follow a modular approach - Keep components, hooks, and utilities separate.
+
+2.  Use environment variables - Store sensitive credentials in `.env.local`.
+
+3.  Leverage Next.js API routes - Instead of setting up an external backend.
+
+4.  Follow naming conventions - Use PascalCase for components, camelCase for functions.
+
+5.  Optimize performance - Use dynamic imports and Next.js optimizations like ISR (Incremental Static Regeneration).
+
