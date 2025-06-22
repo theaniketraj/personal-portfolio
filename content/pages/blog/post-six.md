@@ -5,7 +5,7 @@ colors: colors-a
 date: '2024-06-03'
 author: content/data/team/doris-soto.json
 excerpt: >-
-  Structuring a Next.js project efficiently ensures scalability, 
+  Structuring a Next.js project efficiently ensures scalability,
   maintainability, and developer productivity.
 featuredImage:
   type: ImageBlock
