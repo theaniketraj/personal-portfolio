@@ -5,7 +5,8 @@ colors: colors-a
 date: '2024-06-10'
 author: content/data/team/doris-soto.json
 excerpt: >-
-  More context that may or may not be helpful
+  Being a productive web developer isn’t just about writing more code—it’s
+  about  writing efficient, scalable, and maintainable code.
 featuredImage:
   type: ImageBlock
   url: /images/featured-Image1.jpg
@@ -41,7 +42,7 @@ bottomSections:
     showReadMoreLink: true
   - type: ContactSection
     backgroundSize: full
-    title: 'Stay up-to-date with my words ✍️'
+    title: Stay up-to-date with my words ✍️
     colors: colors-f
     form:
       type: FormBlock
