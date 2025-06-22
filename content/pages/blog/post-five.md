@@ -5,7 +5,8 @@ colors: colors-a
 date: '2024-05-02'
 author: content/data/team/doris-soto.json
 excerpt: >-
-  More context that may or may not be helpful
+  As long as AI continues to evolve, expand, and surprise us, its flames will 
+  burn hotter than ever.
 featuredImage:
   type: ImageBlock
   url: /images/featured-Image5.jpg
@@ -34,7 +35,7 @@ bottomSections:
     showReadMoreLink: true
   - type: ContactSection
     backgroundSize: full
-    title: 'Stay up-to-date with my words ✍️'
+    title: Stay up-to-date with my words ✍️
     colors: colors-f
     form:
       type: FormBlock
