@@ -30,7 +30,7 @@ sections:
           - pl-4
           - pr-4
         flexDirection: row-reverse
-        textAlign: left
+        textAlign: center
     type: HeroSection
     actions: []
   - type: TextSection
