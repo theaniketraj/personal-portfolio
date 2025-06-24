@@ -68,10 +68,6 @@ sections:
         url: /images/icons8-git.svg
         altText: Git
         caption: ''
-      - type: ImageBlock
-        url: /images/logo5.svg
-        altText: Logo five
-        caption: Logo five
     spacing: 0
     columns: 6
     aspectRatio: auto
