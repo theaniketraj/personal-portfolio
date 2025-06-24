@@ -14,7 +14,7 @@ sections:
     colors: colors-f
     backgroundSize: full
     text: >+
-      ## Hey, I’m a third-year B.Tech student specializing in Computer Science
+      ## Hey, I’m a fourth-year B.Tech student specializing in Computer Science
       and Engineering. With a strong foundation in programming, data structures
       and algorithms, I’m passionate about leveraging technology to solve
       real-world problems. I’m driven by curiosity and a desire to innovate. Be
@@ -103,7 +103,7 @@ sections:
           - type: Link
             label: NPM
             url: 'https://www.npmjs.com/~theaniketraj'
-            showIcon: true
+            showIcon: false
             iconPosition: right
             icon: arrowUpRight
         styles:
@@ -115,7 +115,7 @@ sections:
             label: Gradle
             url: 'https://plugins.gradle.org/u/theaniketraj'
             icon: arrowUpRight
-            showIcon: true
+            showIcon: false
             iconPosition: right
         styles:
           self:
@@ -125,7 +125,7 @@ sections:
           - type: Link
             label: Dev.To
             url: 'https://dev.to/theaniketraj'
-            showIcon: true
+            showIcon: false
             icon: arrowUpRight
             iconPosition: right
         styles:
@@ -159,14 +159,14 @@ sections:
           - type: Link
             label: Discord
             url: 'https://discord.com/theaniketraj#8007'
-            showIcon: true
+            showIcon: false
             icon: arrowUpRight
         styles:
           self:
             textAlign: left
     columns: 3
-    spacingX: 120
-    spacingY: 16
+    spacingX: 160
+    spacingY: 25
     styles:
       self:
         height: auto
