@@ -58,7 +58,7 @@ sections:
         caption: ''
       - type: ImageBlock
         url: /images/icons8-java (1).svg
-        altText: Logo two
+        altText: Java
         caption: ''
       - type: ImageBlock
         url: /images/logo3.svg
