@@ -137,6 +137,11 @@
             "type": "MetaTag",
             "property": "og:title",
             "content": "Site Configuration | Aniket Raj’s Portfolio"
+        },
+        {
+            "type": "MetaTag",
+            "property": "og:title",
+            "content": ""
         }
     ]
 }
