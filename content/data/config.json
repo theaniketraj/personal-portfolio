@@ -181,7 +181,7 @@
         {
             "type": "MetaTag",
             "property": "og:title",
-            "content": ""
+            "content": "Behind-the-scenes look at the tools, frameworks, and settings I use to configure my personal portfolio site."
         }
     ]
 }
