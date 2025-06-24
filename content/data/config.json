@@ -121,5 +121,12 @@
             }
         }
     },
-    "titleSuffix": "Site Configuration | Aniket Raj’s Portfolio"
+    "titleSuffix": "Site Configuration | Aniket Raj’s Portfolio",
+    "defaultMetaTags": [
+        {
+            "type": "MetaTag",
+            "property": "og:title",
+            "content": ""
+        }
+    ]
 }
