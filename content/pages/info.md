@@ -66,7 +66,7 @@ sections:
         caption: Logo three
       - type: ImageBlock
         url: /images/icons8-git.svg
-        altText: Logo four
+        altText: Git
         caption: Logo four
       - type: ImageBlock
         url: /images/logo5.svg
