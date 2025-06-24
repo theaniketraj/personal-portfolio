@@ -167,6 +167,26 @@
             "type": "MetaTag",
             "property": "og:url",
             "content": "https://github.com/theaniketraj"
+        },
+        {
+            "type": "MetaTag",
+            "property": "twitter:card",
+            "content": "summary_large_image"
+        },
+        {
+            "type": "MetaTag",
+            "property": "twitter:title",
+            "content": "Site Configuration | Aniket Raj’s Portfolio"
+        },
+        {
+            "type": "MetaTag",
+            "property": "twitter:description",
+            "content": "Behind-the-scenes look at the tools, frameworks, and settings I use to configure my personal portfolio site."
+        },
+        {
+            "type": "MetaTag",
+            "property": "twitter:creator",
+            "content": "devxaniket"
         }
     ]
 }
