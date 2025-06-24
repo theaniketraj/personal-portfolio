@@ -103,7 +103,7 @@ sections:
           - type: Link
             label: NPM
             url: 'https://www.npmjs.com/~theaniketraj'
-            showIcon: true
+            showIcon: false
             iconPosition: right
             icon: arrowUpRight
         styles:
