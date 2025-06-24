@@ -53,7 +53,7 @@ sections:
     subtitle: Fluency
     images:
       - type: ImageBlock
-        url: /images/logo1.svg
+        url: /images/Kotlin Monochrome Logo White Mark RGB.svg
         altText: Logo one
         caption: Logo one
       - type: ImageBlock
