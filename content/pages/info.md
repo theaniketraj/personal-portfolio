@@ -53,27 +53,23 @@ sections:
     subtitle: Fluency
     images:
       - type: ImageBlock
-        url: /images/logo1.svg
-        altText: Logo one
-        caption: Logo one
+        url: /images/Kotlin Monochrome Logo White Mark RGB.svg
+        altText: Kotlin
+        caption: ''
       - type: ImageBlock
-        url: /images/logo2.svg
-        altText: Logo two
-        caption: Logo two
+        url: /images/icons8-java (1).svg
+        altText: Java
+        caption: ''
       - type: ImageBlock
-        url: /images/logo3.svg
-        altText: Logo three
+        url: /images/icons8-android.svg
+        altText: Android
         caption: Logo three
       - type: ImageBlock
-        url: /images/logo4.svg
-        altText: Logo four
-        caption: Logo four
-      - type: ImageBlock
-        url: /images/logo5.svg
-        altText: Logo five
-        caption: Logo five
-    spacing: 0
-    columns: 5
+        url: /images/icons8-git.svg
+        altText: Git
+        caption: ''
+    spacing: 160
+    columns: 4
     aspectRatio: auto
     showCaption: false
     enableHover: true
