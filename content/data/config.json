@@ -170,7 +170,7 @@
         },
         {
             "type": "MetaTag",
-            "property": "og:title",
+            "property": "twitter:card",
             "content": ""
         },
         {
