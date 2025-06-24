@@ -62,7 +62,7 @@ sections:
         caption: ''
       - type: ImageBlock
         url: /images/logo3.svg
-        altText: Logo three
+        altText: Android
         caption: Logo three
       - type: ImageBlock
         url: /images/logo4.svg
