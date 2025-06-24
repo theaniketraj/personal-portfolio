@@ -175,7 +175,7 @@
         },
         {
             "type": "MetaTag",
-            "property": "og:title",
+            "property": "twitter:title",
             "content": ""
         },
         {
