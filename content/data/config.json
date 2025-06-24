@@ -180,7 +180,7 @@
         },
         {
             "type": "MetaTag",
-            "property": "og:title",
+            "property": "twitter:description",
             "content": "Behind-the-scenes look at the tools, frameworks, and settings I use to configure my personal portfolio site."
         }
     ]
