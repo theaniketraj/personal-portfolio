@@ -61,7 +61,7 @@ sections:
         altText: Java
         caption: ''
       - type: ImageBlock
-        url: /images/logo3.svg
+        url: /images/icons8-android-120.png
         altText: Android
         caption: Logo three
       - type: ImageBlock
