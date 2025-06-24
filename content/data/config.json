@@ -185,7 +185,7 @@
         },
         {
             "type": "MetaTag",
-            "property": "og:title",
+            "property": "twitter:creator",
             "content": ""
         }
     ]
