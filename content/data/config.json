@@ -131,7 +131,7 @@
         {
             "type": "MetaTag",
             "property": "og:type",
-            "content": ""
+            "content": "Portfolio"
         },
         {
             "type": "MetaTag",
