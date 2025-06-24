@@ -55,7 +55,7 @@ sections:
       - type: ImageBlock
         url: /images/Kotlin Monochrome Logo White Mark RGB.svg
         altText: Kotlin
-        caption: Logo one
+        caption: ''
       - type: ImageBlock
         url: /images/logo2.svg
         altText: Logo two
