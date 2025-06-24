@@ -51,6 +51,70 @@ sections:
         textAlign: left
         borderColor: border-(--theme-light)
         borderWidth: 0
+  - type: FeaturedProjectsSection
+    subtitle: 'Projects:'
+    actions:
+      - type: Link
+        label: See all projects
+        altText: See all projects
+        url: /projects
+        showIcon: false
+        icon: arrowRight
+        iconPosition: right
+        elementId: ''
+    projects:
+      - content/pages/projects/project-five.md
+      - content/pages/projects/project-four.md
+    colors: colors-f
+    variant: variant-a
+    elementId: ''
+    showDate: false
+    showDescription: true
+    showFeaturedImage: true
+    showReadMoreLink: true
+    styles:
+      self:
+        height: auto
+        width: wide
+        padding:
+          - pt-24
+          - pb-24
+          - pl-4
+          - pr-4
+        textAlign: left
+  - type: FeaturedPostsSection
+    title: 'Posts:'
+    actions:
+      - type: Link
+        label: See all posts
+        altText: See all posts
+        url: /blog
+        showIcon: false
+        icon: arrowRight
+        iconPosition: right
+        elementId: ''
+    posts:
+      - content/pages/blog/post-five.md
+      - content/pages/blog/post-seven.md
+      - content/pages/blog/post-six.md
+    colors: colors-f
+    variant: variant-d
+    elementId: ''
+    showDate: true
+    showAuthor: false
+    showExcerpt: true
+    showFeaturedImage: false
+    showReadMoreLink: true
+    styles:
+      self:
+        height: auto
+        width: wide
+        padding:
+          - pt-24
+          - pb-24
+          - pl-4
+          - pr-4
+        textAlign: left
   - type: ContactSection
     colors: colors-f
     backgroundSize: full
