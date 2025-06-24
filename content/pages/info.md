@@ -69,7 +69,7 @@ sections:
         altText: Git
         caption: ''
     spacing: 23
-    columns: 6
+    columns: 4
     aspectRatio: auto
     showCaption: false
     enableHover: true
