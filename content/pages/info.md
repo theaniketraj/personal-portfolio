@@ -68,7 +68,7 @@ sections:
         url: /images/icons8-git.svg
         altText: Git
         caption: ''
-    spacing: 49
+    spacing: 80
     columns: 4
     aspectRatio: auto
     showCaption: false
