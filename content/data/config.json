@@ -182,6 +182,11 @@
             "type": "MetaTag",
             "property": "twitter:description",
             "content": "Behind-the-scenes look at the tools, frameworks, and settings I use to configure my personal portfolio site."
+        },
+        {
+            "type": "MetaTag",
+            "property": "og:title",
+            "content": ""
         }
     ]
 }
