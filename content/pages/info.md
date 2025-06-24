@@ -65,7 +65,7 @@ sections:
         altText: Android
         caption: Logo three
       - type: ImageBlock
-        url: /images/logo4.svg
+        url: /images/icons8-git.svg
         altText: Logo four
         caption: Logo four
       - type: ImageBlock
