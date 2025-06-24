@@ -57,7 +57,7 @@ sections:
         altText: Kotlin
         caption: ''
       - type: ImageBlock
-        url: /images/logo2.svg
+        url: /images/icons8-java.svg
         altText: Logo two
         caption: Logo two
       - type: ImageBlock
