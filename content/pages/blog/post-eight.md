@@ -49,7 +49,9 @@ metaTags:
     content: devxaniket
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      A deep dive into Git’s internal mechanics: object model, staging,
+      commits,      trees, and more. Learn how Git really works under the hood.
 ---
 **Introduction**
 
