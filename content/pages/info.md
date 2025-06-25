@@ -362,7 +362,7 @@ addTitleSuffix: true
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: About Aniket Raj
   - type: MetaTag
     property: 'og:title'
     content: ''
