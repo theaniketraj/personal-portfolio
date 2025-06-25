@@ -107,4 +107,5 @@ bottomSections:
         flexDirection: row
         textAlign: left
 addTitleSuffix: true
+metaTitle: Aniket Raj's Project
 ---
