@@ -370,14 +370,14 @@ metaTags:
       embedded systems and cutting-edge projects.
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://github.com/theaniketraj'
   - type: MetaTag
-    property: 'og:title'
-    content: ''
+    property: 'og:url'
+    content: 'https://www.npmjs.com/~theaniketraj'
   - type: MetaTag
-    property: 'og:title'
-    content: ''
+    property: 'og:url'
+    content: 'https://plugins.gradle.org/u/theaniketraj'
   - type: MetaTag
-    property: 'og:title'
-    content: ''
+    property: 'twitter:creator'
+    content: devxaniket
 ---
