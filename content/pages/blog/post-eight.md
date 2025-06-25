@@ -48,7 +48,7 @@ metaTags:
     property: 'twitter:creator'
     content: devxaniket
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
 ---
 **Introduction**
