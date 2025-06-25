@@ -176,4 +176,5 @@ sections:
           - pl-4
         flexDirection: row
         textAlign: left
+metaTitle: 'Aniket Raj | AI, Kotlin & Automation Engineer | Portfolio'
 ---
