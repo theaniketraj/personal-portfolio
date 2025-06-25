@@ -365,7 +365,9 @@ metaTags:
     content: About Aniket Raj
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: >-
+      Learn about Aniket Raj's journey in AI, Kotlin development, and embedded 
+      systems. Passionate about tech innovation, automation & problem-solving.
   - type: MetaTag
     property: 'og:title'
     content: ''
