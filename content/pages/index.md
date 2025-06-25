@@ -176,4 +176,33 @@ sections:
           - pl-4
         flexDirection: row
         textAlign: left
+metaTitle: 'Aniket Raj | AI, Kotlin & Automation Engineer | Portfolio'
+metaDescription: >-
+  Explore the work of Aniket Raj—building AI-powered applications, Kotlin-based 
+  solutions, and embedded systems. Passionate about innovation & automation.
+addTitleSuffix: true
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: Aniket Raj
+  - type: MetaTag
+    property: 'og:description'
+    content: >-
+      Explore Aniket Raj’s projects in AI, Kotlin, and embedded systems.     
+      Passionate about automation & innovation.
+  - type: MetaTag
+    property: 'twitter:creator'
+    content: devxaniket
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://www.linkedin.com/in/theaniketraj/'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://github.com/theaniketraj'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://www.npmjs.com/~theaniketraj'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://plugins.gradle.org/u/theaniketraj'
 ---
