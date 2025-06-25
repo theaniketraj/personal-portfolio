@@ -184,7 +184,7 @@ addTitleSuffix: true
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: Aniket Raj
   - type: MetaTag
     property: 'og:title'
     content: ''
