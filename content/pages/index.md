@@ -195,7 +195,7 @@ metaTags:
     content: devxaniket
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://www.linkedin.com/in/theaniketraj/'
   - type: MetaTag
     property: 'og:title'
     content: ''
