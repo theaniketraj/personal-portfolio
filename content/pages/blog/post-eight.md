@@ -36,7 +36,7 @@ metaTags:
     property: 'og:title'
     content: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
   - type: MetaTag
     property: 'og:title'
