@@ -369,7 +369,7 @@ metaTags:
       Aniket Raj is an AI & Kotlin developer specializing in automation,     
       embedded systems and cutting-edge projects.
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
   - type: MetaTag
     property: 'og:title'
