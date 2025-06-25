@@ -27,6 +27,7 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 100
 author: content/data/team/doris-soto.json
+metaTitle: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
 ---
 **Introduction**
 
