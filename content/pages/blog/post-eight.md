@@ -46,7 +46,7 @@ metaTags:
     content: 'https://linkedin.com/in/theaniketraj'
   - type: MetaTag
     property: 'twitter:creator'
-    content: ''
+    content: devxaniket
   - type: MetaTag
     property: 'og:title'
     content: ''
