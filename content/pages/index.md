@@ -177,4 +177,7 @@ sections:
         flexDirection: row
         textAlign: left
 metaTitle: 'Aniket Raj | AI, Kotlin & Automation Engineer | Portfolio'
+metaDescription: >-
+  Explore the work of Aniket Raj—building AI-powered applications, Kotlin-based 
+  solutions, and embedded systems. Passionate about innovation & automation.
 ---
