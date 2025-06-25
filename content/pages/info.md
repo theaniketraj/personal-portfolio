@@ -378,6 +378,6 @@ metaTags:
     property: 'og:url'
     content: 'https://plugins.gradle.org/u/theaniketraj'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
 ---
