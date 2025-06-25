@@ -198,5 +198,5 @@ metaTags:
     content: 'https://www.linkedin.com/in/theaniketraj/'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://github.com/theaniketraj'
 ---
