@@ -116,7 +116,7 @@ metaTags:
     property: 'og:title'
     content: 'Aniket Raj''s Projects | AI, Kotlin & Embedded Systems'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
