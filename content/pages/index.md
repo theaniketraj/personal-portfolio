@@ -181,4 +181,8 @@ metaDescription: >-
   Explore the work of Aniket Raj—building AI-powered applications, Kotlin-based 
   solutions, and embedded systems. Passionate about innovation & automation.
 addTitleSuffix: true
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
