@@ -3,8 +3,8 @@ type: PostLayout
 title: Understanding How Git Works Under the Hood
 date: '2025-05-23'
 excerpt: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+  A deep dive into Git’s internal mechanics: object model, staging, commits, 
+  trees, and more. Learn how Git really works under the hood.
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
