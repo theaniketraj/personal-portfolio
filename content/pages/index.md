@@ -204,5 +204,5 @@ metaTags:
     content: 'https://www.npmjs.com/~theaniketraj'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://plugins.gradle.org/u/theaniketraj'
 ---
