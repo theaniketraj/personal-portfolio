@@ -28,6 +28,9 @@ backgroundImage:
   opacity: 100
 author: content/data/team/doris-soto.json
 metaTitle: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
+metaDescription: >-
+  A deep dive into Git’s internal mechanics: object model, staging, commits, 
+  trees, and more. Learn how Git really works under the hood.
 ---
 **Introduction**
 
