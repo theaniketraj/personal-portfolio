@@ -107,4 +107,23 @@ bottomSections:
         flexDirection: row
         textAlign: left
 addTitleSuffix: true
+metaTitle: Aniket Raj's Projects
+metaDescription: >-
+  Showcasing AI, Kotlin, and embedded systems projects. Discover automation,
+  IoT, and software innovations.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: 'Aniket Raj''s Projects | AI, Kotlin & Embedded Systems'
+  - type: MetaTag
+    property: 'og:description'
+    content: >-
+      Explore innovative projects by Aniket Raj, from AI-powered applications
+      to  Kotlin-based software and embedded systems solutions.
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
