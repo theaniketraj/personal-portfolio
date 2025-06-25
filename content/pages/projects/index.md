@@ -108,4 +108,7 @@ bottomSections:
         textAlign: left
 addTitleSuffix: true
 metaTitle: Aniket Raj's Projects
+metaDescription: >-
+  Showcasing AI, Kotlin, and embedded systems projects. Discover automation,
+  IoT, and software innovations.
 ---
