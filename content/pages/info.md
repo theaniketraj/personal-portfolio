@@ -370,7 +370,7 @@ metaTags:
       embedded systems and cutting-edge projects.
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://github.com/theaniketraj'
   - type: MetaTag
     property: 'og:title'
     content: ''
