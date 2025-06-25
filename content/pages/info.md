@@ -378,6 +378,6 @@ metaTags:
     property: 'og:url'
     content: 'https://plugins.gradle.org/u/theaniketraj'
   - type: MetaTag
-    property: 'og:url'
+    property: 'twitter:creator'
     content: ''
 ---
