@@ -191,7 +191,7 @@ metaTags:
       Explore Aniket Raj’s projects in AI, Kotlin, and embedded systems.     
       Passionate about automation & innovation.
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:creator'
     content: ''
   - type: MetaTag
     property: 'og:title'
