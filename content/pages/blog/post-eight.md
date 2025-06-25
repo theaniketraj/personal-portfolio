@@ -37,7 +37,7 @@ metaTags:
     content: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:type'
-    content: Blogg
+    content: Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
