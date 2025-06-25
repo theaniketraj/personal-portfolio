@@ -366,8 +366,8 @@ metaTags:
   - type: MetaTag
     property: 'og:description'
     content: >-
-      Learn about Aniket Raj's journey in AI, Kotlin development, and embedded 
-      systems. Passionate about tech innovation, automation & problem-solving.
+      Aniket Raj is an AI & Kotlin developer specializing in automation,     
+      embedded systems and cutting-edge projects.
   - type: MetaTag
     property: 'og:title'
     content: ''
