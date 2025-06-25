@@ -40,7 +40,7 @@ metaTags:
     content: Blog
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://github.com/theaniketraj'
   - type: MetaTag
     property: 'og:title'
     content: ''
