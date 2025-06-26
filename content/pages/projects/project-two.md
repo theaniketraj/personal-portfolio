@@ -53,7 +53,9 @@ metaTags:
     content: Group Project
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      Advanced helmet equipped with accident detection and emergency alert     
+      features.
 ---
 TL;DR – 🚀🏍️
 
