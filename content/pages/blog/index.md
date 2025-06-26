@@ -47,4 +47,7 @@ topSections:
         textAlign: left
 metaTitle: 'Aniket Raj''s Blog | AI, Kotlin & Tech Insights'
 addTitleSuffix: true
+metaDescription: >-
+  Read expert insights from Aniket Raj on AI, Kotlin development, and tech 
+  trends. Stay updated with tutorials, guides, and innovations.
 ---
