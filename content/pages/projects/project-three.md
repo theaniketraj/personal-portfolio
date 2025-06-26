@@ -51,7 +51,7 @@ metaTags:
       simplifies the process, ensuring a well-defined workflow.
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: GIT Automation Tool
   - type: MetaTag
     property: 'og:title'
     content: ''
