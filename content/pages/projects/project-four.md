@@ -37,7 +37,7 @@ metaTags:
     property: 'og:type'
     content: Version Control
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
   - type: MetaTag
     property: 'og:title'
