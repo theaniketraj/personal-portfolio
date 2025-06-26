@@ -30,6 +30,10 @@ metaDescription: >-
   CEIE automates Git repository setup with structured branch control for smooth
   collaboration. Instantly create main, controlled, and isolated environments
   for efficient teamwork.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 # **Introduction**
 
