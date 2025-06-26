@@ -47,7 +47,7 @@ metaTags:
     content: 'https://www.linkedin.com/in/theaniketraj/'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://www.npmjs.com/~theaniketraj'
   - type: MetaTag
     property: 'og:title'
     content: ''
