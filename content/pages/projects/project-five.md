@@ -43,6 +43,9 @@ metaTags:
   - type: MetaTag
     property: 'og:type'
     content: Gradle Plugin
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 # Introducing VISTA
 
