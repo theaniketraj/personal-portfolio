@@ -57,7 +57,7 @@ metaTags:
       Advanced helmet equipped with accident detection and emergency alert
       features.
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:creator'
     content: ''
 ---
 TL;DR – 🚀🏍️
