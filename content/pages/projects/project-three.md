@@ -25,7 +25,9 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 100
-metaTitle: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
+metaTitle: >-
+  GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
+  Project
 metaDescription: >-
   CEIE automates Git repository setup with structured branch control for smooth
   collaboration. Instantly create main, controlled, and isolated environments
