@@ -50,7 +50,7 @@ metaTags:
     content: 'https://www.npmjs.com/~theaniketraj'
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: Group Project
 ---
 TL;DR – 🚀🏍️
 
