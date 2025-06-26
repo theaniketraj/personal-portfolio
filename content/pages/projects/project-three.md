@@ -50,7 +50,7 @@ metaTags:
       branches and linking your repository to GitHub seamlessly. This tool     
       simplifies the process, ensuring a well-defined workflow.
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
   - type: MetaTag
     property: 'og:title'
