@@ -70,5 +70,5 @@ metaTags:
     content: 'https://www.npmjs.com/~theaniketraj'
   - type: MetaTag
     property: 'twitter:creator'
-    content: ''
+    content: devxaniket
 ---
