@@ -39,7 +39,7 @@ metaTags:
     content: 'https://github.com/theaniketraj/git-setup-ceie'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://www.npmjs.com/package/git-setup-ceie'
   - type: MetaTag
     property: 'og:title'
     content: ''
