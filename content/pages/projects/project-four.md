@@ -54,7 +54,7 @@ metaTags:
       and manage environments using GitHub Actions, all in a scalable,
       efficient, and reusable package.
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:creator'
     content: ''
 ---
 # CEIE: A Structured Approach to Git Workflow Automation
