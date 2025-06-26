@@ -64,7 +64,7 @@ metaTags:
     content: 'https://github.com/theaniketraj'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://www.linkedin.com/in/theaniketraj/'
   - type: MetaTag
     property: 'og:title'
     content: ''
