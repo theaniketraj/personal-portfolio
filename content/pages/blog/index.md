@@ -53,7 +53,7 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: Aniket Raj's Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
