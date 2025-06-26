@@ -44,7 +44,7 @@ metaTags:
     content: 'https://www.npmjs.com/package/ceie'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://ceie-docs.netlify.app/'
   - type: MetaTag
     property: 'og:title'
     content: ''
