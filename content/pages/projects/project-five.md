@@ -47,7 +47,7 @@ metaTags:
     property: 'og:url'
     content: 'https://plugins.gradle.org/plugin/io.github.theaniketraj.vista'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
   - type: MetaTag
     property: 'og:title'
