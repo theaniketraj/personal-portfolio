@@ -47,7 +47,12 @@ metaTags:
     content: 'https://ceie-docs.netlify.app/'
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      A comprehensive toolchain designed to automate Git repository setup,
+      streamline branch management, and enhance your development workflow. With
+      CEIE, you can easily set up repositories, automate deployment processes,
+      and manage environments using GitHub Actions, all in a scalable,
+      efficient, and reusable package.
 ---
 # CEIE: A Structured Approach to Git Workflow Automation
 
