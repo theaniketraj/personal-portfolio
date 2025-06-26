@@ -35,7 +35,7 @@ metaTags:
     property: 'og:title'
     content: GIT SETUP CEIE
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
   - type: MetaTag
     property: 'og:title'
