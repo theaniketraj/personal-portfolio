@@ -42,7 +42,7 @@ metaTags:
       Properties file. | Aniket Raj's Project
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: Gradle Plugin
 ---
 # Introducing VISTA
 
