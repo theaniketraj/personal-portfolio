@@ -60,7 +60,7 @@ metaTags:
       Discover AI, Kotlin, and tech insights from Aniket Raj. Tutorials,
       trends      & innovations in one place.
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
   - type: MetaTag
     property: 'og:title'
