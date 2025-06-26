@@ -52,6 +52,9 @@ metaTags:
   - type: MetaTag
     property: 'og:url'
     content: 'https://ceie-docs.netlify.app/'
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 # Introducing VISTA
 
