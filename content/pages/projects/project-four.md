@@ -41,7 +41,7 @@ metaTags:
     content: 'https://github.com/theaniketraj/ceie'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://www.npmjs.com/package/ceie'
   - type: MetaTag
     property: 'og:title'
     content: ''
