@@ -35,7 +35,7 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: Raptor
   - type: MetaTag
     property: 'og:title'
     content: ''
