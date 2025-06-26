@@ -49,6 +49,9 @@ metaTags:
       CEIE automates Git repository initialization by setting up structured     
       branches and linking your repository to GitHub seamlessly. This tool     
       simplifies the process, ensuring a well-defined workflow.
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 # **Introduction**
 
