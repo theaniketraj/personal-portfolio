@@ -35,7 +35,7 @@ metaTags:
     content: CEIE
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: Version Control
   - type: MetaTag
     property: 'og:title'
     content: ''
