@@ -41,7 +41,7 @@ metaTags:
       plugin designed to automate project version management using a version. 
       Properties file. | Aniket Raj's Project
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
 ---
 # Introducing VISTA
