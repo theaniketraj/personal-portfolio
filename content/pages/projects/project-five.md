@@ -53,7 +53,7 @@ metaTags:
     property: 'og:url'
     content: 'https://ceie-docs.netlify.app/'
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:creator'
     content: ''
 ---
 # Introducing VISTA
