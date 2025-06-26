@@ -34,7 +34,7 @@ metaTags:
     property: 'og:title'
     content: CEIE
   - type: MetaTag
-    property: 'og:image'
+    property: 'og:type'
     content: ''
   - type: MetaTag
     property: 'og:title'
