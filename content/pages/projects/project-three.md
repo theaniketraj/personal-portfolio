@@ -25,6 +25,7 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 100
+metaTitle: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
 ---
 # **Introduction**
 
