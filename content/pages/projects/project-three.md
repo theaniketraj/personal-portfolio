@@ -36,7 +36,7 @@ metaTags:
     content: GIT SETUP CEIE
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://github.com/theaniketraj/git-setup-ceie'
   - type: MetaTag
     property: 'og:title'
     content: ''
