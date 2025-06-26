@@ -51,6 +51,9 @@ metaTags:
   - type: MetaTag
     property: 'og:type'
     content: Group Project
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 TL;DR – 🚀🏍️
 
