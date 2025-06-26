@@ -56,7 +56,9 @@ metaTags:
     content: Aniket Raj's Blog
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      Discover AI, Kotlin, and tech insights from Aniket Raj. Tutorials,
+      trends      & innovations in one place.
   - type: MetaTag
     property: 'og:title'
     content: ''
