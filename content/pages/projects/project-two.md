@@ -38,7 +38,7 @@ metaTags:
     content: Raptor
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://raptorai.netlify.app'
   - type: MetaTag
     property: 'og:title'
     content: ''
