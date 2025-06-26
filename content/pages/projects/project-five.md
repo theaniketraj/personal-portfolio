@@ -30,6 +30,10 @@ metaDescription: >-
   VISTA (Version Increment and Semantic Tracking Automation) is a CLI Gradle
   plugin designed to automate project version management using a version. 
   Properties file. | Aniket Raj's Project
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 # Introducing VISTA
 
