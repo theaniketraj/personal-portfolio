@@ -51,7 +51,7 @@ metaTags:
     content: 'https://github.com/theaniketraj/VISTA'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://ceie-docs.netlify.app/'
 ---
 # Introducing VISTA
 
