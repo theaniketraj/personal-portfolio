@@ -45,6 +45,9 @@ metaTags:
   - type: MetaTag
     property: 'og:title'
     content: ''
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 # CEIE: A Structured Approach to Git Workflow Automation
 
