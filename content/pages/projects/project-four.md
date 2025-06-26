@@ -29,6 +29,10 @@ metaTitle: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
 metaDescription: >-
   A fully automated repository setup tool for seamless Git workflow management. 
   | Aniket Raj's Project
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 # CEIE: A Structured Approach to Git Workflow Automation
 
