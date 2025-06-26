@@ -46,6 +46,9 @@ metaTags:
   - type: MetaTag
     property: 'og:url'
     content: 'https://plugins.gradle.org/plugin/io.github.theaniketraj.vista'
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 # Introducing VISTA
 
