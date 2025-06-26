@@ -54,7 +54,7 @@ metaTags:
     content: 'https://ceie-docs.netlify.app/'
   - type: MetaTag
     property: 'twitter:creator'
-    content: ''
+    content: devxaniket
 ---
 # Introducing VISTA
 
