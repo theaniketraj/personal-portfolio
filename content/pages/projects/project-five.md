@@ -50,7 +50,7 @@ metaTags:
     property: 'og:url'
     content: 'https://github.com/theaniketraj/VISTA'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
 ---
 # Introducing VISTA
