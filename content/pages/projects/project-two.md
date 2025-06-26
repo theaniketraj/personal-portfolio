@@ -56,6 +56,9 @@ metaTags:
     content: >-
       Advanced helmet equipped with accident detection and emergency alert
       features.
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 TL;DR – 🚀🏍️
 
