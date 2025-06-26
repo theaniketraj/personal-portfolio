@@ -46,7 +46,7 @@ metaTags:
     property: 'og:url'
     content: 'https://ceie-docs.netlify.app/'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
 ---
 # CEIE: A Structured Approach to Git Workflow Automation
