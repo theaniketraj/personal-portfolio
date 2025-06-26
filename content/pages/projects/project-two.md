@@ -30,8 +30,8 @@ metaTitle: >-
   Project
 metaDescription: >-
   Raptor is a next-gen AI-integrated 2FA security system that enhances 
-  authentication by intelligently detecting threats and adapting dynamically
-  for  ultimate protection.
+  authentication by intelligently detecting threats and adapting dynamically for
+  ultimate protection.
 ---
 TL;DR – 🚀🏍️
 
