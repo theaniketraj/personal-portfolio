@@ -26,6 +26,10 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 100
 metaTitle: VISTA | Aniket Raj's Project
+metaDescription: >-
+  VISTA (Version Increment and Semantic Tracking Automation) is a CLI Gradle 
+  plugin designed to automate project version management using a version. 
+  Properties file. | Aniket Raj's Project
 ---
 # Introducing VISTA
 
