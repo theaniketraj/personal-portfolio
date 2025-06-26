@@ -53,7 +53,7 @@ metaTags:
     property: 'og:type'
     content: GIT Automation Tool
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:creator'
     content: ''
 ---
 # **Introduction**
