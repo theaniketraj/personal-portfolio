@@ -25,6 +25,7 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 100
+metaTitle: VISTA | Aniket Raj's Project
 ---
 # Introducing VISTA
 
