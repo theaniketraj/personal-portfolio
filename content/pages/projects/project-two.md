@@ -40,7 +40,7 @@ metaTags:
     property: 'og:url'
     content: 'https://raptorai.netlify.app'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
   - type: MetaTag
     property: 'og:title'
