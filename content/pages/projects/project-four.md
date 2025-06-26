@@ -53,6 +53,9 @@ metaTags:
       CEIE, you can easily set up repositories, automate deployment processes,
       and manage environments using GitHub Actions, all in a scalable,
       efficient, and reusable package.
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 # CEIE: A Structured Approach to Git Workflow Automation
 
