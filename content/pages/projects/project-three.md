@@ -33,7 +33,7 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: GIT SETUP CEIE
   - type: MetaTag
     property: 'og:title'
     content: ''
