@@ -46,4 +46,5 @@ topSections:
         flexDirection: row
         textAlign: left
 metaTitle: 'Aniket Raj''s Blog | AI, Kotlin & Tech Insights'
+addTitleSuffix: true
 ---
