@@ -33,7 +33,7 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: VISTA | Aniket Raj's Project
   - type: MetaTag
     property: 'og:title'
     content: ''
