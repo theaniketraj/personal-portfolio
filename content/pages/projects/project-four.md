@@ -38,7 +38,7 @@ metaTags:
     content: Version Control
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://github.com/theaniketraj/ceie'
   - type: MetaTag
     property: 'og:title'
     content: ''
