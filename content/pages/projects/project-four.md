@@ -32,7 +32,7 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: CEIE
   - type: MetaTag
     property: 'og:title'
     content: ''
