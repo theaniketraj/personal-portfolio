@@ -25,6 +25,9 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 100
+metaTitle: >-
+  Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's 
+  Project
 ---
 TL;DR – 🚀🏍️
 
