@@ -28,6 +28,10 @@ backgroundImage:
 metaTitle: >-
   Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's 
   Project
+metaDescription: >-
+  Raptor is a next-gen AI-integrated 2FA security system that enhances 
+  authentication by intelligently detecting threats and adapting dynamically
+  for  ultimate protection.
 ---
 TL;DR – 🚀🏍️
 
