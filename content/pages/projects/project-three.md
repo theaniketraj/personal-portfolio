@@ -41,7 +41,7 @@ metaTags:
     property: 'og:url'
     content: 'https://www.npmjs.com/package/git-setup-ceie'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
   - type: MetaTag
     property: 'og:title'
