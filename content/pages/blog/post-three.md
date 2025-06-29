@@ -105,7 +105,7 @@ metaTags:
       architecture is the bridge to the future. And it’s just getting started.
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
