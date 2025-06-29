@@ -90,7 +90,7 @@ addTitleSuffix: true
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: AI are so hot right now | Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
