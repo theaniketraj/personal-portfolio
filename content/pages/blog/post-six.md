@@ -92,7 +92,7 @@ metaTags:
     property: 'og:title'
     content: How to Structure and Organize a NEXT.JS Project | Aniket Raj's Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
