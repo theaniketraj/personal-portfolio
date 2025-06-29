@@ -86,7 +86,7 @@ metaTitle: How to Structure and Organize a NEXT.JS Project | Aniket Raj's Tech B
 metaDescription: >-
   Structuring a Next.js project efficiently ensures scalability, 
   maintainability, and developer productivity.
-addTitleSuffix: false
+addTitleSuffix: true
 ---
 Next.js is a powerful React framework that enables **server-side rendering (SSR)**, **static site generation (SSG)**, and **API routes**, making it a preferred choice for modern web development. However, as a project grows, **maintaining a well-structured codebase** becomes crucial for scalability, maintainability, and efficiency. In this article, we will explore the best way to **structure and organize** a Next.js project for optimal performance.
 
