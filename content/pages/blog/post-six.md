@@ -107,7 +107,7 @@ metaTags:
     content: 'https://github.com/theaniketraj'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://linkedin.com/in/theaniketraj'
 ---
 Next.js is a powerful React framework that enables **server-side rendering (SSR)**, **static site generation (SSG)**, and **API routes**, making it a preferred choice for modern web development. However, as a project grows, **maintaining a well-structured codebase** becomes crucial for scalability, maintainability, and efficiency. In this article, we will explore the best way to **structure and organize** a Next.js project for optimal performance.
 
