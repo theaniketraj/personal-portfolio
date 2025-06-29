@@ -104,7 +104,7 @@ metaTags:
     content: devxaniket
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: 'https://github.com/theaniketraj'
   - type: MetaTag
     property: 'og:title'
     content: ''
