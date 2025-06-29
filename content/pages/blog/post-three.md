@@ -100,7 +100,9 @@ metaTags:
     content: Composable - The Future of Web | Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      In a world that’s moving at the speed of innovation, composable
+      architecture is the bridge to the future. And it’s just getting started.
   - type: MetaTag
     property: 'og:title'
     content: ''
