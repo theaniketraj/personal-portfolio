@@ -93,7 +93,9 @@ metaTags:
     content: How to Structure and Organize a NEXT.JS Project | Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      Structuring a Next.js project efficiently ensures scalability, 
+      maintainability, and developer productivity.
   - type: MetaTag
     property: 'og:title'
     content: ''
