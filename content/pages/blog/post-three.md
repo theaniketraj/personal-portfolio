@@ -89,6 +89,7 @@ bottomSections:
           - pl-4
         flexDirection: row
         textAlign: left
+metaTitle: Composable - The Future of Web | Aniket Raj's Tech Blog
 ---
 The web as we know it is undergoing a seismic shift. The digital landscape is evolving at a breakneck speed, with new tools, frameworks, and philosophies emerging regularly. Among the most exciting of these innovations is the concept of **composability** — a paradigm that is poised to redefine how websites and applications are built and maintained.
 
