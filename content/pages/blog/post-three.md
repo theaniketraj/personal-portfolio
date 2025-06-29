@@ -17,7 +17,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 10
+  opacity: 15
 bottomSections:
   - elementId: ''
     type: RecentPostsSection
@@ -89,6 +89,38 @@ bottomSections:
           - pl-4
         flexDirection: row
         textAlign: left
+metaTitle: Composable - The Future of Web | Aniket Raj's Tech Blog
+metaDescription: >-
+  In a world that’s moving at the speed of innovation, composable architecture
+  is the bridge to the future. And it’s just getting started.
+addTitleSuffix: true
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: Composable - The Future of Web | Aniket Raj's Tech Blog
+  - type: MetaTag
+    property: 'og:description'
+    content: >-
+      In a world that’s moving at the speed of innovation, composable
+      architecture is the bridge to the future. And it’s just getting started.
+  - type: MetaTag
+    property: 'og:type'
+    content: Blog
+  - type: MetaTag
+    property: 'twitter:creator'
+    content: devxaniket
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://github.com/theaniketraj'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://linkedin.com/in/theaniketraj'
+  - type: MetaTag
+    property: 'twitter:description'
+    content: >-
+      In a world that’s moving at the speed of innovation, composable
+      architecture is the bridge to the future. And it’s just getting started. |
+      Aniket Raj's Tech Blog
 ---
 The web as we know it is undergoing a seismic shift. The digital landscape is evolving at a breakneck speed, with new tools, frameworks, and philosophies emerging regularly. Among the most exciting of these innovations is the concept of **composability** — a paradigm that is poised to redefine how websites and applications are built and maintained.
 
