@@ -92,7 +92,7 @@ metaTags:
     property: 'og:title'
     content: AI are so hot right now | Aniket Raj's Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
