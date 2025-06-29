@@ -97,7 +97,7 @@ metaTags:
       As long as AI continues to evolve, expand, and surprise us, its flames
       will  burn hotter than ever. Read more
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
   - type: MetaTag
     property: 'og:title'
