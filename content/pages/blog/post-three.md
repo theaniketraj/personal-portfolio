@@ -107,7 +107,7 @@ metaTags:
     property: 'og:type'
     content: Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:creator'
     content: ''
   - type: MetaTag
     property: 'og:title'
