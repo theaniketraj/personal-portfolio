@@ -108,7 +108,7 @@ metaTags:
       about writing efficient, scalable, and maintainable code. | Aniket Raj's
       Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:creator'
     content: ''
   - type: MetaTag
     property: 'og:title'
