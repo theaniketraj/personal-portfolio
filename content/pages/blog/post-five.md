@@ -93,7 +93,9 @@ metaTags:
     content: AI are so hot right now | Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      As long as AI continues to evolve, expand, and surprise us, its flames
+      will  burn hotter than ever. Read more
   - type: MetaTag
     property: 'og:title'
     content: ''
