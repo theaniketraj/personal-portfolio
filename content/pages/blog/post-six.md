@@ -97,7 +97,7 @@ metaTags:
       Structuring a Next.js project efficiently ensures scalability, 
       maintainability, and developer productivity.
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
   - type: MetaTag
     property: 'og:title'
