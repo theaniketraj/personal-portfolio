@@ -97,7 +97,7 @@ addTitleSuffix: true
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: Composable - The Future of Web | Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
