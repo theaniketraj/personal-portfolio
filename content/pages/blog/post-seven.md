@@ -99,7 +99,7 @@ metaTags:
     property: 'og:title'
     content: Habits of highly productive web developers | Aniket Raj's Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
   - type: MetaTag
     property: 'og:title'
