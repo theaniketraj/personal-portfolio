@@ -90,7 +90,7 @@ addTitleSuffix: true
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: How to Structure and Organize a NEXT.JS Project | Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
