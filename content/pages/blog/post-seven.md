@@ -103,7 +103,10 @@ metaTags:
     content: Blog
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      Being a productive web developer isn’t just about writing more code—it’s
+      about writing efficient, scalable, and maintainable code. | Aniket Raj's
+      Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
