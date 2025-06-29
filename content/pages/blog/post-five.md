@@ -82,6 +82,32 @@ bottomSections:
           - pl-4
         flexDirection: row
         textAlign: left
+metaTitle: AI are so hot right now | Aniket Raj's Tech Blog
+metaDescription: >-
+  As long as AI continues to evolve, expand, and surprise us, its flames will 
+  burn hotter than ever. Read more
+addTitleSuffix: true
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: AI are so hot right now | Aniket Raj's Tech Blog
+  - type: MetaTag
+    property: 'og:description'
+    content: >-
+      As long as AI continues to evolve, expand, and surprise us, its flames
+      will  burn hotter than ever. Read more
+  - type: MetaTag
+    property: 'og:type'
+    content: Blog
+  - type: MetaTag
+    property: 'twitter:creator'
+    content: devxaniket
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://github.com/theaniketraj'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://linkedin.com/in/theaniketraj'
 ---
 In an era where technology evolves faster than ever, it’s safe to say that **AI** is undeniably the *hottest* thing around. From the buzzing offices of Silicon Valley to the quiet corners of university labs, artificial intelligence is lighting up the world like an unexpected spark. But what makes AI so captivating? Why is everyone talking about it as if it were the next big thing — and not just for tech nerds but for *everyone*?
 
