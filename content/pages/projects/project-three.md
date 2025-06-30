@@ -20,7 +20,9 @@ media:
   altText: >-
     GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
     Project
-  caption: Caption of the image
+  caption: >-
+    GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
+    Project
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
