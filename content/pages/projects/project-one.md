@@ -34,7 +34,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 70
 metaTitle: >-
   Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's 
   Project
