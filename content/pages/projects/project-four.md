@@ -24,7 +24,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 70
+  opacity: 60
 metaTitle: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
 metaDescription: >-
   A fully automated repository setup tool for seamless Git workflow management. 
