@@ -8,7 +8,7 @@ featuredImage:
   type: ImageBlock
   url: /images/vista-feature.jpg
   altText: VISTA | Aniket Raj's Project
-  caption: ''
+  caption: VISTA | Aniket Raj's Project
   elementId: ''
 media:
   type: ImageBlock
