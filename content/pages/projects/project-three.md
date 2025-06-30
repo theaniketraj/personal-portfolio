@@ -10,7 +10,9 @@ featuredImage:
   altText: >-
     GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
     Project
-  caption: ''
+  caption: >-
+    GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
+    Project
   elementId: ''
 media:
   type: ImageBlock
