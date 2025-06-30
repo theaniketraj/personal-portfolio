@@ -6,25 +6,25 @@ client: Aniket Raj
 description: A fully automated repository setup tool for seamless Git workflow management.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project thumbnail image
-  caption: ''
+  url: /images/ceie-feature.png
+  altText: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
+  caption: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
   elementId: ''
 media:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project image
-  caption: Caption of the image
+  url: /images/ceie-feature.png
+  altText: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
+  caption: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
 backgroundImage:
   type: BackgroundImage
-  url: /images/bg2.jpg
+  url: /images/ceie-bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 50
 metaTitle: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
 metaDescription: >-
   A fully automated repository setup tool for seamless Git workflow management. 

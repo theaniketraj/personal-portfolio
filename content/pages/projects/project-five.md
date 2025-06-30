@@ -6,25 +6,25 @@ client: Aniket Raj
 description: VISTA - Version Increment and Semantic Tracking Automation.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project thumbnail image
-  caption: ''
+  url: /images/vista-feature.jpg
+  altText: VISTA | Aniket Raj's Project
+  caption: VISTA | Aniket Raj's Project
   elementId: ''
 media:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project image
-  caption: Caption of the image
+  url: /images/vista-feature.jpg
+  altText: VISTA | Aniket Raj's Project
+  caption: VISTA | Aniket Raj's Project
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
 backgroundImage:
   type: BackgroundImage
-  url: /images/bg2.jpg
+  url: /images/vista-bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 50
 metaTitle: VISTA | Aniket Raj's Project
 metaDescription: >-
   VISTA (Version Increment and Semantic Tracking Automation) is a CLI Gradle
