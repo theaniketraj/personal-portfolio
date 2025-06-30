@@ -11,6 +11,7 @@ featuredImage:
   type: ImageBlock
   url: /images/featured-Image3.jpg
   altText: Composable - The Future of Web | Aniket Raj's Tech Blog
+  caption: Composable - The Future of Web | Aniket Raj's Tech Blog
 backgroundImage:
   type: BackgroundImage
   url: /images/gallery-2.jpg
