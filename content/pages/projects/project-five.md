@@ -13,7 +13,7 @@ featuredImage:
 media:
   type: ImageBlock
   url: /images/vista-feature.jpg
-  altText: Project image
+  altText: VISTA | Aniket Raj's Project
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
