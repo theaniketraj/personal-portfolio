@@ -18,7 +18,7 @@ featuredImage:
   elementId: ''
 media:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/bg2.jpg
   altText: >-
     Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
     Project
