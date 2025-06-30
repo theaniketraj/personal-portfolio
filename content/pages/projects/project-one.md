@@ -22,7 +22,9 @@ media:
   altText: >-
     Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
     Project
-  caption: Caption of the image
+  caption: >-
+    Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
+    Project
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
