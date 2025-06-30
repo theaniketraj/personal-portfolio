@@ -8,7 +8,7 @@ featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
   altText: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
-  caption: ''
+  caption: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
   elementId: ''
 media:
   type: ImageBlock
