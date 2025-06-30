@@ -6,7 +6,7 @@ client: Aniket Raj
 description: Advanced helmet equipped with accident detection and emergency alert features.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/bg3.jpg
   altText: >-
     Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
     Project
