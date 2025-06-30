@@ -10,7 +10,7 @@ excerpt: >-
 featuredImage:
   type: ImageBlock
   url: /images/featured-Image5.jpg
-  altText: Post thumbnail image
+  altText: AI are so hot right now | Aniket Raj's Tech Blog
 bottomSections:
   - elementId: ''
     type: RecentPostsSection
