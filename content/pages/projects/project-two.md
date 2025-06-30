@@ -6,25 +6,33 @@ client: Aniket Raj
 description: Advanced helmet equipped with accident detection and emergency alert features.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project thumbnail image
-  caption: ''
+  url: /images/bg3.jpg
+  altText: >-
+    Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
+    Project
+  caption: >-
+    Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
+    Project
   elementId: ''
 media:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project image
-  caption: Caption of the image
+  url: /images/bg3.jpg
+  altText: >-
+    Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
+    Project
+  caption: >-
+    Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
+    Project
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
 backgroundImage:
   type: BackgroundImage
-  url: /images/bg2.jpg
+  url: /images/featured-Image6.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 60
 metaTitle: >-
   Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
   Project
@@ -129,7 +137,6 @@ Hardware: ESP32, MPU6050 (Accelerometer & Gyroscope), RFID/NFC Sensor, Pulse Sen
 Software: C (for AI crash detection algorithms).
 Database & Cloud: Firebase for real-time alerts & Supa base for emergency logs.
 
-## # Go-To
+## Go-To
 
 [Raptor](https://raptorai.netlify.app) ↗
-

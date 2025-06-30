@@ -7,24 +7,32 @@ description: 'CEIE: Controlled & Isolated Environment for Efficient Git Workflow
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project thumbnail image
-  caption: ''
+  altText: >-
+    GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
+    Project
+  caption: >-
+    GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
+    Project
   elementId: ''
 media:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project image
-  caption: Caption of the image
+  altText: >-
+    GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
+    Project
+  caption: >-
+    GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
+    Project
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
 backgroundImage:
   type: BackgroundImage
-  url: /images/bg2.jpg
+  url: /images/git-setup-ceie-bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 60
 metaTitle: >-
   GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
   Project

@@ -8,15 +8,23 @@ description: >-
   dispensing.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project thumbnail image
-  caption: ''
+  url: /images/bg2.jpg
+  altText: >-
+    Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
+    Project
+  caption: >-
+    Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
+    Project
   elementId: ''
 media:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project image
-  caption: Caption of the image
+  url: /images/bg2.jpg
+  altText: >-
+    Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
+    Project
+  caption: >-
+    Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
+    Project
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
@@ -26,7 +34,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 70
 metaTitle: >-
   Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's 
   Project
