@@ -14,7 +14,7 @@ featuredImage:
 media:
   type: ImageBlock
   url: /images/understanding-how-git-feature.jpg
-  altText: Post image
+  altText: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
