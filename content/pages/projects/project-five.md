@@ -7,7 +7,7 @@ description: VISTA - Version Increment and Semantic Tracking Automation.
 featuredImage:
   type: ImageBlock
   url: /images/vista-feature.jpg
-  altText: Project thumbnail image
+  altText: VISTA | Aniket Raj's Project
   caption: ''
   elementId: ''
 media:
