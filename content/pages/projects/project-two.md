@@ -7,7 +7,9 @@ description: Advanced helmet equipped with accident detection and emergency aler
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project thumbnail image
+  altText: >-
+    Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
+    Project
   caption: ''
   elementId: ''
 media:
