@@ -110,7 +110,7 @@ metaTags:
     content: 'https://linkedin.com/in/theaniketraj'
 backgroundImage:
   type: BackgroundImage
-  url: /images/bg2.jpg
+  url: /images/ai-are-so-hot-right-now-bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
