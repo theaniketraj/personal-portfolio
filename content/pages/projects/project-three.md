@@ -24,7 +24,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 70
+  opacity: 60
 metaTitle: >-
   GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
   Project
