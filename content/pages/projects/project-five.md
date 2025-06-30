@@ -6,7 +6,7 @@ client: Aniket Raj
 description: VISTA - Version Increment and Semantic Tracking Automation.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/vista-feature.jpg
   altText: Project thumbnail image
   caption: ''
   elementId: ''
