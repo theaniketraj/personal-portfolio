@@ -7,25 +7,25 @@ excerpt: >-
   trees, and more. Learn how Git really works under the hood.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Post thumbnail image
-  caption: Caption of the image
+  url: /images/understanding-how-git-feature.jpg
+  altText: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
+  caption: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
   elementId: ''
 media:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Post image
-  caption: Caption of the image
+  url: /images/understanding-how-git-feature.jpg
+  altText: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
+  caption: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
 backgroundImage:
   type: BackgroundImage
-  url: /images/bg2.jpg
+  url: /images/understanding-how-git-bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 60
 author: content/data/team/doris-soto.json
 metaTitle: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
 metaDescription: >-
