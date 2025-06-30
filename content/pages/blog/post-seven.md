@@ -10,7 +10,7 @@ excerpt: >-
 featuredImage:
   type: ImageBlock
   url: /images/featured-Image1.jpg
-  altText: Post thumbnail image
+  altText: Habits of highly productive web developers | Aniket Raj's Tech Blog
 backgroundImage:
   type: BackgroundImage
   url: /images/gallery-3.jpg
