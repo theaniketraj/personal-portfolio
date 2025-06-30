@@ -10,7 +10,7 @@ featuredImage:
   type: ImageBlock
   url: /images/bg2.jpg
   altText: >-
-    Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's 
+    Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
     Project
   caption: >-
     Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
