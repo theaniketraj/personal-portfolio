@@ -137,7 +137,6 @@ Hardware: ESP32, MPU6050 (Accelerometer & Gyroscope), RFID/NFC Sensor, Pulse Sen
 Software: C (for AI crash detection algorithms).
 Database & Cloud: Firebase for real-time alerts & Supa base for emergency logs.
 
-## # Go-To
+## Go-To
 
 [Raptor](https://raptorai.netlify.app) ↗
-
