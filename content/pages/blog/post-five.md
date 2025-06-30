@@ -108,6 +108,13 @@ metaTags:
   - type: MetaTag
     property: 'og:url'
     content: 'https://linkedin.com/in/theaniketraj'
+backgroundImage:
+  type: BackgroundImage
+  url: /images/bg2.jpg
+  backgroundSize: cover
+  backgroundPosition: center
+  backgroundRepeat: no-repeat
+  opacity: 100
 ---
 In an era where technology evolves faster than ever, it’s safe to say that **AI** is undeniably the *hottest* thing around. From the buzzing offices of Silicon Valley to the quiet corners of university labs, artificial intelligence is lighting up the world like an unexpected spark. But what makes AI so captivating? Why is everyone talking about it as if it were the next big thing — and not just for tech nerds but for *everyone*?
 
