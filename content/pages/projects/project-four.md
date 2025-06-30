@@ -13,7 +13,7 @@ featuredImage:
 media:
   type: ImageBlock
   url: /images/ceie-feature.png
-  altText: Project image
+  altText: CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's Project
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
