@@ -14,7 +14,7 @@ media:
   type: ImageBlock
   url: /images/vista-feature.jpg
   altText: VISTA | Aniket Raj's Project
-  caption: Caption of the image
+  caption: VISTA | Aniket Raj's Project
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
