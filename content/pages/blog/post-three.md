@@ -10,7 +10,7 @@ excerpt: >-
 featuredImage:
   type: ImageBlock
   url: /images/featured-Image3.jpg
-  altText: Post thumbnail image
+  altText: Composable - The Future of Web | Aniket Raj's Tech Blog
 backgroundImage:
   type: BackgroundImage
   url: /images/gallery-2.jpg
