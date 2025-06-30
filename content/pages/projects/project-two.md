@@ -17,7 +17,9 @@ featuredImage:
 media:
   type: ImageBlock
   url: /images/bg3.jpg
-  altText: Project image
+  altText: >-
+    Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
+    Project
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
