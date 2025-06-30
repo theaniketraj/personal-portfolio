@@ -11,6 +11,7 @@ featuredImage:
   type: ImageBlock
   url: /images/featured-Image6.jpg
   altText: How to Structure and Organize a NEXT.JS Project | Aniket Raj's Tech Blog
+  caption: How to Structure and Organize a NEXT.JS Project | Aniket Raj's Tech Blog
 bottomSections:
   - elementId: ''
     type: RecentPostsSection
