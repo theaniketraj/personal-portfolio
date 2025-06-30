@@ -24,7 +24,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 60
+  opacity: 50
 metaTitle: VISTA | Aniket Raj's Project
 metaDescription: >-
   VISTA (Version Increment and Semantic Tracking Automation) is a CLI Gradle
