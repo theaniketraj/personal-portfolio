@@ -10,7 +10,9 @@ featuredImage:
   altText: >-
     Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
     Project
-  caption: ''
+  caption: >-
+    Raptor | AI-Powered 2FA Security for Next-Gen Authentication | Aniket Raj's
+    Project
   elementId: ''
 media:
   type: ImageBlock
