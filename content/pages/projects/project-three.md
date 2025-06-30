@@ -17,7 +17,9 @@ featuredImage:
 media:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project image
+  altText: >-
+    GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
+    Project
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
