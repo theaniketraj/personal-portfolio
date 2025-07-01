@@ -7,7 +7,7 @@ excerpt: >-
   together to power modern web development.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/modern-web-delivery-feature.jpg
   altText: Post thumbnail image
   caption: Caption of the image
   elementId: ''
