@@ -36,6 +36,47 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 80
 author: content/data/team/doris-soto.json
+metaTitle: >-
+  What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
+  Tech Blog
+metaDescription: >-
+  A deep technical walkthrough of the end-to-end process when you open a
+  website—from DNS lookup and TCP/TLS handshakes to HTML parsing, rendering, and
+  CDN delivery. Learn how browsers and networks collaborate to paint pixels on
+  your screen.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: >-
+      What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
+      Tech Blog
+  - type: MetaTag
+    property: 'og:description'
+    content: >-
+      A deep technical walkthrough of the end-to-end process when you open a
+      website—from DNS lookup and TCP/TLS handshakes to HTML parsing, rendering,
+      and CDN delivery. Learn how browsers and networks collaborate to paint
+      pixels on your screen.
+  - type: MetaTag
+    property: 'og:type'
+    content: Blog
+  - type: MetaTag
+    property: 'twitter:card'
+    content: summary_large_image
+  - type: MetaTag
+    property: 'twitter:title'
+    content: >-
+      What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
+      Tech Blog
+  - type: MetaTag
+    property: 'twitter:creator'
+    content: devxaniket
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://github.com/theaniketraj'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://linkedin.com/in/theaniketraj'
 ---
 **What Happens When You Open a Website: From DNS to Rendering**
 
