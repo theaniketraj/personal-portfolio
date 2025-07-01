@@ -9,7 +9,9 @@ excerpt: >-
 featuredImage:
   type: ImageBlock
   url: /images/dns-to-rendering-feature.jpg
-  altText: Post thumbnail image
+  altText: >-
+    What Happens When You Open aWebsite: From DNS to Rendering | Aniket Raj's
+    Tech Blog
   caption: Caption of the image
   elementId: ''
 media:
