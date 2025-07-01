@@ -53,7 +53,7 @@ metaTags:
       A comprehensive and technical guide explaining how CMS, CDN, SSG, and SSR
       work together to power modern web development.
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: Blog
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
