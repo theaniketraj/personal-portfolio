@@ -44,7 +44,9 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: >-
+      Understanding Modern Web Delivery: CMS, CDN, SSG & SSR | Aniket Raj's Tech
+      Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
