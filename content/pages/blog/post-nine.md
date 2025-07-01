@@ -33,7 +33,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 70
 author: content/data/team/doris-soto.json
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
