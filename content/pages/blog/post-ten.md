@@ -22,7 +22,9 @@ media:
   altText: >-
     What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
     Tech Blog
-  caption: Caption of the image
+  caption: >-
+    What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
+    Tech Blog
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
