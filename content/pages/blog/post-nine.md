@@ -62,7 +62,7 @@ metaTags:
     property: 'og:url'
     content: 'https://github.com/theaniketraj'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
