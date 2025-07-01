@@ -3,8 +3,9 @@ type: PostLayout
 title: 'What Happens When You Open a Website: From DNS to Rendering'
 date: '2025-06-15'
 excerpt: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+  A deep technical walkthrough of the end-to-end process when you open a
+  website—from DNS lookup and TCP/TLS handshakes to HTML parsing, rendering, and
+  CDN delivery.
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
