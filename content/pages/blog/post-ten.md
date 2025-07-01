@@ -77,6 +77,7 @@ metaTags:
   - type: MetaTag
     property: 'og:url'
     content: 'https://linkedin.com/in/theaniketraj'
+socialImage: /images/dns-to-rendering-feature.jpg
 ---
 **What Happens When You Open a Website: From DNS to Rendering**
 
