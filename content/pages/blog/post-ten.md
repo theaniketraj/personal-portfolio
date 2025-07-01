@@ -13,7 +13,7 @@ featuredImage:
     What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
     Tech Blog
   caption: >-
-    What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's 
+    What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
     Tech Blog
   elementId: ''
 media:
