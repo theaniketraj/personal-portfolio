@@ -39,8 +39,8 @@ metaTitle: >-
   Understanding Modern Web Delivery: CMS, CDN, SSG & SSR | Aniket Raj's Tech
   Blog
 metaDescription: >-
-  A comprehensive and technical guide explaining how CMS, CDN, SSG, and SSR
-  work  together to power modern web development.
+  A comprehensive and technical guide explaining how CMS, CDN, SSG, and SSR work
+  together to power modern web development.
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
 
