@@ -43,7 +43,7 @@ metaDescription: >-
   A deep technical walkthrough of the end-to-end process when you open a 
   website—from DNS lookup and TCP/TLS handshakes to HTML parsing, rendering,
   and  CDN delivery. Learn how browsers and networks collaborate to paint pixels
-  on  your screen.
+  on your screen.
 ---
 **What Happens When You Open a Website: From DNS to Rendering**
 
