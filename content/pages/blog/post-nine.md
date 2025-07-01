@@ -64,7 +64,7 @@ metaTags:
   - type: MetaTag
     property: 'og:url'
     content: 'https://www.linkedin.com/in/theaniketraj/'
-socialImage: /images/dns-to-rendering-feature.jpg
+socialImage: /images/modern-web-delivery-feature.jpg
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
 
