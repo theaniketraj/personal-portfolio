@@ -65,7 +65,9 @@ metaTags:
     content: summary_large_image
   - type: MetaTag
     property: 'twitter:title'
-    content: ''
+    content: >-
+      What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
+      Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
