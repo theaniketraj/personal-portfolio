@@ -36,6 +36,9 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 80
 author: content/data/team/doris-soto.json
+metaTitle: >-
+  What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
+  Tech Blog
 ---
 **What Happens When You Open a Website: From DNS to Rendering**
 
