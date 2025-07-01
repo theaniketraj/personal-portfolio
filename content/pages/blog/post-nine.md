@@ -59,7 +59,7 @@ metaTags:
     property: 'twitter:creator'
     content: devxaniket
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
