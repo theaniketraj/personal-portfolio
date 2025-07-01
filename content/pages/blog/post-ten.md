@@ -19,7 +19,9 @@ featuredImage:
 media:
   type: ImageBlock
   url: /images/dns-to-rendering-feature.jpg
-  altText: Post image
+  altText: >-
+    What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
+    Tech Blog
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
