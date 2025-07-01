@@ -11,7 +11,9 @@ featuredImage:
   altText: >-
     Understanding Modern Web Delivery: CMS, CDN, SSG & SSR | Aniket Raj's Tech
     Blog
-  caption: Caption of the image
+  caption: >-
+    Understanding Modern Web Delivery: CMS, CDN, SSG & SSR | Aniket Raj's Tech
+    Blog
   elementId: ''
 media:
   type: ImageBlock
