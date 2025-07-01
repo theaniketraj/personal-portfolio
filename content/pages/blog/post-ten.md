@@ -51,7 +51,7 @@ metaTags:
       What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
       Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:type'
