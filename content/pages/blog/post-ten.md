@@ -55,7 +55,7 @@ metaTags:
     content: ''
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
