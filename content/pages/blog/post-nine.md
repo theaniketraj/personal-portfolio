@@ -35,6 +35,9 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 70
 author: content/data/team/doris-soto.json
+metaTitle: >-
+  Understanding Modern Web Delivery: CMS, CDN, SSG & SSR | Aniket Raj's Tech
+  Blog
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
 
