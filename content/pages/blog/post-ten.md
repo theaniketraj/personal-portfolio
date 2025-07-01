@@ -63,6 +63,9 @@ metaTags:
   - type: MetaTag
     property: 'og:title'
     content: ''
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 **What Happens When You Open a Website: From DNS to Rendering**
 
