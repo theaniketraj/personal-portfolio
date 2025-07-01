@@ -8,7 +8,9 @@ excerpt: >-
 featuredImage:
   type: ImageBlock
   url: /images/modern-web-delivery-feature.jpg
-  altText: Post thumbnail image
+  altText: >-
+    Understanding Modern Web Delivery: CMS, CDN, SSG & SSR | Aniket Raj's Tech
+    Blog
   caption: Caption of the image
   elementId: ''
 media:
