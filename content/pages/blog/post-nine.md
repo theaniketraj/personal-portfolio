@@ -3,8 +3,8 @@ type: PostLayout
 title: 'Understanding Modern Web Delivery: CMS, CDN, SSG & SSR'
 date: '2025-06-10'
 excerpt: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+  A comprehensive and technical guide explaining how CMS, CDN, SSG, and SSR
+  work  together to power modern web development.
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
