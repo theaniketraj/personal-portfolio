@@ -58,6 +58,9 @@ metaTags:
   - type: MetaTag
     property: 'og:title'
     content: ''
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
 
