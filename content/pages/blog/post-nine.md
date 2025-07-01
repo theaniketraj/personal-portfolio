@@ -54,7 +54,7 @@ metaTags:
       work together to power modern web development.
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: Blog
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
 
