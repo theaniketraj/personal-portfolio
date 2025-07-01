@@ -35,6 +35,36 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 70
 author: content/data/team/doris-soto.json
+metaTitle: >-
+  Understanding Modern Web Delivery: CMS, CDN, SSG & SSR | Aniket Raj's Tech
+  Blog
+metaDescription: >-
+  A comprehensive and technical guide explaining how CMS, CDN, SSG, and SSR work
+  together to power modern web development.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: >-
+      Understanding Modern Web Delivery: CMS, CDN, SSG & SSR | Aniket Raj's Tech
+      Blog
+  - type: MetaTag
+    property: 'og:description'
+    content: >-
+      A comprehensive and technical guide explaining how CMS, CDN, SSG, and SSR
+      work together to power modern web development.
+  - type: MetaTag
+    property: 'og:type'
+    content: Blog
+  - type: MetaTag
+    property: 'twitter:creator'
+    content: devxaniket
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://github.com/theaniketraj'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://www.linkedin.com/in/theaniketraj/'
+socialImage: /images/dns-to-rendering-feature.jpg
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
 
