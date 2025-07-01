@@ -70,7 +70,7 @@ metaTags:
       Tech Blog
   - type: MetaTag
     property: 'twitter:creator'
-    content: ''
+    content: devxaniket
   - type: MetaTag
     property: 'og:title'
     content: ''
