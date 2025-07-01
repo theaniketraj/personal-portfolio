@@ -60,7 +60,7 @@ metaTags:
     content: devxaniket
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://github.com/theaniketraj'
 ---
 **Understanding Modern Web Delivery: CMS, CDN, SSG & SSR**
 
