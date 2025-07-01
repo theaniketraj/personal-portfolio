@@ -34,7 +34,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 85
+  opacity: 80
 author: content/data/team/doris-soto.json
 ---
 **What Happens When You Open a Website: From DNS to Rendering**
