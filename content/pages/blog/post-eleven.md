@@ -22,7 +22,9 @@ media:
   altText: >-
     REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's
     Tech Blog
-  caption: Caption of the image
+  caption: >-
+    REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's
+    Tech Blog
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
