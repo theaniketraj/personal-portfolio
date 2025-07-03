@@ -48,6 +48,9 @@ metaTags:
   - type: MetaTag
     property: 'og:title'
     content: ''
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 metaDescription: >-
   A comprehensive, technical comparison of REST and GraphQL API styles—covering
   their principles, data-fetching patterns, performance trade-offs, caching
