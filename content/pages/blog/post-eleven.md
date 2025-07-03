@@ -9,7 +9,9 @@ excerpt: >-
 featuredImage:
   type: ImageBlock
   url: /images/rest-vs-graph-feature.jpg
-  altText: Post thumbnail image
+  altText: >-
+    REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's
+    Tech Blog
   caption: Caption of the image
   elementId: ''
 media:
