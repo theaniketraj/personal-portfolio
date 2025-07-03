@@ -76,7 +76,7 @@ metaTags:
     content: 'https://github.com/theaniketraj'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://www.linkedin.com/in/theaniketraj/'
 metaDescription: >-
   A comprehensive, technical comparison of REST and GraphQL API styles—covering
   their principles, data-fetching patterns, performance trade-offs, caching
