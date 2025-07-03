@@ -68,7 +68,9 @@ metaTags:
       data-fetching, caching, performance, security, and real-world use cases.
   - type: MetaTag
     property: 'twitter:title'
-    content: ''
+    content: >-
+      REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's
+      Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
