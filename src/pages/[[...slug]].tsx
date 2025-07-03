@@ -43,6 +43,8 @@ export function getStaticProps({ params }) {
     const allData = allContent();
     const urlPath = '/' + (params.slug || []).join('/');
     const props = resolveStaticProps(urlPath, allData);
+    const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
+    console.log(`›› props payload size: ${Math.round(bytes/1024)} KB`);
     return { props };
 }
 
