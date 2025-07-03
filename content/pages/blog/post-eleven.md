@@ -34,7 +34,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 60
 author: content/data/team/doris-soto.json
 ---
 ## **REST vs GraphQL: Which API Style Should You Use and When?**
