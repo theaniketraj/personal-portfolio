@@ -3,8 +3,9 @@ type: PostLayout
 title: 'REST vs GraphQL: Which API Style Should You Use and When?'
 date: '2025-06-20'
 excerpt: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+  A comprehensive, technical comparison of REST and GraphQL API styles—covering
+  their principles, data-fetching patterns, performance trade-offs, caching
+  strategies, security considerations, and ideal use cases.
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
