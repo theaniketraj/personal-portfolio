@@ -42,7 +42,9 @@ metaTitle: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: >-
+      REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's
+      Tech Blog
 ---
 ## **REST vs GraphQL: Which API Style Should You Use and When?**
 
