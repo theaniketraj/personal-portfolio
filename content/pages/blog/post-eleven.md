@@ -56,7 +56,7 @@ metaTags:
       trade-offs, caching strategies, security considerations, and ideal
       use      cases.
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:card'
     content: ''
 metaDescription: >-
   A comprehensive, technical comparison of REST and GraphQL API styles—covering
