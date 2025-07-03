@@ -50,7 +50,11 @@ metaTags:
     content: Blog
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      A comprehensive, technical comparison of REST and GraphQL API
+      styles—covering their principles, data-fetching patterns, performance     
+      trade-offs, caching strategies, security considerations, and ideal
+      use      cases.
   - type: MetaTag
     property: 'og:title'
     content: ''
