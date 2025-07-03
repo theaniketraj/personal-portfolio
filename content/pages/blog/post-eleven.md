@@ -63,7 +63,9 @@ metaTags:
     content: devxaniket
   - type: MetaTag
     property: 'twitter:description'
-    content: ''
+    content: >-
+      A detailed guide comparing REST and GraphQL API architectures—covering
+      data-fetching, caching, performance, security, and real-world use cases.
   - type: MetaTag
     property: 'og:title'
     content: ''
