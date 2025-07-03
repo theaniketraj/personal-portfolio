@@ -49,7 +49,7 @@ metaTags:
     property: 'og:type'
     content: Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
