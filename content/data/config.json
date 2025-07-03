@@ -108,7 +108,7 @@
             "address": "RBH WB, IN",
             "addressAltText": "My address"
         },
-        "copyrightText": "",
+        "copyrightText": "Powered by Netlify\n",
         "styles": {
             "self": {
                 "width": "narrow",
