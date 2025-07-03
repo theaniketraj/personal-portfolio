@@ -106,7 +106,7 @@ REST, introduced by Roy Fielding in his 2000 doctoral dissertation, is an archit
 
 A typical REST API might expose resources like:
 
-```
+```bash
 GET    /api/users             →  Retrieve list of users
 GET    /api/users/{id}        →  Retrieve a specific user
 POST   /api/users             →  Create a new user
