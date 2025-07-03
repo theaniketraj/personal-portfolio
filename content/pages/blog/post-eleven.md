@@ -57,7 +57,7 @@ metaTags:
       use      cases.
   - type: MetaTag
     property: 'twitter:card'
-    content: ''
+    content: summary_large_image
 metaDescription: >-
   A comprehensive, technical comparison of REST and GraphQL API styles—covering
   their principles, data-fetching patterns, performance trade-offs, caching
