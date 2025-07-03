@@ -59,7 +59,7 @@ metaTags:
     property: 'twitter:card'
     content: summary_large_image
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:creator'
     content: ''
   - type: MetaTag
     property: 'og:title'
