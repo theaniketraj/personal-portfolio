@@ -58,6 +58,9 @@ metaTags:
   - type: MetaTag
     property: 'twitter:card'
     content: summary_large_image
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 metaDescription: >-
   A comprehensive, technical comparison of REST and GraphQL API styles—covering
   their principles, data-fetching patterns, performance trade-offs, caching
