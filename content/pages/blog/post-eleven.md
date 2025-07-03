@@ -67,7 +67,7 @@ metaTags:
       A detailed guide comparing REST and GraphQL API architectures—covering
       data-fetching, caching, performance, security, and real-world use cases.
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:title'
     content: ''
   - type: MetaTag
     property: 'og:title'
