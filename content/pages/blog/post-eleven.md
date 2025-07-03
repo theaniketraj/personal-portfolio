@@ -36,6 +36,9 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 50
 author: content/data/team/doris-soto.json
+metaTitle: >-
+  REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's Tech
+  Blog
 ---
 ## **REST vs GraphQL: Which API Style Should You Use and When?**
 
