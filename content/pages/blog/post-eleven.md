@@ -39,6 +39,10 @@ author: content/data/team/doris-soto.json
 metaTitle: >-
   REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's Tech
   Blog
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
 ## **REST vs GraphQL: Which API Style Should You Use and When?**
 
