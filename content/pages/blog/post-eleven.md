@@ -45,6 +45,9 @@ metaTags:
     content: >-
       REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's
       Tech Blog
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 metaDescription: >-
   A comprehensive, technical comparison of REST and GraphQL API styles—covering
   their principles, data-fetching patterns, performance trade-offs, caching
