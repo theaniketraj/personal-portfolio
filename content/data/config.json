@@ -108,7 +108,7 @@
             "address": "RBH WB, IN",
             "addressAltText": "My address"
         },
-        "copyrightText": "POWERED BY [NETLIFY](NETLIFY.COM)",
+        "copyrightText": "",
         "styles": {
             "self": {
                 "width": "narrow",
