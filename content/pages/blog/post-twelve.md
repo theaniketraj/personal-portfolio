@@ -51,7 +51,7 @@ metaTags:
       Aniket Raj's Blog
   - type: MetaTag
     property: 'twitter:card'
-    content: ''
+    content: summary_large_image
   - type: MetaTag
     property: 'og:description'
     content: >-
