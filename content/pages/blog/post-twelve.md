@@ -19,7 +19,9 @@ featuredImage:
 media:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Post image
+  altText: >-
+    Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android | Aniket
+    Raj's Blog
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
