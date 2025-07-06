@@ -22,7 +22,9 @@ media:
   altText: >-
     Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android | Aniket
     Raj's Blog
-  caption: Caption of the image
+  caption: >-
+    Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android | Aniket
+    Raj's Blog
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
