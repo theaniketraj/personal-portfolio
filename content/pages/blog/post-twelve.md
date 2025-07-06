@@ -53,7 +53,7 @@ metaTags:
     property: 'og:title'
     content: ''
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
