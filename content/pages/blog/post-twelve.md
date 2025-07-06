@@ -61,7 +61,7 @@ metaTags:
       Raj's Tech Blog
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: Article
   - type: MetaTag
     property: 'og:title'
     content: ''
