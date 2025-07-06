@@ -36,4 +36,7 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 90
 author: content/data/team/doris-soto.json
+metaTitle: >-
+  Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android | Aniket
+  Raj's Blog
 ---
