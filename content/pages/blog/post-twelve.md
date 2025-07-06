@@ -63,7 +63,7 @@ metaTags:
     property: 'og:type'
     content: Article
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
   - type: MetaTag
     property: 'og:title'
