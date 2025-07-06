@@ -4,7 +4,7 @@ title: 'Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android'
 date: '2025-06-27'
 excerpt: >-
   Learn how to implement the MVVM architectural pattern in Kotlin for Android. 
-  This guide covers Model, View, ViewModel, LiveData, Coroutines, Jetpack 
+  This guide covers Model, View, ViewModel, LiveData, Coroutines, Jetpack
   components, Dependency Injection, and best practices.
 featuredImage:
   type: ImageBlock
