@@ -43,4 +43,39 @@ metaDescription: >-
   Learn how to implement the MVVM architectural pattern in Kotlin for Android.
   This guide covers Model, View, ViewModel, LiveData, Coroutines, Jetpack
   components, Dependency Injection, and best practices.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: >-
+      Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android |
+      Aniket Raj's Blog
+  - type: MetaTag
+    property: 'twitter:card'
+    content: summary_large_image
+  - type: MetaTag
+    property: 'og:description'
+    content: >-
+      Learn how to implement the MVVM architectural pattern in Kotlin for
+      Android. This guide covers Model, View, ViewModel, LiveData, Coroutines,
+      Jetpack components, Dependency Injection, and best practices. | Aniket
+      Raj's Tech Blog
+  - type: MetaTag
+    property: 'og:type'
+    content: Article
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://linkedin.com/in/theaniketraj'
+  - type: MetaTag
+    property: 'og:url'
+    content: 'https://github.com/theaniketraj'
+  - type: MetaTag
+    property: 'twitter:description'
+    content: >-
+      Learn how to implement the MVVM architectural pattern in Kotlin for
+      Android. This guide covers Model, View, ViewModel, LiveData, Coroutines,
+      Jetpack components, Dependency Injection, and best practices. | Aniket
+      Raj's Tech Blog
+  - type: MetaTag
+    property: 'twitter:creator'
+    content: devxaniket
 ---
