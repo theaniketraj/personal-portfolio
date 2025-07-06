@@ -8,7 +8,7 @@ excerpt: >-
   components, Dependency Injection, and best practices.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/kotlin-mvvm-feature.jpg
   altText: >-
     Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android | Aniket
     Raj's Blog
