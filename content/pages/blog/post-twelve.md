@@ -27,7 +27,7 @@ media:
     Raj's Blog
   elementId: ''
 addTitleSuffix: true
-colors: colors-b
+colors: colors-d
 backgroundImage:
   type: BackgroundImage
   url: /images/kotlin-mvvm-bg.jpg
