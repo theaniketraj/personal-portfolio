@@ -50,7 +50,7 @@ metaTags:
       Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android |
       Aniket Raj's Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:card'
     content: ''
   - type: MetaTag
     property: 'og:description'
