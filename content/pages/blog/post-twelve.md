@@ -43,4 +43,8 @@ metaDescription: >-
   Learn how to implement the MVVM architectural pattern in Kotlin for Android.
   This guide covers Model, View, ViewModel, LiveData, Coroutines, Jetpack
   components, Dependency Injection, and best practices.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
