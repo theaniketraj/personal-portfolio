@@ -3,8 +3,9 @@ type: PostLayout
 title: 'Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android'
 date: '2025-06-27'
 excerpt: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+  Learn how to implement the MVVM architectural pattern in Kotlin for Android. 
+  This guide covers Model, View, ViewModel, LiveData, Coroutines, Jetpack 
+  components, Dependency Injection, and best practices.
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
