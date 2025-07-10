@@ -70,6 +70,9 @@ metaTags:
     property: 'twitter:creator'
     content: devxaniket
   - type: MetaTag
-    property: 'twitter:description'
-    content: ''
+    property: 'og:title'
+    content: >-
+      Master GitHub Actions for CI/CD with this in-depth guide on workflows,
+      caching, matrix builds, security best practices, and more. | Aniket Raj's
+      Tech Blog
 ---
