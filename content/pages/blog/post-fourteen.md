@@ -218,6 +218,5 @@ steps:
 
   - name: Run unit tests
     run: npm test
-
 ```
 
