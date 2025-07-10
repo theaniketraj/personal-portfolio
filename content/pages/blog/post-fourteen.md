@@ -49,7 +49,7 @@ metaTags:
       A Developer’s Guide to Efficient CI/CD Using GitHub Actions | Aniket Raj's
       Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
