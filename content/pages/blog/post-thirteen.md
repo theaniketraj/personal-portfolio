@@ -12,7 +12,9 @@ featuredImage:
   altText: >-
     How LLMs Really Work: The Transformer Architecture Explained Simply | Aniket
     Raj's Tech Blog
-  caption: Caption of the image
+  caption: >-
+    How LLMs Really Work: The Transformer Architecture Explained Simply | Aniket
+    Raj's Tech Blog
   elementId: ''
 media:
   type: ImageBlock
