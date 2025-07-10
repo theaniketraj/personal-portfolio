@@ -124,7 +124,7 @@ A **workflow** is a YAML file defining the automation pipeline. It includes:
 
 *   name: Identifier for the workflow.
 
-*   on: Events (e.g., push, pull_request) or schedules to trigger the workflow.
+*   on: Events (e.g., push, pull\_request) or schedules to trigger the workflow.
 
 *   jobs: A set of tasks to execute.
 
@@ -159,7 +159,7 @@ Runners are the virtual machines or containers where jobs execute. Options inclu
 
 Workflows can be triggered by:
 
-*   **GitHub Events**: push, pull_request, release, workflow_dispatch (manual), schedule (cron).
+*   **GitHub Events**: push, pull\_request, release, workflow\_dispatch (manual), schedule (cron).
 
 *   **External Events**: Repository dispatch, workflow dispatch API calls.
 
@@ -174,3 +174,4 @@ The GitHub Marketplace hosts thousands of community‑driven actions for common 
 *   Testing frameworks: actions/setup-node, actions/setup-python
 
 *   Deployment: azure/webapps-deploy, appleboy/ssh-action
+
