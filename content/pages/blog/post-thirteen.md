@@ -3,8 +3,8 @@ type: PostLayout
 title: 'How LLMs Really Work: The Transformer Architecture Explained Simply'
 date: '2025-07-05'
 excerpt: >-
-  A deep technical exploration of Transformer architecture—the core of modern
-  large language models—covering self-attention, multi-head mechanisms,
+  A deep technical exploration of Transformer architecture, the core of modern
+  large language models covering self-attention, multi-head mechanisms,
   encoder/decoder blocks, positional encodings, and training strategies.
 featuredImage:
   type: ImageBlock
