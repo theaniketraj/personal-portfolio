@@ -9,7 +9,9 @@ excerpt: >-
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: A Developer’s Guide to Efficient CI/CD Using GitHub Actions.
+  altText: >-
+    A Developer’s Guide to Efficient CI/CD Using GitHub Actions | Aniket Raj's
+    Tech Blog
   caption: Caption of the image
   elementId: ''
 media:
