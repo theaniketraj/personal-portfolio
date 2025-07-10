@@ -180,11 +180,7 @@ The GitHub Marketplace hosts thousands of community‑driven actions for common 
 Below is a simple CI workflow for a Node.js project that runs on each push and pull request to **main**:
 
 ```
-
 name: CI
-```
-
-```
 on:
 push:
 branches: [ main ]
