@@ -8,7 +8,7 @@ excerpt: >-
   encoder/decoder blocks, positional encodings, and training strategies.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/LLMs-feature.jpg
   altText: >-
     How LLMs Really Work: The Transformer Architecture Explained Simply | Aniket
     Raj's Tech Blog
