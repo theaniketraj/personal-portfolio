@@ -34,7 +34,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 70
+  opacity: 50
 author: content/data/team/doris-soto.json
 metaTitle: >-
   How LLMs Really Work: The Transformer Architecture Explained Simply | Aniket
