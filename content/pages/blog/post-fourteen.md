@@ -259,3 +259,39 @@ steps:
       aws s3 sync ./build s3://my-bucket --delete
 ```
 
+Key points:
+
+*   Use `needs` to sequence jobs.
+
+*   Guard production deploys with `if:` conditions.
+
+*   Store secrets securely in GitHub repository settings.
+
+## Optimizing for Efficiency
+
+### Caching Dependencies
+
+*   Use `actions/cache` to store package manager caches (`~/.npm`, `~/.cache/pip`).
+
+*   Derive the cache key from lockfiles (`package-lock.json`, `requirements.txt`) to invalidate when dependencies change.
+
+### Matrix Builds
+
+Run tests against multiple environments in parallel:
+
+```
+strategy:
+matrix:
+node-version: [16, 18, 20]
+jobs:
+test:
+runs-on: ubuntu-latest
+strategy: ${{ matrix }}
+steps:
+  - uses: actions/setup-node@v3
+    with:
+      node-version: ${{ matrix.node-version }}
+  # ... other steps ...
+
+```
+
