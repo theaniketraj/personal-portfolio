@@ -71,5 +71,5 @@ metaTags:
     content: summary_large_image
   - type: MetaTag
     property: 'twitter:creator'
-    content: ''
+    content: devxaniket
 ---
