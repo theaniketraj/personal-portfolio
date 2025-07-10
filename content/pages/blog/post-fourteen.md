@@ -39,4 +39,7 @@ author: content/data/team/doris-soto.json
 metaTitle: >-
   A Developer’s Guide to Efficient CI/CD Using GitHub Actions | Aniket Raj's
   Tech Blog
+metaDescription: >-
+  Learn how to automate, optimize, and secure your CI/CD workflows using GitHub
+  Actions, with best practices and real-world examples. | Aniket Raj's Tech Blog
 ---
