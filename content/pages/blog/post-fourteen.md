@@ -143,7 +143,6 @@ steps:
 uses: actions/checkout@v3
     - name: Install dependencies
     run: npm install
-
     - name: Run tests
     run: npm test
 ```
