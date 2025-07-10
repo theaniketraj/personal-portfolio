@@ -3,8 +3,9 @@ type: PostLayout
 title: A Developer’s Guide to Efficient CI/CD Using GitHub Actions
 date: '2025-07-10'
 excerpt: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+  A comprehensive guide to building efficient CI/CD pipelines with GitHub
+  Actions, covering core concepts, configuration, optimization tips, and
+  advanced techniques for scalable workflows.
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
