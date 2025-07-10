@@ -19,7 +19,9 @@ featuredImage:
 media:
   type: ImageBlock
   url: /images/LLMs-feature.jpg
-  altText: Post image
+  altText: >-
+    How LLMs Really Work: The Transformer Architecture Explained Simply | Aniket
+    Raj's Tech Blog
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
