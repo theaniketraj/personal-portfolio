@@ -60,4 +60,7 @@ metaTags:
   - type: MetaTag
     property: 'og:type'
     content: Article
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
