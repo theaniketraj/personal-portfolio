@@ -296,7 +296,7 @@ steps:
 
 ### Artifact Management
 
-*   Use `actions/upload-artifact` and `actions/download-artifact` to persist build outputs between jobs.
+Use `actions/upload-artifact` and `actions/download-artifact` to persist build outputs between jobs.
 
 *   Store coverage reports, binaries, or test logs for later inspection.
 
@@ -328,11 +328,9 @@ steps:
 
 4.  **Dependency Scanning**:
 
-    *   Integrate security actions (e.g., `github/codeql-action`) to detect vulnerabilities.
+    *   Integrate security actions (e.g., **`github/codeql-action`**) to detect vulnerabilities.
 
     *   Audit third‑party actions before use.
-
-
 
 ## Advanced Techniques
 
@@ -346,13 +344,13 @@ steps:
 
 *   Split complex logic into composite actions or reusable workflows.
 
-*   Call workflows with `workflow_call` to centralize CI/CD in a shared repo.
+*   Call workflows with **`workflow_call`** to centralize CI/CD in a shared repo.
 
 ### Conditional Execution and Expressions
 
-*   Use `if:` to run steps or jobs only when conditions are met (e.g., `if: contains(github.event.head_commit.message, '[deploy]')`).
+*   Use **`if:`** to run steps or jobs only when conditions are met (e.g., **`if: contains(github.event.head_commit.message, '[deploy]')`**).
 
-*   Leverage contexts (`github`, `env`, `matrix`) for dynamic behavior.
+*   Leverage contexts (**`github`**, **`env`**, **`matrix`**) for dynamic behavior.
 
 ### Monitoring and Insights
 
@@ -360,15 +358,6 @@ steps:
 
 *   Export metrics via the GitHub Actions API for external dashboards.
 
-
-
 ## Conclusion
 
-GitHub Actions empowers developers to implement robust CI/CD pipelines with minimal overhead. By understanding core concepts—workflows, jobs, runners—and applying best practices around caching, matrix testing, and security, you can accelerate delivery cycles and maintain high code quality. As your projects grow, leverage advanced features like composite actions, self‑hosted runners, and reusable workflows to keep your pipelines efficient, maintainable, and scalable. Start automating today and unlock the full potential of CI/CD within your GitHub ecosystem.
-
-
-
-
-
-
-
+GitHub Actions empowers developers to implement robust CI/CD pipelines with minimal overhead. By understanding core concepts i.e. workflows, jobs, runners and applying best practices around caching, matrix testing, and security, you can accelerate delivery cycles and maintain high code quality. As your projects grow, leverage advanced features like composite actions, self‑hosted runners, and reusable workflows to keep your pipelines efficient, maintainable, and scalable. Start automating today and unlock the full potential of CI/CD within your GitHub ecosystem.
