@@ -12,7 +12,9 @@ featuredImage:
   altText: >-
     A Developer’s Guide to Efficient CI/CD Using GitHub Actions | Aniket Raj's
     Tech Blog
-  caption: Caption of the image
+  caption: >-
+    A Developer’s Guide to Efficient CI/CD Using GitHub Actions | Aniket Raj's
+    Tech Blog
   elementId: ''
 media:
   type: ImageBlock
