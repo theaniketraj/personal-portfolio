@@ -36,4 +36,7 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 50
 author: content/data/team/doris-soto.json
+metaTitle: >-
+  A Developer’s Guide to Efficient CI/CD Using GitHub Actions | Aniket Raj's
+  Tech Blog
 ---
