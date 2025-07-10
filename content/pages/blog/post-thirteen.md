@@ -41,6 +41,6 @@ metaTitle: >-
   Raj's Tech Blog
 metaDescription: >-
   A deep technical exploration of Transformer architecture—the core of modern
-  large language models—covering self-attention, multi-head mechanisms, 
+  large language models—covering self-attention, multi-head mechanisms,
   encoder/decoder blocks, positional encodings, and training strategies.
 ---
