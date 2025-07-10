@@ -64,12 +64,15 @@ metaTags:
     property: 'og:url'
     content: 'https://linkedin.com/in/theaniketraj'
   - type: MetaTag
-    property: 'og:title'
-    content: ''
+    property: 'twitter:card'
+    content: summary_large_image
+  - type: MetaTag
+    property: 'twitter:creator'
+    content: devxaniket
   - type: MetaTag
     property: 'og:title'
-    content: ''
-  - type: MetaTag
-    property: 'og:title'
-    content: ''
+    content: >-
+      Master GitHub Actions for CI/CD with this in-depth guide on workflows,
+      caching, matrix builds, security best practices, and more. | Aniket Raj's
+      Tech Blog
 ---
