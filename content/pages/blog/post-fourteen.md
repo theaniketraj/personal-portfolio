@@ -104,7 +104,7 @@ GitHub Actions integrates these practices directly into your GitHub workflow, mi
 
 ## Introduction to GitHub Actions
 
-GitHub Actions is a workflow automation engine that runs directly within GitHub. You define workflows in YAML files under the `.github/workflows/` directory in your repository. Each workflow can respond to GitHub events (push, pull request, release, schedule, etc.), run jobs in parallel or sequence, and leverage a marketplace of prebuilt actions.
+GitHub Actions is a workflow automation engine that runs directly within GitHub. You define workflows in YAML files under the **`.github/workflows/`** directory in your repository. Each workflow can respond to GitHub events (push, pull request, release, schedule, etc.), run jobs in parallel or sequence, and leverage a marketplace of prebuilt actions.
 
 Key benefits include:
 
@@ -174,4 +174,56 @@ The GitHub Marketplace hosts thousands of community‑driven actions for common 
 *   Testing frameworks: actions/setup-node, actions/setup-python
 
 *   Deployment: azure/webapps-deploy, appleboy/ssh-action
+
+## Getting Started: A Basic CI Workflow
+
+Below is a simple CI workflow for a Node.js project that runs on each push and pull request to **main**:
+
+```
+
+name: CI
+```
+
+```
+on:
+push:
+branches: [ main ]
+pull_request:
+branches: [ main ]
+```
+
+```
+jobs:
+test:
+runs-on: ubuntu-latest
+```
+
+```
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v3
+
+  - name: Set up Node.js
+    uses: actions/setup-node@v3
+    with:
+      node-version: '18'
+
+  - name: Cache npm dependencies
+    uses: actions/cache@v3
+    with:
+      path: ~/.npm
+      key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      restore-keys: |
+        ${{ runner.os }}-node-
+
+  - name: Install dependencies
+    run: npm ci
+
+  - name: Run lint
+    run: npm run lint
+
+  - name: Run unit tests
+    run: npm test
+
+```
 
