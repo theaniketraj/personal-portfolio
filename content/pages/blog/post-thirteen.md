@@ -88,11 +88,11 @@ Large Language Models (LLMs) such as GPT‑4, BERT, and their successors have re
 
 Early sequence models—Recurrent Neural Networks (RNNs) and their gated variants (LSTM, GRU)—process tokens one by one, carrying a hidden “state” forward. While effective, they face two core challenges:
 
-1. **Sequential Bottleneck**
+1.  **Sequential Bottleneck**
 
     Every token must wait for its predecessor. This makes parallelization difficult, slowing training dramatically on long inputs.
 
-2. **Long-Range Dependencies**
+2.  **Long-Range Dependencies**
 
     Information from distant tokens can vanish or overwhelm intermediate states, limiting how far context can travel.
 
@@ -106,11 +106,11 @@ At its heart, a Transformer block asks: “For each token in the input, which ot
 
 Given an input sequence of token embeddings x1, x2, …, xn x₁, x₂, …, xₙ x1​, x2​, …, xn​, we project each token into three vectors:
 
-* **Query (Q)**: “What am I looking for?”
+*   **Query (Q)**: “What am I looking for?”
 
-* **Key (K)**: “What information do I offer?”
+*   **Key (K)**: “What information do I offer?”
 
-* **Value (V)**: “What content do I pass along?”
+*   **Value (V)**: “What content do I pass along?”
 
 These projections use learned weight matrices:
 
@@ -160,13 +160,13 @@ The original Transformer has two main stacks:
 
 Each encoder layer consists of:
 
-1. **Multi‑Head Self‑Attention** over the input sequence.
+1.  **Multi‑Head Self‑Attention** over the input sequence.
 
-2. **Add & Norm**: A residual connection plus layer normalization.
+2.  **Add & Norm**: A residual connection plus layer normalization.
 
-3. **Feed‑Forward Network (FFN)**: Two linear transformations with a non‑linearity (typically ReLU or GELU).
+3.  **Feed‑Forward Network (FFN)**: Two linear transformations with a non‑linearity (typically ReLU or GELU).
 
-4. **Add & Norm** again.
+4.  **Add & Norm** again.
 
 Mathematically:
 
@@ -181,17 +181,17 @@ Stack N such layers to build the encoder.
 
 Decoders add a second attention sublayer:
 
-1. **Masked Multi‑Head Self‑Attention**: Prevents each position from attending to future tokens (ensuring autoregressive generation).
+1.  **Masked Multi‑Head Self‑Attention**: Prevents each position from attending to future tokens (ensuring autoregressive generation).
 
-2. **Add & Norm**.
+2.  **Add & Norm**.
 
-3. **Multi‑Head Attention** over encoder outputs (allowing the decoder to draw on source information, e.g., in translation tasks).
+3.  **Multi‑Head Attention** over encoder outputs (allowing the decoder to draw on source information, e.g., in translation tasks).
 
-4. **Add & Norm**.
+4.  **Add & Norm**.
 
-5. **Feed‑Forward Network**.
+5.  **Feed‑Forward Network**.
 
-6. **Add & Norm**.
+6.  **Add & Norm**.
 
 ## 4. Positional Encoding
 
@@ -203,3 +203,77 @@ PE(pos, 2i+1) = cos(pos / 10000^(2i/d))
 ```
 
 These functions give each position a unique, continuous signature. Learned positional embeddings are also common in many LLMs.
+
+## 5. Training: From Language Modeling to Fine‑Tuning
+
+### 5.1 Pretraining
+
+Large models are first pretrained on massive corpora via one of two objectives:
+
+*   **Masked Language Modeling (MLM)** (e.g., BERT): Randomly mask tokens and train the model to predict them. This bidirectional context helps with understanding tasks but doesn’t directly support generation.
+
+*   **Autoregressive Language Modeling** (e.g., GPT): Train the model to predict the next token in a sequence, enabling fluent text generation.
+
+### 5.2 Fine‑Tuning
+
+After pretraining, the model is adapted to specific tasks:
+
+*   **Classification**: Add a task‑specific head (e.g., softmax for sentiment analysis) on top of the encoder’s \[CLS] token.
+
+*   **Sequence‑to‑Sequence**: Use encoder‑decoder structure fine‑tuned on pairs (e.g., translation).
+
+*   **Instruction Tuning** and **Reinforcement Learning from Human Feedback (RLHF)**: Align the model to human preferences for improved conversational quality.
+
+
+
+## 6. Inference: Generating Text
+
+When generating text autoregressively:
+
+1.  **Prompt Encoding**: Convert input tokens to embeddings and process through encoder (if present) or directly through the decoder.
+
+2.  **Next‑Token Prediction**: The model outputs logits for the vocabulary; apply softmax to obtain probabilities.
+
+3.  **Sampling Strategies**:
+
+    *   **Greedy**: Pick the highest‑probability token.
+
+    *   **Top‑k / Top‑p (nucleus) Sampling**: Restrict choices to the k most likely tokens or until cumulative probability p.
+
+    *   **Temperature Scaling**: Adjust distribution sharpness for more or less randomness.
+
+4.  **Iterate**: Append the chosen token, update input, and repeat until end‑of‑sequence or length limit.
+
+
+
+## 7. Scaling Laws and Model Size
+
+LLMs follow empirical **scaling laws**: as you increase model parameters, data size, and compute, performance improves predictably. This has driven the creation of models ranging from hundreds of millions to trillions of parameters, each requiring parallelism strategies (data/model/pipeline parallelism) to train efficiently.
+
+
+
+## 8. Practical Considerations
+
+*   **Memory and Compute**: Attention has quadratic complexity in sequence length (O(n²)). Long‑sequence models use sparse attention or memory‑efficient variants.
+
+*   **Quantization & Distillation**: Reduce model size and latency by lowering precision (8‑bit, 4‑bit) or training smaller models to mimic larger ones.
+
+*   **Safety and Bias**: Large pretrained models may encode undesirable biases; mitigation involves dataset curation, fine‑tuning, and post‑processing.
+
+
+
+## 9. Why Transformers Work So Well
+
+1.  **Parallelism**: Full‑sequence attention allows GPUs/TPUs to process tokens simultaneously.
+
+2.  **Expressive Power**: Multi‑head attention captures a rich tapestry of relationships.
+
+3.  **Flexibility**: The same building blocks work for understanding (BERT), generation (GPT), translation (original Transformer), and beyond (vision, audio).
+
+4.  **Scalability**: Consistent improvements follow from increased scale, enabling zero‑shot and few‑shot capabilities.
+
+
+
+## 10. Conclusion
+
+Transformers underpin the next generation of language technology. By replacing recurrence with self‑attention, they model context flexibly and at scale. Understanding their core components—queries, keys, values, multi‑head attention, positional encoding, and layered feed‑forward networks—equips you to grasp how LLMs learn patterns in language and generate coherent text. Armed with this knowledge, you can better evaluate model choices, design fine‑tuning strategies, and anticipate future innovations in the rapidly evolving landscape of AI.
