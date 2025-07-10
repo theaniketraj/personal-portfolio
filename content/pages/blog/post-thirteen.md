@@ -57,4 +57,7 @@ metaTags:
       modern large language models covering self-attention, multi-head
       mechanisms, encoder/decoder blocks, positional encodings, and training
       strategies. | Aniket Raj's Tech Blog
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
