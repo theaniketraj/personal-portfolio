@@ -64,7 +64,7 @@ metaTags:
     property: 'og:url'
     content: 'https://linkedin.com/in/theaniketraj'
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:card'
     content: ''
   - type: MetaTag
     property: 'og:title'
