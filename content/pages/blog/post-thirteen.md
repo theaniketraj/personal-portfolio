@@ -43,4 +43,8 @@ metaDescription: >-
   A deep technical exploration of Transformer architecture—the core of modern
   large language models—covering self-attention, multi-head mechanisms,
   encoder/decoder blocks, positional encodings, and training strategies.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
