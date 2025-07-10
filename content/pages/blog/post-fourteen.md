@@ -61,6 +61,6 @@ metaTags:
     property: 'og:url'
     content: 'https://github.com/theaniketraj'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:url'
     content: ''
 ---
