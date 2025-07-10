@@ -216,3 +216,52 @@ steps:
     run: npm test
 ```
 
+This workflow:
+
+1.  **Checks out** your code.
+
+2.  **Sets up** Node.js.
+
+3.  **Caches** dependencies for faster builds.
+
+4.  **Installs** and **tests** your code on every commit.
+
+## Implementing CD: Deploying to Production
+
+To extend CI to CD, add a deployment job that runs after successful tests. For example, deploying to AWS S3:
+
+```
+jobs:
+build:
+# ... test steps ...
+outputs:
+build-path: ${{ steps.build.outputs.artifact-path }}
+```
+
+```
+deploy:
+needs: build
+runs-on: ubuntu-latest
+if: github.ref == 'refs/heads/main' && success()
+```
+
+```
+steps:
+  - name: Download build artifact
+    uses: actions/download-artifact@v3
+    with:
+      name: build
+      path: ./build
+
+  - name: Configure AWS credentials
+    uses: aws-actions/configure-aws-credentials@v2
+    with:
+      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      aws-region: us-east-1
+
+  - name: Sync to S3
+    run: |
+      aws s3 sync ./build s3://my-bucket --delete
+```
+
