@@ -224,8 +224,6 @@ After pretraining, the model is adapted to specific tasks:
 
 *   **Instruction Tuning** and **Reinforcement Learning from Human Feedback (RLHF)**: Align the model to human preferences for improved conversational quality.
 
-
-
 ## 6. Inference: Generating Text
 
 When generating text autoregressively:
@@ -244,13 +242,9 @@ When generating text autoregressively:
 
 4.  **Iterate**: Append the chosen token, update input, and repeat until end‑of‑sequence or length limit.
 
-
-
 ## 7. Scaling Laws and Model Size
 
 LLMs follow empirical **scaling laws**: as you increase model parameters, data size, and compute, performance improves predictably. This has driven the creation of models ranging from hundreds of millions to trillions of parameters, each requiring parallelism strategies (data/model/pipeline parallelism) to train efficiently.
-
-
 
 ## 8. Practical Considerations
 
@@ -259,8 +253,6 @@ LLMs follow empirical **scaling laws**: as you increase model parameters, data s
 *   **Quantization & Distillation**: Reduce model size and latency by lowering precision (8‑bit, 4‑bit) or training smaller models to mimic larger ones.
 
 *   **Safety and Bias**: Large pretrained models may encode undesirable biases; mitigation involves dataset curation, fine‑tuning, and post‑processing.
-
-
 
 ## 9. Why Transformers Work So Well
 
@@ -272,8 +264,6 @@ LLMs follow empirical **scaling laws**: as you increase model parameters, data s
 
 4.  **Scalability**: Consistent improvements follow from increased scale, enabling zero‑shot and few‑shot capabilities.
 
-
-
 ## 10. Conclusion
 
-Transformers underpin the next generation of language technology. By replacing recurrence with self‑attention, they model context flexibly and at scale. Understanding their core components—queries, keys, values, multi‑head attention, positional encoding, and layered feed‑forward networks—equips you to grasp how LLMs learn patterns in language and generate coherent text. Armed with this knowledge, you can better evaluate model choices, design fine‑tuning strategies, and anticipate future innovations in the rapidly evolving landscape of AI.
+Transformers underpin the next generation of language technology. By replacing recurrence with self‑attention, they model context flexibly and at scale. Understanding their core components, for example queries, keys, values, multi‑head attention, positional encoding, and layered feed‑forward networks equips you to grasp how LLMs learn patterns in language and generate coherent text. Armed with this knowledge, you can better evaluate model choices, design fine‑tuning strategies, and anticipate future innovations in the rapidly evolving landscape of AI.
