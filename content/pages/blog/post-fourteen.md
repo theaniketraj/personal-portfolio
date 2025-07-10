@@ -8,7 +8,7 @@ excerpt: >-
   advanced techniques for scalable workflows.
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/ci-cd-feature.jpg
   altText: >-
     A Developer’s Guide to Efficient CI/CD Using GitHub Actions | Aniket Raj's
     Tech Blog
