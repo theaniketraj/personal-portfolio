@@ -68,7 +68,7 @@ metaTags:
     content: 'https://linkedin.com/in/theaniketraj'
   - type: MetaTag
     property: 'twitter:card'
-    content: ''
+    content: summary_large_image
   - type: MetaTag
     property: 'og:title'
     content: ''
