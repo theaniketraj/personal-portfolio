@@ -134,3 +134,17 @@ A **workflow** is a YAML file defining the automation pipeline. It includes:
 
 *   **Step**: An individual task within a job, either an action or a shell command.
 
+```
+jobs:
+build:
+runs-on: ubuntu-latest
+steps:
+- name: Checkout code
+uses: actions/checkout@v3
+    - name: Install dependencies
+    run: npm install
+
+    - name: Run tests
+    run: npm test
+```
+
