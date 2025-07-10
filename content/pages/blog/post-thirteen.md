@@ -58,6 +58,6 @@ metaTags:
       mechanisms, encoder/decoder blocks, positional encodings, and training
       strategies. | Aniket Raj's Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
 ---
