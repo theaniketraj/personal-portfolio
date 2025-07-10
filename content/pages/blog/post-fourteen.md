@@ -147,3 +147,33 @@ uses: actions/checkout@v3
     run: npm test
 ```
 
+### Runners
+
+Runners are the virtual machines or containers where jobs execute. Options include:
+
+*   **GitHub‑hosted**: Linux, Windows, or macOS environments managed by GitHub.
+
+*   **Self‑hosted**: Bring your own servers or VMs for custom hardware or network access.
+
+### Events and Triggers
+
+Workflows can be triggered by:
+
+*   **GitHub Events**: `push`, `pull_request`, `release`, `workflow_dispatch` (manual), `schedule` (cron).
+
+*   **External Events**: Repository dispatch, workflow dispatch API calls.
+
+### Marketplace Actions
+
+The GitHub Marketplace hosts thousands of community‑driven actions for common tasks:
+
+*   Code checkout: `actions/checkout`
+
+*   Dependency caching: `actions/cache`
+
+*   Testing frameworks: `actions/setup-node`, `actions/setup-python`
+
+*   Deployment: `azure/webapps-deploy`, `appleboy/ssh-action`
+
+
+
