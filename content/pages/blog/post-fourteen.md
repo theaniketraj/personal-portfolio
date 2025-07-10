@@ -27,7 +27,7 @@ media:
     Tech Blog
   elementId: ''
 addTitleSuffix: true
-colors: colors-a
+colors: colors-b
 backgroundImage:
   type: BackgroundImage
   url: /images/ci-cd-bg.jpg
