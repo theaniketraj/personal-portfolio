@@ -236,16 +236,10 @@ build:
 # ... test steps ...
 outputs:
 build-path: ${{ steps.build.outputs.artifact-path }}
-```
-
-```
 deploy:
 needs: build
 runs-on: ubuntu-latest
 if: github.ref == 'refs/heads/main' && success()
-```
-
-```
 steps:
   - name: Download build artifact
     uses: actions/download-artifact@v3
