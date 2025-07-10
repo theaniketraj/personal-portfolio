@@ -55,7 +55,7 @@ metaTags:
       GitHub Actions, with best practices and real-world examples. | Aniket
       Raj's Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:image'
     content: ''
   - type: MetaTag
     property: 'og:title'
