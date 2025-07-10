@@ -69,4 +69,7 @@ metaTags:
   - type: MetaTag
     property: 'og:title'
     content: ''
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
