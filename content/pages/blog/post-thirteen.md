@@ -40,7 +40,7 @@ metaTitle: >-
   How LLMs Really Work: The Transformer Architecture Explained Simply | Aniket
   Raj's Tech Blog
 metaDescription: >-
-  A deep technical exploration of Transformer architecture—the core of modern 
+  A deep technical exploration of Transformer architecture—the core of modern
   large language models—covering self-attention, multi-head mechanisms, 
   encoder/decoder blocks, positional encodings, and training strategies.
 ---
