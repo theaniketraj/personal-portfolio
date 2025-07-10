@@ -36,4 +36,7 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 70
 author: content/data/team/doris-soto.json
+metaTitle: >-
+  How LLMs Really Work: The Transformer Architecture Explained Simply | Aniket
+  Raj's Tech Blog
 ---
