@@ -50,7 +50,10 @@ metaTags:
       Tech Blog
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      Learn how to automate, optimize, and secure your CI/CD workflows using
+      GitHub Actions, with best practices and real-world examples. | Aniket
+      Raj's Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
