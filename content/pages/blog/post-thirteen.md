@@ -46,7 +46,9 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: >-
+      How LLMs Really Work: The Transformer Architecture Explained Simply |
+      Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
