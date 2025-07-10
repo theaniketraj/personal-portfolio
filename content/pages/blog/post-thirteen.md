@@ -42,7 +42,8 @@ metaTitle: >-
 metaDescription: >-
   A deep technical exploration of Transformer architecture, the core of modern
   large language models covering self-attention, multi-head mechanisms,
-  encoder/decoder blocks, positional encodings, and training strategies.
+  encoder/decoder blocks, positional encodings, and training strategies. |
+  Aniket Raj's Tech Blog
 metaTags:
   - type: MetaTag
     property: 'og:title'
