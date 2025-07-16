@@ -182,7 +182,7 @@ Accept: text/html
 
 2\. **Server Processing**
 
-The server routes routes the request - possibly through a web framework or CDN edge function -      generates HTML (statically or dynamically), and returns a response:
+The server routes the request - possibly through a web framework or CDN edge function -      generates HTML (statically or dynamically), and returns a response:
 
 ```
 HTTP/2 200 OK
