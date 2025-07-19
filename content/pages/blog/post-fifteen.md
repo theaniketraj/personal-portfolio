@@ -63,5 +63,8 @@ metaTags:
     content: summary_large_image
   - type: MetaTag
     property: 'twitter:description'
-    content: ''
+    content: >-
+      A comprehensive guide on prompt engineering from basic techniques to
+      advanced hybrid workflows designed to boost developer productivity and
+      solve complex engineering tasks with AI. | Aniket Raj's Tech Blog
 ---
