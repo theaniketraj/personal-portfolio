@@ -17,7 +17,7 @@ featuredImage:
   elementId: ''
 media:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/mpe-featured.jpg
   altText: Post image
   caption: Caption of the image
   elementId: ''
