@@ -56,7 +56,7 @@ metaTags:
       to advanced level to transform AI into your development ally. | Aniket
       Raj's Tech Blog
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
   - type: MetaTag
     property: 'og:title'
