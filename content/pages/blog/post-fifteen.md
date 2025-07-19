@@ -175,8 +175,6 @@ You are a senior engineer with tool access.
 [Thought]: “Critique edge cases and performance. Refine code.”
 ```
 
-
-
 4.3 Front-End Performance Strategy
 
 **Combine:** Step-Back → Tree-of-Thoughts → Self-Consistency
@@ -229,7 +227,6 @@ Now: [your task].
 
 ### Advanced (Hybrid)
 
-
 ```
 
 Q: [complex problem].
@@ -242,4 +239,20 @@ Reflexion: Critique and refine final output.
 ```
 Present: [desired deliverable].
 ```
+
+## 6. Boosting Productivity with Prompt Engineering
+
+*   **Automate Writing & Summaries**: Emails, meeting notes, documentation.
+
+*   **Accelerate Coding**: Scaffolding, tests, debugging, refactoring.
+
+*   **Speed Design Reviews**: Generate architecture diagrams, trade-off matrices.
+
+*   **Enhance Learning**: Step-by-step tutorials in design patterns or frameworks.
+
+*   **Brainstorming**: Idea generation, marketing copy, naming conventions.
+
+
+
+
 
