@@ -43,4 +43,8 @@ metaTitle: >-
 metaDescription: >-
   An in-depth guide to crafting, refining, and orchestrating prompts basic to
   advanced level to transform AI into your development ally.
+metaTags:
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
