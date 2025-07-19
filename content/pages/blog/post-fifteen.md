@@ -37,4 +37,7 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 60
 author: content/data/team/doris-soto.json
+metaTitle: >-
+  Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers |
+  Aniket Raj's Tech Blog
 ---
