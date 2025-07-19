@@ -46,7 +46,9 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: ''
+    content: >-
+      Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers
+      | Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
