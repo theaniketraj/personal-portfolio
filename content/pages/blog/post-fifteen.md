@@ -8,7 +8,9 @@ excerpt: >-
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Post thumbnail image
+  altText: >-
+    Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers |
+    Aniket Raj's Tech Blog
   caption: Caption of the image
   elementId: ''
 media:
