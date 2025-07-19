@@ -103,3 +103,23 @@ Example 2: Input: “…”, Output: “…”
 Now summarize this new API doc.
 ```
 
+### 2.2 Role & Context Assignment
+
+*   **Role**: “You are a Senior Front-End Engineer…”
+
+*   **Context**: “Building a React dashboard for 10k daily users”
+
+*   **Constraints**: “Use mobile-first, accessible Tailwind CSS, ARIA roles”
+
+### 2.3 Chain-of-Thought (CoT)
+
+Encourage the model to **think step-by-step** before answering:
+
+```
+“Think step-by-step: how would you optimize React rendering for large tables?”
+```
+
+
+
+
+
