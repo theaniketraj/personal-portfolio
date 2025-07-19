@@ -148,7 +148,8 @@ Encourage the model to **think step-by-step** before answering:
 ```
 Q: Design a scalable microservices chat app for 1 M users.
 1. Self-Ask: “What are core services? What consistency model?” – Answer.
-2. CoT-SC: Generate 3 architecture plans (event-driven, serverless, pub/sub), vote the best.
+2. CoT-SC: Generate 3 architecture plans (event-driven, 
+           serverless, pub/sub), vote the best.
 3. Reflexion: “Critique single points of failure, security gaps; improve design.”
 →  Final: Detailed diagram + service list + trade-off analysis.
 ```
