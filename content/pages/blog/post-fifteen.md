@@ -3,8 +3,10 @@ type: PostLayout
 title: 'Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers'
 date: '2025-07-20'
 excerpt: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+  Dive deep into prompt engineering from core techniques like zero-shot and
+  chain-of-thought to advanced methods and hybrid workflows that empower
+  developers to automate tasks, design systems, debug code, and boost
+  productivity with AI.
 featuredImage:
   type: ImageBlock
   url: /images/mpe-featured.jpg
