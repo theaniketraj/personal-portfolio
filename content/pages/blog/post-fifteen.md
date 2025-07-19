@@ -4,7 +4,7 @@ title: 'Mastering Prompt Engineering: Techniques & Hybrid Workflows for Develope
 date: '2025-07-20'
 excerpt: >-
   Dive deep into prompt engineering from core techniques like zero-shot and
-  chain-of-thought to advanced methods and hybrid workflows that empower
+  chain of thought to advanced methods and hybrid workflows that empower
   developers to automate tasks, design systems, debug code, and boost
   productivity with AI.
 featuredImage:
