@@ -267,10 +267,3 @@ Prompt engineering is not just “asking a question” it’s **designing a stru
 > 4.  Document your process and share your learnings.
 
 Happy prompting!
-
-#####
-
-
-
-
-
