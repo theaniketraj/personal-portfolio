@@ -125,6 +125,20 @@ Encourage the model to **think step-by-step** before answering:
 
 *   **Code Blocks**: “Provide only code in a `javascript …`  block with comments.”
 
+## 3. Advanced Prompting Methods
+
+| Technique                                  | Purpose                                                                 |
+| ------------------------------------------ | ----------------------------------------------------------------------- |
+| **Self-Ask**                               | Generate and answer clarifying questions before finalizing              |
+| **Chain-of-Thought with Self-Consistency** | Compare multiple reasoning paths; choose the majority                   |
+| **Tree of Thoughts (ToT)**                 | Branching exploration of different solution paths                       |
+| **ReAct (Reasoning & Acting)**             | Interleave reasoning with tool-like “actions” (e.g., code)              |
+| **Reflexion / Self-Reflection**            | Critique and refine the AI’s own outputs                                |
+| **Chain of Draft (CoD)**                   | Ultra-concise intermediate thoughts, then final answer                  |
+| **Adaptive & Post-Hoc**                    | Tag-based separation of thinking vs answering (`<think>`/`<answer>`)    |
+| **Meta-Prompting**                         | Ask the AI to generate better prompts for your task                     |
+| **Context-Layering & Refresh**             | Maintain multiple contextual frames and refresh them over long sessions |
+
 
 
 
