@@ -139,7 +139,17 @@ Encourage the model to **think step-by-step** before answering:
 | **Meta-Prompting**                         | Ask the AI to generate better prompts for your task                     |
 | **Context-Layering & Refresh**             | Maintain multiple contextual frames and refresh them over long sessions |
 
+## 4. Hybrid Workflows: Real-World Examples
 
+### 4.1 Complex System Design
 
+**Combine:** Self-Ask → CoT-SC → Reflexion
 
+```
+Q: Design a scalable microservices chat app for 1 M users.
+1. Self-Ask: “What are core services? What consistency model?” – Answer.
+2. CoT-SC: Generate 3 architecture plans (event-driven, serverless, pub/sub), vote the best.
+3. Reflexion: “Critique single points of failure, security gaps; improve design.”
+→  Final: Detailed diagram + service list + trade-off analysis.
+```
 
