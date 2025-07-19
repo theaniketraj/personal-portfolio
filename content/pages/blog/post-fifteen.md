@@ -40,4 +40,7 @@ author: content/data/team/doris-soto.json
 metaTitle: >-
   Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers |
   Aniket Raj's Tech Blog
+metaDescription: >-
+  An in-depth guide to crafting, refining, and orchestrating prompts basic to
+  advanced level to transform AI into your development ally.
 ---
