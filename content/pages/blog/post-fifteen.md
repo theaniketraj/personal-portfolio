@@ -59,7 +59,7 @@ metaTags:
     property: 'og:type'
     content: Article
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:card'
     content: ''
   - type: MetaTag
     property: 'og:title'
