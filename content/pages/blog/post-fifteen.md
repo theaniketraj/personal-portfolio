@@ -119,6 +119,12 @@ Encourage the model to **think step-by-step** before answering:
 “Think step-by-step: how would you optimize React rendering for large tables?”
 ```
 
+### 2.4 Formatting & Structure
+
+*   **Specify Output Style**: “Answer in ≤150 words as bullet points.”
+
+*   **Code Blocks**: “Provide only code in a `javascript …`  block with comments.”
+
 
 
 
