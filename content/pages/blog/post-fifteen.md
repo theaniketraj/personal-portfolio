@@ -21,7 +21,9 @@ media:
   altText: >-
     Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers |
     Aniket Raj's Tech Blog
-  caption: Caption of the image
+  caption: >-
+    Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers |
+    Aniket Raj's Tech Blog
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
