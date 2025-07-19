@@ -18,7 +18,9 @@ featuredImage:
 media:
   type: ImageBlock
   url: /images/mpe-featured.jpg
-  altText: Post image
+  altText: >-
+    Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers |
+    Aniket Raj's Tech Blog
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
