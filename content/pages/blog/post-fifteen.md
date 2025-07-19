@@ -51,7 +51,10 @@ metaTags:
       | Aniket Raj's Tech Blog
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      An in-depth guide to crafting, refining, and orchestrating prompts basic
+      to advanced level to transform AI into your development ally. | Aniket
+      Raj's Tech Blog
   - type: MetaTag
     property: 'og:title'
     content: ''
