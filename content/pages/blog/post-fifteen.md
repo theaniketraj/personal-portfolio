@@ -155,3 +155,91 @@ Q: Design a scalable microservices chat app for 1 M users.
 →  Final: Detailed diagram + service list + trade-off analysis.
 ```
 
+### 4.2 Bug Fix & Optimization
+
+**Combine:** ReAct → CodeCoT → Reflexion
+
+```
+You are a senior engineer with tool access.
+```
+
+```
+[Thought]: Analyze the Python function for efficiency.
+[Action]: Show me the code.
+[Observation]: (AI “sees” it)
+[Thought]: Identify bugs/inefficiencies.
+[Action]: (Pseudo) run test cases.
+[Observation]: Errors/results returned.
+[Thought]: Use CodeCoT to refactor step-by-step.
+[Action]: Return improved code.
+[Thought]: “Critique edge cases and performance. Refine code.”
+```
+
+
+
+4.3 Front-End Performance Strategy
+
+**Combine:** Step-Back → Tree-of-Thoughts → Self-Consistency
+
+```
+Step-Back: “Which frontend perf concepts apply to React dashboards?”
+ToT: Branch 1 – virtualization; Branch 2 – code splitting; Branch 3 – memoization.
+Self-Consistency: Summarize each approach thrice, pick the most frequent insights.
+→ Action plan with prioritized optimizations.
+```
+
+### 4.4 Design-Pattern Teaching
+
+**Combine:** Meta-Prompt → Prompt-Refinement-Loop → Reflexion
+
+```
+Meta-Prompt: “Suggest 3 ways to ask about the Observer pattern for Java.”
+Choose one variant; ask for explanation + code skeleton.
+AI self-evaluates: “Is this clear? Add UML and edge cases.”
+AI refines: Provides final polished tutorial.
+```
+
+### 4.5 Automated API Generator
+
+**Combine:** Program-of-Thoughts (PoT) → Self-Ask → Reflexion
+
+```
+Use PoT solver():
+```
+
+```
+Step-1 (Self-Ask): List endpoints, request/response schemas.
+Step-2: Draft Flask code for routes with validation.
+Step-3: Generate test cases.
+After draft: “Reflect on missing error codes or security concerns; fix them.”
+```
+
+## 5. Practical Prompt Templates
+
+### Basic
+
+```
+You are a [role].
+Task: [specific goal].
+Context: [background details].
+Format: [style, length, code/no code].
+[Optional examples]
+Now: [your task].
+```
+
+### Advanced (Hybrid)
+
+
+```
+
+Q: [complex problem].
+Self-Ask: List and answer clarifying questions.
+CoT-SC: Draft multiple reasoning chains; vote on best.
+ReAct: Invoke analysis or code-generation actions as needed.
+Reflexion: Critique and refine final output.
+```
+
+```
+Present: [desired deliverable].
+```
+
