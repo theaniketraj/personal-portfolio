@@ -75,8 +75,6 @@ metaTags:
 
 As AI systems become integral to software development workflows—drafting code, designing architectures, debugging, and even learning design patterns—the quality of their outputs hinges almost entirely on **your prompts**. Prompt engineering transforms vague instructions into precise, structured, and outcome-driven queries, effectively turning LLMs into reliable collaborators.
 
-
-
 ## 1. Why Prompts Matter
 
 *   **No Native “Goals”**: LLMs generate text by pattern matching; they don’t inherently know your intent.
@@ -84,8 +82,6 @@ As AI systems become integral to software development workflows—drafting code,
 *   **Direction & Constraints**: Prompts supply context—tone, format, role, examples—preventing irrelevant or generic responses.
 
 *   **Maximize Utility**: Good prompts unlock AI’s capabilities for code generation, architectural planning, documentation, and more.
-
-
 
 ## 2. Core Prompt Engineering Techniques
 
@@ -102,6 +98,8 @@ As AI systems become integral to software development workflows—drafting code,
 
 ```
 
-Example 1: Input: “…”, Output: “…”Example 2: Input: “…”, Output: “…”Now summarize this new API doc.
+Example 1: Input: “…”, Output: “…”
+Example 2: Input: “…”, Output: “…”
+Now summarize this new API doc.
 ```
 
