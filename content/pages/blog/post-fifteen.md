@@ -84,7 +84,6 @@ bottomSections:
         elementId: ''
     posts:
       - content/pages/blog/post-three.md
-      - content/pages/blog/post-fourteen.md
       - content/pages/blog/post-thirteen.md
     colors: colors-f
     variant: variant-d
