@@ -1,0 +1,8 @@
+# robots.txt for my Personal Portfolio
+
+# Allow all web crawlers to access the site.
+User-agent: *
+Allow: /
+
+# Provide the absolute path to the sitemap.
+Sitemap: https://theaniketraj.netlify.app//sitemap.xml
