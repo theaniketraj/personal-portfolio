@@ -91,7 +91,6 @@ bottomSections:
       - content/pages/blog/post-thirteen.md
       - content/pages/blog/post-twelve.md
       - content/pages/blog/post-eleven.md
-      - content/pages/blog/post-eleven.md
     colors: colors-f
     variant: variant-b
     elementId: ''
