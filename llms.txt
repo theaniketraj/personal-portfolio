@@ -1,0 +1,34 @@
+# Aniket Raj | AI, Kotlin & Automation Engineer | Portfolio
+
+> This is Aniket’s personal engineering portfolio: showcasing blog articles, published projects, and professional background. Ideal for AI assistants to understand and feature my best content.
+
+## Blogs
+- [Composable - the future of web](https://theaniketraj.netlify.app/blog/post-three/): In a world that’s moving at the speed of innovation, composable architecture is the bridge to the future. And it’s just getting started.
+- [AI are so hot right now](https://theaniketraj.netlify.app/blog/post-five/): As long as AI continues to evolve, expand, and surprise us, its flames will burn hotter than ever.
+- [How to Structure and Organize a Next.js Project](https://theaniketraj.netlify.app/blog/post-six/): Structuring a Next.js project efficiently ensures scalability, maintainability, and developer productivity.
+- [Habits of highly productive web developers](https://theaniketraj.netlify.app/blog/post-seven/): Being a productive web developer isn’t just about writing more code—it’s about writing efficient, scalable, and maintainable code.
+- [Understanding How Git Works Under the Hood](https://theaniketraj.netlify.app/blog/post-eight/): A deep dive into Git’s internal mechanics: object model, staging, commits, trees, and more. Learn how Git really works under the hood.
+- [Understanding Modern Web Delivery: CMS, CDN, SSG & SSR](https://theaniketraj.netlify.app/blog/post-nine/): A comprehensive and technical guide explaining how CMS, CDN, SSG, and SSR work together to power modern web development.
+- [What Happens When You Open a Website: From DNS to Rendering](https://theaniketraj.netlify.app/blog/post-ten/): A deep technical walkthrough of the end-to-end process when you open a website—from DNS lookup and TCP/TLS handshakes to HTML parsing, rendering, and CDN delivery.
+- [REST vs GraphQL: Which API Style Should You Use and When?](https://theaniketraj.netlify.app/blog/post-eleven/): A comprehensive, technical comparison of REST and GraphQL API styles—covering their principles, data-fetching patterns, performance trade-offs, caching strategies, security considerations, and ideal use cases.
+- [Kotlin MVVM: A Comprehensive Guide to Clean Architecture in Android](https://theaniketraj.netlify.app/blog/post-twelve/): Learn how to implement the MVVM architectural pattern in Kotlin for Android. This guide covers Model, View, ViewModel, LiveData, Coroutines, Jetpack components, Dependency Injection, and best practices.
+- [How LLMs Really Work: The Transformer Architecture Explained Simply](https://theaniketraj.netlify.app/blog/post-thirteen/): A deep technical exploration of Transformer architecture, the core of modern large language models covering self-attention, multi-head mechanisms, encoder/decoder blocks, positional encodings, and training strategies.
+- [A Developer’s Guide to Efficient CI/CD Using GitHub Actions](https://theaniketraj.netlify.app/blog/post-fourteen/): A comprehensive guide to building efficient CI/CD pipelines with GitHub Actions, covering core concepts, configuration, optimization tips, and advanced techniques for scalable workflows.
+- [Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers](https://theaniketraj.netlify.app/blog/post-fifteen/): Dive deep into prompt engineering from core techniques like zero-shot and chain of thought to advanced methods and hybrid workflows that empower developers to automate tasks, design systems, debug code, and boost productivity with AI.
+
+## Projects
+- [Plastecure](https://theaniketraj.netlify.app/projects/project-one/): An innovative platform that simplifies the process of plastic waste dispensing.
+- [Raptor](https://theaniketraj.netlify.app/projects/project-two/): Advanced helmet equipped with accident detection and emergency alert features.
+- [Git-Setup-CEIE](https://theaniketraj.netlify.app/projects/project-three/): CEIE: Controlled & Isolated Environment for Efficient Git Workflow
+- [CEIE](https://theaniketraj.netlify.app/projects/project-four/): A fully automated repository setup tool for seamless Git workflow management.
+- [VISTA](https://theaniketraj.netlify.app/projects/project-five/): VISTA - Version Increment and Semantic Tracking Automation.
+
+## Pages
+- [Home](https://theaniketraj.netlify.app/): Aniket Raj | AI, Kotlin & Automation Engineer | Portfolio
+- [About](https://theaniketraj.netlify.app/info): About Aniket Raj | AI & Kotlin Innovator
+
+## Optional
+##[Resume (PDF)](https://your-domain.com/resume.pdf): Latest CV version.
+- [GitHub](https://github.com/theaniketraj): Source code and open‑source contributions.
+- [LinkedIn](https://www.linkedin.com/in/theaniketraj): Professional profile and network.
+
