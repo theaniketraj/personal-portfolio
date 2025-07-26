@@ -96,7 +96,6 @@ sections:
     posts:
       - content/pages/blog/post-five.md
       - content/pages/blog/post-seven.md
-      - content/pages/blog/post-six.md
       - content/pages/blog/post-fifteen.md
     colors: colors-f
     variant: variant-d
