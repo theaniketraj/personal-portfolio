@@ -83,8 +83,8 @@ bottomSections:
         iconPosition: right
         elementId: ''
     posts:
-      - content/pages/blog/post-thirteen.md
       - content/pages/blog/post-fourteen.md
+      - content/pages/blog/post-thirteen.md
     colors: colors-f
     variant: variant-d
     elementId: ''
