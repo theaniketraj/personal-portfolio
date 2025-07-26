@@ -95,7 +95,6 @@ sections:
         elementId: ''
     posts:
       - content/pages/blog/post-five.md
-      - content/pages/blog/post-seven.md
       - content/pages/blog/post-fifteen.md
       - content/pages/blog/post-fourteen.md
     colors: colors-f
