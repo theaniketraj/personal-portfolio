@@ -88,7 +88,6 @@ bottomSections:
         iconPosition: right
         elementId: ''
     posts:
-      - content/pages/blog/post-five.md
       - content/pages/blog/post-three.md
     colors: colors-f
     variant: variant-b
