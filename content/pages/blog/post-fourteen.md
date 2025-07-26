@@ -89,6 +89,7 @@ bottomSections:
         elementId: ''
     posts:
       - content/pages/blog/post-thirteen.md
+      - content/pages/blog/post-twelve.md
     colors: colors-f
     variant: variant-b
     elementId: ''
