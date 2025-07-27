@@ -3,7 +3,7 @@ type: PostLayout
 title: AI are so hot right now
 colors: colors-a
 date: '2024-05-02'
-author: content/data/team/doris-soto.json
+author: content/data/team/aniket-raj.json
 excerpt: >-
   As long as AI continues to evolve, expand, and surprise us, its flames will
   burn hotter than ever.
