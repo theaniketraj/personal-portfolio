@@ -80,6 +80,7 @@ bottomSections:
     posts:
       - content/pages/blog/post-three.md
       - content/pages/blog/post-eight.md
+      - content/pages/blog/post-seven.md
     colors: colors-f
     variant: variant-b
     elementId: ''
