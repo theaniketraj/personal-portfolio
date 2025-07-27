@@ -78,6 +78,40 @@ metaTags:
   - type: MetaTag
     property: 'twitter:creator'
     content: devxaniket
+bottomSections:
+  - type: FeaturedPostsSection
+    title: 'Posts:'
+    actions:
+      - type: Link
+        label: See all posts
+        altText: See all posts
+        url: /blog
+        showIcon: false
+        icon: arrowRight
+        iconPosition: right
+        elementId: ''
+    posts:
+      - content/pages/blog/post-five.md
+      - content/pages/blog/post-four.md
+      - content/pages/blog/post-three.md
+    colors: colors-f
+    variant: variant-d
+    elementId: ''
+    showDate: true
+    showAuthor: false
+    showExcerpt: true
+    showFeaturedImage: false
+    showReadMoreLink: true
+    styles:
+      self:
+        height: auto
+        width: wide
+        padding:
+          - pt-24
+          - pb-24
+          - pl-4
+          - pr-4
+        textAlign: left
 ---
 Kotlin’s rise in Android development has brought a renewed emphasis on clean architecture and separation of concerns. Among the architectural patterns available, MVVM (Model–View–ViewModel) stands out as a robust, testable, and lifecycle‑aware approach. In this post, we’ll explore everything you need to know to build Android apps with Kotlin and MVVM: why it matters, how it works, and a step‑by‑step example of a simple to‑do list app.
 
