@@ -3,7 +3,7 @@ type: PostLayout
 title: Habits of highly productive web developers ⌨️
 colors: colors-a
 date: '2024-06-10'
-author: content/data/team/doris-soto.json
+author: content/data/team/aniket-raj.json
 excerpt: >-
   Being a productive web developer isn’t just about writing more code—it’s
   about  writing efficient, scalable, and maintainable code.

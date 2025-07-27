@@ -35,7 +35,7 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 50
-author: content/data/team/doris-soto.json
+author: content/data/team/aniket-raj.json
 metaTitle: >-
   How LLMs Really Work: The Transformer Architecture Explained Simply | Aniket
   Raj's Tech Blog
@@ -79,6 +79,40 @@ metaTags:
       modern large language models—covering self-attention, multi-head
       mechanisms, encoder/decoder blocks, positional encodings, and training
       strategies. | Aniket Raj's Tech Blog
+bottomSections:
+  - type: FeaturedPostsSection
+    title: 'Posts:'
+    actions:
+      - type: Link
+        label: See all posts
+        altText: See all posts
+        url: /blog
+        showIcon: false
+        icon: arrowRight
+        iconPosition: right
+        elementId: ''
+    posts:
+      - content/pages/blog/post-twelve.md
+      - content/pages/blog/post-eleven.md
+      - content/pages/blog/post-ten.md
+    colors: colors-f
+    variant: variant-d
+    elementId: ''
+    showDate: true
+    showAuthor: false
+    showExcerpt: true
+    showFeaturedImage: false
+    showReadMoreLink: true
+    styles:
+      self:
+        height: auto
+        width: wide
+        padding:
+          - pt-24
+          - pb-24
+          - pl-4
+          - pr-4
+        textAlign: left
 ---
 **How LLMs Really Work: The Transformer Architecture Explained Simply**
 

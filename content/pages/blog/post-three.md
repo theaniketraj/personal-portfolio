@@ -3,7 +3,7 @@ type: PostLayout
 title: Composable - the future of web
 colors: colors-b
 date: '2024-01-01'
-author: content/data/team/doris-soto.json
+author: content/data/team/aniket-raj.json
 excerpt: >-
   In a world that’s moving at the speed of innovation, composable architecture 
   is the bridge to the future. And it’s just getting started.
