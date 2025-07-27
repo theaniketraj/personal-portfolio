@@ -91,7 +91,6 @@ bottomSections:
         iconPosition: right
         elementId: ''
     posts:
-      - content/pages/blog/post-three.md
       - content/pages/blog/post-eleven.md
       - content/pages/blog/post-ten.md
     colors: colors-f
