@@ -26,7 +26,7 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 60
-author: content/data/team/doris-soto.json
+author: content/data/team/aniket-raj.json
 metaTitle: Understanding How Git Works Under the Hood | Aniket Raj's Tech Blog
 metaDescription: >-
   A deep dive into Git’s internal mechanics: object model, staging, commits, 
