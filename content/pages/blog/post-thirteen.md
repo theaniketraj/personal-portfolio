@@ -91,7 +91,8 @@ bottomSections:
         icon: arrowRight
         iconPosition: right
         elementId: ''
-    posts: []
+    posts:
+      - content/pages/blog/post-twelve.md
     colors: colors-f
     variant: variant-d
     elementId: ''
