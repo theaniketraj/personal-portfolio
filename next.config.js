@@ -7,4 +7,8 @@ const nextConfig = {
     reactStrictMode: true
 };
 
-module.exports = nextConfig;
+module.exports = {
+  experimental: {
+    largePageDataBytes: 1024 * 1024, // for example, 1 MB
+  }
+}
