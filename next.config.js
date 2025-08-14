@@ -4,23 +4,15 @@ const nextConfig = {
         stackbitPreview: process.env.STACKBIT_PREVIEW
     },
     trailingSlash: true,
-    reactStrictMode: true
+    reactStrictMode: true,
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+        // Remove the fs configuration as it's no longer needed/supported
+        // config.node is handled automatically by Next.js/webpack
+        return config;
+    },
+    experimental: {
+        largePageDataBytes: 1024 * 1024 // 1 MB
+    }
 };
 
-module.exports = {
-    future: {
-    webpack5: true,
-  },
-    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Increase Node.js memory limit to 4GB
-    config.node = {
-      fs: 'empty',
-      ...config.node,
-    };
-
-    return config;
-  },
-  experimental: {
-    largePageDataBytes: 1024 * 1024, // for example, 1 MB
-  }
-}
+module.exports = nextConfig;
