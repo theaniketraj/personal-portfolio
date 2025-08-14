@@ -1,6 +1,14 @@
 [build]
   publish = ".next"
-  command = "npm run build"
+  command = "npm run build:netlify"
+
+[build.environment]
+  NODE_VERSION = "22.18.0"
+  NODE_OPTIONS = "--max-old-space-size=6144 --optimize-for-size --gc-interval=100"
+  NEXT_TELEMETRY_DISABLED = "1"
+  # Disable source maps to reduce memory usage
+  GENERATE_SOURCEMAP = "false"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 

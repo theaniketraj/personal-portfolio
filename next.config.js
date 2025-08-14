@@ -6,12 +6,22 @@ const nextConfig = {
     trailingSlash: true,
     reactStrictMode: true,
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-        // Remove the fs configuration as it's no longer needed/supported
-        // config.node is handled automatically by Next.js/webpack
+        // Limit parallel processing to reduce memory usage
+        config.parallelism = 1;
+
+        // Reduce memory usage during build
+        config.optimization = {
+            ...config.optimization,
+            concatenateModules: false
+        };
+
         return config;
     },
     experimental: {
-        largePageDataBytes: 1024 * 1024 // 1 MB
+        largePageDataBytes: 250 * 1024 * 1024, // Increase to 250 MB to handle the massive content payload
+        // Optimize memory usage
+        workerThreads: false,
+        cpus: 1
     }
 };
 
