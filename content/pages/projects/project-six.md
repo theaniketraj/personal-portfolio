@@ -4,8 +4,8 @@ title: Project KARL
 date: '2025-08-06'
 client: Aniket Raj
 description: >-
-  An open-source, on-device adaptive AI library built with Kotlin Multiplatform,
-  Jetpack Compose, KotlinDL, and Room.
+  An open-source Kotlin library for building privacy-first, on-device adaptive
+  AI models.
 featuredImage:
   type: ImageBlock
   url: /images/karl.jpg
