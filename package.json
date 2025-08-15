@@ -3,6 +3,7 @@
     "version": "0.2.0",
     "scripts": {
         "dev": "next dev",
+        "dev:stackbit": "next dev",
         "build": "next build",
         "build:netlify": "next build",
         "start": "next start"

@@ -35,6 +35,11 @@ const Page: React.FC<PageComponentProps> = (props) => {
 
 export function getStaticPaths() {
     try {
+        // In development (Visual Editor), use fallback to reduce initial load
+        if (process.env.NODE_ENV === 'development') {
+            return { paths: ['/'], fallback: 'blocking' };
+        }
+        
         const allData = allContent();
         const paths = allData.map((obj) => obj.__metadata.urlPath).filter(Boolean);
         return { paths, fallback: false };
@@ -49,9 +54,18 @@ export function getStaticProps({ params }) {
         const allData = allContent();
         const urlPath = '/' + (params.slug || []).join('/');
         const props = resolveStaticProps(urlPath, allData);
-        const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
-        console.log(`›› props payload size: ${Math.round(bytes/1024)} KB`);
-        return { props };
+        
+        // Only log payload size in development for debugging
+        if (process.env.NODE_ENV === 'development') {
+            const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
+            console.log(`›› props payload size: ${Math.round(bytes/1024)} KB`);
+        }
+        
+        return { 
+            props,
+            // In development, enable revalidation for Visual Editor
+            ...(process.env.NODE_ENV === 'development' ? { revalidate: 1 } : {})
+        };
     } catch (error) {
         console.error('Error in getStaticProps:', error);
         return {
