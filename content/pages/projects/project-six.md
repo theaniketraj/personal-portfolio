@@ -47,6 +47,6 @@ metaTags:
       open-source, on-device adaptive AI library built with Kotlin
       Multiplatform, Jetpack Compose, KotlinDL, and Room.
   - type: MetaTag
-    property: 'og:image'
+    property: 'og:type'
     content: ''
 ---
