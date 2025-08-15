@@ -1,16 +1,17 @@
 [build]
   publish = ".next"
-  command = "npm run build:netlify"
+  command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "22.18.0"
-  NODE_OPTIONS = "--max-old-space-size=6144"
+  NODE_VERSION = "18"
   NEXT_TELEMETRY_DISABLED = "1"
-  # Disable source maps to reduce memory usage
-  GENERATE_SOURCEMAP = "false"
+
+[functions]
+  directory = ".netlify/functions"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
+# Remove the lighthouse plugin temporarily to reduce complexity
+# [[plugins]]
+#   package = "@netlify/plugin-lighthouse"

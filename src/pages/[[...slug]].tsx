@@ -34,18 +34,30 @@ const Page: React.FC<PageComponentProps> = (props) => {
 };
 
 export function getStaticPaths() {
-    const allData = allContent();
-    const paths = allData.map((obj) => obj.__metadata.urlPath).filter(Boolean);
-    return { paths, fallback: false };
+    try {
+        const allData = allContent();
+        const paths = allData.map((obj) => obj.__metadata.urlPath).filter(Boolean);
+        return { paths, fallback: false };
+    } catch (error) {
+        console.error('Error in getStaticPaths:', error);
+        return { paths: [], fallback: false };
+    }
 }
 
 export function getStaticProps({ params }) {
-    const allData = allContent();
-    const urlPath = '/' + (params.slug || []).join('/');
-    const props = resolveStaticProps(urlPath, allData);
-    const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
-    console.log(`›› props payload size: ${Math.round(bytes/1024)} KB`);
-    return { props };
+    try {
+        const allData = allContent();
+        const urlPath = '/' + (params.slug || []).join('/');
+        const props = resolveStaticProps(urlPath, allData);
+        const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
+        console.log(`›› props payload size: ${Math.round(bytes/1024)} KB`);
+        return { props };
+    } catch (error) {
+        console.error('Error in getStaticProps:', error);
+        return {
+            notFound: true
+        };
+    }
 }
 
 export default Page;
