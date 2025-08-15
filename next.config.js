@@ -5,39 +5,40 @@ const nextConfig = {
     },
     trailingSlash: true,
     reactStrictMode: true,
-    // Optimize webpack for development and production
+    // Optimize webpack for both development and production
     webpack: (config, { dev, isServer }) => {
-        // Only apply optimizations in development for Visual Editor
+        // Memory optimizations for all builds
+        config.optimization = {
+            ...config.optimization,
+            concatenateModules: false
+        };
+
+        // Limit parallelism to reduce memory usage
+        config.parallelism = 1;
+
+        // Only apply development-specific optimizations in dev mode
         if (dev && !isServer) {
-            // Reduce memory usage in development
-            config.optimization = {
-                ...config.optimization,
-                concatenateModules: false,
-                // Split chunks more aggressively in development
-                splitChunks: {
-                    chunks: 'all',
-                    minSize: 5000, // Smaller minimum size
-                    maxSize: 50000, // Much smaller max size (50KB)
-                    cacheGroups: {
-                        default: {
-                            minChunks: 1,
-                            priority: -20,
-                            reuseExistingChunk: true,
-                            maxSize: 50000
-                        },
-                        vendor: {
-                            test: /[\\/]node_modules[\\/]/,
-                            name: 'vendors',
-                            priority: -10,
-                            maxSize: 50000,
-                            chunks: 'all'
-                        }
+            // Split chunks more aggressively in development
+            config.optimization.splitChunks = {
+                chunks: 'all',
+                minSize: 5000, // Smaller minimum size
+                maxSize: 50000, // Much smaller max size (50KB)
+                cacheGroups: {
+                    default: {
+                        minChunks: 1,
+                        priority: -20,
+                        reuseExistingChunk: true,
+                        maxSize: 50000
+                    },
+                    vendor: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        priority: -10,
+                        maxSize: 50000,
+                        chunks: 'all'
                     }
                 }
             };
-
-            // Limit parallelism in development
-            config.parallelism = 1;
 
             // Reduce resolve.modules to save memory
             config.resolve.modules = ['node_modules'];

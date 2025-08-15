@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  NODE_OPTIONS = "--max-old-space-size=8192"
   NEXT_TELEMETRY_DISABLED = "1"
 
 [functions]
@@ -11,7 +12,3 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Remove the lighthouse plugin temporarily to reduce complexity
-# [[plugins]]
-#   package = "@netlify/plugin-lighthouse"
