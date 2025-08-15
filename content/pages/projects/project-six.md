@@ -30,4 +30,8 @@ backgroundImage:
 metaTitle: >-
   Project KARL: Architecting a Privacy-First, On-Device AI Framework in Kotlin |
   Aniket Raj's Portfolio
+metaDescription: >-
+  A deep dive into the architecture and implementation of Project KARL, an
+  open-source, on-device adaptive AI library built with Kotlin Multiplatform,
+  Jetpack Compose, KotlinDL, and Room.
 ---
