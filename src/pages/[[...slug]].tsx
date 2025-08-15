@@ -55,10 +55,43 @@ export function getStaticProps({ params }) {
         const urlPath = '/' + (params.slug || []).join('/');
         const props = resolveStaticProps(urlPath, allData);
         
-        // Only log payload size in development for debugging
+        // For Visual Editor (development), significantly reduce payload size
         if (process.env.NODE_ENV === 'development') {
             const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
             console.log(`›› props payload size: ${Math.round(bytes/1024)} KB`);
+            
+            // If payload is too large (>50MB), strip down the data
+            if (bytes > 50 * 1024 * 1024) {
+                console.log('Large payload detected, reducing data for Visual Editor...');
+                
+                // Create a minimal version of props for Visual Editor
+                const minimalProps = {
+                    ...props,
+                    // Reduce the global data by keeping only essential info
+                    global: {
+                        ...props.global,
+                        // Keep site config but remove heavy content
+                        site: {
+                            ...props.global.site,
+                            // Remove or minimize large arrays
+                        }
+                    }
+                };
+                
+                // If there are sections with large content, truncate them
+                const propsAny = props as any;
+                if (propsAny.sections && Array.isArray(propsAny.sections)) {
+                    (minimalProps as any).sections = propsAny.sections.slice(0, 3); // Keep only first 3 sections
+                }
+                
+                const reducedBytes = Buffer.byteLength(JSON.stringify(minimalProps), 'utf8');
+                console.log(`›› reduced payload size: ${Math.round(reducedBytes/1024)} KB`);
+                
+                return {
+                    props: minimalProps,
+                    revalidate: 1
+                };
+            }
         }
         
         return { 

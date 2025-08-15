@@ -16,14 +16,21 @@ const nextConfig = {
                 // Split chunks more aggressively in development
                 splitChunks: {
                     chunks: 'all',
-                    minSize: 10000,
-                    maxSize: 100000,
+                    minSize: 5000, // Smaller minimum size
+                    maxSize: 50000, // Much smaller max size (50KB)
                     cacheGroups: {
                         default: {
                             minChunks: 1,
                             priority: -20,
                             reuseExistingChunk: true,
-                            maxSize: 100000
+                            maxSize: 50000
+                        },
+                        vendor: {
+                            test: /[\\/]node_modules[\\/]/,
+                            name: 'vendors',
+                            priority: -10,
+                            maxSize: 50000,
+                            chunks: 'all'
                         }
                     }
                 }
@@ -31,6 +38,9 @@ const nextConfig = {
 
             // Limit parallelism in development
             config.parallelism = 1;
+
+            // Reduce resolve.modules to save memory
+            config.resolve.modules = ['node_modules'];
         }
 
         return config;
@@ -41,7 +51,9 @@ const nextConfig = {
         ...(process.env.NODE_ENV === 'development'
             ? {
                   workerThreads: false,
-                  cpus: 1
+                  cpus: 1,
+                  // Disable some features in development to save memory
+                  optimizeCss: false
               }
             : {})
     }
