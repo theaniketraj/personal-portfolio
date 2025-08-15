@@ -7,7 +7,7 @@ description: ''
 featuredImage:
   type: ImageBlock
   url: /images/karl.jpg
-  altText: Project thumbnail image
+  altText: Aniket Raj's Projects | Project KARL
   caption: ''
   elementId: ''
 media:
