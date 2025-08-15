@@ -14,7 +14,7 @@ media:
   type: ImageBlock
   url: /images/karl.jpg
   altText: Aniket Raj's Projects | Project KARL
-  caption: Caption of the image
+  caption: Aniket Raj's Projects | Project KARL
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
