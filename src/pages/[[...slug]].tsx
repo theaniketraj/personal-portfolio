@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import React from 'react';
 
 import { DynamicComponent } from '@/components/components-registry';
 import { PageComponentProps } from '@/types';
@@ -6,29 +7,73 @@ import { allContent } from '@/utils/content';
 import { seoGenerateMetaDescription, seoGenerateMetaTags, seoGenerateTitle } from '@/utils/seo-utils';
 import { resolveStaticProps } from '@/utils/static-props-resolvers';
 
+// Simple error boundary component
+class ErrorBoundary extends React.Component<
+    { children: React.ReactNode; fallback?: React.ComponentType<{ error: Error }> },
+    { hasError: boolean; error?: Error }
+> {
+    constructor(props: any) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(error: Error) {
+        return { hasError: true, error };
+    }
+
+    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+        console.error('Page component error:', error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            const FallbackComponent = this.props.fallback || (() => (
+                <div style={{ padding: '20px', textAlign: 'center' }}>
+                    <h2>Something went wrong loading this page</h2>
+                    <details style={{ whiteSpace: 'pre-wrap', marginTop: '10px' }}>
+                        {this.state.error?.message || 'Unknown error occurred'}
+                    </details>
+                </div>
+            ));
+            return <FallbackComponent error={this.state.error!} />;
+        }
+
+        return this.props.children;
+    }
+}
+
 const Page: React.FC<PageComponentProps> = (props) => {
-    const { global, ...page } = props;
-    const { site } = global;
-    const title = seoGenerateTitle(page, site);
-    const metaTags = seoGenerateMetaTags(page, site);
-    const metaDescription = seoGenerateMetaDescription(page, site);
+    // Defensive checks to prevent runtime errors
+    const global = props?.global || {} as any;
+    const site = global?.site || {} as any;
+    // Page content is spread at root level in PageComponentProps
+    const page = props || {} as any;
+    
+    // Safely generate SEO data with fallbacks
+    const title = seoGenerateTitle(page, site) || 'Personal Portfolio';
+    const metaTags = seoGenerateMetaTags(page, site) || [];
+    const metaDescription = seoGenerateMetaDescription(page, site) || '';
 
     return (
         <>
             <Head>
                 <title>{title}</title>
                 {metaDescription && <meta name="description" content={metaDescription} />}
-                {metaTags.map((metaTag) => {
+                {metaTags.map((metaTag, index) => {
+                    if (!metaTag?.property && !metaTag?.content) return null;
+                    
                     if (metaTag.format === 'property') {
                         // OpenGraph meta tags (og:*) should be have the format <meta property="og:…" content="…">
-                        return <meta key={metaTag.property} property={metaTag.property} content={metaTag.content} />;
+                        return <meta key={metaTag.property || index} property={metaTag.property} content={metaTag.content} />;
                     }
-                    return <meta key={metaTag.property} name={metaTag.property} content={metaTag.content} />;
+                    return <meta key={metaTag.property || index} name={metaTag.property} content={metaTag.content} />;
                 })}
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                {site.favicon && <link rel="icon" href={site.favicon} />}
+                {site?.favicon && <link rel="icon" href={site.favicon} />}
             </Head>
-            <DynamicComponent {...props} />
+            <ErrorBoundary>
+                <DynamicComponent {...page} global={global} />
+            </ErrorBoundary>
         </>
     );
 };
@@ -60,11 +105,11 @@ export function getStaticProps({ params }) {
         const sizeMB = bytes / (1024 * 1024);
         
         // Log payload size for debugging
-        console.log(`›› props payload size: ${Math.round(bytes/1024)} KB (${sizeMB.toFixed(1)}MB)`);
+        console.log(`›› props payload size for ${urlPath}: ${Math.round(bytes/1024)} KB (${sizeMB.toFixed(1)}MB)`);
         
         // If payload is too large (>25MB), strip down the data
         if (bytes > 25 * 1024 * 1024) {
-            console.log('Large payload detected, reducing data...');
+            console.log(`Large payload detected for ${urlPath}, reducing data...`);
             
             // Helper function to clean undefined values
             const cleanUndefined = (obj: any): any => {
@@ -85,72 +130,177 @@ export function getStaticProps({ params }) {
             // Type the props properly for minimal data
             const propsAny = props as any;
             
-            // Create a minimal version that preserves essential metadata
-            const minimalProps = {
-                // Keep essential page data with metadata
-                ...(propsAny.page && { 
-                    page: {
-                        ...propsAny.page,
-                        // Ensure metadata is preserved for component functionality
-                        __metadata: propsAny.page.__metadata || {}
-                    }
-                }),
-                ...(propsAny.site && { site: propsAny.site }),
-                ...(propsAny.config && { config: propsAny.config }),
-                
-                // Keep global data but reduce heavy content
-                global: {
-                    ...propsAny.global,
-                    site: {
-                        ...propsAny.global?.site,
-                        // Keep essential metadata for components
-                        __metadata: propsAny.global?.site?.__metadata || {},
-                        // Reduce defaultMetaTags but keep structure
-                        defaultMetaTags: propsAny.global?.site?.defaultMetaTags?.slice(0, 3) || []
+            // For homepage and critical pages, be less aggressive
+            const isHomePage = urlPath === '/';
+            const isCriticalPage = isHomePage || urlPath === '/info';
+            
+            console.log(`Processing ${urlPath}, isHomePage: ${isHomePage}, isCriticalPage: ${isCriticalPage}`);
+            
+            // ALWAYS aggressively reduce global data but preserve essential metadata
+            const reducedGlobal = {
+                site: {
+                    type: propsAny.global?.site?.type || 'Site',
+                    fixedLabel: propsAny.global?.site?.fixedLabel || 'Personal Portfolio',
+                    favicon: propsAny.global?.site?.favicon || '/favicon.svg',
+                    titleSuffix: propsAny.global?.site?.titleSuffix || ' | Personal Portfolio',
+                    defaultSocialImage: propsAny.global?.site?.defaultSocialImage || null,
+                    defaultMetaTags: propsAny.global?.site?.defaultMetaTags?.slice(0, 3) || [],
+                    // Ensure metadata with modelName is preserved
+                    __metadata: {
+                        modelName: 'Site',
+                        id: propsAny.global?.site?.__metadata?.id || 'site',
+                        ...propsAny.global?.site?.__metadata
                     }
                 }
+            };
+            
+            // Create a minimal version that preserves essential metadata
+            const minimalProps = {
+                // Spread page content at root level to match PageComponentProps structure
+                ...propsAny,
+                type: propsAny.type || 'Page', // Ensure type is always present
+                title: propsAny.title || 'Page',
+                slug: propsAny.slug || '',
+                __metadata: {
+                    modelName: propsAny.type || 'Page',
+                    id: propsAny.__metadata?.id || 'page',
+                    ...propsAny.__metadata
+                },
+                
+                // ALWAYS use reduced global data with preserved metadata
+                global: reducedGlobal
             };
             
             // Remove large arrays but preserve essential structure and metadata
             const minimalAny = minimalProps as any;
             
-            // Keep only first few sections but preserve their metadata
-            if (propsAny.sections && Array.isArray(propsAny.sections)) {
-                minimalAny.sections = propsAny.sections.slice(0, 2).map(section => ({
-                    ...section,
-                    // Keep metadata for component functionality
-                    __metadata: section.__metadata || {},
-                    // Drastically reduce content arrays
-                    projects: section.projects?.slice(0, 2).map(project => ({
-                        ...project,
-                        __metadata: project.__metadata || {},
-                        // Remove heavy content but keep essential fields
-                        content: project.content ? 'Content truncated for memory optimization' : undefined
-                    })) || [],
-                    posts: section.posts?.slice(0, 2).map(post => ({
-                        ...post,
-                        __metadata: post.__metadata || {},
-                        // Remove heavy content but keep essential fields
-                        content: post.content ? 'Content truncated for memory optimization' : undefined
-                    })) || []
-                }));
-            }
-            
-            // Keep minimal posts/projects with metadata
-            if (propsAny.posts && Array.isArray(propsAny.posts)) {
-                minimalAny.posts = propsAny.posts.slice(0, 3).map(post => ({
-                    ...post,
-                    __metadata: post.__metadata || {},
-                    content: 'Content truncated for memory optimization'
-                }));
-            }
-            
-            if (propsAny.projects && Array.isArray(propsAny.projects)) {
-                minimalAny.projects = propsAny.projects.slice(0, 3).map(project => ({
-                    ...project,
-                    __metadata: project.__metadata || {},
-                    content: 'Content truncated for memory optimization'
-                }));
+            if (isCriticalPage) {
+                // Even for critical pages, we need aggressive reduction for memory
+                if (propsAny.sections && Array.isArray(propsAny.sections)) {
+                    minimalAny.sections = propsAny.sections.slice(0, 3).map(section => ({
+                        type: section.type || 'Section',
+                        title: section.title,
+                        subtitle: section.subtitle,
+                        __metadata: {
+                            modelName: section.type || 'Section',
+                            id: section.__metadata?.id || `section-${Math.random()}`,
+                            ...section.__metadata
+                        },
+                        // Keep minimal content for critical pages with metadata
+                        projects: section.projects?.slice(0, 3).map(project => ({
+                            type: project.type || 'Project',
+                            title: project.title,
+                            slug: project.slug,
+                            __metadata: {
+                                modelName: project.type || 'Project',
+                                id: project.__metadata?.id || project.slug,
+                                ...project.__metadata
+                            }
+                        })) || [],
+                        posts: section.posts?.slice(0, 3).map(post => ({
+                            type: post.type || 'Post',
+                            title: post.title,
+                            slug: post.slug,
+                            __metadata: {
+                                modelName: post.type || 'Post',
+                                id: post.__metadata?.id || post.slug,
+                                ...post.__metadata
+                            }
+                        })) || []
+                    }));
+                }
+                
+                // Keep minimal posts/projects for critical pages with proper metadata
+                minimalAny.posts = propsAny.posts?.slice(0, 5).map(post => ({
+                    type: post.type || 'Post',
+                    title: post.title,
+                    slug: post.slug,
+                    __metadata: {
+                        modelName: post.type || 'Post',
+                        id: post.__metadata?.id || post.slug,
+                        ...post.__metadata
+                    }
+                })) || [];
+                
+                minimalAny.projects = propsAny.projects?.slice(0, 5).map(project => ({
+                    type: project.type || 'Project',
+                    title: project.title,
+                    slug: project.slug,
+                    __metadata: {
+                        modelName: project.type || 'Project',
+                        id: project.__metadata?.id || project.slug,
+                        ...project.__metadata
+                    }
+                })) || [];
+            } else {
+                // For non-critical pages, be more aggressive
+                if (propsAny.sections && Array.isArray(propsAny.sections)) {
+                    minimalAny.sections = propsAny.sections.slice(0, 2).map(section => ({
+                        type: section.type || 'Section',
+                        title: section.title,
+                        subtitle: section.subtitle,
+                        // Keep metadata for component functionality with modelName
+                        __metadata: {
+                            modelName: section.type || 'Section',
+                            id: section.__metadata?.id || `section-${Math.random()}`,
+                            ...section.__metadata
+                        },
+                        // Drastically reduce content arrays but preserve metadata
+                        projects: section.projects?.slice(0, 2).map(project => ({
+                            type: project.type || 'Project',
+                            title: project.title,
+                            slug: project.slug,
+                            __metadata: {
+                                modelName: project.type || 'Project',
+                                id: project.__metadata?.id || project.slug,
+                                ...project.__metadata
+                            },
+                            // Remove heavy content but keep essential fields
+                            content: 'Content truncated for memory optimization'
+                        })) || [],
+                        posts: section.posts?.slice(0, 2).map(post => ({
+                            type: post.type || 'Post',
+                            title: post.title,
+                            slug: post.slug,
+                            __metadata: {
+                                modelName: post.type || 'Post',
+                                id: post.__metadata?.id || post.slug,
+                                ...post.__metadata
+                            },
+                            // Remove heavy content but keep essential fields
+                            content: 'Content truncated for memory optimization'
+                        })) || []
+                    }));
+                }
+                
+                // Keep minimal posts/projects with metadata including modelName
+                if (propsAny.posts && Array.isArray(propsAny.posts)) {
+                    minimalAny.posts = propsAny.posts.slice(0, 3).map(post => ({
+                        type: post.type || 'Post',
+                        title: post.title,
+                        slug: post.slug,
+                        __metadata: {
+                            modelName: post.type || 'Post',
+                            id: post.__metadata?.id || post.slug,
+                            ...post.__metadata
+                        },
+                        content: 'Content truncated for memory optimization'
+                    }));
+                }
+                
+                if (propsAny.projects && Array.isArray(propsAny.projects)) {
+                    minimalAny.projects = propsAny.projects.slice(0, 3).map(project => ({
+                        type: project.type || 'Project',
+                        title: project.title,
+                        slug: project.slug,
+                        __metadata: {
+                            modelName: project.type || 'Project',
+                            id: project.__metadata?.id || project.slug,
+                            ...project.__metadata
+                        },
+                        content: 'Content truncated for memory optimization'
+                    }));
+                }
             }
             
             // Remove only the heaviest content, keep structure
@@ -164,7 +314,7 @@ export function getStaticProps({ params }) {
             
             const reducedBytes = Buffer.byteLength(JSON.stringify(cleanedProps), 'utf8');
             const reducedSizeMB = reducedBytes / (1024 * 1024);
-            console.log(`›› reduced payload size: ${Math.round(reducedBytes/1024)} KB (${reducedSizeMB.toFixed(1)}MB)`);
+            console.log(`›› reduced payload size for ${urlPath}: ${Math.round(reducedBytes/1024)} KB (${reducedSizeMB.toFixed(1)}MB)`);
             
             return {
                 props: cleanedProps,

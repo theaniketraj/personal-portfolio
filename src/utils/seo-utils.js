@@ -1,7 +1,7 @@
 export function seoGenerateMetaTags(page, site) {
     let pageMetaTags = {};
 
-    if (site.defaultMetaTags?.length) {
+    if (site?.defaultMetaTags?.length) {
         site.defaultMetaTags.forEach((metaTag) => {
             pageMetaTags[metaTag.property] = metaTag.content;
         });
@@ -13,7 +13,7 @@ export function seoGenerateMetaTags(page, site) {
         ...(seoGenerateOgImage(page, site) && { 'og:image': seoGenerateOgImage(page, site) })
     };
 
-    if (page.metaTags?.length) {
+    if (page?.metaTags?.length) {
         page.metaTags.forEach((metaTag) => {
             pageMetaTags[metaTag.property] = metaTag.content;
         });
@@ -34,8 +34,8 @@ export function seoGenerateMetaTags(page, site) {
 }
 
 export function seoGenerateTitle(page, site) {
-    let title = page.metaTitle ? page.metaTitle : page.title;
-    if (site.titleSuffix && page.addTitleSuffix !== false) {
+    let title = page?.metaTitle || page?.title || 'Personal Portfolio';
+    if (site?.titleSuffix && page?.addTitleSuffix !== false) {
         title = `${title} - ${site.titleSuffix}`;
     }
     return title;
@@ -43,12 +43,13 @@ export function seoGenerateTitle(page, site) {
 
 export function seoGenerateMetaDescription(page, site) {
     let metaDescription = null;
-    // Blog posts use the exceprt as the default meta description
-    if (page.__metadata.modelName === 'PostLayout') {
+    // Blog posts use the excerpt as the default meta description
+    // Add defensive check for __metadata
+    if (page?.__metadata?.modelName === 'PostLayout') {
         metaDescription = page.excerpt;
     }
     // page metaDescription field overrides all others
-    if (page.metaDescription) {
+    if (page?.metaDescription) {
         metaDescription = page.metaDescription;
     }
     return metaDescription;
@@ -57,17 +58,18 @@ export function seoGenerateMetaDescription(page, site) {
 export function seoGenerateOgImage(page, site) {
     let ogImage = null;
     // Use the sites default og:image field
-    if (site.defaultSocialImage) {
+    if (site?.defaultSocialImage) {
         ogImage = site.defaultSocialImage;
     }
     // Blog posts use the featuredImage as the default og:image
-    if (page.__metadata.modelName === 'PostLayout') {
+    // Add defensive check for __metadata
+    if (page?.__metadata?.modelName === 'PostLayout') {
         if (page.featuredImage?.url) {
             ogImage = page.featuredImage.url;
         }
     }
     // page socialImage field overrides all others
-    if (page.socialImage) {
+    if (page?.socialImage) {
         ogImage = page.socialImage;
     }
 
