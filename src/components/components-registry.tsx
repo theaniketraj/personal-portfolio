@@ -25,18 +25,45 @@ type DynamicComponentProps = ContentObject & {
 };
 
 export const DynamicComponent: React.FC<DynamicComponentProps> = (props) => {
-    const modelName = props.type;
+    const modelName = props?.type;
 
     // Resolve component by content type
     if (!modelName) {
-        console.error('Object does not have a "type" property:', props);
-        return <div>Error: Missing component type</div>;
+        console.error('Object does not have a "type" property:', {
+            props: props,
+            propsType: typeof props,
+            propsKeys: props ? Object.keys(props) : 'props is null/undefined'
+        });
+        return <div style={{ 
+            padding: '20px', 
+            border: '2px solid red', 
+            backgroundColor: '#ffe6e6',
+            color: '#d00'
+        }}>
+            Error: Missing component type
+            <details style={{ marginTop: '10px', fontSize: '12px' }}>
+                Props: {JSON.stringify(props, null, 2)}
+            </details>
+        </div>;
     }
 
     let Component = components[modelName] as ComponentType;
     if (!Component) {
-        console.error(`No component matches type: '${modelName}'`);
-        return <div>Error: Unknown component type &quot;{modelName}&quot;</div>;
+        console.error(`No component matches type: '${modelName}'`, {
+            availableComponents: Object.keys(components),
+            requestedType: modelName
+        });
+        return <div style={{ 
+            padding: '20px', 
+            border: '2px solid orange', 
+            backgroundColor: '#fff3cd',
+            color: '#856404'
+        }}>
+            Error: Unknown component type &quot;{modelName}&quot;
+            <details style={{ marginTop: '10px', fontSize: '12px' }}>
+                Available types: {Object.keys(components).join(', ')}
+            </details>
+        </div>;
     }
 
     return (

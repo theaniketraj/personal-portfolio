@@ -1,11 +1,11 @@
-import * as fs from 'fs';
-import path from 'path';
-import glob from 'glob';
-import frontmatter from 'front-matter';
 import { allModels } from '.stackbit/models';
 import * as types from '@/types';
-import { isDev } from './common';
 import { PAGE_MODEL_NAMES, PageModelType } from '@/types/generated';
+import frontmatter from 'front-matter';
+import * as fs from 'fs';
+import glob from 'glob';
+import path from 'path';
+import { isDev } from './common';
 
 const contentBaseDir = 'content';
 const pagesBaseDir = contentBaseDir + '/pages';
@@ -41,7 +41,21 @@ function readContent(file: string): types.ContentObject {
             };
             break;
         case 'json':
-            content = JSON.parse(rawContent);
+            try {
+                content = JSON.parse(rawContent);
+            } catch (error) {
+                console.error('Failed to parse JSON content:', {
+                    file,
+                    error: error.message,
+                    rawContent: rawContent.substring(0, 100) + '...'
+                });
+                // Provide a fallback structure to prevent complete failure
+                content = {
+                    type: 'ErrorContent',
+                    title: 'Content Parse Error',
+                    message: `Failed to parse JSON for ${file}`
+                };
+            }
             break;
         default:
             throw Error(`Unhandled file type: ${file}`);
@@ -109,7 +123,9 @@ export function allContent(): types.ContentObject[] {
         obj.__metadata.urlPath = contentUrl(obj);
     });
 
-    const fileToContent: Record<string, types.ContentObject> = Object.fromEntries(objects.map((e) => [e.__metadata.id, e]));
+    const fileToContent: Record<string, types.ContentObject> = Object.fromEntries(
+        objects.map((e) => [e.__metadata.id, e])
+    );
     objects.forEach((e) => resolveReferences(e, fileToContent));
 
     objects = objects.map((e) => deepClone(e));
@@ -137,13 +153,15 @@ function annotateContentObject(o: any, prefix = '', depth = 0) {
     if (depth === 0) {
         if (o.__metadata?.id) {
             o[types.objectIdAttr] = o.__metadata.id;
-            if (logAnnotations) console.log('[annotateContentObject] added object ID:', depthPrefix, o[types.objectIdAttr]);
+            if (logAnnotations)
+                console.log('[annotateContentObject] added object ID:', depthPrefix, o[types.objectIdAttr]);
         } else {
             if (logAnnotations) console.warn('[annotateContentObject] NO object ID:', o);
         }
     } else {
         o[types.fieldPathAttr] = prefix;
-        if (logAnnotations) console.log('[annotateContentObject] added field path:', depthPrefix, o[types.fieldPathAttr]);
+        if (logAnnotations)
+            console.log('[annotateContentObject] added field path:', depthPrefix, o[types.fieldPathAttr]);
     }
 
     Object.entries(o).forEach(([k, v]) => {
@@ -162,5 +180,20 @@ function annotateContentObject(o: any, prefix = '', depth = 0) {
 }
 
 function deepClone(o: object) {
-    return JSON.parse(JSON.stringify(o));
+    try {
+        const stringified = JSON.stringify(o);
+        if (typeof stringified !== 'string') {
+            console.error('JSON.stringify returned non-string:', typeof stringified);
+            return o; // Return original object if stringify fails
+        }
+        return JSON.parse(stringified);
+    } catch (error) {
+        console.error('Deep clone failed:', {
+            error: error.message,
+            objectType: typeof o,
+            objectKeys: o ? Object.keys(o) : 'object is null/undefined'
+        });
+        // Return the original object as fallback
+        return o;
+    }
 }

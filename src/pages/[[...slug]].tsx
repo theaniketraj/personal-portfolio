@@ -46,6 +46,7 @@ const Page: React.FC<PageComponentProps> = (props) => {
     // Defensive checks to prevent runtime errors
     const global = props?.global || {} as any;
     const site = global?.site || {} as any;
+    // Page content is spread at root level in PageComponentProps
     const page = props || {} as any;
     
     // Safely generate SEO data with fallbacks
@@ -71,7 +72,7 @@ const Page: React.FC<PageComponentProps> = (props) => {
                 {site?.favicon && <link rel="icon" href={site.favicon} />}
             </Head>
             <ErrorBoundary>
-                <DynamicComponent {...props} />
+                <DynamicComponent {...page} global={global} />
             </ErrorBoundary>
         </>
     );
@@ -155,21 +156,16 @@ export function getStaticProps({ params }) {
             
             // Create a minimal version that preserves essential metadata
             const minimalProps = {
-                // Always preserve page object with metadata
-                page: {
-                    type: propsAny.page?.type || 'Page',
-                    title: propsAny.page?.title || 'Page',
-                    slug: propsAny.page?.slug || '',
-                    __metadata: {
-                        modelName: propsAny.page?.type || 'Page',
-                        id: propsAny.page?.__metadata?.id || 'page',
-                        ...propsAny.page?.__metadata
-                    },
-                    ...propsAny.page
+                // Spread page content at root level to match PageComponentProps structure
+                ...propsAny,
+                type: propsAny.type || 'Page', // Ensure type is always present
+                title: propsAny.title || 'Page',
+                slug: propsAny.slug || '',
+                __metadata: {
+                    modelName: propsAny.type || 'Page',
+                    id: propsAny.__metadata?.id || 'page',
+                    ...propsAny.__metadata
                 },
-                // Preserve site and config if they exist
-                ...(propsAny.site && { site: propsAny.site }),
-                ...(propsAny.config && { config: propsAny.config }),
                 
                 // ALWAYS use reduced global data with preserved metadata
                 global: reducedGlobal
