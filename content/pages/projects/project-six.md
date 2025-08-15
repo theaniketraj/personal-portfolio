@@ -13,7 +13,7 @@ featuredImage:
 media:
   type: ImageBlock
   url: /images/karl.jpg
-  altText: Project image
+  altText: Aniket Raj's Projects | Project KARL
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
