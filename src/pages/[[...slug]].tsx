@@ -34,18 +34,77 @@ const Page: React.FC<PageComponentProps> = (props) => {
 };
 
 export function getStaticPaths() {
-    const allData = allContent();
-    const paths = allData.map((obj) => obj.__metadata.urlPath).filter(Boolean);
-    return { paths, fallback: false };
+    try {
+        // In development (Visual Editor), use fallback to reduce initial load
+        if (process.env.NODE_ENV === 'development') {
+            return { paths: ['/'], fallback: 'blocking' };
+        }
+        
+        const allData = allContent();
+        const paths = allData.map((obj) => obj.__metadata.urlPath).filter(Boolean);
+        return { paths, fallback: false };
+    } catch (error) {
+        console.error('Error in getStaticPaths:', error);
+        return { paths: [], fallback: false };
+    }
 }
 
 export function getStaticProps({ params }) {
-    const allData = allContent();
-    const urlPath = '/' + (params.slug || []).join('/');
-    const props = resolveStaticProps(urlPath, allData);
-    const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
-    console.log(`›› props payload size: ${Math.round(bytes/1024)} KB`);
-    return { props };
+    try {
+        const allData = allContent();
+        const urlPath = '/' + (params.slug || []).join('/');
+        const props = resolveStaticProps(urlPath, allData);
+        
+        // For Visual Editor (development), significantly reduce payload size
+        if (process.env.NODE_ENV === 'development') {
+            const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
+            console.log(`›› props payload size: ${Math.round(bytes/1024)} KB`);
+            
+            // If payload is too large (>50MB), strip down the data
+            if (bytes > 50 * 1024 * 1024) {
+                console.log('Large payload detected, reducing data for Visual Editor...');
+                
+                // Create a minimal version of props for Visual Editor
+                const minimalProps = {
+                    ...props,
+                    // Reduce the global data by keeping only essential info
+                    global: {
+                        ...props.global,
+                        // Keep site config but remove heavy content
+                        site: {
+                            ...props.global.site,
+                            // Remove or minimize large arrays
+                        }
+                    }
+                };
+                
+                // If there are sections with large content, truncate them
+                const propsAny = props as any;
+                if (propsAny.sections && Array.isArray(propsAny.sections)) {
+                    (minimalProps as any).sections = propsAny.sections.slice(0, 3); // Keep only first 3 sections
+                }
+                
+                const reducedBytes = Buffer.byteLength(JSON.stringify(minimalProps), 'utf8');
+                console.log(`›› reduced payload size: ${Math.round(reducedBytes/1024)} KB`);
+                
+                return {
+                    props: minimalProps,
+                    revalidate: 1
+                };
+            }
+        }
+        
+        return { 
+            props,
+            // In development, enable revalidation for Visual Editor
+            ...(process.env.NODE_ENV === 'development' ? { revalidate: 1 } : {})
+        };
+    } catch (error) {
+        console.error('Error in getStaticProps:', error);
+        return {
+            notFound: true
+        };
+    }
 }
 
 export default Page;

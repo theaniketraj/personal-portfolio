@@ -1,7 +1,7 @@
+import { ContentObject, GlobalProps } from '@/types';
 import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
 import { Annotated } from './Annotated';
-import { ContentObject, GlobalProps } from '@/types';
 
 /**
  * Since the layout of pages is dynamic (e.g. a page can have sections of different types, sections can have blocks of various types, etc.),
@@ -29,12 +29,14 @@ export const DynamicComponent: React.FC<DynamicComponentProps> = (props) => {
 
     // Resolve component by content type
     if (!modelName) {
-        throw new Error(`Object does not have a 'type' property: ${JSON.stringify(props, null, 2)}`);
+        console.error('Object does not have a "type" property:', props);
+        return <div>Error: Missing component type</div>;
     }
 
     let Component = components[modelName] as ComponentType;
     if (!Component) {
-        throw new Error(`No component matches type: '${modelName}'`);
+        console.error(`No component matches type: '${modelName}'`);
+        return <div>Error: Unknown component type &quot;{modelName}&quot;</div>;
     }
 
     return (
