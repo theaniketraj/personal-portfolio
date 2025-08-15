@@ -42,7 +42,10 @@ metaTags:
       Kotlin | Aniket Raj's Portfolio
   - type: MetaTag
     property: 'og:description'
-    content: ''
+    content: >-
+      A deep dive into the architecture and implementation of Project KARL, an
+      open-source, on-device adaptive AI library built with Kotlin
+      Multiplatform, Jetpack Compose, KotlinDL, and Room.
   - type: MetaTag
     property: 'og:title'
     content: ''
