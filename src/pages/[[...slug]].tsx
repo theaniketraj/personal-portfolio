@@ -60,11 +60,11 @@ export function getStaticProps({ params }) {
         const sizeMB = bytes / (1024 * 1024);
         
         // Log payload size for debugging
-        console.log(`›› props payload size: ${Math.round(bytes/1024)} KB (${sizeMB.toFixed(1)}MB)`);
+        console.log(`›› props payload size for ${urlPath}: ${Math.round(bytes/1024)} KB (${sizeMB.toFixed(1)}MB)`);
         
         // If payload is too large (>25MB), strip down the data
         if (bytes > 25 * 1024 * 1024) {
-            console.log('Large payload detected, reducing data...');
+            console.log(`Large payload detected for ${urlPath}, reducing data...`);
             
             // Helper function to clean undefined values
             const cleanUndefined = (obj: any): any => {
@@ -85,72 +85,118 @@ export function getStaticProps({ params }) {
             // Type the props properly for minimal data
             const propsAny = props as any;
             
+            // For homepage and critical pages, be less aggressive
+            const isHomePage = urlPath === '/';
+            const isCriticalPage = isHomePage || urlPath === '/info';
+            
+            console.log(`Processing ${urlPath}, isHomePage: ${isHomePage}, isCriticalPage: ${isCriticalPage}`);
+            
+            // ALWAYS aggressively reduce global data regardless of page type
+            const reducedGlobal = {
+                site: {
+                    type: propsAny.global?.site?.type || 'unknown',
+                    fixedLabel: propsAny.global?.site?.fixedLabel || null,
+                    favicon: propsAny.global?.site?.favicon || null,
+                    titleSuffix: propsAny.global?.site?.titleSuffix || null,
+                    defaultSocialImage: propsAny.global?.site?.defaultSocialImage || null,
+                    defaultMetaTags: propsAny.global?.site?.defaultMetaTags?.slice(0, 3) || [],
+                    __metadata: propsAny.global?.site?.__metadata || {}
+                }
+            };
+            
             // Create a minimal version that preserves essential metadata
             const minimalProps = {
-                // Keep essential page data with metadata
+                // Always preserve the entire page object for critical pages
                 ...(propsAny.page && { 
-                    page: {
-                        ...propsAny.page,
-                        // Ensure metadata is preserved for component functionality
-                        __metadata: propsAny.page.__metadata || {}
-                    }
+                    page: propsAny.page
                 }),
                 ...(propsAny.site && { site: propsAny.site }),
                 ...(propsAny.config && { config: propsAny.config }),
                 
-                // Keep global data but reduce heavy content
-                global: {
-                    ...propsAny.global,
-                    site: {
-                        ...propsAny.global?.site,
-                        // Keep essential metadata for components
-                        __metadata: propsAny.global?.site?.__metadata || {},
-                        // Reduce defaultMetaTags but keep structure
-                        defaultMetaTags: propsAny.global?.site?.defaultMetaTags?.slice(0, 3) || []
-                    }
-                }
+                // ALWAYS use reduced global data
+                global: reducedGlobal
             };
             
             // Remove large arrays but preserve essential structure and metadata
             const minimalAny = minimalProps as any;
             
-            // Keep only first few sections but preserve their metadata
-            if (propsAny.sections && Array.isArray(propsAny.sections)) {
-                minimalAny.sections = propsAny.sections.slice(0, 2).map(section => ({
-                    ...section,
-                    // Keep metadata for component functionality
-                    __metadata: section.__metadata || {},
-                    // Drastically reduce content arrays
-                    projects: section.projects?.slice(0, 2).map(project => ({
-                        ...project,
-                        __metadata: project.__metadata || {},
-                        // Remove heavy content but keep essential fields
-                        content: project.content ? 'Content truncated for memory optimization' : undefined
-                    })) || [],
-                    posts: section.posts?.slice(0, 2).map(post => ({
+            if (isCriticalPage) {
+                // Even for critical pages, we need aggressive reduction for memory
+                if (propsAny.sections && Array.isArray(propsAny.sections)) {
+                    minimalAny.sections = propsAny.sections.slice(0, 3).map(section => ({
+                        type: section.type,
+                        title: section.title,
+                        subtitle: section.subtitle,
+                        __metadata: section.__metadata || {},
+                        // Keep minimal content for critical pages
+                        projects: section.projects?.slice(0, 3).map(project => ({
+                            type: project.type,
+                            title: project.title,
+                            slug: project.slug,
+                            __metadata: project.__metadata || {}
+                        })) || [],
+                        posts: section.posts?.slice(0, 3).map(post => ({
+                            type: post.type,
+                            title: post.title,
+                            slug: post.slug,
+                            __metadata: post.__metadata || {}
+                        })) || []
+                    }));
+                }
+                
+                // Keep minimal posts/projects for critical pages
+                minimalAny.posts = propsAny.posts?.slice(0, 5).map(post => ({
+                    type: post.type,
+                    title: post.title,
+                    slug: post.slug,
+                    __metadata: post.__metadata || {}
+                })) || [];
+                
+                minimalAny.projects = propsAny.projects?.slice(0, 5).map(project => ({
+                    type: project.type,
+                    title: project.title,
+                    slug: project.slug,
+                    __metadata: project.__metadata || {}
+                })) || [];
+            } else {
+                // For non-critical pages, be more aggressive
+                if (propsAny.sections && Array.isArray(propsAny.sections)) {
+                    minimalAny.sections = propsAny.sections.slice(0, 2).map(section => ({
+                        ...section,
+                        // Keep metadata for component functionality
+                        __metadata: section.__metadata || {},
+                        // Drastically reduce content arrays
+                        projects: section.projects?.slice(0, 2).map(project => ({
+                            ...project,
+                            __metadata: project.__metadata || {},
+                            // Remove heavy content but keep essential fields
+                            content: project.content ? 'Content truncated for memory optimization' : undefined
+                        })) || [],
+                        posts: section.posts?.slice(0, 2).map(post => ({
+                            ...post,
+                            __metadata: post.__metadata || {},
+                            // Remove heavy content but keep essential fields
+                            content: post.content ? 'Content truncated for memory optimization' : undefined
+                        })) || []
+                    }));
+                }
+                
+                // Keep minimal posts/projects with metadata
+                if (propsAny.posts && Array.isArray(propsAny.posts)) {
+                    minimalAny.posts = propsAny.posts.slice(0, 3).map(post => ({
                         ...post,
                         __metadata: post.__metadata || {},
-                        // Remove heavy content but keep essential fields
-                        content: post.content ? 'Content truncated for memory optimization' : undefined
-                    })) || []
-                }));
-            }
-            
-            // Keep minimal posts/projects with metadata
-            if (propsAny.posts && Array.isArray(propsAny.posts)) {
-                minimalAny.posts = propsAny.posts.slice(0, 3).map(post => ({
-                    ...post,
-                    __metadata: post.__metadata || {},
-                    content: 'Content truncated for memory optimization'
-                }));
-            }
-            
-            if (propsAny.projects && Array.isArray(propsAny.projects)) {
-                minimalAny.projects = propsAny.projects.slice(0, 3).map(project => ({
-                    ...project,
-                    __metadata: project.__metadata || {},
-                    content: 'Content truncated for memory optimization'
-                }));
+                        content: 'Content truncated for memory optimization'
+                    }));
+                }
+                
+                if (propsAny.projects && Array.isArray(propsAny.projects)) {
+                    minimalAny.projects = propsAny.projects.slice(0, 3).map(project => ({
+                        ...project,
+                        __metadata: project.__metadata || {},
+                        content: 'Content truncated for memory optimization'
+                    }));
+                }
             }
             
             // Remove only the heaviest content, keep structure
@@ -164,7 +210,7 @@ export function getStaticProps({ params }) {
             
             const reducedBytes = Buffer.byteLength(JSON.stringify(cleanedProps), 'utf8');
             const reducedSizeMB = reducedBytes / (1024 * 1024);
-            console.log(`›› reduced payload size: ${Math.round(reducedBytes/1024)} KB (${reducedSizeMB.toFixed(1)}MB)`);
+            console.log(`›› reduced payload size for ${urlPath}: ${Math.round(reducedBytes/1024)} KB (${reducedSizeMB.toFixed(1)}MB)`);
             
             return {
                 props: cleanedProps,
