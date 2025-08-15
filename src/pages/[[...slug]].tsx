@@ -49,18 +49,6 @@ const Page: React.FC<PageComponentProps> = (props) => {
     // Page content is spread at root level in PageComponentProps
     const page = props || {} as any;
     
-    // Debug logging for homepage
-    if (props?.type === 'PageLayout') {
-        console.log('Rendering PageLayout with:', {
-            type: props.type,
-            title: props.title,
-            sectionsCount: props.sections?.length || 0,
-            hasGlobal: !!global,
-            hasHeader: !!global?.site?.header,
-            hasFooter: !!global?.site?.footer
-        });
-    }
-    
     // Safely generate SEO data with fallbacks
     const title = seoGenerateTitle(page, site) || 'Personal Portfolio';
     const metaTags = seoGenerateMetaTags(page, site) || [];
@@ -119,8 +107,8 @@ export function getStaticProps({ params }) {
         // Log payload size for debugging
         console.log(`›› props payload size for ${urlPath}: ${Math.round(bytes/1024)} KB (${sizeMB.toFixed(1)}MB)`);
         
-        // If payload is too large (>25MB), strip down the data
-        if (bytes > 25 * 1024 * 1024) {
+        // If payload is too large (>50MB), strip down the data
+        if (bytes > 50 * 1024 * 1024) {
             console.log(`Large payload detected for ${urlPath}, reducing data...`);
             
             // Helper function to clean undefined values
@@ -145,8 +133,10 @@ export function getStaticProps({ params }) {
             // For homepage and critical pages, be less aggressive
             const isHomePage = urlPath === '/';
             const isCriticalPage = isHomePage || urlPath === '/info';
+            const isIndividualPost = urlPath.startsWith('/blog/') && urlPath !== '/blog';
+            const isIndividualProject = urlPath.startsWith('/projects/') && urlPath !== '/projects';
             
-            console.log(`Processing ${urlPath}, isHomePage: ${isHomePage}, isCriticalPage: ${isCriticalPage}`);
+            console.log(`Processing ${urlPath}, isHomePage: ${isHomePage}, isCriticalPage: ${isCriticalPage}, isIndividualPost: ${isIndividualPost}, isIndividualProject: ${isIndividualProject}`);
             
             // ALWAYS aggressively reduce global data but preserve essential metadata
             const reducedGlobal = {
@@ -192,7 +182,29 @@ export function getStaticProps({ params }) {
             // Remove large arrays but preserve essential structure and metadata
             const minimalAny = minimalProps as any;
             
-            if (isCriticalPage) {
+            // Special handling for individual posts/projects
+            if (isIndividualPost || isIndividualProject) {
+                // For individual posts/projects, strip heavy content aggressively
+                // Keep only essential page properties
+                const essentialProps = {
+                    type: propsAny.type,
+                    title: propsAny.title,
+                    slug: propsAny.slug,
+                    date: propsAny.date,
+                    author: propsAny.author,
+                    excerpt: propsAny.excerpt,
+                    featuredImage: propsAny.featuredImage,
+                    colors: propsAny.colors,
+                    backgroundImage: propsAny.backgroundImage,
+                    __metadata: propsAny.__metadata,
+                    global: reducedGlobal
+                };
+                
+                // Replace minimalAny with just essential props
+                Object.keys(minimalAny).forEach(key => delete minimalAny[key]);
+                Object.assign(minimalAny, essentialProps);
+                
+            } else if (isCriticalPage) {
                 // Even for critical pages, we need aggressive reduction for memory
                 if (propsAny.sections && Array.isArray(propsAny.sections)) {
                     minimalAny.sections = propsAny.sections.slice(0, 5).map(section => ({
@@ -224,6 +236,10 @@ export function getStaticProps({ params }) {
                             type: project.type || 'Project',
                             title: project.title,
                             slug: project.slug,
+                            description: project.description,
+                            excerpt: project.excerpt,
+                            featuredImage: project.featuredImage,
+                            date: project.date,
                             __metadata: {
                                 modelName: project.type || 'Project',
                                 id: project.__metadata?.id || project.slug,
@@ -234,6 +250,11 @@ export function getStaticProps({ params }) {
                             type: post.type || 'Post',
                             title: post.title,
                             slug: post.slug,
+                            description: post.description,
+                            excerpt: post.excerpt,
+                            featuredImage: post.featuredImage,
+                            date: post.date,
+                            author: post.author,
                             __metadata: {
                                 modelName: post.type || 'Post',
                                 id: post.__metadata?.id || post.slug,
@@ -248,6 +269,11 @@ export function getStaticProps({ params }) {
                     type: post.type || 'Post',
                     title: post.title,
                     slug: post.slug,
+                    description: post.description,
+                    excerpt: post.excerpt,
+                    featuredImage: post.featuredImage,
+                    date: post.date,
+                    author: post.author,
                     __metadata: {
                         modelName: post.type || 'Post',
                         id: post.__metadata?.id || post.slug,
@@ -259,6 +285,10 @@ export function getStaticProps({ params }) {
                     type: project.type || 'Project',
                     title: project.title,
                     slug: project.slug,
+                    description: project.description,
+                    excerpt: project.excerpt,
+                    featuredImage: project.featuredImage,
+                    date: project.date,
                     __metadata: {
                         modelName: project.type || 'Project',
                         id: project.__metadata?.id || project.slug,
@@ -266,42 +296,57 @@ export function getStaticProps({ params }) {
                     }
                 })) || [];
             } else {
-                // For non-critical pages, be more aggressive
+                // For non-critical pages, be more conservative to prevent crashes
                 if (propsAny.sections && Array.isArray(propsAny.sections)) {
-                    minimalAny.sections = propsAny.sections.slice(0, 2).map(section => ({
+                    minimalAny.sections = propsAny.sections.slice(0, 3).map(section => ({
                         type: section.type || 'Section',
                         title: section.title,
                         subtitle: section.subtitle,
+                        text: section.text,
+                        colors: section.colors,
+                        variant: section.variant,
+                        elementId: section.elementId,
+                        backgroundSize: section.backgroundSize,
+                        showDate: section.showDate,
+                        showDescription: section.showDescription,
+                        showFeaturedImage: section.showFeaturedImage,
+                        showReadMoreLink: section.showReadMoreLink,
+                        showAuthor: section.showAuthor,
+                        showExcerpt: section.showExcerpt,
+                        styles: section.styles,
+                        actions: section.actions,
                         // Keep metadata for component functionality with modelName
                         __metadata: {
                             modelName: section.type || 'Section',
                             id: section.__metadata?.id || `section-${Math.random()}`,
                             ...section.__metadata
                         },
-                        // Drastically reduce content arrays but preserve metadata
+                        // Reduce content arrays but preserve essential data
                         projects: section.projects?.slice(0, 2).map(project => ({
                             type: project.type || 'Project',
                             title: project.title,
                             slug: project.slug,
+                            description: project.description,
+                            excerpt: project.excerpt,
+                            featuredImage: project.featuredImage,
                             __metadata: {
                                 modelName: project.type || 'Project',
                                 id: project.__metadata?.id || project.slug,
                                 ...project.__metadata
-                            },
-                            // Remove heavy content but keep essential fields
-                            content: 'Content truncated for memory optimization'
+                            }
                         })) || [],
                         posts: section.posts?.slice(0, 2).map(post => ({
                             type: post.type || 'Post',
                             title: post.title,
                             slug: post.slug,
+                            description: post.description,
+                            excerpt: post.excerpt,
+                            featuredImage: post.featuredImage,
                             __metadata: {
                                 modelName: post.type || 'Post',
                                 id: post.__metadata?.id || post.slug,
                                 ...post.__metadata
-                            },
-                            // Remove heavy content but keep essential fields
-                            content: 'Content truncated for memory optimization'
+                            }
                         })) || []
                     }));
                 }
@@ -312,12 +357,15 @@ export function getStaticProps({ params }) {
                         type: post.type || 'Post',
                         title: post.title,
                         slug: post.slug,
+                        description: post.description,
+                        excerpt: post.excerpt,
+                        featuredImage: post.featuredImage,
+                        date: post.date,
                         __metadata: {
                             modelName: post.type || 'Post',
                             id: post.__metadata?.id || post.slug,
                             ...post.__metadata
-                        },
-                        content: 'Content truncated for memory optimization'
+                        }
                     }));
                 }
                 
@@ -326,12 +374,15 @@ export function getStaticProps({ params }) {
                         type: project.type || 'Project',
                         title: project.title,
                         slug: project.slug,
+                        description: project.description,
+                        excerpt: project.excerpt,
+                        featuredImage: project.featuredImage,
+                        date: project.date,
                         __metadata: {
                             modelName: project.type || 'Project',
                             id: project.__metadata?.id || project.slug,
                             ...project.__metadata
-                        },
-                        content: 'Content truncated for memory optimization'
+                        }
                     }));
                 }
             }
