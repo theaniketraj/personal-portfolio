@@ -3,9 +3,7 @@ type: ProjectLayout
 title: Project KARL
 date: '2025-08-06'
 client: Aniket Raj
-description: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+description: ''
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
