@@ -85,48 +85,75 @@ export function getStaticProps({ params }) {
             // Type the props properly for minimal data
             const propsAny = props as any;
             
-            // Create a much more aggressive minimal version
+            // Create a minimal version that preserves essential metadata
             const minimalProps = {
-                // Keep essential page data
-                ...(propsAny.page && { page: propsAny.page }),
+                // Keep essential page data with metadata
+                ...(propsAny.page && { 
+                    page: {
+                        ...propsAny.page,
+                        // Ensure metadata is preserved for component functionality
+                        __metadata: propsAny.page.__metadata || {}
+                    }
+                }),
                 ...(propsAny.site && { site: propsAny.site }),
                 ...(propsAny.config && { config: propsAny.config }),
                 
-                // Drastically reduce global data
+                // Keep global data but reduce heavy content
                 global: {
+                    ...propsAny.global,
                     site: {
-                        type: propsAny.global?.site?.type || 'unknown',
-                        fixedLabel: propsAny.global?.site?.fixedLabel || null,
-                        favicon: propsAny.global?.site?.favicon || null,
-                        titleSuffix: propsAny.global?.site?.titleSuffix || null,
-                        defaultSocialImage: propsAny.global?.site?.defaultSocialImage || null,
-                        // Remove all defaultMetaTags to save space
-                        defaultMetaTags: [],
-                        __metadata: propsAny.global?.site?.__metadata || {}
+                        ...propsAny.global?.site,
+                        // Keep essential metadata for components
+                        __metadata: propsAny.global?.site?.__metadata || {},
+                        // Reduce defaultMetaTags but keep structure
+                        defaultMetaTags: propsAny.global?.site?.defaultMetaTags?.slice(0, 3) || []
                     }
                 }
             };
             
-            // Remove large arrays completely or keep only 1-2 items
+            // Remove large arrays but preserve essential structure and metadata
             const minimalAny = minimalProps as any;
             
-            // Keep only the first section to preserve layout
+            // Keep only first few sections but preserve their metadata
             if (propsAny.sections && Array.isArray(propsAny.sections)) {
-                minimalAny.sections = [propsAny.sections[0]].filter(Boolean).map(section => ({
-                    type: section.type,
-                    title: section.title,
-                    subtitle: section.subtitle,
-                    // Remove all projects and posts arrays
-                    projects: [],
-                    posts: []
+                minimalAny.sections = propsAny.sections.slice(0, 2).map(section => ({
+                    ...section,
+                    // Keep metadata for component functionality
+                    __metadata: section.__metadata || {},
+                    // Drastically reduce content arrays
+                    projects: section.projects?.slice(0, 2).map(project => ({
+                        ...project,
+                        __metadata: project.__metadata || {},
+                        // Remove heavy content but keep essential fields
+                        content: project.content ? 'Content truncated for memory optimization' : undefined
+                    })) || [],
+                    posts: section.posts?.slice(0, 2).map(post => ({
+                        ...post,
+                        __metadata: post.__metadata || {},
+                        // Remove heavy content but keep essential fields
+                        content: post.content ? 'Content truncated for memory optimization' : undefined
+                    })) || []
                 }));
             }
             
-            // Remove all posts and projects arrays
-            minimalAny.posts = [];
-            minimalAny.projects = [];
+            // Keep minimal posts/projects with metadata
+            if (propsAny.posts && Array.isArray(propsAny.posts)) {
+                minimalAny.posts = propsAny.posts.slice(0, 3).map(post => ({
+                    ...post,
+                    __metadata: post.__metadata || {},
+                    content: 'Content truncated for memory optimization'
+                }));
+            }
             
-            // Remove all heavy content
+            if (propsAny.projects && Array.isArray(propsAny.projects)) {
+                minimalAny.projects = propsAny.projects.slice(0, 3).map(project => ({
+                    ...project,
+                    __metadata: project.__metadata || {},
+                    content: 'Content truncated for memory optimization'
+                }));
+            }
+            
+            // Remove only the heaviest content, keep structure
             delete minimalAny.markdownContent;
             delete minimalAny.allPosts;
             delete minimalAny.allProjects;
