@@ -49,6 +49,18 @@ const Page: React.FC<PageComponentProps> = (props) => {
     // Page content is spread at root level in PageComponentProps
     const page = props || {} as any;
     
+    // Debug logging for homepage
+    if (props?.type === 'PageLayout') {
+        console.log('Rendering PageLayout with:', {
+            type: props.type,
+            title: props.title,
+            sectionsCount: props.sections?.length || 0,
+            hasGlobal: !!global,
+            hasHeader: !!global?.site?.header,
+            hasFooter: !!global?.site?.footer
+        });
+    }
+    
     // Safely generate SEO data with fallbacks
     const title = seoGenerateTitle(page, site) || 'Personal Portfolio';
     const metaTags = seoGenerateMetaTags(page, site) || [];
@@ -139,30 +151,36 @@ export function getStaticProps({ params }) {
             // ALWAYS aggressively reduce global data but preserve essential metadata
             const reducedGlobal = {
                 site: {
-                    type: propsAny.global?.site?.type || 'Site',
+                    type: propsAny.global?.site?.type || 'Config',
                     fixedLabel: propsAny.global?.site?.fixedLabel || 'Personal Portfolio',
                     favicon: propsAny.global?.site?.favicon || '/favicon.svg',
                     titleSuffix: propsAny.global?.site?.titleSuffix || ' | Personal Portfolio',
                     defaultSocialImage: propsAny.global?.site?.defaultSocialImage || null,
                     defaultMetaTags: propsAny.global?.site?.defaultMetaTags?.slice(0, 3) || [],
+                    // PRESERVE HEADER AND FOOTER - Essential for layout
+                    header: propsAny.global?.site?.header || null,
+                    footer: propsAny.global?.site?.footer || null,
                     // Ensure metadata with modelName is preserved
                     __metadata: {
-                        modelName: 'Site',
+                        modelName: 'Config',
                         id: propsAny.global?.site?.__metadata?.id || 'site',
                         ...propsAny.global?.site?.__metadata
                     }
-                }
+                },
+                theme: propsAny.global?.theme || null
             };
             
             // Create a minimal version that preserves essential metadata
             const minimalProps = {
                 // Spread page content at root level to match PageComponentProps structure
                 ...propsAny,
-                type: propsAny.type || 'Page', // Ensure type is always present
+                type: propsAny.type || 'PageLayout', // Ensure type is always present
                 title: propsAny.title || 'Page',
                 slug: propsAny.slug || '',
+                colors: propsAny.colors,
+                backgroundImage: propsAny.backgroundImage,
                 __metadata: {
-                    modelName: propsAny.type || 'Page',
+                    modelName: propsAny.type || 'PageLayout',
                     id: propsAny.__metadata?.id || 'page',
                     ...propsAny.__metadata
                 },
@@ -177,10 +195,25 @@ export function getStaticProps({ params }) {
             if (isCriticalPage) {
                 // Even for critical pages, we need aggressive reduction for memory
                 if (propsAny.sections && Array.isArray(propsAny.sections)) {
-                    minimalAny.sections = propsAny.sections.slice(0, 3).map(section => ({
+                    minimalAny.sections = propsAny.sections.slice(0, 5).map(section => ({
+                        // Preserve ALL essential properties for proper rendering
                         type: section.type || 'Section',
                         title: section.title,
                         subtitle: section.subtitle,
+                        text: section.text,
+                        colors: section.colors,
+                        variant: section.variant,
+                        elementId: section.elementId,
+                        backgroundSize: section.backgroundSize,
+                        showDate: section.showDate,
+                        showDescription: section.showDescription,
+                        showFeaturedImage: section.showFeaturedImage,
+                        showReadMoreLink: section.showReadMoreLink,
+                        showAuthor: section.showAuthor,
+                        showExcerpt: section.showExcerpt,
+                        styles: section.styles,
+                        actions: section.actions,
+                        form: section.form,
                         __metadata: {
                             modelName: section.type || 'Section',
                             id: section.__metadata?.id || `section-${Math.random()}`,
@@ -315,6 +348,18 @@ export function getStaticProps({ params }) {
             const reducedBytes = Buffer.byteLength(JSON.stringify(cleanedProps), 'utf8');
             const reducedSizeMB = reducedBytes / (1024 * 1024);
             console.log(`›› reduced payload size for ${urlPath}: ${Math.round(reducedBytes/1024)} KB (${reducedSizeMB.toFixed(1)}MB)`);
+            
+            // Debug: Log the structure being passed to the component
+            if (isHomePage) {
+                console.log('Homepage reduced structure:', {
+                    type: cleanedProps.type,
+                    sectionsCount: cleanedProps.sections?.length || 0,
+                    sectionTypes: cleanedProps.sections?.map(s => s.type) || [],
+                    hasGlobal: !!cleanedProps.global,
+                    hasHeader: !!cleanedProps.global?.site?.header,
+                    hasFooter: !!cleanedProps.global?.site?.footer
+                });
+            }
             
             return {
                 props: cleanedProps,
