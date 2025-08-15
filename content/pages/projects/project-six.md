@@ -41,7 +41,7 @@ metaTags:
       Project KARL: Architecting a Privacy-First, On-Device AI Framework in
       Kotlin | Aniket Raj's Portfolio
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
