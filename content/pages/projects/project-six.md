@@ -48,5 +48,5 @@ metaTags:
       Multiplatform, Jetpack Compose, KotlinDL, and Room.
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: article
 ---
