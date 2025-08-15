@@ -10,12 +10,12 @@ const nextConfig = {
         // Memory optimizations for all builds
         config.optimization = {
             ...config.optimization,
-            concatenateModules: false,
+            concatenateModules: false
         };
-        
+
         // Limit parallelism to reduce memory usage
         config.parallelism = 1;
-        
+
         // Only apply development-specific optimizations in dev mode
         if (dev && !isServer) {
             // Split chunks more aggressively in development
