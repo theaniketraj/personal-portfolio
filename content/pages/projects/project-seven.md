@@ -69,5 +69,5 @@ metaTags:
     content: 'https://www.linkedin.com/in/theaniketraj/'
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://plugins.gradle.org/plugin/io.github.theaniketraj.scan'
 ---
