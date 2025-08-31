@@ -35,7 +35,7 @@ metaTags:
     property: 'og:title'
     content: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
