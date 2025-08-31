@@ -130,6 +130,5 @@ Project KARL demonstrates that it is feasible to build intelligent, adaptive sys
 
 ## Go-to
 
-| [Repo ↗](https://github.com/theaniketraj/VISTA) | [Portal ↗](https://plugins.gradle.org/plugin/io.github.theaniketraj.vista) | [Docs ↗](https://ceie-docs.netlify.app/) |
+| [Repo ↗](https://github.com/theaniketraj/project-karl) | [Portal ↗](https://karldocs.netlify.app/) | [Docs ↗](https://karldocs.netlify.app/docs) |
 | ----------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
-
