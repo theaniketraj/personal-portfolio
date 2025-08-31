@@ -42,7 +42,7 @@ metaTags:
       Aniket Raj's Project
   - type: MetaTag
     property: 'og:type'
-    content: ''
+    content: Article
   - type: MetaTag
     property: 'og:title'
     content: ''
