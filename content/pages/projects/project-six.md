@@ -3,20 +3,18 @@ type: ProjectLayout
 title: Project KARL
 date: '2025-08-06'
 client: Aniket Raj
-description: >-
-  An open-source Kotlin library for building privacy-first, on-device adaptive
-  AI models.
+description: KARL - Kotlin Adaptive Reasoning Learner
 featuredImage:
   type: ImageBlock
   url: /images/karl.jpg
-  altText: Aniket Raj's Projects | Project KARL
-  caption: Aniket Raj's Projects | Project KARL
+  altText: Aniket Raj's Projects | Project KARL - Kotlin Adaptive Reasoning Learner
+  caption: Aniket Raj's Projects | Project KARL - Kotlin Adaptive Reasoning Learner
   elementId: ''
 media:
   type: ImageBlock
   url: /images/karl.jpg
-  altText: Aniket Raj's Projects | Project KARL
-  caption: Aniket Raj's Projects | Project KARL
+  altText: Aniket Raj's Projects | Project KARL - Kotlin Adaptive Reasoning Learner
+  caption: Aniket Raj's Projects | Project KARL - Kotlin Adaptive Reasoning Learner
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
