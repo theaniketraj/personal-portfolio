@@ -14,7 +14,7 @@ media:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
   altText: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
-  caption: Caption of the image
+  caption: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
