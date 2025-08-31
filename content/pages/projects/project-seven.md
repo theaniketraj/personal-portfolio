@@ -42,7 +42,7 @@ metaTags:
       Aniket Raj's Project
   - type: MetaTag
     property: 'og:type'
-    content: Article
+    content: Gradle Plugin
   - type: MetaTag
     property: 'og:title'
     content: ''
