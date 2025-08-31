@@ -48,5 +48,5 @@ metaTags:
     content: 'https://theaniketraj.github.io/SCAN/'
   - type: MetaTag
     property: 'twitter:creator'
-    content: ''
+    content: devxaniket
 ---
