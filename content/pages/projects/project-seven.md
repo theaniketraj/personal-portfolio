@@ -25,4 +25,5 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 100
+metaTitle: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
 ---
