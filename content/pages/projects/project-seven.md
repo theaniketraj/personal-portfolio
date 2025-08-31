@@ -13,7 +13,7 @@ featuredImage:
 media:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Project image
+  altText: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
   caption: Caption of the image
   elementId: ''
 addTitleSuffix: true
