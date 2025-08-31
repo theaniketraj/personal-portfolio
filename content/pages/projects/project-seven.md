@@ -3,9 +3,7 @@ type: ProjectLayout
 title: SCAN
 date: '2025-08-19'
 client: Aniket Raj
-description: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+description: 'SCAN: Sensitive Code Analyzer for Nerds'
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
