@@ -103,7 +103,7 @@
                 "altText": "",
                 "url": "https://karldocs.netlify.app/",
                 "showIcon": true,
-                "icon": "arrowRight",
+                "icon": "arrowUpRight",
                 "iconPosition": "right",
                 "elementId": ""
             }
