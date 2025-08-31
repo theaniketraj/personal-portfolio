@@ -61,4 +61,7 @@ metaTags:
   - type: MetaTag
     property: 'twitter:card'
     content: summary_large_image
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
