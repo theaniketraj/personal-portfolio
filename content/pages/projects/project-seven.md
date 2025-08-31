@@ -45,7 +45,7 @@ metaTags:
     content: Gradle Plugin
   - type: MetaTag
     property: 'og:url'
-    content: ''
+    content: 'https://theaniketraj.github.io/SCAN/'
   - type: MetaTag
     property: 'og:title'
     content: ''
