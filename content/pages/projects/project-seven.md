@@ -49,4 +49,7 @@ metaTags:
   - type: MetaTag
     property: 'twitter:creator'
     content: devxaniket
+  - type: MetaTag
+    property: 'og:title'
+    content: ''
 ---
