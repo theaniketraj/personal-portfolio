@@ -41,7 +41,7 @@ metaTags:
       API keys, credentials, and other sensitive information in your codebase. |
       Aniket Raj's Project
   - type: MetaTag
-    property: 'og:title'
+    property: 'og:type'
     content: ''
   - type: MetaTag
     property: 'og:title'
