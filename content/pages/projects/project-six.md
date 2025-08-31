@@ -14,7 +14,7 @@ media:
   type: ImageBlock
   url: /images/karl.jpg
   altText: Aniket Raj's Projects | Project KARL - Kotlin Adaptive Reasoning Learner
-  caption: Aniket Raj's Projects | Project KARL
+  caption: Aniket Raj's Projects | Project KARL - Kotlin Adaptive Reasoning Learner
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
