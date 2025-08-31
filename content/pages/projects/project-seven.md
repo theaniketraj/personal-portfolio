@@ -60,5 +60,5 @@ metaTags:
       Aniket Raj's Project
   - type: MetaTag
     property: 'twitter:card'
-    content: ''
+    content: summary_large_image
 ---
