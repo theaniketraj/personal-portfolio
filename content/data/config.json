@@ -102,7 +102,7 @@
                 "label": "KARL",
                 "altText": "",
                 "url": "https://karldocs.netlify.app/",
-                "showIcon": false,
+                "showIcon": true,
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "elementId": ""
