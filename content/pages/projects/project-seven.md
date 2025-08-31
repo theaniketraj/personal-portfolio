@@ -53,7 +53,7 @@ metaTags:
     property: 'twitter:title'
     content: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:description'
     content: ''
   - type: MetaTag
     property: 'og:title'
