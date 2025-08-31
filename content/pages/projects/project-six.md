@@ -127,3 +127,8 @@ This project has been an incredible learning experience in software architecture
 *   **Broader KMP Support:** Extending the core functionalities and providing reference implementations for Android and iOS.
 
 Project KARL demonstrates that it is feasible to build intelligent, adaptive systems that respect user privacy by design. It represents my passion for tackling complex architectural challenges and my commitment to building high-quality, well-documented, and forward-thinking software.
+
+## Go-to
+
+| [Repo ↗](https://github.com/theaniketraj/project-karl) | [Portal ↗](https://karldocs.netlify.app/) | [Docs ↗](https://karldocs.netlify.app/docs) |
+| ----------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
