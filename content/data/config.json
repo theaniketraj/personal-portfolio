@@ -116,6 +116,16 @@
                 "icon": "arrowUpRight",
                 "iconPosition": "right",
                 "elementId": ""
+            },
+            {
+                "type": "Link",
+                "label": "Learn more",
+                "altText": "",
+                "url": "https://karldocs.netlify.app/",
+                "showIcon": false,
+                "icon": "arrowRight",
+                "iconPosition": "right",
+                "elementId": ""
             }
         ],
         "contacts": {
