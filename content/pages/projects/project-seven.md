@@ -47,6 +47,6 @@ metaTags:
     property: 'og:url'
     content: 'https://theaniketraj.github.io/SCAN/'
   - type: MetaTag
-    property: 'og:title'
+    property: 'twitter:card'
     content: ''
 ---
