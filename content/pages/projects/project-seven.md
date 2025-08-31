@@ -26,4 +26,8 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 100
 metaTitle: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
+metaDescription: >-
+  SCAN is an intelligent Gradle plugin that automatically detects secrets, API
+  keys, credentials, and other sensitive information in your codebase. | Aniket
+  Raj's Project
 ---
