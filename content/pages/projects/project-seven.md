@@ -24,7 +24,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 80
 metaTitle: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
 metaDescription: >-
   SCAN is an intelligent Gradle plugin that automatically detects secrets, API
