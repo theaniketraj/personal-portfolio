@@ -155,29 +155,29 @@ The project demonstrates excellent software engineering practices with a well-or
 
 **Plugin Layer** (plugin):
 
-*   `ScanPlugin.kt`: Main plugin entry point and Gradle integration
+*   ScanPlugin: Main plugin entry point and Gradle integration
 
-*   `ScanTask.kt`: Primary scanning task implementation
+*   ScanTask: Primary scanning task implementation
 
-*   `ScanExtension.kt`: Configuration DSL for build scripts
+*   ScanExtension: Configuration DSL for build scripts
 
 **Detection Engine** (core):
 
-*   `ScanEngine.kt`: Orchestrates the scanning process
+*   ScanEngine: Orchestrates the scanning process
 
-*   `FileScanner.kt`: Handles individual file processing
+*   FileScanner: Handles individual file processing
 
-*   `ScanResult.kt`: Models for scan results and findings
+*   ScanResult: Models for scan results and findings
 
 **Detection Strategies** (detectors):
 
-*   `PatternDetector.kt`: Regex-based pattern matching
+*   PatternDetector: Regex-based pattern matching
 
-*   `EntropyDetector.kt`: Mathematical entropy analysis
+*   EntropyDetector: Mathematical entropy analysis
 
-*   `ContextAwareDetector.kt`: Intelligent context analysis
+*   ContextAwareDetector: Intelligent context analysis
 
-*   `CompositeDetector.kt`: Combines multiple detection methods
+*   CompositeDetector: Combines multiple detection methods
 
 **Pattern Management** (patterns):
 
@@ -408,4 +408,3 @@ The project stands as a testament to how thoughtful engineering, comprehensive t
 
 | [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://theaniketraj.github.io/SCAN/) | [Docs ↗](https://theaniketraj.github.io/SCAN/docs) |
 | ---------------------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
-
