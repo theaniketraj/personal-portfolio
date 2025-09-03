@@ -75,7 +75,7 @@ metaTags:
 
 ## Overview
 
-SCAN (Sensitive Code Analyzer for Nerds) is an intelligent Gradle plugin designed to automatically detect secrets, API keys, credentials, and other sensitive information in codebases. Developed by Aniket Raj and available on the Gradle Plugin Portal, SCAN serves as a critical security tool that integrates seamlessly into modern development workflows to prevent accidental exposure of sensitive data.
+SCAN (Sensitive Code Analyzer for Nerds) is an intelligent Gradle plugin designed to automatically detect secrets, API keys, credentials, and other sensitive information in codebases. SCAN serves as a critical security tool that integrates seamlessly into modern development workflows to prevent accidental exposure of sensitive data.
 
 ## Project Mission and Core Purpose
 
@@ -407,4 +407,5 @@ The project stands as a testament to how thoughtful engineering, comprehensive t
 ## Go-to
 
 | [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://theaniketraj.github.io/SCAN/) | [Docs ↗](https://theaniketraj.github.io/SCAN/docs) |
-| ---------------------------------------------- | ------------------------------------------------ | ------------------------------------------- |
+| ---------------------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
+
