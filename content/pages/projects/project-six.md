@@ -24,7 +24,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 49
+  opacity: 50
 metaTitle: >-
   Project KARL: Architecting a Privacy-First, On-Device AI Framework in Kotlin |
   Aniket Raj's Portfolio
