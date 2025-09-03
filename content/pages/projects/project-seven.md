@@ -235,9 +235,6 @@ scan
   // Environment-specific behavior
   failOnSecrets = System.getenv("CI") == "true"
   generateJsonReport = true
-```
-
-```
 }
 ```
 
