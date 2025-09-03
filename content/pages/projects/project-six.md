@@ -20,11 +20,11 @@ addTitleSuffix: true
 colors: colors-a
 backgroundImage:
   type: BackgroundImage
-  url: /images/bg2.jpg
+  url: /images/karl-bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 40
 metaTitle: >-
   Project KARL: Architecting a Privacy-First, On-Device AI Framework in Kotlin |
   Aniket Raj's Portfolio
