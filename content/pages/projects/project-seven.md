@@ -147,7 +147,104 @@ SCAN is engineered for performance and efficiency:
 
 *   **Caching System**: Maintains file checksums to skip unchanged files
 
+## Project Structure and Technical Implementation
+
+The project demonstrates excellent software engineering practices with a well-organized, modular structure:
+
+### Core Components
+
+**Plugin Layer** ([plugin](vscode-file://vscode-app/c:/Users/annii/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)):
+
+*   `ScanPlugin.kt`: Main plugin entry point and Gradle integration
+
+*   `ScanTask.kt`: Primary scanning task implementation
+
+*   `ScanExtension.kt`: Configuration DSL for build scripts
+
+**Detection Engine** ([core](vscode-file://vscode-app/c:/Users/annii/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)):
+
+*   `ScanEngine.kt`: Orchestrates the scanning process
+
+*   `FileScanner.kt`: Handles individual file processing
+
+*   `ScanResult.kt`: Models for scan results and findings
+
+**Detection Strategies** ([detectors](vscode-file://vscode-app/c:/Users/annii/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)):
+
+*   `PatternDetector.kt`: Regex-based pattern matching
+
+*   `EntropyDetector.kt`: Mathematical entropy analysis
+
+*   `ContextAwareDetector.kt`: Intelligent context analysis
+
+*   `CompositeDetector.kt`: Combines multiple detection methods
+
+**Pattern Management** ([patterns](vscode-file://vscode-app/c:/Users/annii/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)):
+
+*   Organized pattern libraries for different secret types
+
+*   Extensible system for custom organizational patterns
+
+### Technology Stack
+
+The project leverages modern JVM technologies:
+
+*   **Kotlin 2.0.20**: Modern, expressive language with excellent Java interoperability
+
+*   **Gradle 8.x**: Latest build tool features and performance optimizations
+
+*   **Kotlinx Serialization**: Efficient JSON/YAML processing
+
+*   **Jackson**: Comprehensive data format support
+
+*   **JUnit 5 + Kotest**: Modern testing frameworks with property-based testing
+
+*   **Detekt + Spotless**: Code quality and formatting tools
+
+## Configuration and Customization
+
+### Zero-Configuration Approach
+
+SCAN follows the principle of "sensible defaults" - it works immediately upon installation:
+
+
+```
+plugins 
+{
+  id("io.github.theaniketraj.scan") version "2.0.0"
+}
+```
 
 
 
+Simply running `./gradlew scanForSecrets` begins scanning with intelligent defaults.
+
+### Flexible Configuration Options
+
+For teams requiring customization, SCAN offers extensive configuration capabilities:
+
+```
+scan 
+{
+  // Detection sensitivity
+  strictMode = true
+  entropyThreshold = 4.5
+  contextAwareScanning = true
+```
+
+```
+  // Custom organizational patterns
+  customPatterns = listOf(
+      "COMPANY_API_[A-Z0-9]{32}",
+      "INTERNAL_SECRET_[a-f0-9]{64}"
+  )
+
+  // Environment-specific behavior
+  failOnSecrets = System.getenv("CI") == "true"
+  generateJsonReport = true
+```
+
+```
+}
+```
 
