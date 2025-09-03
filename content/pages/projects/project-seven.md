@@ -12,7 +12,7 @@ featuredImage:
   elementId: ''
 media:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/scan-featured.jpg
   altText: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
   caption: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
   elementId: ''
