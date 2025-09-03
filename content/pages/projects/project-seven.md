@@ -303,6 +303,26 @@ SCAN integrates naturally with Gradle's task lifecycle:
 ./gradlew scanForSecrets
 ```
 
+### CI/CD Platform Support
+
+Ready-to-use configurations for popular CI/CD platforms:
+
+**GitHub Actions**:
+
+```
+- name: Run Security Scan
+  run: ./gradlew scanForSecrets
+```
+
+**Jenkins Pipeline**:
+```
+stage('Security Scan') {
+    steps {
+        sh './gradlew scanForSecrets'
+    }
+}
+```
+
 ### IDE Integration
 
 SCAN generates IDE-compatible output formats:
