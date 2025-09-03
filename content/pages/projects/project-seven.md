@@ -71,3 +71,83 @@ metaTags:
     property: 'og:url'
     content: 'https://plugins.gradle.org/plugin/io.github.theaniketraj.scan'
 ---
+# SCAN: A Comprehensive Security Scanning Plugin for the Gradle Ecosystem
+
+## Overview
+
+SCAN (Sensitive Code Analyzer for Nerds) is an intelligent Gradle plugin designed to automatically detect secrets, API keys, credentials, and other sensitive information in codebases. Developed by Aniket Raj and available on the Gradle Plugin Portal, SCAN serves as a critical security tool that integrates seamlessly into modern development workflows to prevent accidental exposure of sensitive data.
+
+## Project Mission and Core Purpose
+
+The primary mission of SCAN is to act as the first line of defense against security incidents by catching sensitive data before it reaches version control systems. In an era where data breaches and security vulnerabilities are increasingly costly and damaging, SCAN provides developers with an automated, intelligent solution that:
+
+*   **Prevents Security Leaks**: Stops builds when sensitive data is detected, preventing accidental commits of secrets
+
+*   **Integrates Naturally**: Works within existing Gradle workflows without disrupting development processes
+
+*   **Provides Actionable Intelligence**: Offers detailed context about findings to help developers understand and remediate issues
+
+*   **Scales Effectively**: Optimized for both small projects and large enterprise codebases
+
+## Technical Architecture and Innovation
+
+### Multi-Layered Detection Engine
+
+SCAN employs a sophisticated, three-pronged detection strategy that sets it apart from traditional security scanning tools:
+
+#### 1. Pattern Recognition System
+
+The plugin utilizes carefully crafted regex patterns to identify known secret formats across a comprehensive range of services and platforms. The pattern library includes:
+
+*   **Cloud Provider Credentials**: AWS Access Keys, Google Cloud Platform API keys, Azure storage connection strings
+
+*   **Version Control Tokens**: GitHub personal access tokens, GitLab tokens, Bitbucket app passwords
+
+*   **Database Credentials**: JDBC connection strings, MongoDB URLs, Redis connections
+
+*   **API Keys**: Slack tokens, Stripe keys, OpenAI API keys, Twitter API credentials
+
+*   **Cryptographic Keys**: PEM private keys, SSH keys, JWT tokens
+
+#### 2. Entropy Analysis Engine
+
+Beyond pattern matching, SCAN implements mathematical entropy analysis to identify random-looking strings that could be secrets:
+
+*   Uses Shannon entropy calculation to detect high-randomness strings
+
+*   Configurable thresholds to balance sensitivity versus false positives
+
+*   Supports multiple character sets (base64, hexadecimal, alphanumeric)
+
+*   Identifies obfuscated or encoded credentials that might bypass pattern detection
+
+#### 3. Context-Aware Intelligence
+
+The most innovative aspect of SCAN is its context-aware detection system:
+
+*   Analyzes variable names, comments, and surrounding code structure
+
+*   Differentiates between legitimate secrets and test data
+
+*   Reduces false positives by understanding code context
+
+*   Considers file paths and naming conventions in confidence scoring
+
+### Performance and Scalability Architecture
+
+SCAN is engineered for performance and efficiency:
+
+*   **Parallel Processing**: Concurrent file scanning when resources allow
+
+*   **Memory Efficiency**: Streams large files without loading them entirely into memory
+
+*   **Smart Filtering**: Focuses on relevant file types and skips binary/generated content
+
+*   **Incremental Scanning**: Can target only changed files in CI environments
+
+*   **Caching System**: Maintains file checksums to skip unchanged files
+
+
+
+
+
