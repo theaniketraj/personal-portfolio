@@ -288,6 +288,41 @@ The project follows modern DevOps practices:
 
 *   Comprehensive documentation and examples
 
+## Integration and Ecosystem Compatibility
+
+### Build System Integration
+
+SCAN integrates naturally with Gradle's task lifecycle:
+
+```
+// Automatic integration
+./gradlew build        // Includes security scanning
+./gradlew check        // Includes security verification
+
+// Manual execution
+./gradlew scanForSecrets
+```
+
+### CI/CD Platform Support
+
+Ready-to-use configurations for popular CI/CD platforms:
+
+**GitHub Actions**:
+
+```
+- name: Run Security Scan
+  run: ./gradlew scanForSecrets
+```
+
+**Jenkins Pipeline**:
+```
+stage('Security Scan') {
+    steps {
+        sh './gradlew scanForSecrets'
+    }
+}
+```
+
 ### IDE Integration
 
 SCAN generates IDE-compatible output formats:
@@ -408,3 +443,4 @@ The project stands as a testament to how thoughtful engineering, comprehensive t
 
 | [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://theaniketraj.github.io/SCAN/) | [Docs ↗](https://theaniketraj.github.io/SCAN/docs) |
 | ---------------------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
+
