@@ -404,5 +404,7 @@ For development teams serious about security, SCAN offers a mature, well-enginee
 
 The project stands as a testament to how thoughtful engineering, comprehensive testing, and community-focused development can create tools that solve real-world problems while advancing the state of the art in software security.
 
+## Go-to
 
-
+| [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://theaniketraj.github.io/SCAN/) | [Docs ↗](https://karldocs.netlify.app/docs) |
+| ------------------------------------------------------ | ----------------------------------------- | ------------------------------------------- |
