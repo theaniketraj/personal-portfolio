@@ -153,7 +153,7 @@ The project demonstrates excellent software engineering practices with a well-or
 
 ### Core Components
 
-**Plugin Layer** ([plugin](vscode-file://vscode-app/c:/Users/annii/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)):
+**Plugin Layer** (plugin):
 
 *   `ScanPlugin.kt`: Main plugin entry point and Gradle integration
 
@@ -161,7 +161,7 @@ The project demonstrates excellent software engineering practices with a well-or
 
 *   `ScanExtension.kt`: Configuration DSL for build scripts
 
-**Detection Engine** ([core](vscode-file://vscode-app/c:/Users/annii/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)):
+**Detection Engine** (core):
 
 *   `ScanEngine.kt`: Orchestrates the scanning process
 
@@ -169,7 +169,7 @@ The project demonstrates excellent software engineering practices with a well-or
 
 *   `ScanResult.kt`: Models for scan results and findings
 
-**Detection Strategies** ([detectors](vscode-file://vscode-app/c:/Users/annii/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)):
+**Detection Strategies** (detectors):
 
 *   `PatternDetector.kt`: Regex-based pattern matching
 
@@ -179,7 +179,7 @@ The project demonstrates excellent software engineering practices with a well-or
 
 *   `CompositeDetector.kt`: Combines multiple detection methods
 
-**Pattern Management** ([patterns](vscode-file://vscode-app/c:/Users/annii/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)):
+**Pattern Management** (patterns):
 
 *   Organized pattern libraries for different secret types
 
@@ -207,15 +207,12 @@ The project leverages modern JVM technologies:
 
 SCAN follows the principle of "sensible defaults" - it works immediately upon installation:
 
-
 ```
 plugins 
 {
   id("io.github.theaniketraj.scan") version "2.0.0"
 }
 ```
-
-
 
 Simply running `./gradlew scanForSecrets` begins scanning with intelligent defaults.
 
@@ -230,15 +227,11 @@ scan
   strictMode = true
   entropyThreshold = 4.5
   contextAwareScanning = true
-```
-
-```
   // Custom organizational patterns
   customPatterns = listOf(
       "COMPANY_API_[A-Z0-9]{32}",
       "INTERNAL_SECRET_[a-f0-9]{64}"
   )
-
   // Environment-specific behavior
   failOnSecrets = System.getenv("CI") == "true"
   generateJsonReport = true
