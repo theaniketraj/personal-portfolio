@@ -406,5 +406,5 @@ The project stands as a testament to how thoughtful engineering, comprehensive t
 
 ## Go-to
 
-| [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://theaniketraj.github.io/SCAN/) | [Docs ↗](https://karldocs.netlify.app/docs) |
-| ------------------------------------------------------ | ----------------------------------------- | ------------------------------------------- |
+| [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://theaniketraj.github.io/SCAN/) | [Docs ↗](https://theaniketraj.github.io/SCAN/docs) |
+| ---------------------------------------------- | ------------------------------------------------ | ------------------------------------------- |
