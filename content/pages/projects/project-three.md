@@ -6,7 +6,7 @@ client: Aniket Raj
 description: 'CEIE: Controlled & Isolated Environment for Efficient Git Workflow'
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/git-setup-ceie-featured.jpg
   altText: >-
     GIT SETUP CEIE | Smart Git Workflow Automation for Teams | Aniket Raj's
     Project
