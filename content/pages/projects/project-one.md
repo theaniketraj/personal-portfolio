@@ -8,7 +8,7 @@ description: >-
   dispensing.
 featuredImage:
   type: ImageBlock
-  url: /images/bg2.jpg
+  url: /images/plastecure-featured.jpg
   altText: >-
     Plastecure | Smart Plastic Waste Dispensing & Management | Aniket Raj's
     Project
