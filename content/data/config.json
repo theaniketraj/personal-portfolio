@@ -110,7 +110,7 @@
             {
                 "type": "Link",
                 "label": "CV",
-                "altText": "",
+                "altText": "Circum'Vitae",
                 "url": "https://theaniketraj.github.io/vitae",
                 "showIcon": false,
                 "icon": "arrowRight",
