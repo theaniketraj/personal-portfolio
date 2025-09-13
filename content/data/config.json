@@ -89,6 +89,16 @@
             },
             {
                 "type": "Link",
+                "label": "CV",
+                "altText": "Curriculum Vitae",
+                "url": "https://theaniketraj.github.io/vitae",
+                "showIcon": false,
+                "icon": "arrowRight",
+                "iconPosition": "right",
+                "elementId": ""
+            },
+            {
+                "type": "Link",
                 "label": "NEXTVAULT",
                 "altText": "NextVault",
                 "url": "https://nxtvault.netlify.app",
