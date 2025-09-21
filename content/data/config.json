@@ -80,15 +80,6 @@
             },
             {
                 "type": "Link",
-                "label": "CEIE",
-                "url": "https://ceie-docs.netlify.app",
-                "altText": "CEIE",
-                "showIcon": true,
-                "icon": "arrowUpRight",
-                "iconPosition": "right"
-            },
-            {
-                "type": "Link",
                 "label": "VERSENOVA",
                 "altText": "versenova",
                 "url": "https://versenova.netlify.app",
