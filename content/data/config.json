@@ -90,16 +90,6 @@
             },
             {
                 "type": "Link",
-                "label": "NEXTVAULT",
-                "altText": "NextVault",
-                "url": "https://nxtvault.netlify.app",
-                "showIcon": true,
-                "icon": "arrowUpRight",
-                "iconPosition": "right",
-                "elementId": ""
-            },
-            {
-                "type": "Link",
                 "label": "KARL",
                 "altText": "",
                 "url": "https://karldocs.netlify.app/",
