@@ -52,12 +52,6 @@
         "primaryLinks": [
             {
                 "type": "Link",
-                "label": "Info",
-                "url": "/info",
-                "altText": ""
-            },
-            {
-                "type": "Link",
                 "label": "CV",
                 "altText": "Curriculum Vitae",
                 "url": "https://theaniketraj.github.io/vitae",
@@ -65,6 +59,12 @@
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "elementId": ""
+            },
+            {
+                "type": "Link",
+                "label": "Info",
+                "url": "/info",
+                "altText": ""
             },
             {
                 "type": "Link",
