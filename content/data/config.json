@@ -64,6 +64,16 @@
             },
             {
                 "type": "Link",
+                "label": "CV",
+                "altText": "Curriculum Vitae",
+                "url": "https://theaniketraj.github.io/vitae",
+                "showIcon": false,
+                "icon": "arrowRight",
+                "iconPosition": "right",
+                "elementId": ""
+            },
+            {
+                "type": "Link",
                 "label": "Blog",
                 "url": "/blog",
                 "altText": ""
@@ -84,16 +94,6 @@
                 "url": "https://versenova.netlify.app",
                 "showIcon": true,
                 "icon": "arrowUpRight",
-                "iconPosition": "right",
-                "elementId": ""
-            },
-            {
-                "type": "Link",
-                "label": "CV",
-                "altText": "Curriculum Vitae",
-                "url": "https://theaniketraj.github.io/vitae",
-                "showIcon": false,
-                "icon": "arrowRight",
                 "iconPosition": "right",
                 "elementId": ""
             },
