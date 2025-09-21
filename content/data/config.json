@@ -58,12 +58,6 @@
             },
             {
                 "type": "Link",
-                "label": "Contact",
-                "url": "mailto:theaniketraj@hotmail.com",
-                "altText": ""
-            },
-            {
-                "type": "Link",
                 "label": "CV",
                 "altText": "Curriculum Vitae",
                 "url": "https://theaniketraj.github.io/vitae",
@@ -71,6 +65,12 @@
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "elementId": ""
+            },
+            {
+                "type": "Link",
+                "label": "Contact",
+                "url": "mailto:theaniketraj@hotmail.com",
+                "altText": ""
             },
             {
                 "type": "Link",
