@@ -2,9 +2,7 @@
 type: PostLayout
 title: 'Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires'
 date: '2025-09-23'
-excerpt: >-
-  Nunc rutrum felis dui, ut consequat sapien scelerisque vel. Integer
-  condimentum dignissim justo vel faucibus.
+excerpt: ''
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
