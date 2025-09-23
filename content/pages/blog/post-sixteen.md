@@ -8,7 +8,9 @@ excerpt: >-
 featuredImage:
   type: ImageBlock
   url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
-  altText: Post thumbnail image
+  altText: >-
+    Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires | Aniket
+    Raj's Tech Blog
   caption: Caption of the image
   elementId: ''
 media:
