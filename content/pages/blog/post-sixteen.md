@@ -11,7 +11,9 @@ featuredImage:
   altText: >-
     Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires | Aniket
     Raj's Tech Blog
-  caption: Caption of the image
+  caption: >-
+    Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires | Aniket
+    Raj's Tech Blog
   elementId: ''
 media:
   type: ImageBlock
