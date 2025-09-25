@@ -5,7 +5,7 @@ date: '2025-09-23'
 excerpt: ''
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/tech-stack-featured.png
   altText: >-
     Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires | Aniket
     Raj's Tech Blog
@@ -15,7 +15,7 @@ featuredImage:
   elementId: ''
 media:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/tech-stack-featured.png
   altText: >-
     Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires | Aniket
     Raj's Tech Blog
@@ -27,11 +27,11 @@ addTitleSuffix: true
 colors: colors-a
 backgroundImage:
   type: BackgroundImage
-  url: /images/bg2.jpg
+  url: /images/tech-stack-bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 100
+  opacity: 50
 author: content/data/team/aniket-raj.json
 ---
 ## Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires
