@@ -7,7 +7,6 @@ const nextConfig = {
     reactStrictMode: true,
 
     // Performance optimizations
-    swcMinify: true,
     compress: true,
     poweredByHeader: false,
 
@@ -84,25 +83,22 @@ const nextConfig = {
         return config;
     },
 
+    // Modular imports optimization (moved out of experimental for Next.js 15)
+    modularizeImports: {
+        dayjs: {
+            transform: 'dayjs/{{member}}'
+        }
+    },
+
     experimental: {
         largePageDataBytes: 128 * 1024, // Reduce to 128KB max per page
         // Development optimizations
         ...(process.env.NODE_ENV === 'development'
             ? {
                   workerThreads: false,
-                  cpus: 1,
-                  optimizeCss: false,
-                  // Enable ISR in development for faster rebuilds
-                  fallbackBlockingMode: 'blocking'
+                  cpus: 1
               }
-            : {
-                  // Production optimizations
-                  modularizeImports: {
-                      dayjs: {
-                          transform: 'dayjs/{{member}}'
-                      }
-                  }
-              })
+            : {})
     }
 };
 

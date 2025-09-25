@@ -80,53 +80,106 @@ const Page: React.FC<PageComponentProps> = (props) => {
 
 export function getStaticPaths() {
     try {
-        // In development, only generate essential paths
+        // In development, only generate essential paths to speed up dev server
         if (process.env.NODE_ENV === 'development') {
+            const essentialPaths = [
+                { params: { slug: [] } }, // Homepage
+                { params: { slug: ['info'] } },
+                { params: { slug: ['blog'] } },
+                { params: { slug: ['projects'] } }
+            ];
+
             return {
-                paths: ['/', '/info', '/blog'].map(path => ({ params: { slug: path === '/' ? [] : path.split('/').filter(Boolean) } })),
+                paths: essentialPaths,
                 fallback: 'blocking'
             };
         }
 
-        // In production, be more selective about which paths to pre-generate
+        // In production, pre-generate critical pages only
         const allData = allContent();
-        const criticalPaths = allData
+
+        // Filter for valid pages with proper metadata
+        const validPages = allData.filter((obj) => {
+            const path = obj?.__metadata?.urlPath;
+            return path && typeof path === 'string';
+        });
+
+        const criticalPaths = validPages
             .filter((obj) => {
                 const path = obj.__metadata.urlPath;
-                return path === '/' ||
-                    path === '/info' ||
-                    path === '/blog' ||
-                    path === '/projects' ||
-                    (path?.startsWith('/blog/') && (obj as any).date && new Date((obj as any).date) > new Date(Date.now() - 180 * 24 * 60 * 60 * 1000)); // Recent posts only
+                const isHomePage = path === '/';
+                const isStaticPage = path === '/info' || path === '/blog' || path === '/projects';
+                const isRecentPost = path?.startsWith('/blog/') &&
+                    path !== '/blog' &&
+                    (obj as any).date &&
+                    new Date((obj as any).date) > new Date(Date.now() - 90 * 24 * 60 * 60 * 1000); // Recent posts within 90 days
+
+                return isHomePage || isStaticPage || isRecentPost;
             })
-            .map((obj) => ({
-                params: {
-                    slug: obj.__metadata.urlPath === '/' ? [] : obj.__metadata.urlPath.split('/').filter(Boolean)
-                }
-            }));
+            .map((obj) => {
+                const path = obj.__metadata.urlPath;
+                const slug = path === '/' ? [] : path.split('/').filter(Boolean);
+
+                return {
+                    params: { slug }
+                };
+            })
+            .filter((pathObj) => pathObj.params.slug !== undefined); // Ensure slug is defined
+
+        // Ensure we always have at least the homepage
+        if (criticalPaths.length === 0) {
+            criticalPaths.push({ params: { slug: [] } });
+        }
 
         return {
             paths: criticalPaths,
-            fallback: 'blocking' // Use ISR for other pages
+            fallback: 'blocking' // Use ISR for non-critical pages
         };
     } catch (error) {
         console.error('Error in getStaticPaths:', error);
-        return { paths: [{ params: { slug: [] } }], fallback: 'blocking' };
+        // Fallback to minimal paths on error
+        return {
+            paths: [
+                { params: { slug: [] } }, // Homepage
+                { params: { slug: ['info'] } }
+            ],
+            fallback: 'blocking'
+        };
     }
 }
 
 export function getStaticProps({ params }) {
     try {
+        // Safely handle params and construct URL path
+        const slug = params?.slug || [];
+        const urlPath = '/' + (Array.isArray(slug) ? slug.join('/') : '');
+
+        console.log(`🔍 Generating page for: ${urlPath}`);
+
+        // Load all content data
         const allData = allContent();
-        const urlPath = '/' + (params.slug || []).join('/');
+
+        // Validate that we have data
+        if (!allData || !Array.isArray(allData)) {
+            console.error('❌ No content data available');
+            return { notFound: true };
+        }
+
+        // Generate optimized props
         const props = createOptimizedProps(urlPath, allData);
+
+        // Validate props structure
+        if (!props || typeof props !== 'object') {
+            console.error(`❌ Invalid props generated for ${urlPath}`);
+            return { notFound: true };
+        }
 
         // Log payload size for monitoring
         const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
         const sizeMB = bytes / (1024 * 1024);
         console.log(`✓ Optimized payload for ${urlPath}: ${Math.round(bytes / 1024)} KB (${sizeMB.toFixed(1)}MB)`);
 
-        // Determine revalidation strategy
+        // Determine revalidation strategy based on page type
         const isStaticPage = urlPath === '/' || urlPath === '/info';
         const isBlogPost = urlPath.startsWith('/blog/') && urlPath !== '/blog';
         const isProject = urlPath.startsWith('/projects/') && urlPath !== '/projects';
@@ -149,9 +202,12 @@ export function getStaticProps({ params }) {
         };
 
     } catch (error) {
-        console.error('Error in getStaticProps:', error);
+        console.error(`❌ Error in getStaticProps for ${params?.slug || 'unknown'}:`, error);
+
+        // Return a more informative error response
         return {
-            notFound: true
+            notFound: true,
+            revalidate: 60 // Try again in 1 minute on error
         };
     }
 }
