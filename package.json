@@ -2,11 +2,14 @@
     "name": "personal-site",
     "version": "0.2.0",
     "scripts": {
-        "dev": "next dev",
-        "dev:stackbit": "next dev --port 3000",
+        "dev": "next dev --turbo",
+        "dev:stackbit": "next dev --port 3000 --turbo",
         "build": "next build",
+        "build:analyze": "next build",
         "build:netlify": "next build",
-        "start": "next start"
+        "start": "next start",
+        "lint": "next lint",
+        "clean": "rm -rf .next"
     },
     "dependencies": {
         "@netlify/plugin-nextjs": "^5.12.0",
@@ -29,6 +32,7 @@
         "@types/glob": "^8.1.0",
         "@types/react": "^19.0.1",
         "@types/react-syntax-highlighter": "^15.5.13",
+        "cross-env": "^10.0.0",
         "eslint": "^9.21.0",
         "eslint-config-next": "^15.2.0",
         "js-yaml": "^4.1.0",
