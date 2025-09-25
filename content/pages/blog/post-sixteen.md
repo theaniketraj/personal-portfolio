@@ -5,7 +5,7 @@ date: '2025-09-23'
 excerpt: ''
 featuredImage:
   type: ImageBlock
-  url: 'https://assets.stackbit.com/components/images/default/post-4.jpeg'
+  url: /images/tech-stack-featured.png
   altText: >-
     Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires | Aniket
     Raj's Tech Blog
