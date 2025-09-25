@@ -31,7 +31,7 @@ backgroundImage:
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 70
+  opacity: 50
 author: content/data/team/aniket-raj.json
 ---
 ## Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires
