@@ -4,8 +4,8 @@ import React from 'react';
 import { DynamicComponent } from '@/components/components-registry';
 import { PageComponentProps } from '@/types';
 import { allContent } from '@/utils/content';
-import { createOptimizedProps } from '@/utils/optimized-props';
 import { seoGenerateMetaDescription, seoGenerateMetaTags, seoGenerateTitle } from '@/utils/seo-utils';
+import { createSmartProps } from '@/utils/smart-props';
 
 // Simple error boundary component
 class ErrorBoundary extends React.Component<
@@ -165,8 +165,8 @@ export function getStaticProps({ params }) {
             return { notFound: true };
         }
 
-        // Generate optimized props
-        const props = createOptimizedProps(urlPath, allData);
+        // Generate smart optimized props that preserve functionality
+        const props = createSmartProps(urlPath, allData);
 
         // Validate props structure
         if (!props || typeof props !== 'object') {
@@ -177,9 +177,7 @@ export function getStaticProps({ params }) {
         // Log payload size for monitoring
         const bytes = Buffer.byteLength(JSON.stringify(props), 'utf8');
         const sizeMB = bytes / (1024 * 1024);
-        console.log(`✓ Optimized payload for ${urlPath}: ${Math.round(bytes / 1024)} KB (${sizeMB.toFixed(1)}MB)`);
-
-        // Return static props without ISR (for Netlify compatibility)
+        console.log(`✓ Smart payload for ${urlPath}: ${Math.round(bytes / 1024)} KB (${sizeMB.toFixed(1)}MB)`);        // Return static props without ISR (for Netlify compatibility)
         return {
             props
         };
