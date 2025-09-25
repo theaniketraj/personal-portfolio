@@ -30,13 +30,15 @@
                 "altText": "GitHub",
                 "label": "GitHub",
                 "url": "https://github.com/theaniketraj",
+                "target": "_blank",
                 "icon": "github"
             },
             {
                 "type": "Social",
-                "label": "LnikedIn",
+                "label": "LinkedIn",
                 "altText": "linkedin",
                 "url": "https://www.linkedin.com/in/theaniketraj/",
+                "target": "_blank",
                 "icon": "linkedin",
                 "elementId": ""
             }
@@ -55,6 +57,7 @@
                 "label": "CV",
                 "altText": "Curriculum Vitae",
                 "url": "https://theaniketraj.github.io/vitae",
+                "target": "_blank",
                 "showIcon": false,
                 "icon": "arrowRight",
                 "iconPosition": "right",
@@ -83,6 +86,7 @@
                 "label": "KARL",
                 "altText": "",
                 "url": "https://karldocs.netlify.app/",
+                "target": "_blank",
                 "showIcon": true,
                 "icon": "arrowUpRight",
                 "iconPosition": "right",
@@ -93,6 +97,7 @@
                 "label": "VERSENOVA",
                 "altText": "versenova",
                 "url": "https://versenova.netlify.app",
+                "target": "_blank",
                 "showIcon": true,
                 "icon": "arrowUpRight",
                 "iconPosition": "right",
