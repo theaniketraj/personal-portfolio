@@ -5,6 +5,7 @@ const nextConfig = {
     },
     trailingSlash: true,
     reactStrictMode: true,
+    output: 'export',
 
     // Performance optimizations
     compress: true,
@@ -18,29 +19,7 @@ const nextConfig = {
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
     },
 
-    // Headers for better caching
-    async headers() {
-        return [
-            {
-                source: '/images/:path*',
-                headers: [
-                    {
-                        key: 'Cache-Control',
-                        value: 'public, max-age=31536000, immutable'
-                    }
-                ]
-            },
-            {
-                source: '/_next/static/:path*',
-                headers: [
-                    {
-                        key: 'Cache-Control',
-                        value: 'public, max-age=31536000, immutable'
-                    }
-                ]
-            }
-        ];
-    },
+    // Headers are handled via netlify.toml for static export
 
     // Webpack optimizations
     webpack: (config, { dev, isServer }) => {

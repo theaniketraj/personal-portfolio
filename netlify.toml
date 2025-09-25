@@ -1,14 +1,11 @@
 [build]
-  publish = ".next"
+  publish = "out"
   command = "npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
   NODE_OPTIONS = "--max-old-space-size=8192"
   NEXT_TELEMETRY_DISABLED = "1"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
 
 # Cache static assets
 [[headers]]
