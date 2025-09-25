@@ -5,8 +5,8 @@
         "dev": "next dev --turbo",
         "dev:stackbit": "next dev --port 3000 --turbo",
         "build": "next build",
-        "build:analyze": "next build",
         "build:netlify": "next build",
+        "build:analyze": "next build",
         "start": "next start",
         "lint": "next lint",
         "clean": "rm -rf .next"

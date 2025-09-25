@@ -179,26 +179,9 @@ export function getStaticProps({ params }) {
         const sizeMB = bytes / (1024 * 1024);
         console.log(`✓ Optimized payload for ${urlPath}: ${Math.round(bytes / 1024)} KB (${sizeMB.toFixed(1)}MB)`);
 
-        // Determine revalidation strategy based on page type
-        const isStaticPage = urlPath === '/' || urlPath === '/info';
-        const isBlogPost = urlPath.startsWith('/blog/') && urlPath !== '/blog';
-        const isProject = urlPath.startsWith('/projects/') && urlPath !== '/projects';
-
-        let revalidate: number | boolean = false;
-
-        if (process.env.NODE_ENV === 'development') {
-            revalidate = 1; // Fast revalidation in development
-        } else if (isStaticPage) {
-            revalidate = 3600; // 1 hour for static pages
-        } else if (isBlogPost || isProject) {
-            revalidate = 86400; // 24 hours for blog posts and projects
-        } else {
-            revalidate = 1800; // 30 minutes for other pages
-        }
-
+        // Return static props without ISR (for Netlify compatibility)
         return {
-            props,
-            revalidate
+            props
         };
 
     } catch (error) {
@@ -206,8 +189,7 @@ export function getStaticProps({ params }) {
 
         // Return a more informative error response
         return {
-            notFound: true,
-            revalidate: 60 // Try again in 1 minute on error
+            notFound: true
         };
     }
 }
