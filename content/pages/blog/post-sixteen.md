@@ -2,7 +2,9 @@
 type: PostLayout
 title: 'Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires'
 date: '2025-09-23'
-excerpt: ''
+excerpt: >-
+  Choosing the 'best' tech stack can hurt velocity, hiring, and costs. Learn how
+  to evaluate stacks pragmatically and avoid long-term regret.
 featuredImage:
   type: ImageBlock
   url: /images/tech-stack-featured.png
