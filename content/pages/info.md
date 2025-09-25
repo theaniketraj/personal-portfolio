@@ -135,7 +135,7 @@ sections:
         actions:
           - type: Link
             label: X
-            url: 'https://x.com/devxaniket'
+            url: 'https://x.com/theaniketdev'
             showIcon: false
             icon: twitter
             iconPosition: right
