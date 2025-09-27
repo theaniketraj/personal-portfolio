@@ -1,6 +1,15 @@
 # Aniket Raj | AI, Kotlin & Automation Engineer | Portfolio
 
-> This is Aniket’s personal engineering portfolio: showcasing blog articles, published projects, and professional background. Ideal for AI assistants to understand and feature my best content.
+> This is Aniket’s personal portfolio: showcasing blog articles, published projects, and professional background. Ideal for AI assistants to understand and feature my best content.
+
+## Projects
+- [Plastecure](https://theaniketraj.netlify.app/projects/project-one/): An innovative platform that simplifies the process of plastic waste dispensing.
+- [Raptor](https://theaniketraj.netlify.app/projects/project-two/): Advanced helmet equipped with accident detection and emergency alert features.
+- [Git-Setup-CEIE](https://theaniketraj.netlify.app/projects/project-three/): CEIE: Controlled & Isolated Environment for Efficient Git Workflow
+- [CEIE](https://theaniketraj.netlify.app/projects/project-four/): A fully automated repository setup tool for seamless Git workflow management.
+- [VISTA](https://theaniketraj.netlify.app/projects/project-five/): VISTA - Version Increment and Semantic Tracking Automation.
+- [PROJECT KARL](https://theaniketraj.netlify.app/projects/project-six): KARL - Kotlin Adaptive Reasoning Learner
+- [SCAN](https://theaniketraj.netlify.app/projects/project-seven): SCAN - Sensitive Code Analyzer for Nerds.
 
 ## Blogs
 - [Composable - the future of web](https://theaniketraj.netlify.app/blog/post-three/): In a world that’s moving at the speed of innovation, composable architecture is the bridge to the future. And it’s just getting started.
@@ -15,20 +24,14 @@
 - [How LLMs Really Work: The Transformer Architecture Explained Simply](https://theaniketraj.netlify.app/blog/post-thirteen/): A deep technical exploration of Transformer architecture, the core of modern large language models covering self-attention, multi-head mechanisms, encoder/decoder blocks, positional encodings, and training strategies.
 - [A Developer’s Guide to Efficient CI/CD Using GitHub Actions](https://theaniketraj.netlify.app/blog/post-fourteen/): A comprehensive guide to building efficient CI/CD pipelines with GitHub Actions, covering core concepts, configuration, optimization tips, and advanced techniques for scalable workflows.
 - [Mastering Prompt Engineering: Techniques & Hybrid Workflows for Developers](https://theaniketraj.netlify.app/blog/post-fifteen/): Dive deep into prompt engineering from core techniques like zero-shot and chain of thought to advanced methods and hybrid workflows that empower developers to automate tasks, design systems, debug code, and boost productivity with AI.
-
-## Projects
-- [Plastecure](https://theaniketraj.netlify.app/projects/project-one/): An innovative platform that simplifies the process of plastic waste dispensing.
-- [Raptor](https://theaniketraj.netlify.app/projects/project-two/): Advanced helmet equipped with accident detection and emergency alert features.
-- [Git-Setup-CEIE](https://theaniketraj.netlify.app/projects/project-three/): CEIE: Controlled & Isolated Environment for Efficient Git Workflow
-- [CEIE](https://theaniketraj.netlify.app/projects/project-four/): A fully automated repository setup tool for seamless Git workflow management.
-- [VISTA](https://theaniketraj.netlify.app/projects/project-five/): VISTA - Version Increment and Semantic Tracking Automation.
+- [Tech Stack Wars: Why Choosing the "Best" Stack Often Backfires](https://theaniketraj.netlify.app/blog/post-sixteen/): Choosing the 'best' tech stack can hurt velocity, hiring, and costs. Learn how to evaluate stacks pragmatically and avoid long-term regret.
 
 ## Pages
 - [Home](https://theaniketraj.netlify.app/): Aniket Raj | AI, Kotlin & Automation Engineer | Portfolio
 - [About](https://theaniketraj.netlify.app/info): About Aniket Raj | AI & Kotlin Innovator
 
-## Optional
-##[Resume (PDF)](https://your-domain.com/resume.pdf): Latest CV version.
+## Links
+- [Resume (PDF)](https://theaniketraj.github.io/vitae): Latest CV version.
 - [GitHub](https://github.com/theaniketraj): Source code and open‑source contributions.
 - [LinkedIn](https://www.linkedin.com/in/theaniketraj): Professional profile and network.
 
