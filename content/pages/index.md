@@ -151,6 +151,13 @@ sections:
           isRequired: true
           width: 1/2
           type: TextFormControl
+        - name: message
+          label: Tell me about your project
+          hideLabel: true
+          placeholder: Tell me about your project...
+          isRequired: true
+          width: full
+          type: TextareaFormControl
         - name: updatesConsent
           label: Sign me up to recieve updates
           isRequired: false

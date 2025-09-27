@@ -1,2 +1,16 @@
-# This file is managed by @netlify/plugin-nextjs
-# The plugin handles Next.js routing automatically
+# Static site redirects for Next.js export
+# Handle all routes to serve the appropriate static files
+
+# Direct routes (with trailing slash)
+/blog/            /blog/index.html            200
+/projects/        /projects/index.html        200
+/info/            /info/index.html            200
+
+# Blog posts
+/blog/*           /blog/:splat/index.html     200
+
+# Projects
+/projects/*       /projects/:splat/index.html 200
+
+# Fallback for SPA routing
+/*                /index.html                 200

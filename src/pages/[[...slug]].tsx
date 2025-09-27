@@ -80,22 +80,6 @@ const Page: React.FC<PageComponentProps> = (props) => {
 
 export function getStaticPaths() {
     try {
-        // In development, only generate essential paths to speed up dev server
-        if (process.env.NODE_ENV === 'development') {
-            const essentialPaths = [
-                { params: { slug: [] } }, // Homepage
-                { params: { slug: ['info'] } },
-                { params: { slug: ['blog'] } },
-                { params: { slug: ['projects'] } }
-            ];
-
-            return {
-                paths: essentialPaths,
-                fallback: 'blocking'
-            };
-        }
-
-        // In production, pre-generate critical pages only
         const allData = allContent();
 
         // Filter for valid pages with proper metadata
@@ -104,18 +88,8 @@ export function getStaticPaths() {
             return path && typeof path === 'string';
         });
 
-        const criticalPaths = validPages
-            .filter((obj) => {
-                const path = obj.__metadata.urlPath;
-                const isHomePage = path === '/';
-                const isStaticPage = path === '/info' || path === '/blog' || path === '/projects';
-                const isRecentPost = path?.startsWith('/blog/') &&
-                    path !== '/blog' &&
-                    (obj as any).date &&
-                    new Date((obj as any).date) > new Date(Date.now() - 90 * 24 * 60 * 60 * 1000); // Recent posts within 90 days
-
-                return isHomePage || isStaticPage || isRecentPost;
-            })
+        // For static export, we need to generate ALL pages at build time
+        const allPaths = validPages
             .map((obj) => {
                 const path = obj.__metadata.urlPath;
                 const slug = path === '/' ? [] : path.split('/').filter(Boolean);
@@ -127,13 +101,15 @@ export function getStaticPaths() {
             .filter((pathObj) => pathObj.params.slug !== undefined); // Ensure slug is defined
 
         // Ensure we always have at least the homepage
-        if (criticalPaths.length === 0) {
-            criticalPaths.push({ params: { slug: [] } });
+        if (allPaths.length === 0) {
+            allPaths.push({ params: { slug: [] } });
         }
 
+        console.log(`📄 Generating ${allPaths.length} static pages for export`);
+
         return {
-            paths: criticalPaths,
-            fallback: 'blocking' // Use ISR for non-critical pages
+            paths: allPaths,
+            fallback: false // Must be false for static export
         };
     } catch (error) {
         console.error('Error in getStaticPaths:', error);
@@ -143,7 +119,7 @@ export function getStaticPaths() {
                 { params: { slug: [] } }, // Homepage
                 { params: { slug: ['info'] } }
             ],
-            fallback: 'blocking'
+            fallback: false
         };
     }
 }

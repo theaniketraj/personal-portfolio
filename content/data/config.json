@@ -40,7 +40,8 @@
                 "url": "https://www.linkedin.com/in/theaniketraj/",
                 "target": "_blank",
                 "icon": "linkedin",
-                "elementId": ""
+                "elementId": "",
+                "rel": "noopener noreferrer"
             }
         ],
         "styles": {
