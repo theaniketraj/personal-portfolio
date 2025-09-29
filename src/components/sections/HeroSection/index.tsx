@@ -4,6 +4,7 @@ import Markdown from 'markdown-to-jsx';
 import { AnnotatedField } from '@/components/Annotated';
 import { Action } from '@/components/atoms';
 import { DynamicComponent } from '@/components/components-registry';
+import { FadeIn, HoverScale, StaggerContainer, StaggerItem } from '@/components/motion';
 import { HeroSection } from '@/types';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
 import Section from '../Section';
@@ -20,52 +21,72 @@ export default function Component(props: HeroSection) {
     return (
         <Section elementId={elementId} colors={colors} backgroundSize={backgroundSize} styles={styles.self}>
             <div className={classNames('flex gap-8', mapFlexDirectionStyles(sectionFlexDirection))}>
-                <div className={classNames('flex-1 w-full', mapStyles({ textAlign: sectionAlign }))}>
+                <StaggerContainer className={classNames('flex-1 w-full', mapStyles({ textAlign: sectionAlign }))}>
                     {title && (
                         <AnnotatedField path=".title">
-                            <h1 className="text-5xl sm:text-6xl">{title}</h1>
+                            <StaggerItem>
+                                <FadeIn direction="up">
+                                    <h1 className="text-5xl sm:text-6xl">{title}</h1>
+                                </FadeIn>
+                            </StaggerItem>
                         </AnnotatedField>
                     )}
                     {subtitle && (
                         <AnnotatedField path=".subtitle">
-                            <p className={classNames('text-xl sm:text-2xl', { 'mt-4': title })}>{subtitle}</p>
+                            <StaggerItem>
+                                <FadeIn direction="up" delay={0.2}>
+                                    <p className={classNames('text-xl sm:text-2xl', { 'mt-4': title })}>{subtitle}</p>
+                                </FadeIn>
+                            </StaggerItem>
                         </AnnotatedField>
                     )}
                     {text && (
                         <AnnotatedField path=".text">
-                            <Markdown
-                                options={{ forceBlock: true, forceWrapper: true }}
-                                className={classNames('max-w-none prose sm:prose-lg', {
-                                    'mt-6': title || subtitle
-                                })}
-                            >
-                                {text}
-                            </Markdown>
+                            <StaggerItem>
+                                <FadeIn direction="up" delay={0.4}>
+                                    <Markdown
+                                        options={{ forceBlock: true, forceWrapper: true }}
+                                        className={classNames('max-w-none prose sm:prose-lg', {
+                                            'mt-6': title || subtitle
+                                        })}
+                                    >
+                                        {text}
+                                    </Markdown>
+                                </FadeIn>
+                            </StaggerItem>
                         </AnnotatedField>
                     )}
                     {actions?.length > 0 && (
-                        <div
-                            className={classNames('flex flex-wrap items-center gap-4', {
-                                'mt-8': title || subtitle || text,
-                                'justify-center': sectionAlign === 'center',
-                                'justify-end': sectionAlign === 'right'
-                            })}
-                        >
-                            {actions.map((action, index) => (
-                                <Action key={index} {...action} />
-                            ))}
-                        </div>
+                        <StaggerItem>
+                            <FadeIn direction="up" delay={0.6}>
+                                <div
+                                    className={classNames('flex flex-wrap items-center gap-4', {
+                                        'mt-8': title || subtitle || text,
+                                        'justify-center': sectionAlign === 'center',
+                                        'justify-end': sectionAlign === 'right'
+                                    })}
+                                >
+                                    {actions.map((action, index) => (
+                                        <HoverScale key={`${action.label || 'action'}-${index}`}>
+                                            <Action {...action} />
+                                        </HoverScale>
+                                    ))}
+                                </div>
+                            </FadeIn>
+                        </StaggerItem>
                     )}
-                </div>
+                </StaggerContainer>
                 {media && (
-                    <div
+                    <FadeIn
+                        direction="right"
+                        delay={0.8}
                         className={classNames('flex flex-1 w-full', {
                             'justify-center': sectionAlign === 'center',
                             'justify-end': sectionAlign === 'right'
                         })}
                     >
                         <HeroMedia media={media} />
-                    </div>
+                    </FadeIn>
                 )}
             </div>
         </Section>
