@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 
 import { Action, Link } from '@/components/atoms';
 import ImageBlock from '@/components/molecules/ImageBlock';
+import { FadeIn, HoverLift, StaggerContainer, StaggerItem } from '@/components/motion';
 import ArrowUpRightIcon from '@/components/svgs/arrow-up-right';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
 import Section from '../Section';
@@ -13,16 +14,20 @@ export default function ProjectFeedSection(props) {
     return (
         <Section elementId={elementId} colors={colors} styles={styles.self}>
             {title && (
-                <h2 className={classNames('text-4xl sm:text-5xl', mapStyles({ textAlign: sectionAlign }))}>{title}</h2>
+                <FadeIn direction="up">
+                    <h2 className={classNames('text-4xl sm:text-5xl', mapStyles({ textAlign: sectionAlign }))}>{title}</h2>
+                </FadeIn>
             )}
             {subtitle && (
-                <p
-                    className={classNames('text-lg sm:text-xl', mapStyles({ textAlign: sectionAlign }), {
-                        'mt-6': title
-                    })}
-                >
-                    {subtitle}
-                </p>
+                <FadeIn direction="up" delay={0.2}>
+                    <p
+                        className={classNames('text-lg sm:text-xl', mapStyles({ textAlign: sectionAlign }), {
+                            'mt-6': title
+                        })}
+                    >
+                        {subtitle}
+                    </p>
+                </FadeIn>
             )}
             {variant === 'variant-d' ? (
                 <ProjectList {...rest} hasTopMargin={!!(title || subtitle)} headingLevel={title ? 'h3' : 'h2'} />
@@ -35,16 +40,18 @@ export default function ProjectFeedSection(props) {
                 />
             )}
             {actions?.length > 0 && (
-                <div
-                    className={classNames(
-                        'flex flex-wrap items-center gap-4 mt-10',
-                        sectionAlign === 'center' ? 'justify-center' : 'justify-end'
-                    )}
-                >
-                    {actions.map((action, index) => (
-                        <Action key={index} {...action} />
-                    ))}
-                </div>
+                <FadeIn direction="up" delay={0.4}>
+                    <div
+                        className={classNames(
+                            'flex flex-wrap items-center gap-4 mt-10',
+                            sectionAlign === 'center' ? 'justify-center' : 'justify-end'
+                        )}
+                    >
+                        {actions.map((action, index) => (
+                            <Action key={`${action.label || 'action'}-${index}`} {...action} />
+                        ))}
+                    </div>
+                </FadeIn>
             )}
         </Section>
     );
@@ -66,7 +73,7 @@ function ProjectGrid(props) {
     }
     const TitleTag = headingLevel;
     return (
-        <div
+        <StaggerContainer
             className={classNames('grid gap-y-12', {
                 'md:grid-cols-2': variant === 'variant-a',
                 'md:grid-cols-3': variant === 'variant-b',
@@ -76,32 +83,36 @@ function ProjectGrid(props) {
             })}
         >
             {projects.map((project, index) => (
-                <Link key={index} href={project} className="block max-w-3xl pb-10 border-b border-current group">
-                    {showFeaturedImage && project.featuredImage && (
-                        <div className="w-full mb-6 overflow-hidden aspect-3/2">
-                            <ImageBlock
-                                {...project.featuredImage}
-                                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                            />
-                        </div>
-                    )}
-                    {showDate && project.date && (
-                        <div className="mb-3">
-                            <ProjectDate date={project.date} />
-                        </div>
-                    )}
-                    <TitleTag className="text-3xl sm:text-4xl">{project.title}</TitleTag>
-                    {showDescription && project.description && <p className="mt-5 text-lg">{project.description}</p>}
-                    {showReadMoreLink && (
-                        <div className="mt-8">
-                            <span className="inline-flex text-xl transition rounded-full p-4 border-2 border-current group-hover:bottom-shadow-6 group-hover:-translate-y-1.5">
-                                <ArrowUpRightIcon className="fill-current w-icon h-icon" />
-                            </span>
-                        </div>
-                    )}
-                </Link>
+                <StaggerItem key={`${project.title || 'project'}-${index}`}>
+                    <HoverLift className="block max-w-3xl pb-10 border-b border-current group">
+                        <Link href={project}>
+                            {showFeaturedImage && project.featuredImage && (
+                                <div className="w-full mb-6 overflow-hidden aspect-3/2">
+                                    <ImageBlock
+                                        {...project.featuredImage}
+                                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                </div>
+                            )}
+                            {showDate && project.date && (
+                                <div className="mb-3">
+                                    <ProjectDate date={project.date} />
+                                </div>
+                            )}
+                            <TitleTag className="text-3xl sm:text-4xl">{project.title}</TitleTag>
+                            {showDescription && project.description && <p className="mt-5 text-lg">{project.description}</p>}
+                            {showReadMoreLink && (
+                                <div className="mt-8">
+                                    <span className="inline-flex text-xl transition rounded-full p-4 border-2 border-current group-hover:bottom-shadow-6 group-hover:-translate-y-1.5">
+                                        <ArrowUpRightIcon className="fill-current w-icon h-icon" />
+                                    </span>
+                                </div>
+                            )}
+                        </Link>
+                    </HoverLift>
+                </StaggerItem>
             ))}
-        </div>
+        </StaggerContainer>
     );
 }
 
@@ -120,46 +131,50 @@ function ProjectList(props) {
     }
     const TitleTag = headingLevel;
     return (
-        <div
+        <StaggerContainer
             className={classNames('grid gap-y-12', {
                 'mt-12': hasTopMargin
             })}
         >
             {projects.map((project, index) => (
-                <Link key={index} href={project} className="block pb-10 border-b border-current group md:pb-12 md:px-4">
-                    <div className="flex flex-col gap-8 md:flex-row md:items-center">
-                        {showFeaturedImage && project.featuredImage && (
-                            <div className="md:shrink-0 md:self-stretch md:w-48">
-                                <div className="w-full overflow-hidden aspect-3/2 md:min-h-full">
-                                    <ImageBlock
-                                        {...project.featuredImage}
-                                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                                    />
+                <StaggerItem key={`${project.title || 'project'}-${index}`}>
+                    <HoverLift className="block pb-10 border-b border-current group md:pb-12 md:px-4">
+                        <Link href={project}>
+                            <div className="flex flex-col gap-8 md:flex-row md:items-center">
+                                {showFeaturedImage && project.featuredImage && (
+                                    <div className="md:shrink-0 md:self-stretch md:w-48">
+                                        <div className="w-full overflow-hidden aspect-3/2 md:min-h-full">
+                                            <ImageBlock
+                                                {...project.featuredImage}
+                                                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+                                <div className="md:grow">
+                                    {showDate && project.date && (
+                                        <div className="mb-3">
+                                            <ProjectDate date={project.date} />
+                                        </div>
+                                    )}
+                                    <TitleTag className="text-3xl sm:text-4xl">{project.title}</TitleTag>
+                                    {showDescription && project.description && (
+                                        <p className="mt-5 text-lg">{project.description}</p>
+                                    )}
                                 </div>
+                                {showReadMoreLink && (
+                                    <div className="md:mx-4">
+                                        <span className="inline-flex text-xl transition rounded-full p-4 border-2 border-current md:text-3xl group-hover:bottom-shadow-6 group-hover:-translate-y-1.5">
+                                            <ArrowUpRightIcon className="fill-current w-icon h-icon" />
+                                        </span>
+                                    </div>
+                                )}
                             </div>
-                        )}
-                        <div className="md:grow">
-                            {showDate && project.date && (
-                                <div className="mb-3">
-                                    <ProjectDate date={project.date} />
-                                </div>
-                            )}
-                            <TitleTag className="text-3xl sm:text-4xl">{project.title}</TitleTag>
-                            {showDescription && project.description && (
-                                <p className="mt-5 text-lg">{project.description}</p>
-                            )}
-                        </div>
-                        {showReadMoreLink && (
-                            <div className="md:mx-4">
-                                <span className="inline-flex text-xl transition rounded-full p-4 border-2 border-current md:text-3xl group-hover:bottom-shadow-6 group-hover:-translate-y-1.5">
-                                    <ArrowUpRightIcon className="fill-current w-icon h-icon" />
-                                </span>
-                            </div>
-                        )}
-                    </div>
-                </Link>
+                        </Link>
+                    </HoverLift>
+                </StaggerItem>
             ))}
-        </div>
+        </StaggerContainer>
     );
 }
 
