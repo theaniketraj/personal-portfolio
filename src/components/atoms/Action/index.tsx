@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 
 import { Annotated } from '@/components/Annotated';
+import { ButtonAnimation } from '@/components/motion';
 import { iconMap } from '@/components/svgs';
 import Link from '../Link';
 
@@ -32,15 +33,17 @@ export default function Action(props) {
 
     return (
         <Annotated content={props}>
-            <Link href={url} aria-label={altText} id={elementId || null} className={classNames(baseClasses, className)}>
-                {showIcon && IconComponent && iconPosition === 'left' && (
-                    <IconComponent className="fill-current h-icon w-icon" />
-                )}
-                {label}
-                {showIcon && IconComponent && iconPosition === 'right' && (
-                    <IconComponent className="fill-current h-icon w-icon" />
-                )}
-            </Link>
+            <ButtonAnimation variant={type === 'Button' ? 'scale' : 'bounce'}>
+                <Link href={url} aria-label={altText} id={elementId || null} className={classNames(baseClasses, className)}>
+                    {showIcon && IconComponent && iconPosition === 'left' && (
+                        <IconComponent className="fill-current h-icon w-icon" />
+                    )}
+                    {label}
+                    {showIcon && IconComponent && iconPosition === 'right' && (
+                        <IconComponent className="fill-current h-icon w-icon" />
+                    )}
+                </Link>
+            </ButtonAnimation>
         </Annotated>
     );
 }
