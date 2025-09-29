@@ -16,6 +16,7 @@
         "@tailwindcss/postcss": "^4.0.12",
         "classnames": "^2.5.1",
         "dayjs": "^1.11.11",
+        "framer-motion": "^12.23.22",
         "front-matter": "^4.0.2",
         "markdown-to-jsx": "^7.7.1",
         "netlify": "^23.7.3",
