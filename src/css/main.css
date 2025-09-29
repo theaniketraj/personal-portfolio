@@ -3,6 +3,7 @@ layer(base);
 
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+@import './animations.css';
 
 @theme {
     --font-body: var(--theme-font-body, monospace);
