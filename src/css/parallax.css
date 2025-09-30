@@ -1,0 +1,179 @@
+/* Parallax Effects Styles */
+
+/* Base styles for parallax containers */
+.parallax-container {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Smooth scrolling for better parallax experience */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Prevent layout shift during parallax animations */
+.parallax-element {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Performance optimizations for parallax images */
+.parallax-image {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .parallax-element,
+    .parallax-image {
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Custom utility classes for parallax effects */
+.parallax-slow {
+    transform: translateY(0);
+    transition: transform 0.1s ease-out;
+}
+
+.parallax-medium {
+    transform: translateY(0);
+    transition: transform 0.2s ease-out;
+}
+
+.parallax-fast {
+    transform: translateY(0);
+    transition: transform 0.3s ease-out;
+}
+
+/* Background attachment utilities */
+.bg-parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Parallax section styling */
+.parallax-section {
+    position: relative;
+    z-index: 1;
+}
+
+.parallax-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+/* 3D tilt effects */
+.tilt-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.tilt-element {
+    transition: transform 0.3s ease-out;
+    transform-style: preserve-3d;
+}
+
+/* Scale effects */
+.scale-container {
+    overflow: hidden;
+}
+
+.scale-element {
+    transition: transform 0.3s ease-out;
+    transform-origin: center;
+}
+
+/* Layered parallax effects */
+.parallax-layer-1 {
+    z-index: 1;
+}
+
+.parallax-layer-2 {
+    z-index: 2;
+}
+
+.parallax-layer-3 {
+    z-index: 3;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .parallax-element {
+        transform: none !important;
+    }
+
+    .bg-parallax {
+        background-attachment: scroll;
+    }
+
+    /* Reduce parallax intensity on mobile for better performance */
+    .parallax-mobile-reduced {
+        transform: translateY(0) !important;
+    }
+}
+
+/* High performance mode for low-end devices */
+@media (prefers-reduced-motion: reduce), (max-width: 480px) and (max-height: 640px) {
+    .parallax-element,
+    .tilt-element,
+    .scale-element {
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Smooth hardware acceleration */
+.hw-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Loading states for parallax images */
+.parallax-image-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Focus indicators for accessibility */
+.parallax-interactive:focus {
+    outline: 2px solid #007acc;
+    outline-offset: 2px;
+}
+
+/* Print styles - disable parallax effects */
+@media print {
+    .parallax-element,
+    .tilt-element,
+    .scale-element,
+    .bg-parallax {
+        transform: none !important;
+        background-attachment: scroll !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}

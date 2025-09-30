@@ -14,3 +14,13 @@ export {
     RotateOnHover,
     SlideIn
 } from './MicroInteractions';
+
+// Parallax Effects
+export {
+    ParallaxBackground,
+    ParallaxImage,
+    ParallaxSection,
+    ParallaxText,
+    ScrollBasedScale,
+    TiltParallax
+} from './ParallaxEffects';
