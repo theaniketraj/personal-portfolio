@@ -71,7 +71,7 @@ bottomSections:
           width: full
           type: EmailFormControl
         - name: updatesConsent
-          label: Sign me up to recieve my words
+          label: Sign me up to receive my words
           isRequired: false
           width: full
           type: CheckboxFormControl
@@ -123,9 +123,10 @@ metaTags:
       architecture is the bridge to the future. And it’s just getting started. |
       Aniket Raj's Tech Blog
 ---
+
 The web as we know it is undergoing a seismic shift. The digital landscape is evolving at a breakneck speed, with new tools, frameworks, and philosophies emerging regularly. Among the most exciting of these innovations is the concept of **composability** — a paradigm that is poised to redefine how websites and applications are built and maintained.
 
-But what does *composable* really mean? How does it work, and why is it considered the future of web development? Let’s dive into this fascinating new era of web design, where flexibility, scalability, and modularity are the cornerstones of success.
+But what does _composable_ really mean? How does it work, and why is it considered the future of web development? Let’s dive into this fascinating new era of web design, where flexibility, scalability, and modularity are the cornerstones of success.
 
 ### **Understanding Composability: A Modular Approach**
 
@@ -178,7 +179,7 @@ With composable commerce, companies can integrate the best-in-class solutions fo
 
 ### **The Road Ahead: Is Composability the Future?**
 
-The future of the web is *composable*. As businesses demand more agility, flexibility, and scalability, the need for modular, reusable solutions is only going to grow. While composability isn’t a one-size-fits-all solution for every project, it offers a fresh and innovative approach to building modern websites and applications that are both adaptable and sustainable.
+The future of the web is _composable_. As businesses demand more agility, flexibility, and scalability, the need for modular, reusable solutions is only going to grow. While composability isn’t a one-size-fits-all solution for every project, it offers a fresh and innovative approach to building modern websites and applications that are both adaptable and sustainable.
 
 For developers, composability offers an opportunity to break free from the constraints of traditional web development, allowing for faster delivery and more tailored experiences. For businesses, it means the ability to scale and pivot quickly in a constantly changing digital world. And for users, composability leads to richer, more personalized digital experiences.
 

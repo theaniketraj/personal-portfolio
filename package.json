@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@netlify/plugin-nextjs": "^5.12.0",
+        "@react-spring/web": "^10.0.3",
         "@tailwindcss/postcss": "^4.0.12",
         "classnames": "^2.5.1",
         "dayjs": "^1.11.11",

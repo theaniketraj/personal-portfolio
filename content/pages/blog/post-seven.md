@@ -71,7 +71,7 @@ bottomSections:
           width: full
           type: EmailFormControl
         - name: updatesConsent
-          label: Sign me up to recieve my words
+          label: Sign me up to receive my words
           isRequired: false
           width: full
           type: CheckboxFormControl
@@ -118,21 +118,22 @@ metaTags:
     property: 'og:url'
     content: 'https://linkedin.com/in/theaniketraj'
 ---
+
 Web development is a dynamic field that requires a combination of technical expertise, time management, and continuous learning. Highly productive web developers follow specific habits that set them apart, allowing them to deliver high-quality code efficiently. Here are some key habits that contribute to their success:
 
 1.  **Planning Before Coding**
 
 Productive developers don't dive into coding without a plan. They:
 
-*   Break projects into smaller tasks.
+- Break projects into smaller tasks.
 
-*   Use wireframes or mockups to visualize layouts.
+- Use wireframes or mockups to visualize layouts.
 
-*   Define clear goals and timelines.
+- Define clear goals and timelines.
 
-*   Choose the right tech stack before starting.
+- Choose the right tech stack before starting.
 
-*A well-structured plan minimizes wasted effort and reduces refactoring time.*
+_A well-structured plan minimizes wasted effort and reduces refactoring time._
 
 > “May the bridges I burn, lead my way.”
 
@@ -140,120 +141,120 @@ Productive developers don't dive into coding without a plan. They:
 
 Using Git effectively is a hallmark of a skilled developer. They:
 
-*   Commit frequently with meaningful messages.
+- Commit frequently with meaningful messages.
 
-*   Follow best practices like feature branching.
+- Follow best practices like feature branching.
 
-*   Use GitHub, GitLab, or Bitbucket for collaboration.
+- Use GitHub, GitLab, or Bitbucket for collaboration.
 
-*   Automate workflows with CI/CD pipelines.
+- Automate workflows with CI/CD pipelines.
 
-*Version control helps prevent catastrophic code loss and enables seamless teamwork.*
+_Version control helps prevent catastrophic code loss and enables seamless teamwork._
 
-*3. **Prioritizing Code Readability and Maintainability***
+\*3. **Prioritizing Code Readability and Maintainability\***
 
-*Highly productive developers write clean, structured, and well-documented code. They follow:*
+_Highly productive developers write clean, structured, and well-documented code. They follow:_
 
-*   *Consistent naming conventions (e.g., camelCase, PascalCase, kebab-case).*
+- _Consistent naming conventions (e.g., camelCase, PascalCase, kebab-case)._
 
-*   *Proper indentation and spacing for readability.*
+- _Proper indentation and spacing for readability._
 
-*   *DRY (Don't Repeat Yourself) and KISS (Keep It Simple, Stupid) principles.*
+- _DRY (Don't Repeat Yourself) and KISS (Keep It Simple, Stupid) principles._
 
-*   *Code comments and documentation to help others understand their logic.*
+- _Code comments and documentation to help others understand their logic._
 
-*4. **Leveraging Automation and Tools***
+\*4. **Leveraging Automation and Tools\***
 
-*Smart developers automate repetitive tasks and use the right tools. They:*
+_Smart developers automate repetitive tasks and use the right tools. They:_
 
-*   *Use code linters and formatters (ESLint, Prettier) to maintain consistency.*
+- _Use code linters and formatters (ESLint, Prettier) to maintain consistency._
 
-*   *Automate deployments with CI/CD pipelines.*
+- _Automate deployments with CI/CD pipelines._
 
-*   *Set up hot reloads for instant changes during development.*
+- _Set up hot reloads for instant changes during development._
 
-*   *Use package managers (npm, Yarn) to manage dependencies efficiently.*
+- _Use package managers (npm, Yarn) to manage dependencies efficiently._
 
-*5. **Continuous Learning and Improvement***
+\*5. **Continuous Learning and Improvement\***
 
-*Technology evolves rapidly, and top developers stay ahead by:*
+_Technology evolves rapidly, and top developers stay ahead by:_
 
-*   *Following tech blogs, forums, and documentation.*
+- _Following tech blogs, forums, and documentation._
 
-*   *Taking online courses and attending developer meetups.*
+- _Taking online courses and attending developer meetups._
 
-*   *Experimenting with new frameworks and tools.*
+- _Experimenting with new frameworks and tools._
 
-*   *Contributing to open-source projects.*
+- _Contributing to open-source projects._
 
-*Staying updated ensures they remain competitive and relevant in the industry.*
+_Staying updated ensures they remain competitive and relevant in the industry._
 
-*6. **Managing Distractions and Staying Focused***
+\*6. **Managing Distractions and Staying Focused\***
 
-*Time management is crucial. Productive developers:*
+_Time management is crucial. Productive developers:_
 
-*   Use the Pomodoro Technique *(25-minute sprints with breaks).*
+- Use the Pomodoro Technique _(25-minute sprints with breaks)._
 
-*   *Avoid multitasking and focus on one task at a time.*
+- _Avoid multitasking and focus on one task at a time._
 
-*   Block distractions using apps like **Forest** *or **Focus\@Will***
+- Block distractions using apps like **Forest** \*or **Focus\@Will\***
 
-*   *Work in an optimized development environment with minimal interruptions.*
+- _Work in an optimized development environment with minimal interruptions._
 
-*7. **Effective Communication and Collaboration***
+\*7. **Effective Communication and Collaboration\***
 
-*Web development is often a team effort. Top developers excel in:*
+_Web development is often a team effort. Top developers excel in:_
 
-*   *Writing clear documentation for their code.*
+- _Writing clear documentation for their code._
 
-*   *Using Slack, Microsoft Teams, or Discord for collaboration.*
+- _Using Slack, Microsoft Teams, or Discord for collaboration._
 
-*   *Explaining technical concepts clearly to non-developers.*
+- _Explaining technical concepts clearly to non-developers._
 
-*   *Providing constructive feedback and code reviews.*
+- _Providing constructive feedback and code reviews._
 
-*Strong communication skills lead to better teamwork and smoother project execution.*
+_Strong communication skills lead to better teamwork and smoother project execution._
 
 8\. **Regularly Testing and Debugging Code**
 
 Bugs are inevitable, but productive developers:
 
-*   Write unit tests and integration tests.
+- Write unit tests and integration tests.
 
-*   Use tools like **Jest**, **Cypress** and **Selenium** for testing.
+- Use tools like **Jest**, **Cypress** and **Selenium** for testing.
 
-*   Debug efficiently using browser dev tools and logging techniques.
+- Debug efficiently using browser dev tools and logging techniques.
 
-*   Continuously improve code based on test results.
+- Continuously improve code based on test results.
 
-*Testing reduces production issues and improves application reliability.*
+_Testing reduces production issues and improves application reliability._
 
-*9.* **Maintaining Work-Life Balance**
+_9._ **Maintaining Work-Life Balance**
 
 Burnout can kill productivity. Highly effective developers:
 
-*   Take regular breaks to recharge.
+- Take regular breaks to recharge.
 
-*   Exercise and maintain a healthy lifestyle.
+- Exercise and maintain a healthy lifestyle.
 
-*   Set boundaries for work and personal life.
+- Set boundaries for work and personal life.
 
-*   Get enough rest to stay mentally sharp.
+- Get enough rest to stay mentally sharp.
 
-*A well-rested mind is more creative and productive.*
+_A well-rested mind is more creative and productive._
 
 10\. **Building Reusable Code and Components**
 
 Instead of reinventing the wheel, productive developers:
 
-*   Create reusable UI components (React, Vue, or Angular components).
+- Create reusable UI components (React, Vue, or Angular components).
 
-*   Write modular functions and maintain a library of utilities.
+- Write modular functions and maintain a library of utilities.
 
-*   Use design systems like Material UI or Tailwind CSS.
+- Use design systems like Material UI or Tailwind CSS.
 
-*   Follow best practices in writing scalable and reusable code.
+- Follow best practices in writing scalable and reusable code.
 
-*This habit significantly speeds up development and ensures consistency.*
+_This habit significantly speeds up development and ensures consistency._
 
 Being a productive web developer isn’t just about writing more code—it’s about writing **efficient, scalable, and maintainable** code. By developing these habits, web developers can work smarter, enhance their skills, and deliver high-quality applications while maintaining a healthy work-life balance.

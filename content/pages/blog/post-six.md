@@ -64,7 +64,7 @@ bottomSections:
           width: full
           type: EmailFormControl
         - name: updatesConsent
-          label: Sign me up to recieve my words
+          label: Sign me up to receive my words
           isRequired: false
           width: full
           type: CheckboxFormControl
@@ -110,6 +110,7 @@ metaTags:
     property: 'og:url'
     content: 'https://linkedin.com/in/theaniketraj'
 ---
+
 Next.js is a powerful React framework that enables **server-side rendering (SSR)**, **static site generation (SSG)**, and **API routes**, making it a preferred choice for modern web development. However, as a project grows, **maintaining a well-structured codebase** becomes crucial for scalability, maintainability, and efficiency. In this article, we will explore the best way to **structure and organize** a Next.js project for optimal performance.
 
 **1. Understanding the Root Directory**
@@ -128,13 +129,13 @@ At the root level of a Next.js project, you'll find essential files and folders:
 |- README.md
 ```
 
-*   `next.config.js` : Configures Next.js behavior.
+- `next.config.js` : Configures Next.js behavior.
 
-*   `.env.local` : Stores environment variables (API keys, database credentials).
+- `.env.local` : Stores environment variables (API keys, database credentials).
 
-*   `package.json` : Defines dependencies and scripts.
+- `package.json` : Defines dependencies and scripts.
 
-*   `tsconfig.json` : TypeScript configuration (if applicable).
+- `tsconfig.json` : TypeScript configuration (if applicable).
 
 **2. `public/` - Static Assets**
 
@@ -166,11 +167,11 @@ Next.js follows a file-based routing system inside `pages/`.
 |   |- hello.ts (API Route Example)
 ```
 
-*   `_app.tsx`: Custom global layout and state management.
+- `_app.tsx`: Custom global layout and state management.
 
-*   `_document.tsx`: Modifies the HTML structure (useful for adding fonts, styles).
+- `_document.tsx`: Modifies the HTML structure (useful for adding fonts, styles).
 
-*   `api/`: Stores API routes that run on the server.
+- `api/`: Stores API routes that run on the server.
 
 **b) `components/` - Reusable UI Components**
 
@@ -183,10 +184,10 @@ Organize UI elements as separate reusable components.
 |  |- Button.module.css
 |- /Navbar
 |  |- Navbar.tsx
-|  |- Navbar.module.css 
+|  |- Navbar.module.css
 ```
 
-**c)  `layouts/` - Page Layouts**
+**c) `layouts/` - Page Layouts**
 
 If multiple pages share a common layout, define it in `/layouts/`.
 
@@ -237,4 +238,3 @@ For helper functions like date formatting, data transformation, etc.
 4.  Follow naming conventions - Use PascalCase for components, camelCase for functions.
 
 5.  Optimize performance - Use dynamic imports and Next.js optimizations like ISR (Incremental Static Regeneration).
-

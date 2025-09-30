@@ -64,7 +64,7 @@ bottomSections:
           width: full
           type: EmailFormControl
         - name: updatesConsent
-          label: Sign me up to recieve my words
+          label: Sign me up to receive my words
           isRequired: false
           width: full
           type: CheckboxFormControl
@@ -117,7 +117,8 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 70
 ---
-In an era where technology evolves faster than ever, it’s safe to say that **AI** is undeniably the *hottest* thing around. From the buzzing offices of Silicon Valley to the quiet corners of university labs, artificial intelligence is lighting up the world like an unexpected spark. But what makes AI so captivating? Why is everyone talking about it as if it were the next big thing — and not just for tech nerds but for *everyone*?
+
+In an era where technology evolves faster than ever, it’s safe to say that **AI** is undeniably the _hottest_ thing around. From the buzzing offices of Silicon Valley to the quiet corners of university labs, artificial intelligence is lighting up the world like an unexpected spark. But what makes AI so captivating? Why is everyone talking about it as if it were the next big thing — and not just for tech nerds but for _everyone_?
 
 Let’s dive into the melting pot of creativity, innovation, and groundbreaking advances that have turned AI into the hottest topic of 2025.
 
@@ -129,7 +130,7 @@ Take a quick peek at recent breakthroughs in AI: Generative models, like GPT-4 a
 
 ### **The Alluring Power of AI in Pop Culture**
 
-It’s not just in tech circles where AI is gaining heat. It’s been making waves in pop culture, often appearing as both hero and villain in films, books, and TV shows. From *Her* to *Westworld*, and even *Black Mirror*, AI is portrayed as both a friend and foe, sparking debates around ethics, consciousness, and autonomy. This cultural fascination gives AI an almost mythical allure.
+It’s not just in tech circles where AI is gaining heat. It’s been making waves in pop culture, often appearing as both hero and villain in films, books, and TV shows. From _Her_ to _Westworld_, and even _Black Mirror_, AI is portrayed as both a friend and foe, sparking debates around ethics, consciousness, and autonomy. This cultural fascination gives AI an almost mythical allure.
 
 But the real magic happens when AI steps out of fiction and into reality, blurring the lines between what we see in movies and what we experience in our daily lives. How close are we to true AI that can understand, learn, and evolve autonomously? Are we about to live in a world where robots will make our morning coffee while solving global challenges?
 
@@ -137,11 +138,11 @@ But the real magic happens when AI steps out of fiction and into reality, blurri
 
 Business leaders are now adopting AI to gain a competitive edge, knowing that it holds the power to innovate products, streamline processes, and improve customer experiences. Companies are leveraging machine learning algorithms to predict consumer behavior, automate tedious tasks, and enhance decision-making.
 
-Moreover, AI is becoming a cornerstone of industries like healthcare, finance, education, and entertainment. Imagine a world where AI-powered doctors are diagnosing diseases faster than any human could, or where personalized learning platforms are making education more accessible and efficient than ever. It’s a *hot* economy for AI innovation, and it's just heating up.
+Moreover, AI is becoming a cornerstone of industries like healthcare, finance, education, and entertainment. Imagine a world where AI-powered doctors are diagnosing diseases faster than any human could, or where personalized learning platforms are making education more accessible and efficient than ever. It’s a _hot_ economy for AI innovation, and it's just heating up.
 
 ### **The Human Element: A Partnership, Not a Replacement**
 
-One of the hottest debates surrounding AI is the idea of it *replacing* humans. But here's the twist: AI isn’t here to steal our jobs; it's here to enhance what we can do. Picture a world where humans and AI are in a symbiotic relationship — where AI can crunch the numbers, sift through mountains of data, and make predictions, while humans apply creativity, intuition, and empathy to innovate further.
+One of the hottest debates surrounding AI is the idea of it _replacing_ humans. But here's the twist: AI isn’t here to steal our jobs; it's here to enhance what we can do. Picture a world where humans and AI are in a symbiotic relationship — where AI can crunch the numbers, sift through mountains of data, and make predictions, while humans apply creativity, intuition, and empathy to innovate further.
 
 Rather than viewing AI as a threat, think of it as a tool that amplifies our own potential. Imagine building AI systems that can predict climate change patterns, or create personalized therapies for mental health, or even optimize traffic systems to reduce carbon emissions. AI isn’t just a futuristic gadget; it’s a tool that, when combined with human intelligence, can help us tackle the world's biggest challenges.
 

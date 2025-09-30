@@ -82,7 +82,7 @@ bottomSections:
           width: full
           type: TextareaFormControl
         - name: updatesConsent
-          label: Sign me up to recieve my words
+          label: Sign me up to receive my words
           isRequired: false
           width: full
           type: CheckboxFormControl
@@ -114,7 +114,7 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: 'Aniket Raj''s Projects | AI, Kotlin & Embedded Systems'
+    content: "Aniket Raj's Projects | AI, Kotlin & Embedded Systems"
   - type: MetaTag
     property: 'og:description'
     content: >-
