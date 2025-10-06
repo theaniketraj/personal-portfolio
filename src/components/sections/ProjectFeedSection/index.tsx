@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 
+import { HardwareAnimated } from '@/components/animations';
 import { Action, Link } from '@/components/atoms';
 import ImageBlock from '@/components/molecules/ImageBlock';
-import { FadeIn, HoverLift, StaggerContainer, StaggerItem } from '@/components/motion';
+import { HoverLift, StaggerContainer, StaggerItem } from '@/components/motion';
 import ArrowUpRightIcon from '@/components/svgs/arrow-up-right';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
 import Section from '../Section';
@@ -14,12 +15,12 @@ export default function ProjectFeedSection(props) {
     return (
         <Section elementId={elementId} colors={colors} styles={styles.self}>
             {title && (
-                <FadeIn direction="up">
+                <HardwareAnimated animation="fadeInScale">
                     <h2 className={classNames('text-4xl sm:text-5xl', mapStyles({ textAlign: sectionAlign }))}>{title}</h2>
-                </FadeIn>
+                </HardwareAnimated>
             )}
             {subtitle && (
-                <FadeIn direction="up" delay={0.2}>
+                <HardwareAnimated animation="slideInUp" delay={0.2}>
                     <p
                         className={classNames('text-lg sm:text-xl', mapStyles({ textAlign: sectionAlign }), {
                             'mt-6': title
@@ -27,7 +28,7 @@ export default function ProjectFeedSection(props) {
                     >
                         {subtitle}
                     </p>
-                </FadeIn>
+                </HardwareAnimated>
             )}
             {variant === 'variant-d' ? (
                 <ProjectList {...rest} hasTopMargin={!!(title || subtitle)} headingLevel={title ? 'h3' : 'h2'} />
@@ -40,7 +41,7 @@ export default function ProjectFeedSection(props) {
                 />
             )}
             {actions?.length > 0 && (
-                <FadeIn direction="up" delay={0.4}>
+                <HardwareAnimated animation="slideInUp" delay={0.4}>
                     <div
                         className={classNames(
                             'flex flex-wrap items-center gap-4 mt-10',
@@ -51,7 +52,7 @@ export default function ProjectFeedSection(props) {
                             <Action key={`${action.label || 'action'}-${index}`} {...action} />
                         ))}
                     </div>
-                </FadeIn>
+                </HardwareAnimated>
             )}
         </Section>
     );
