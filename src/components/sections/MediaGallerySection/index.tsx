@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 
 import ImageBlock from '@/components/molecules/ImageBlock';
+import { FadeInHW, HoverScaleHW, StaggerContainerHW, StaggerItemHW } from '@/components/motion';
 import type { ImageBlock as ImageBlockProps, MediaGallerySection as MediaGallerySectionProps } from '@/types';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
 import Section from '../Section';
@@ -30,60 +31,70 @@ export default function MediaGallerySection(props: MediaGallerySectionProps) {
     return (
         <Section elementId={elementId} colors={colors} styles={styles.self}>
             {title && (
-                <h2 className={classNames('text-4xl sm:text-5xl', mapStyles({ textAlign: sectionAlign }))}>{title}</h2>
+                <FadeInHW direction="up">
+                    <h2 className={classNames('text-4xl sm:text-5xl', mapStyles({ textAlign: sectionAlign }))}>{title}</h2>
+                </FadeInHW>
             )}
             {subtitle && (
-                <p
-                    className={classNames('text-lg sm:text-xl', mapStyles({ textAlign: sectionAlign }), {
-                        'mt-6': title
-                    })}
-                >
-                    {subtitle}
-                </p>
+                <FadeInHW direction="up" delay={0.2}>
+                    <p
+                        className={classNames('text-lg sm:text-xl', mapStyles({ textAlign: sectionAlign }), {
+                            'mt-6': title
+                        })}
+                    >
+                        {subtitle}
+                    </p>
+                </FadeInHW>
             )}
             {images.length > 0 && (
-                <div
+                <StaggerContainerHW
                     className={classNames('grid place-items-center', mapColStyles(columns), {
                         'mt-12': title || subtitle
                     })}
-                    style={{
-                        gap: spacing ? `${spacing}px` : undefined
-                    }}
+                    staggerDelay={0.1}
                 >
-                    {images.map((image, index) => (
-                        <MediaGalleryImage
-                            key={index}
-                            image={image}
-                            showCaption={showCaption}
-                            enableHover={enableHover}
-                            aspectRatio={aspectRatio}
-                        />
-                    ))}
-                </div>
+                    <div
+                        style={{
+                            gap: spacing ? `${spacing}px` : undefined
+                        }}
+                        className="contents"
+                    >
+                        {images.map((image, index) => (
+                            <StaggerItemHW key={`gallery-${image.url || index}`}>
+                                <MediaGalleryImage
+                                    image={image}
+                                    showCaption={showCaption}
+                                    enableHover={enableHover}
+                                    aspectRatio={aspectRatio}
+                                />
+                            </StaggerItemHW>
+                        ))}
+                    </div>
+                </StaggerContainerHW>
             )}
         </Section>
     );
 }
 
-function MediaGalleryImage(props: MediaGalleryItemProps) {
+function MediaGalleryImage(props: Readonly<MediaGalleryItemProps>) {
     const { image, showCaption, enableHover, aspectRatio } = props;
     if (!image) {
         return null;
     }
     return (
-        <figure className={classNames('overflow-hidden', 'relative', 'w-full', mapAspectRatioStyles(aspectRatio))}>
-            <ImageBlock
-                {...image}
-                className={classNames('w-full h-full object-cover', {
-                    'transition-transform hover:scale-105': enableHover
-                })}
-            />
-            {showCaption && image.caption && (
-                <figcaption className="absolute bg-inverse/70 text-inverse left-0 mx-2 bottom-2 p-1.5 text-xs pointer-events-none">
-                    {image.caption}
-                </figcaption>
-            )}
-        </figure>
+        <HoverScaleHW scale={enableHover ? 1.05 : 1}>
+            <figure className={classNames('overflow-hidden', 'relative', 'w-full', mapAspectRatioStyles(aspectRatio))}>
+                <ImageBlock
+                    {...image}
+                    className="w-full h-full object-cover"
+                />
+                {showCaption && image.caption && (
+                    <figcaption className="absolute bg-inverse/70 text-inverse left-0 mx-2 bottom-2 p-1.5 text-xs pointer-events-none">
+                        {image.caption}
+                    </figcaption>
+                )}
+            </figure>
+        </HoverScaleHW>
     );
 }
 
