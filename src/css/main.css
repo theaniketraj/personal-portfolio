@@ -5,6 +5,7 @@ layer(base);
 @plugin '@tailwindcss/typography';
 @import './animations.css';
 @import './parallax.css';
+@import './hardware-accelerated.css';
 
 @theme {
     --font-body: var(--theme-font-body, monospace);
