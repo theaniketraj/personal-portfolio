@@ -43,9 +43,6 @@ metaTags:
     property: 'og:url'
     content: 'https://www.npmjs.com/package/ceie'
   - type: MetaTag
-    property: 'og:url'
-    content: 'https://ceie-docs.netlify.app/'
-  - type: MetaTag
     property: 'og:description'
     content: >-
       A comprehensive toolchain designed to automate Git repository setup,
@@ -57,6 +54,7 @@ metaTags:
     property: 'twitter:creator'
     content: devxaniket
 ---
+
 # CEIE: A Structured Approach to Git Workflow Automation
 
 ## Introduction
@@ -69,65 +67,57 @@ Managing Git workflows manually can be inefficient, especially when handling mul
 
 ## Core Features
 
-1.  **Three-Layered Branch Model**
+1. **Three-Layered Branch Model**
+   - **Main Branch**: The stable production-ready branch.
 
-    *   **Main Branch**: The stable production-ready branch.
+   - **Controlled Environment (CE) Branch**: Serves as an intermediate validation stage where changes undergo team review before merging into `main`.
 
-    *   **Controlled Environment (CE) Branch**: Serves as an intermediate validation stage where changes undergo team review before merging into `main`.
+   - **Isolated Environment (IE) Branch**: A dedicated branch for local development, allowing offline work that syncs with the remote repository without affecting the review process.
 
-    *   **Isolated Environment (IE) Branch**: A dedicated branch for local development, allowing offline work that syncs with the remote repository without affecting the review process.
+2. **Automated Git Setup**
+   - Initializes repositories with the predefined CEIE structure.
 
-2.  **Automated Git Setup**
+   - Ensures uniform repository setup across multiple projects.
 
-    *   Initializes repositories with the predefined CEIE structure.
+3. **Seamless Integration with CI/CD (Future Scope)**
+   - Plans to integrate GitHub Actions for automated deployments based on branch merges.
 
-    *   Ensures uniform repository setup across multiple projects.
+   - Aims to provide a reusable workflow script applicable across multiple repositories.
 
-3.  **Seamless Integration with CI/CD (Future Scope)**
+4. **Custom Command Implementation**
+   - The project will introduce a global `git setup-ceie` command, making it easy for developers to initialize repositories with the CEIE model instantly.
 
-    *   Plans to integrate GitHub Actions for automated deployments based on branch merges.
+5. **Future Enhancements**
+   - Integration with **GitHub Actions** for automated pull/push mechanisms.
 
-    *   Aims to provide a reusable workflow script applicable across multiple repositories.
+   - Development of **CEIE 2.0**, an npm package for advanced Git automation.
 
-4.  **Custom Command Implementation**
-
-    *   The project will introduce a global `git setup-ceie` command, making it easy for developers to initialize repositories with the CEIE model instantly.
-
-5.  **Future Enhancements**
-
-    *   Integration with **GitHub Actions** for automated pull/push mechanisms.
-
-    *   Development of **CEIE 2.0**, an npm package for advanced Git automation.
-
-    *   Expansion into **CEIE 3.0**, a graphical interface for simplified Git operations.
+   - Expansion into **CEIE 3.0**, a graphical interface for simplified Git operations.
 
 ## Technical Implementation
 
 CEIE leverages **Kotlin for Gradle scripting** to automate repository initialization. The planned `git setup-ceie` command will:
 
-*   Create the required branches (`main`, `CE`, `IE`).
+- Create the required branches (`main`, `CE`, `IE`).
 
-*   Configure repository settings for structured push/pull operations.
+- Configure repository settings for structured push/pull operations.
 
-*   Support future enhancements like **CI/CD automation** without manual intervention.
+- Support future enhancements like **CI/CD automation** without manual intervention.
 
 ## Roadmap
 
-1.  **Phase 1: Core Development**
+1. **Phase 1: Core Development**
+   - Implement the `git setup-ceie` command.
 
-    *   Implement the `git setup-ceie` command.
+   - Establish the three-layered branching model.
 
-    *   Establish the three-layered branching model.
+2. **Phase 2: CI/CD Integration** _(Future Scope)_
+   - Automate deployment workflows with GitHub Actions.
 
-2.  **Phase 2: CI/CD Integration** *(Future Scope)*
+   - Implement a reusable CI/CD script for multiple repositories.
 
-    *   Automate deployment workflows with GitHub Actions.
-
-    *   Implement a reusable CI/CD script for multiple repositories.
-
-3.  **Phase 3: Advanced Automation (CEIE 2.0 & 3.0)**
-
-    *   Work under progress.
+3. **Phase 3: Advanced Automation (CEIE 2.0 & 3.0)**
+   - Work under progress.
 
 ## Conclusion
 
@@ -135,6 +125,5 @@ CEIE is a **initiative** that redefines Git workflow management by introducing a
 
 # Go-to
 
-| [Repo ↗](https://github.com/theaniketraj/ceie) | [Portal ↗](https://www.npmjs.com/package/ceie) | [Docs ↗](https://ceie-docs.netlify.app) |
-| ---------------------------------------------- | ---------------------------------------------- | --------------------------------------- |
-
+| [Repo ↗](https://github.com/theaniketraj/ceie) | [Portal ↗](https://www.npmjs.com/package/ceie) |
+| ----------------------------------------------- | ----------------------------------------------- |
