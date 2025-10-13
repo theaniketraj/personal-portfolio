@@ -51,9 +51,6 @@ metaTags:
     property: 'og:url'
     content: 'https://www.npmjs.com/package/git-setup-ceie'
   - type: MetaTag
-    property: 'og:url'
-    content: 'https://ceie-docs.netlify.app/'
-  - type: MetaTag
     property: 'og:description'
     content: >-
       CEIE automates Git repository initialization by setting up structured     
@@ -66,31 +63,32 @@ metaTags:
     property: 'twitter:creator'
     content: devxaniket
 ---
+
 # **Introduction**
 
 Git is an essential tool for version control, but managing multiple branches effectively can be challenging—especially in team environments where different levels of review and isolation are required before merging changes into the main codebase. **CEIE (Controlled & Isolated Environment for Efficient Git Workflow)** automates the setup of a structured Git repository by initializing three distinct branches:
 
-1.  **Main** – The primary branch where production-ready code resides.
+1. **Main** – The primary branch where production-ready code resides.
 
-2.  **Controlled Environment** – A review stage where code changes undergo evaluation before merging.
+2. **Controlled Environment** – A review stage where code changes undergo evaluation before merging.
 
-3.  **Isolated Environment** – A developer’s private workspace for experimentation and offline work, pushed to GitHub but not directly merged into Main.
+3. **Isolated Environment** – A developer’s private workspace for experimentation and offline work, pushed to GitHub but not directly merged into Main.
 
 With **CEIE**, developers can enforce a systematic, layered approach to version control, improving code quality and collaboration efficiency.
 
 ## Features
 
-*   **Automated Git Repository Setup**: Initializes a new Git repository with three structured branches.
+- **Automated Git Repository Setup**: Initializes a new Git repository with three structured branches.
 
-*   **Predefined Branching Model**: Ensures a controlled flow of changes through separate environments.
+- **Predefined Branching Model**: Ensures a controlled flow of changes through separate environments.
 
-*   **Error Handling & Stability**: Skips steps if a repository already exists and prevents unnecessary reinitialization.
+- **Error Handling & Stability**: Skips steps if a repository already exists and prevents unnecessary reinitialization.
 
-*   **Cross-Platform Support**: Works seamlessly across Windows, macOS, and Linux.
+- **Cross-Platform Support**: Works seamlessly across Windows, macOS, and Linux.
 
-*   **Custom Git Command (`git-setup-ceie`)**: Provides a one-command setup experience for teams and individual developers.
+- **Custom Git Command (`git-setup-ceie`)**: Provides a one-command setup experience for teams and individual developers.
 
-*   **NPM Global Package**: CEIE is published on **npm**, allowing easy global installation and usage.
+- **NPM Global Package**: CEIE is published on **npm**, allowing easy global installation and usage.
 
 ## Installation
 
@@ -112,53 +110,53 @@ git-setup-ceie
 
 This command will:
 
-1.  Initialize a Git repository (if not already initialized).
+1. Initialize a Git repository (if not already initialized).
 
-2.  Create an initial commit (if not already committed).
+2. Create an initial commit (if not already committed).
 
-3.  Set up three branches: **Main**, **Controlled Environment**, and **Isolated Environment**.
+3. Set up three branches: **Main**, **Controlled Environment**, and **Isolated Environment**.
 
-4.  Switch back to the **Main** branch.
+4. Switch back to the **Main** branch.
 
 ## Workflow Benefits
 
-*   **Structured Development Process**: Encourages an organized approach to pushing, reviewing, and merging code.
+- **Structured Development Process**: Encourages an organized approach to pushing, reviewing, and merging code.
 
-*   **Prevents Direct Production Modifications**: Code does not go into the `main` branch without passing through `controlled-environment`.
+- **Prevents Direct Production Modifications**: Code does not go into the `main` branch without passing through `controlled-environment`.
 
-*   **Encourages Experimental Development**: The `isolated-environment` branch allows developers to work on new features safely before submitting changes for review.
+- **Encourages Experimental Development**: The `isolated-environment` branch allows developers to work on new features safely before submitting changes for review.
 
-*   **Ideal for Team Collaboration**: Ensures that every update undergoes a review cycle before integration.
+- **Ideal for Team Collaboration**: Ensures that every update undergoes a review cycle before integration.
 
 ## How It Works Internally
 
-### Steps Performed by CEIE:
+### Steps Performed by CEIE
 
-1.  Initializes a **Git repository** (`git init`).
+1. Initializes a **Git repository** (`git init`).
 
-2.  Creates a **README.md** file and makes an initial commit.
+2. Creates a **README.md** file and makes an initial commit.
 
-3.  Ensures that the `main` branch exists.
+3. Ensures that the `main` branch exists.
 
-4.  Creates and switches to `controlled-environment` and `isolated-environment` branches.
+4. Creates and switches to `controlled-environment` and `isolated-environment` branches.
 
-5.  Switches back to the `main` branch to complete the setup.
+5. Switches back to the `main` branch to complete the setup.
 
 ### Error Handling
 
-*   If Git is already initialized, the setup continues without re-initialization.
+- If Git is already initialized, the setup continues without re-initialization.
 
-*   If the `main` branch does not exist, CEIE ensures it is created and has an initial commit.
+- If the `main` branch does not exist, CEIE ensures it is created and has an initial commit.
 
-*   If branches already exist, the script skips them instead of failing.
+- If branches already exist, the script skips them instead of failing.
 
 ## Future Enhancements
 
-*   **Configurable Branch Names**: Allow users to define their own branch names instead of default ones.
+- **Configurable Branch Names**: Allow users to define their own branch names instead of default ones.
 
-*   **Support for Additional Git Workflows**: Expanding support for different branching strategies.
+- **Support for Additional Git Workflows**: Expanding support for different branching strategies.
 
-*   **Integration with CI/CD Pipelines**: Automating deployments based on branch merges.
+- **Integration with CI/CD Pipelines**: Automating deployments based on branch merges.
 
 ## Conclusion
 
@@ -166,6 +164,5 @@ CEIE simplifies Git repository management by providing a structured, automated w
 
 # Go-to
 
-| [Repo↗](https://github.com/theaniketraj/git-setup-ceie) | [Portal ↗](https://www.npmjs.com/package/git-setup-ceie) | [Docs ↗](https://ceie-docs.netlify.app/) |
-| ------------------------------------------------------- | -------------------------------------------------------- | ---------------------------------------- |
-
+| [Repo↗](https://github.com/theaniketraj/git-setup-ceie) | [Portal ↗](https://www.npmjs.com/package/git-setup-ceie) |
+| -------------------------------------------------------- | --------------------------------------------------------- |
