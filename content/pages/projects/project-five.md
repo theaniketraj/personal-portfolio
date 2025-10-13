@@ -50,12 +50,10 @@ metaTags:
     property: 'og:url'
     content: 'https://github.com/theaniketraj/VISTA'
   - type: MetaTag
-    property: 'og:url'
-    content: 'https://ceie-docs.netlify.app/'
-  - type: MetaTag
     property: 'twitter:creator'
     content: devxaniket
 ---
+
 # Introducing VISTA
 
 As part of the CEIE (Controlled Environment Integration Engine) ecosystem, **VISTA** represents our most advanced versioning solution—a Gradle plugin that automates semantic versioning, Git tagging, and rollback workflows directly within your build process. In this article, we’ll dive into VISTA’s architecture, configuration, and usage, and demonstrate how it elevates version control to a fully automated, enterprise-grade experience.
@@ -64,53 +62,49 @@ As part of the CEIE (Controlled Environment Integration Engine) ecosystem, **VIS
 
 Traditional versioning often relies on manual updates to `version.properties` or hard-coded version strings. This approach is:
 
-*   **Error-Prone:** Developers may forget to bump minor or patch numbers.
+- **Error-Prone:** Developers may forget to bump minor or patch numbers.
 
-*   **Inconsistent:** Different branches can drift out of sync.
+- **Inconsistent:** Different branches can drift out of sync.
 
-*   **Opaque:** It can be difficult to trace how versions were calculated.
+- **Opaque:** It can be difficult to trace how versions were calculated.
 
 With VISTA, version management becomes:
 
-*   **Deterministic:** Semantic version bumps are driven by commit metadata.
+- **Deterministic:** Semantic version bumps are driven by commit metadata.
 
-*   **Traceable:** Every version tag maps back to a concrete set of commits.
+- **Traceable:** Every version tag maps back to a concrete set of commits.
 
-*   **Reversible:** Rollback tasks restore both code and version artifacts to known good states.
+- **Reversible:** Rollback tasks restore both code and version artifacts to known good states.
 
 ## Architecture Overview
 
 VISTA is implemented as a Kotlin-based Gradle plugin and plugs into the standard Gradle lifecycle:
 
-1.  **Initialization Phase**
+1. **Initialization Phase**
+   - Reads an optional `version.properties` override.
 
-    *   Reads an optional `version.properties` override.
+   - Scans Git history to determine the highest existing version tag.
 
-    *   Scans Git history to determine the highest existing version tag.
+2. **Version Generation**
+   - Applies a semantic strategy (major/minor/patch) based on commit messages.
 
-2.  **Version Generation**
+   - Honors an explicit `version.properties` if present.
 
-    *   Applies a semantic strategy (major/minor/patch) based on commit messages.
+3. **Injection & Build**
+   - Injects the computed version into `project.version` before compilation.
 
-    *   Honors an explicit `version.properties` if present.
+4. **Release & Tagging**
+   - Creates a Git tag using a configurable prefix (e.g., `v1.2.3`).
 
-3.  **Injection & Build**
-
-    *   Injects the computed version into `project.version` before compilation.
-
-4.  **Release & Tagging**
-
-    *   Creates a Git tag using a configurable prefix (e.g., `v1.2.3`).
-
-    *   Pushes the tag to the remote repository.
+   - Pushes the tag to the remote repository.
 
 Under the hood, VISTA leverages:
 
-*   **JGit** for high-performance Git operations.
+- **JGit** for high-performance Git operations.
 
-*   **Kotlin DSL** for a type-safe Gradle extension API.
+- **Kotlin DSL** for a type-safe Gradle extension API.
 
-*   **Conventional Commits** parsing to drive semver decisions.
+- **Conventional Commits** parsing to drive semver decisions.
 
 ## Installation
 
@@ -118,7 +112,7 @@ Add VISTA to your Gradle project by updating your `settings.gradle.kts` or `buil
 
 ```
 plugins {
-id("io.github.theaniketraj.vista") version "1.0.7" 
+id("io.github.theaniketraj.vista") version "1.0.7"
 // Always use latest Version
 }
 ```
@@ -205,35 +199,35 @@ run: ./gradlew vistaRollback
 
 This pipeline ensures:
 
-1.  **Automatic Version Bumping** on every push to `main`.
+1. **Automatic Version Bumping** on every push to `main`.
 
-2.  **Unified Build Artifacts** with `project.version` set.
+2. **Unified Build Artifacts** with `project.version` set.
 
-3.  **Automated Git Tagging and Pushing** for seamless release.
+3. **Automated Git Tagging and Pushing** for seamless release.
 
-4.  **Conditional Rollback** in the event of pipeline failures.
+4. **Conditional Rollback** in the event of pipeline failures.
 
 ## Best Practices
 
-*   **Commit Message Standards:** Enforce Conventional Commits (e.g., `feat:`, `fix:`, `BREAKING CHANGE:`) to drive accurate semver changes.
+- **Commit Message Standards:** Enforce Conventional Commits (e.g., `feat:`, `fix:`, `BREAKING CHANGE:`) to drive accurate semver changes.
 
-*   **Branch Protection:** Restrict direct pushes to `main`; require pull-request reviews to maintain release integrity.
+- **Branch Protection:** Restrict direct pushes to `main`; require pull-request reviews to maintain release integrity.
 
-*   **Version File Discipline:** Only update `version.properties` via `vistaGenerateVersion` to preserve audit trails.
+- **Version File Discipline:** Only update `version.properties` via `vistaGenerateVersion` to preserve audit trails.
 
-*   **Plugin Updates:** Regularly bump the VISTA plugin version to benefit from enhancements and security fixes.
+- **Plugin Updates:** Regularly bump the VISTA plugin version to benefit from enhancements and security fixes.
 
 ## Benefits of VISTA
 
-*   **Reliability:** Eliminates manual version errors.
+- **Reliability:** Eliminates manual version errors.
 
-*   **Traceability:** Each version maps to a clear Git tag and changelog entry.
+- **Traceability:** Each version maps to a clear Git tag and changelog entry.
 
-*   **Reversibility:** Easy rollback of both code and version metadata.
+- **Reversibility:** Easy rollback of both code and version metadata.
 
-*   **Integration:** Seamless with existing Gradle and Git workflows.
+- **Integration:** Seamless with existing Gradle and Git workflows.
 
-*   **Scalability:** Supports complex multi-module and multi-project builds.
+- **Scalability:** Supports complex multi-module and multi-project builds.
 
 ## Conclusion
 
@@ -241,6 +235,5 @@ VISTA (CEIE 4.0) brings automated, semantically correct version management into 
 
 ## Go-to
 
-| [Repo ↗](https://github.com/theaniketraj/VISTA) | [Portal ↗](https://plugins.gradle.org/plugin/io.github.theaniketraj.vista) | [Docs ↗](https://ceie-docs.netlify.app/) |
-| ----------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
-
+| [Repo ↗](https://github.com/theaniketraj/VISTA) | [Portal ↗](https://plugins.gradle.org/plugin/io.github.theaniketraj.vista) |
+| ------------------------------------------------ | --------------------------------------------------------------------------- |
