@@ -4,6 +4,9 @@ export { PageTransition } from './PageTransition';
 // Scroll Animations
 export { FadeIn, ScrollReveal, StaggerContainer, StaggerItem } from './ScrollAnimations';
 
+// Typewriter Effect
+export { TypewriterEffect } from './TypewriterEffect';
+
 // Hardware-Accelerated Scroll Animations
 export {
     FadeInHW,

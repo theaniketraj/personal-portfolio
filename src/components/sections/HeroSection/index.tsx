@@ -4,7 +4,15 @@ import Markdown from 'markdown-to-jsx';
 import { AnnotatedField } from '@/components/Annotated';
 import { Action } from '@/components/atoms';
 import { DynamicComponent } from '@/components/components-registry';
-import { FadeIn, HoverScale, ParallaxText, ScrollBasedScale, StaggerContainer, StaggerItem } from '@/components/motion';
+import {
+    FadeIn,
+    HoverScale,
+    ParallaxText,
+    ScrollBasedScale,
+    StaggerContainer,
+    StaggerItem,
+    TypewriterEffect
+} from '@/components/motion';
 import { HeroSection } from '@/types';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
 import Section from '../Section';
@@ -27,7 +35,11 @@ export default function Component(props: HeroSection) {
                             <StaggerItem>
                                 <ParallaxText speed={0.1} direction="up">
                                     <FadeIn direction="up">
-                                        <h1 className="text-5xl sm:text-6xl">{title}</h1>
+                                        <h1 className="text-5xl sm:text-6xl">
+                                            <TypewriterEffect speed="medium" delay={0.2}>
+                                                {title}
+                                            </TypewriterEffect>
+                                        </h1>
                                     </FadeIn>
                                 </ParallaxText>
                             </StaggerItem>
@@ -38,7 +50,9 @@ export default function Component(props: HeroSection) {
                             <StaggerItem>
                                 <ParallaxText speed={0.15} direction="left">
                                     <FadeIn direction="up" delay={0.2}>
-                                        <p className={classNames('text-xl sm:text-2xl', { 'mt-4': title })}>{subtitle}</p>
+                                        <p className={classNames('text-xl sm:text-2xl', { 'mt-4': title })}>
+                                            {subtitle}
+                                        </p>
                                     </FadeIn>
                                 </ParallaxText>
                             </StaggerItem>
