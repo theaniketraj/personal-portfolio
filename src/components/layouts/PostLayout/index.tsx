@@ -4,6 +4,7 @@ import Markdown from 'markdown-to-jsx';
 import * as React from 'react';
 
 import { DynamicComponent } from '@/components/components-registry';
+import ReadingProgress from '@/components/molecules/ReadingProgress';
 import { PageComponentProps, PostLayout } from '@/types';
 import HighlightedPreBlock from '@/utils/highlighted-markdown';
 import BaseLayout from '../BaseLayout';
@@ -18,6 +19,7 @@ const Component: React.FC<ComponentProps> = (props) => {
     return (
         <BaseLayout {...props}>
             <article className="px-4 py-14 lg:py-20">
+                <ReadingProgress />
                 <header className="max-w-5xl mx-auto mb-10 sm:mb-14">
                     <div className="mb-6 uppercase">
                         <time dateTime={dateTimeAttr}>{formattedDate}</time>
