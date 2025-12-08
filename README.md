@@ -82,7 +82,7 @@ This will output a local URL where you can edit your content visually.
 
 ## Project Structure
 
-```bash
+```pgsql
 personal-portfolio/
 ├── content/            # Content files (Markdown/JSON) for pages, data, etc.
 ├── public/             # Static assets (images, fonts, etc.)
