@@ -20,6 +20,7 @@ layer(base);
 @layer base {
     html {
         @apply antialiased font-body;
+        font-size: 90%;
     }
     body {
         @apply flex flex-col min-h-screen;
