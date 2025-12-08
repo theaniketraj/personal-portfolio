@@ -7,8 +7,10 @@ import { Annotated } from '@/components/Annotated';
 import Link from '@/components/atoms/Link';
 import { DynamicComponent } from '@/components/components-registry';
 import ImageBlock from '@/components/molecules/ImageBlock';
+import TableOfContents from '@/components/molecules/TableOfContents';
 import { PageComponentProps, ProjectLayout } from '@/types';
 import HighlightedPreBlock from '@/utils/highlighted-markdown';
+import { slugify } from '@/utils/slugify';
 import BaseLayout from '../BaseLayout';
 
 type ComponentProps = PageComponentProps &
@@ -16,6 +18,39 @@ type ComponentProps = PageComponentProps &
         prevProject?: ProjectLayout;
         nextProject?: ProjectLayout;
     };
+
+const getTextFromChildren = (children: React.ReactNode): string => {
+    if (typeof children === 'string') return children;
+    if (typeof children === 'number') return children.toString();
+    if (Array.isArray(children)) return children.map(getTextFromChildren).join('');
+    if (React.isValidElement(children)) {
+        const props = children.props as { children?: React.ReactNode };
+        if (props.children) {
+            return getTextFromChildren(props.children);
+        }
+    }
+    return '';
+};
+
+const Heading2 = ({ children, ...props }) => {
+    const text = getTextFromChildren(children);
+    const id = slugify(text);
+    return (
+        <h2 id={id} className="scroll-mt-24" {...props}>
+            {children}
+        </h2>
+    );
+};
+
+const Heading3 = ({ children, ...props }) => {
+    const text = getTextFromChildren(children);
+    const id = slugify(text);
+    return (
+        <h3 id={id} className="scroll-mt-24" {...props}>
+            {children}
+        </h3>
+    );
+};
 
 const Component: React.FC<ComponentProps> = (props) => {
     const {
@@ -52,14 +87,31 @@ const Component: React.FC<ComponentProps> = (props) => {
                         <ProjectMedia media={media} />
                     </figure>
                 )}
-                {markdownContent && (
-                    <Markdown
-                        options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }}
-                        className="max-w-3xl mx-auto prose sm:prose-lg"
-                    >
-                        {markdownContent}
-                    </Markdown>
-                )}
+
+                <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-[1fr_300px] gap-16 relative">
+                    <div className="min-w-0">
+                        {markdownContent && (
+                            <Markdown
+                                options={{
+                                    forceBlock: true,
+                                    overrides: {
+                                        pre: HighlightedPreBlock,
+                                        h2: Heading2,
+                                        h3: Heading3
+                                    }
+                                }}
+                                className="prose sm:prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-[var(--theme-primary)] hover:prose-a:text-[var(--theme-secondary)] transition-colors"
+                            >
+                                {markdownContent}
+                            </Markdown>
+                        )}
+                    </div>
+                    <aside className="hidden lg:block relative">
+                        <div className="sticky top-32">
+                            {markdownContent && <TableOfContents content={markdownContent} />}
+                        </div>
+                    </aside>
+                </div>
             </article>
             {(prevProject || nextProject) && (
                 <nav className="px-4 mt-12 mb-20">
