@@ -52,6 +52,32 @@ const Heading3 = ({ children, ...props }) => {
     );
 };
 
+const CustomLink = ({ children, href, className, ...props }) => {
+    const text = getTextFromChildren(children);
+    const isGoTo = text.includes('↗');
+
+    if (isGoTo) {
+        return (
+            <span className="not-prose">
+                <a
+                    href={href}
+                    className={classNames('btn-goto', className)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    {...props}
+                >
+                    {children}
+                </a>
+            </span>
+        );
+    }
+    return (
+        <a href={href} className={className} {...props}>
+            {children}
+        </a>
+    );
+};
+
 const Component: React.FC<ComponentProps> = (props) => {
     const {
         title,
@@ -97,7 +123,8 @@ const Component: React.FC<ComponentProps> = (props) => {
                                     overrides: {
                                         pre: HighlightedPreBlock,
                                         h2: Heading2,
-                                        h3: Heading3
+                                        h3: Heading3,
+                                        a: CustomLink
                                     }
                                 }}
                                 className="prose sm:prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-[var(--theme-primary)] hover:prose-a:text-[var(--theme-secondary)] transition-colors"

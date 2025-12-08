@@ -149,6 +149,23 @@ layer(base);
             content: none;
         }
     }
+
+    .btn-goto {
+        @apply relative inline-flex items-center justify-center gap-2 text-center text-lg leading-tight no-underline transition-all duration-200;
+        @apply py-3 px-6 border-2 border-[var(--theme-primary)] my-4;
+        @apply text-[var(--theme-primary)] font-bold uppercase tracking-widest;
+        @apply hover:bg-[var(--theme-primary)] hover:text-[var(--theme-on-primary)] hover:-translate-y-1;
+        box-shadow: 4px 4px 0 0 var(--theme-primary);
+    }
+
+    .btn-goto:hover {
+        box-shadow: 6px 6px 0 0 var(--theme-primary);
+    }
+
+    .btn-goto:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 0 var(--theme-primary);
+    }
 }
 
 @utility bottom-shadow-* {
