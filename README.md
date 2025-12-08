@@ -22,7 +22,7 @@ This portfolio is built with modern web technologies to ensure high performance,
 - **CMS / Visual Editor:** [Stackbit](https://stackbit.com/)
 - **Deployment:** [Netlify](https://www.netlify.com/)
 - **Animation:** [Framer Motion](https://www.framer.com/motion/)
-- [React Spring](https://react-spring.dev/)
+- **React Spring** [React Spring](https://react-spring.dev/)
 
 ## Getting Started
 
