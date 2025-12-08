@@ -7,14 +7,14 @@ description: 'SCAN: Sensitive Code Analyzer for Nerds'
 featuredImage:
   type: ImageBlock
   url: /images/scan-featured.jpg
-  altText: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
-  caption: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
+  altText: "SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj's Project"
+  caption: "SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj's Project"
   elementId: ''
 media:
   type: ImageBlock
   url: /images/scan-featured.jpg
-  altText: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
-  caption: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
+  altText: "SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj's Project"
+  caption: "SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj's Project"
   elementId: ''
 addTitleSuffix: true
 colors: colors-a
@@ -25,7 +25,7 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 70
-metaTitle: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
+metaTitle: "SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj's Project"
 metaDescription: >-
   SCAN is an intelligent Gradle plugin that automatically detects secrets, API
   keys, credentials, and other sensitive information in your codebase. | Aniket
@@ -33,7 +33,7 @@ metaDescription: >-
 metaTags:
   - type: MetaTag
     property: 'og:title'
-    content: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
+    content: "SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj's Project"
   - type: MetaTag
     property: 'og:description'
     content: >-
@@ -51,7 +51,7 @@ metaTags:
     content: devxaniket
   - type: MetaTag
     property: 'twitter:title'
-    content: 'SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj''s Project'
+    content: "SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj's Project"
   - type: MetaTag
     property: 'twitter:description'
     content: >-
@@ -71,6 +71,7 @@ metaTags:
     property: 'og:url'
     content: 'https://plugins.gradle.org/plugin/io.github.theaniketraj.scan'
 ---
+
 # SCAN: A Comprehensive Security Scanning Plugin for the Gradle Ecosystem
 
 ## Overview
@@ -81,13 +82,13 @@ SCAN (Sensitive Code Analyzer for Nerds) is an intelligent Gradle plugin designe
 
 The primary mission of SCAN is to act as the first line of defense against security incidents by catching sensitive data before it reaches version control systems. In an era where data breaches and security vulnerabilities are increasingly costly and damaging, SCAN provides developers with an automated, intelligent solution that:
 
-*   **Prevents Security Leaks**: Stops builds when sensitive data is detected, preventing accidental commits of secrets
+- **Prevents Security Leaks**: Stops builds when sensitive data is detected, preventing accidental commits of secrets
 
-*   **Integrates Naturally**: Works within existing Gradle workflows without disrupting development processes
+- **Integrates Naturally**: Works within existing Gradle workflows without disrupting development processes
 
-*   **Provides Actionable Intelligence**: Offers detailed context about findings to help developers understand and remediate issues
+- **Provides Actionable Intelligence**: Offers detailed context about findings to help developers understand and remediate issues
 
-*   **Scales Effectively**: Optimized for both small projects and large enterprise codebases
+- **Scales Effectively**: Optimized for both small projects and large enterprise codebases
 
 ## Technical Architecture and Innovation
 
@@ -99,53 +100,53 @@ SCAN employs a sophisticated, three-pronged detection strategy that sets it apar
 
 The plugin utilizes carefully crafted regex patterns to identify known secret formats across a comprehensive range of services and platforms. The pattern library includes:
 
-*   **Cloud Provider Credentials**: AWS Access Keys, Google Cloud Platform API keys, Azure storage connection strings
+- **Cloud Provider Credentials**: AWS Access Keys, Google Cloud Platform API keys, Azure storage connection strings
 
-*   **Version Control Tokens**: GitHub personal access tokens, GitLab tokens, Bitbucket app passwords
+- **Version Control Tokens**: GitHub personal access tokens, GitLab tokens, Bitbucket app passwords
 
-*   **Database Credentials**: JDBC connection strings, MongoDB URLs, Redis connections
+- **Database Credentials**: JDBC connection strings, MongoDB URLs, Redis connections
 
-*   **API Keys**: Slack tokens, Stripe keys, OpenAI API keys, Twitter API credentials
+- **API Keys**: Slack tokens, Stripe keys, OpenAI API keys, Twitter API credentials
 
-*   **Cryptographic Keys**: PEM private keys, SSH keys, JWT tokens
+- **Cryptographic Keys**: PEM private keys, SSH keys, JWT tokens
 
 #### 2. Entropy Analysis Engine
 
 Beyond pattern matching, SCAN implements mathematical entropy analysis to identify random-looking strings that could be secrets:
 
-*   Uses Shannon entropy calculation to detect high-randomness strings
+- Uses Shannon entropy calculation to detect high-randomness strings
 
-*   Configurable thresholds to balance sensitivity versus false positives
+- Configurable thresholds to balance sensitivity versus false positives
 
-*   Supports multiple character sets (base64, hexadecimal, alphanumeric)
+- Supports multiple character sets (base64, hexadecimal, alphanumeric)
 
-*   Identifies obfuscated or encoded credentials that might bypass pattern detection
+- Identifies obfuscated or encoded credentials that might bypass pattern detection
 
 #### 3. Context-Aware Intelligence
 
 The most innovative aspect of SCAN is its context-aware detection system:
 
-*   Analyzes variable names, comments, and surrounding code structure
+- Analyzes variable names, comments, and surrounding code structure
 
-*   Differentiates between legitimate secrets and test data
+- Differentiates between legitimate secrets and test data
 
-*   Reduces false positives by understanding code context
+- Reduces false positives by understanding code context
 
-*   Considers file paths and naming conventions in confidence scoring
+- Considers file paths and naming conventions in confidence scoring
 
 ### Performance and Scalability Architecture
 
 SCAN is engineered for performance and efficiency:
 
-*   **Parallel Processing**: Concurrent file scanning when resources allow
+- **Parallel Processing**: Concurrent file scanning when resources allow
 
-*   **Memory Efficiency**: Streams large files without loading them entirely into memory
+- **Memory Efficiency**: Streams large files without loading them entirely into memory
 
-*   **Smart Filtering**: Focuses on relevant file types and skips binary/generated content
+- **Smart Filtering**: Focuses on relevant file types and skips binary/generated content
 
-*   **Incremental Scanning**: Can target only changed files in CI environments
+- **Incremental Scanning**: Can target only changed files in CI environments
 
-*   **Caching System**: Maintains file checksums to skip unchanged files
+- **Caching System**: Maintains file checksums to skip unchanged files
 
 ## Project Structure and Technical Implementation
 
@@ -155,51 +156,51 @@ The project demonstrates excellent software engineering practices with a well-or
 
 **Plugin Layer** (plugin):
 
-*   ScanPlugin: Main plugin entry point and Gradle integration
+- ScanPlugin: Main plugin entry point and Gradle integration
 
-*   ScanTask: Primary scanning task implementation
+- ScanTask: Primary scanning task implementation
 
-*   ScanExtension: Configuration DSL for build scripts
+- ScanExtension: Configuration DSL for build scripts
 
 **Detection Engine** (core):
 
-*   ScanEngine: Orchestrates the scanning process
+- ScanEngine: Orchestrates the scanning process
 
-*   FileScanner: Handles individual file processing
+- FileScanner: Handles individual file processing
 
-*   ScanResult: Models for scan results and findings
+- ScanResult: Models for scan results and findings
 
 **Detection Strategies** (detectors):
 
-*   PatternDetector: Regex-based pattern matching
+- PatternDetector: Regex-based pattern matching
 
-*   EntropyDetector: Mathematical entropy analysis
+- EntropyDetector: Mathematical entropy analysis
 
-*   ContextAwareDetector: Intelligent context analysis
+- ContextAwareDetector: Intelligent context analysis
 
-*   CompositeDetector: Combines multiple detection methods
+- CompositeDetector: Combines multiple detection methods
 
 **Pattern Management** (patterns):
 
-*   Organized pattern libraries for different secret types
+- Organized pattern libraries for different secret types
 
-*   Extensible system for custom organizational patterns
+- Extensible system for custom organizational patterns
 
 ### Technology Stack
 
 The project leverages modern JVM technologies:
 
-*   **Kotlin 2.0.20**: Modern, expressive language with excellent Java interoperability
+- **Kotlin 2.0.20**: Modern, expressive language with excellent Java interoperability
 
-*   **Gradle 8.x**: Latest build tool features and performance optimizations
+- **Gradle 8.x**: Latest build tool features and performance optimizations
 
-*   **Kotlinx Serialization**: Efficient JSON/YAML processing
+- **Kotlinx Serialization**: Efficient JSON/YAML processing
 
-*   **Jackson**: Comprehensive data format support
+- **Jackson**: Comprehensive data format support
 
-*   **JUnit 5 + Kotest**: Modern testing frameworks with property-based testing
+- **JUnit 5 + Kotest**: Modern testing frameworks with property-based testing
 
-*   **Detekt + Spotless**: Code quality and formatting tools
+- **Detekt + Spotless**: Code quality and formatting tools
 
 ## Configuration and Customization
 
@@ -208,7 +209,7 @@ The project leverages modern JVM technologies:
 SCAN follows the principle of "sensible defaults" - it works immediately upon installation:
 
 ```
-plugins 
+plugins
 {
   id("io.github.theaniketraj.scan") version "2.0.0"
 }
@@ -221,7 +222,7 @@ Simply running `./gradlew scanForSecrets` begins scanning with intelligent def
 For teams requiring customization, SCAN offers extensive configuration capabilities:
 
 ```
-scan 
+scan
 {
   // Detection sensitivity
   strictMode = true
@@ -242,15 +243,15 @@ scan
 
 The default pattern library includes over 50 built-in patterns covering:
 
-*   Major cloud providers (AWS, GCP, Azure)
+- Major cloud providers (AWS, GCP, Azure)
 
-*   Popular development platforms (GitHub, GitLab, Bitbucket)
+- Popular development platforms (GitHub, GitLab, Bitbucket)
 
-*   Common APIs and services (Slack, Stripe, OpenAI, Twilio)
+- Common APIs and services (Slack, Stripe, OpenAI, Twilio)
 
-*   Database systems (MySQL, PostgreSQL, MongoDB, Redis)
+- Database systems (MySQL, PostgreSQL, MongoDB, Redis)
 
-*   Cryptographic keys and certificates
+- Cryptographic keys and certificates
 
 ## Development and Quality Practices
 
@@ -258,35 +259,35 @@ The default pattern library includes over 50 built-in patterns covering:
 
 The project demonstrates commitment to quality through comprehensive testing:
 
-*   **Unit Tests**: Individual component testing with high coverage
+- **Unit Tests**: Individual component testing with high coverage
 
-*   **Integration Tests**: Multi-component interaction validation
+- **Integration Tests**: Multi-component interaction validation
 
-*   **Performance Tests**: JMH benchmarks for critical paths
+- **Performance Tests**: JMH benchmarks for critical paths
 
-*   **Property-Based Testing**: Kotest property testing for edge cases
+- **Property-Based Testing**: Kotest property testing for edge cases
 
 ### Code Quality and Maintenance
 
-*   **Static Analysis**: Detekt for code quality enforcement
+- **Static Analysis**: Detekt for code quality enforcement
 
-*   **Code Formatting**: Spotless with ktlint for consistent styling
+- **Code Formatting**: Spotless with ktlint for consistent styling
 
-*   **Documentation**: Dokka for API documentation generation
+- **Documentation**: Dokka for API documentation generation
 
-*   **Dependency Management**: Gradle version catalogs for consistent dependency versions
+- **Dependency Management**: Gradle version catalogs for consistent dependency versions
 
 ### CI/CD and Release Process
 
 The project follows modern DevOps practices:
 
-*   Automated testing on multiple environments
+- Automated testing on multiple environments
 
-*   Semantic versioning for releases
+- Semantic versioning for releases
 
-*   Plugin publication to Gradle Plugin Portal
+- Plugin publication to Gradle Plugin Portal
 
-*   Comprehensive documentation and examples
+- Comprehensive documentation and examples
 
 ## Integration and Ecosystem Compatibility
 
@@ -315,6 +316,7 @@ Ready-to-use configurations for popular CI/CD platforms:
 ```
 
 **Jenkins Pipeline**:
+
 ```
 stage('Security Scan') {
     steps {
@@ -327,11 +329,11 @@ stage('Security Scan') {
 
 SCAN generates IDE-compatible output formats:
 
-*   Checkstyle format for IntelliJ IDEA
+- Checkstyle format for IntelliJ IDEA
 
-*   JSON output for custom integrations
+- JSON output for custom integrations
 
-*   HTML reports for detailed analysis
+- HTML reports for detailed analysis
 
 ## Reporting and Analysis Capabilities
 
@@ -339,23 +341,23 @@ SCAN generates IDE-compatible output formats:
 
 SCAN provides multiple output formats to suit different use cases:
 
-*   **Console Output**: Immediate feedback during development
+- **Console Output**: Immediate feedback during development
 
-*   **JSON Reports**: Machine-readable format for CI/CD integration
+- **JSON Reports**: Machine-readable format for CI/CD integration
 
-*   **HTML Reports**: Rich, interactive reports with detailed analysis
+- **HTML Reports**: Rich, interactive reports with detailed analysis
 
-*   **Baseline Comparison**: Track changes over time
+- **Baseline Comparison**: Track changes over time
 
 ### Advanced Analysis Features
 
-*   **Confidence Scoring**: Each finding includes a confidence level
+- **Confidence Scoring**: Each finding includes a confidence level
 
-*   **Context Snippets**: Shows surrounding code for better understanding
+- **Context Snippets**: Shows surrounding code for better understanding
 
-*   **Severity Classification**: Categorizes findings by potential impact
+- **Severity Classification**: Categorizes findings by potential impact
 
-*   **False Positive Management**: Whitelist system for known-safe patterns
+- **False Positive Management**: Whitelist system for known-safe patterns
 
 ## Community and Ecosystem Impact
 
@@ -363,25 +365,25 @@ SCAN provides multiple output formats to suit different use cases:
 
 SCAN is released under the MIT License, encouraging community contribution and adoption. The project includes:
 
-*   Comprehensive contributing guidelines
+- Comprehensive contributing guidelines
 
-*   Clear code of conduct
+- Clear code of conduct
 
-*   Detailed documentation for developers
+- Detailed documentation for developers
 
-*   Examples and templates for common use cases
+- Examples and templates for common use cases
 
 ### Educational Value
 
 The project serves as an excellent example of:
 
-*   Modern Gradle plugin development
+- Modern Gradle plugin development
 
-*   Kotlin best practices
+- Kotlin best practices
 
-*   Security tooling design
+- Security tooling design
 
-*   Performance optimization techniques
+- Performance optimization techniques
 
 ## Future Vision and Roadmap
 
@@ -389,21 +391,21 @@ Based on the project's architecture and current capabilities, SCAN is positioned
 
 ### Potential Enhancements
 
-*   **Machine Learning Integration**: AI-powered detection for unknown secret patterns
+- **Machine Learning Integration**: AI-powered detection for unknown secret patterns
 
-*   **Language-Specific Analyzers**: Specialized detection for different programming languages
+- **Language-Specific Analyzers**: Specialized detection for different programming languages
 
-*   **Cloud Integration**: Direct integration with secret management services
+- **Cloud Integration**: Direct integration with secret management services
 
-*   **Real-Time Monitoring**: IDE plugins for live scanning during development
+- **Real-Time Monitoring**: IDE plugins for live scanning during development
 
 ### Enterprise Features
 
-*   **Custom Rule Management**: Centralized pattern management for organizations
+- **Custom Rule Management**: Centralized pattern management for organizations
 
-*   **Compliance Reporting**: Integration with security compliance frameworks
+- **Compliance Reporting**: Integration with security compliance frameworks
 
-*   **Team Analytics**: Understanding of security practices across development teams
+- **Team Analytics**: Understanding of security practices across development teams
 
 ## Technical Analysis and Innovation
 
@@ -421,13 +423,13 @@ This mathematical foundation allows the plugin to identify random-looking string
 
 The plugin's architecture demonstrates advanced understanding of performance considerations:
 
-*   Lazy evaluation patterns minimize unnecessary computation
+- Lazy evaluation patterns minimize unnecessary computation
 
-*   Parallel processing utilizes modern multi-core systems
+- Parallel processing utilizes modern multi-core systems
 
-*   Memory streaming handles large files efficiently
+- Memory streaming handles large files efficiently
 
-*   Smart caching reduces repeated work
+- Smart caching reduces repeated work
 
 ## Conclusion
 
@@ -442,5 +444,4 @@ The project stands as a testament to how thoughtful engineering, comprehensive t
 ## Go-to
 
 | [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://theaniketraj.github.io/SCAN/) | [Docs ↗](https://theaniketraj.github.io/SCAN/docs) |
-| ---------------------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
-
+| ----------------------------------------------- | ------------------------------------------------- | --------------------------------------------------- |

@@ -68,6 +68,7 @@ metaTags:
     property: 'twitter:creator'
     content: devxaniket
 ---
+
 TL;DR – 🚀🏍️
 
 Raptor is a **smart helmet** equipped with **accident detection** and an **emergency alert system** to enhance rider safety. Using **real-time sensors** and **AI-based crash detection**, it automatically sends distress signals to emergency contacts and authorities in case of an accident. Designed for **seamless integration with modern mobility**, Raptor ensures swift response times and improved road safety.
@@ -109,9 +110,9 @@ Uses RFID/NFC authentication for secure user verification before ignition.
 #### 5. Mobile App Integration for Alerts & Tracking
 
 The helmet connects to a mobile app via Bluetooth, allowing riders to:
-       View ride analytics & helmet status.
-       Receive battery & sensor health alerts.
-       Customize emergency contact details.
+      View ride analytics & helmet status.
+      Receive battery & sensor health alerts.
+      Customize emergency contact details.
 The app is designed with a clean, user-friendly UI, ensuring easy navigation and real-time monitoring.
 
 #### 6. Voice Assistance & Hands-Free Communication
@@ -139,4 +140,4 @@ Database & Cloud: Firebase for real-time alerts & Supa base for emergency logs.
 
 ## Go-To
 
-[Raptor](https://raptorai.netlify.app) ↗
+| [Raptor ↗](https://raptorai.netlify.app) | [GitHub Repo ↗](https://github.com/theaniketraj/raptor) |

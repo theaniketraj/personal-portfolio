@@ -80,7 +80,8 @@ metaTags:
     property: 'twitter:card'
     content: summary_large_image
 ---
-###### **TL;DR –**  ♻️🔬
+
+###### **TL;DR –** ♻️🔬
 
 Plastecure is an **IoT-powered plastic recycling solution** designed to streamline waste management. It integrates **Arduino, ESP32, and Supabase** to track, categorize, and process plastic waste efficiently. By leveraging real-time data collection and automation, Plastecure promotes **sustainable recycling practices** and **eco-friendly innovation**.
 
@@ -98,87 +99,84 @@ Plastic pollution is one of the biggest environmental concerns of our time. Trad
 
 #### **1. IoT-Enabled Smart Segregation System**
 
-*   **Hardware:** The project utilizes **ESP32 microcontrollers** to manage sensors and communicate data to the cloud.
+- **Hardware:** The project utilizes **ESP32 microcontrollers** to manage sensors and communicate data to the cloud.
 
-*   **Sensors Used:**
+- **Sensors Used:**
+  - **IR Sensors** to detect the presence of plastic waste.
 
-    *   **IR Sensors** to detect the presence of plastic waste.
+  - **Weight Sensors** to measure the quantity of collected plastic.
 
-    *   **Weight Sensors** to measure the quantity of collected plastic.
+  - **AI-Based Camera Module** for identifying different types of plastic.
 
-    *   **AI-Based Camera Module** for identifying different types of plastic.
+- **Process:**
+  - When a user disposes of plastic waste, the system **automatically scans and categorizes** it.
 
-*   **Process:**
-
-    *   When a user disposes of plastic waste, the system **automatically scans and categorizes** it.
-
-    *   The collected data is sent to the cloud for further processing and tracking.
+  - The collected data is sent to the cloud for further processing and tracking.
 
 #### **2. Supabase Integration for Cloud Storage**
 
-*   The project required a **real-time, scalable backend**, and **Supabase was chosen** to store and manage data efficiently.
+- The project required a **real-time, scalable backend**, and **Supabase was chosen** to store and manage data efficiently.
 
-*   All sensor data and user interactions were logged into **Supabase's PostgreSQL database**, making the system **fast and reliable**.
+- All sensor data and user interactions were logged into **Supabase's PostgreSQL database**, making the system **fast and reliable**.
 
-*   The **ESP32 microcontroller was successfully connected to Supabase**, ensuring seamless data synchronization.
+- The **ESP32 microcontroller was successfully connected to Supabase**, ensuring seamless data synchronization.
 
 #### **3. User Dashboard for Monitoring & Analytics**
 
-*   Built an **ultra-modern, interactive UI** for waste tracking.
+- Built an **ultra-modern, interactive UI** for waste tracking.
 
-*   Dashboard Features:
+- Dashboard Features:
+  - **Real-time waste tracking** – Users could monitor the amount of plastic collected.
 
-    *   **Real-time waste tracking** – Users could monitor the amount of plastic collected.
+  - **Segregation insights** – Displays detailed reports on different plastic types.
 
-    *   **Segregation insights** – Displays detailed reports on different plastic types.
+  - **Environmental Impact Metrics** – Estimates the reduction in plastic waste pollution.
 
-    *   **Environmental Impact Metrics** – Estimates the reduction in plastic waste pollution.
-
-*   Designed with **responsive, futuristic UI elements**, following a **clean and intuitive layout**.
+- Designed with **responsive, futuristic UI elements**, following a **clean and intuitive layout**.
 
 #### **4. Reward-Based System for Encouraging Plastic Recycling**
 
-*   Users were encouraged to **recycle plastic responsibly** through an integrated reward system.
+- Users were encouraged to **recycle plastic responsibly** through an integrated reward system.
 
-*   Based on the amount of plastic disposed of, users earned **points redeemable for discounts or incentives**.
+- Based on the amount of plastic disposed of, users earned **points redeemable for discounts or incentives**.
 
-*   The system aimed to promote **active participation in waste management efforts**.
+- The system aimed to promote **active participation in waste management efforts**.
 
 #### **5. Automated Collection & Notification System**
 
-*   Once the bin reaches a pre-defined capacity, **Plastecure sends automated notifications** to waste collection teams.
+- Once the bin reaches a pre-defined capacity, **Plastecure sends automated notifications** to waste collection teams.
 
-*   Integrated **SMS/Email Alerts** for timely pickups and optimized waste collection routes.
+- Integrated **SMS/Email Alerts** for timely pickups and optimized waste collection routes.
 
 ### **Challenges & How We Overcame Them**
 
-*   **IoT Connectivity Issues:** Initially, there were **latency issues in transmitting data from ESP32 to Supabase**. We optimized the **MQTT communication protocol** and reduced data packet sizes for **better efficiency**.
+- **IoT Connectivity Issues:** Initially, there were **latency issues in transmitting data from ESP32 to Supabase**. We optimized the **MQTT communication protocol** and reduced data packet sizes for **better efficiency**.
 
-*   **Sensor Calibration:** Fine-tuning **IR and weight sensors** was challenging due to environmental interference. We implemented **dynamic recalibration algorithms** to improve accuracy.
+- **Sensor Calibration:** Fine-tuning **IR and weight sensors** was challenging due to environmental interference. We implemented **dynamic recalibration algorithms** to improve accuracy.
 
-*   **Ensuring Real-Time Updates:** To achieve **seamless real-time synchronization**, we optimized **Supabase queries** and used **WebSockets** for instant dashboard updates.
+- **Ensuring Real-Time Updates:** To achieve **seamless real-time synchronization**, we optimized **Supabase queries** and used **WebSockets** for instant dashboard updates.
 
-*   **UI/UX Optimization:** The initial dashboard design felt **cluttered**, so we redesigned it using a **minimalist, data-driven approach** with **interactive visualization elements**.
+- **UI/UX Optimization:** The initial dashboard design felt **cluttered**, so we redesigned it using a **minimalist, data-driven approach** with **interactive visualization elements**.
 
 ### **Project Outcome & Achievements**
 
-*   Successfully deployed a **working prototype** with full integration of **hardware, cloud, and UI components**.
+- Successfully deployed a **working prototype** with full integration of **hardware, cloud, and UI components**.
 
-*   Demonstrated real-time **plastic waste segregation, monitoring, and incentivization**.
+- Demonstrated real-time **plastic waste segregation, monitoring, and incentivization**.
 
-*   **Won appreciation for its innovation** in waste management during presentations.
+- **Won appreciation for its innovation** in waste management during presentations.
 
-*   Proved that **technology-driven solutions can significantly improve plastic recycling efficiency**.
+- Proved that **technology-driven solutions can significantly improve plastic recycling efficiency**.
 
 ### **Tech Stack & Tools Used**
 
-*   **Hardware:** ESP32, IR Sensors, Weight Sensors, AI-Based Camera Module
+- **Hardware:** ESP32, IR Sensors, Weight Sensors, AI-Based Camera Module
 
-*   **Backend:** Supabase (PostgreSQL), MQTT for IoT communication
+- **Backend:** Supabase (PostgreSQL), MQTT for IoT communication
 
-*   **Frontend:** HTML, CSS, JavaScript (for the interactive dashboard)
+- **Frontend:** HTML, CSS, JavaScript (for the interactive dashboard)
 
-*   **Other Tools:** Python (for AI-based plastic recognition), Firebase (for real-time notifications)
+- **Other Tools:** Python (for AI-based plastic recognition), Firebase (for real-time notifications)
 
 At **Plastecure**, we **believe** in using **technology** for **environmental impact**. Join us as **we reshape the future of waste management** with **innovation and responsibility**! 🌱♻️
 
@@ -186,4 +184,4 @@ Award 🏆: **Excellence Award in collaborative Technical Project** (**1st Place
 
 # Go-To
 
-[Plastecure ↗](https://plastecure.netlify.app) 
+| [Plastecure ↗](https://plastecure.netlify.app) | [GitHub Repo ↗](https://github.com/theaniketraj/plastecure) |
