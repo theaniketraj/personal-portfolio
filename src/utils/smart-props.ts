@@ -39,7 +39,7 @@ export function createSmartProps(urlPath: string, allData: any[]): any {
     }
 }
 
-function createGlobalProps(allData: any[]): any {
+export function createGlobalProps(allData: any[]): any {
     const cacheKey = 'global-props';
 
     if (globalCache.has(cacheKey)) {
