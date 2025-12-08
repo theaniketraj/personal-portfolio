@@ -16,7 +16,9 @@ export default function Action(props) {
         showIcon,
         icon,
         iconPosition = 'right',
-        style = 'primary'
+        style = 'primary',
+        target,
+        rel
     } = props;
     const IconComponent = icon ? iconMap[icon] : null;
 
@@ -34,7 +36,14 @@ export default function Action(props) {
     return (
         <Annotated content={props}>
             <ButtonAnimation variant={type === 'Button' ? 'scale' : 'bounce'}>
-                <Link href={url} aria-label={altText} id={elementId || null} className={classNames(baseClasses, className)}>
+                <Link
+                    href={url}
+                    aria-label={altText}
+                    id={elementId || null}
+                    className={classNames(baseClasses, className)}
+                    target={target}
+                    rel={rel}
+                >
                     {showIcon && IconComponent && iconPosition === 'left' && (
                         <IconComponent className="fill-current h-icon w-icon" />
                     )}
