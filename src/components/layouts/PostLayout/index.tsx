@@ -12,9 +12,11 @@ import HighlightedPreBlock from '@/utils/highlighted-markdown';
 import { slugify } from '@/utils/slugify';
 import BaseLayout from '../BaseLayout';
 
+type NavigationPost = PostLayout & { slug: string };
+
 type ComponentProps = PageComponentProps & PostLayout & {
-    prevPost?: PostLayout;
-    nextPost?: PostLayout;
+    prevPost?: NavigationPost;
+    nextPost?: NavigationPost;
 };
 
 const getTextFromChildren = (children: React.ReactNode): string => {
@@ -104,10 +106,28 @@ const Component: React.FC<ComponentProps> = (props) => {
             </article>
             {(prevPost || nextPost) && (
                 <nav className="px-4 mt-12 mb-20">
-                    <div className="grid max-w-5xl mx-auto gap-x-6 gap-y-12 sm:grid-cols-2 lg:gap-x-8">
-                        {prevPost && <PostNavItem post={prevPost} label="Previous Post" className={undefined} />}
+                    <div className="flex flex-col max-w-4xl mx-auto border-t border-gray-200 dark:border-gray-800">
+                        {prevPost && (
+                            <Link
+                                className="group flex flex-col items-start w-full px-6 py-6 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors"
+                                href={'/blog/' + prevPost.slug}
+                            >
+                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-1">Previous Post</span>
+                                <span className="text-lg font-bold leading-tight group-hover:text-[var(--theme-primary)] transition-colors">
+                                    {prevPost.title}
+                                </span>
+                            </Link>
+                        )}
                         {nextPost && (
-                            <PostNavItem post={nextPost} label="Next Post" className="sm:items-end sm:col-start-2 sm:text-right" />
+                            <Link
+                                className="group flex flex-col items-end w-full px-6 py-6 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors text-right"
+                                href={'/blog/' + nextPost.slug}
+                            >
+                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-1">Next Post</span>
+                                <span className="text-lg font-bold leading-tight group-hover:text-[var(--theme-primary)] transition-colors">
+                                    {nextPost.title}
+                                </span>
+                            </Link>
                         )}
                     </div>
                 </nav>
@@ -122,15 +142,4 @@ export default Component;
 
 function PostMedia({ media }) {
     return <DynamicComponent {...media} className={classNames({ 'w-full': media.type === 'ImageBlock' })} />;
-}
-
-function PostNavItem({ post, label, className }) {
-    return (
-        <Link className={classNames('group flex flex-col gap-3 items-start', className)} href={'/blog/' + post.slug}>
-            <span className="text-sm font-medium tracking-widest text-gray-500 uppercase">{label}</span>
-            <span className="text-xl font-bold leading-tight transition-colors group-hover:text-[var(--theme-primary)]">
-                {post.title}
-            </span>
-        </Link>
-    );
 }

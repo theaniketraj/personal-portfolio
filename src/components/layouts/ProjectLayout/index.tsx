@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import Markdown from 'markdown-to-jsx';
 import * as React from 'react';
 
-import { Annotated } from '@/components/Annotated';
 import Link from '@/components/atoms/Link';
 import { DynamicComponent } from '@/components/components-registry';
 import ImageBlock from '@/components/molecules/ImageBlock';
@@ -13,10 +12,12 @@ import HighlightedPreBlock from '@/utils/highlighted-markdown';
 import { slugify } from '@/utils/slugify';
 import BaseLayout from '../BaseLayout';
 
+type NavigationProject = ProjectLayout & { slug: string };
+
 type ComponentProps = PageComponentProps &
     ProjectLayout & {
-        prevProject?: ProjectLayout;
-        nextProject?: ProjectLayout;
+        prevProject?: NavigationProject;
+        nextProject?: NavigationProject;
     };
 
 const getTextFromChildren = (children: React.ReactNode): string => {
@@ -142,10 +143,48 @@ const Component: React.FC<ComponentProps> = (props) => {
             </article>
             {(prevProject || nextProject) && (
                 <nav className="px-4 mt-12 mb-20">
-                    <div className="grid max-w-5xl mx-auto gap-x-6 gap-y-12 sm:grid-cols-2 lg:gap-x-8">
-                        {prevProject && <ProjectNavItem project={prevProject} className={undefined} />}
+                    <div className="flex flex-col max-w-4xl mx-auto border-t border-gray-200 dark:border-gray-800">
+                        {prevProject && (
+                            <Link
+                                className="group flex flex-col items-start w-full px-6 py-8 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors"
+                                href={'/projects/' + prevProject.slug}
+                            >
+                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-2">Previous Project</span>
+                                <div className="flex items-center gap-4 w-full">
+                                    {prevProject.featuredImage && (
+                                        <div className="hidden sm:block w-20 h-14 shrink-0 overflow-hidden rounded">
+                                            <ImageBlock
+                                                {...prevProject.featuredImage}
+                                                className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
+                                            />
+                                        </div>
+                                    )}
+                                    <span className="text-xl font-bold leading-tight uppercase transition-colors group-hover:text-[var(--theme-primary)]">
+                                        {prevProject.title}
+                                    </span>
+                                </div>
+                            </Link>
+                        )}
                         {nextProject && (
-                            <ProjectNavItem project={nextProject} className="sm:items-end sm:col-start-2" />
+                            <Link
+                                className="group flex flex-col items-end w-full px-6 py-8 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors text-right"
+                                href={'/projects/' + nextProject.slug}
+                            >
+                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-2">Next Project</span>
+                                <div className="flex flex-row-reverse items-center gap-4 w-full">
+                                    {nextProject.featuredImage && (
+                                        <div className="hidden sm:block w-20 h-14 shrink-0 overflow-hidden rounded">
+                                            <ImageBlock
+                                                {...nextProject.featuredImage}
+                                                className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
+                                            />
+                                        </div>
+                                    )}
+                                    <span className="text-xl font-bold leading-tight uppercase transition-colors group-hover:text-[var(--theme-primary)]">
+                                        {nextProject.title}
+                                    </span>
+                                </div>
+                            </Link>
                         )}
                     </div>
                 </nav>
@@ -160,24 +199,4 @@ export default Component;
 
 function ProjectMedia({ media }) {
     return <DynamicComponent {...media} className={classNames({ 'w-full': media.type === 'ImageBlock' })} />;
-}
-
-function ProjectNavItem({ project, className }) {
-    return (
-        <Annotated content={project}>
-            <Link className={classNames('group flex flex-col gap-6 items-start', className)} href={'/projects/' + project.slug}>
-                {project.featuredImage && (
-                    <div className="w-full overflow-hidden aspect-3/2">
-                        <ImageBlock
-                            {...project.featuredImage}
-                            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                        />
-                    </div>
-                )}
-                <span className="text-lg leading-tight uppercase transition bottom-shadow-1 group-hover:bottom-shadow-5">
-                    {project.title}
-                </span>
-            </Link>
-        </Annotated>
-    );
 }
