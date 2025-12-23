@@ -52,11 +52,11 @@ export function createGlobalProps(allData: any[]): any {
     const global = {
         site: siteConfig
             ? {
-                  ...siteConfig,
-                  // Keep essential site data but trim heavy content
-                  header: siteConfig.header ? optimizeNavigation(siteConfig.header) : null,
-                  footer: siteConfig.footer ? optimizeNavigation(siteConfig.footer) : null
-              }
+                ...siteConfig,
+                // Keep essential site data but trim heavy content
+                header: siteConfig.header ? optimizeNavigation(siteConfig.header) : null,
+                footer: siteConfig.footer ? optimizeNavigation(siteConfig.footer) : null
+            }
             : {},
         theme: themeConfig || {}
     };
@@ -77,13 +77,50 @@ function optimizePageData(page: any, allData: any[]): any {
     const pageType = page.__metadata?.modelName;
 
     switch (pageType) {
-        case 'PostLayout':
-        case 'ProjectLayout':
-            // For individual posts/projects, keep all content but optimize media
+        case 'PostLayout': {
+            // For individual posts, keep all content but optimize media
             if (pageData.media) {
                 pageData.media = optimizeMediaArray(pageData.media);
             }
+            // Add next/prev links
+            const allPostsFragment = createPostsFeed(allData);
+            const currentPostSlug = pageData.slug || (pageData.__metadata?.urlPath?.split('/').pop()) || '';
+            const postIndex = allPostsFragment.findIndex((p) => p.slug === currentPostSlug);
+
+            if (postIndex !== -1) {
+                // Determine Previous (Newer) and Next (Older)
+                // Note: createPostsFeed sorts by date DESC (Newest first)
+                // So index-1 is NEWER, index+1 is OLDER
+                if (postIndex > 0) {
+                    pageData.prevPost = pickLinkProps(allPostsFragment[postIndex - 1]);
+                }
+                if (postIndex < allPostsFragment.length - 1) {
+                    pageData.nextPost = pickLinkProps(allPostsFragment[postIndex + 1]);
+                }
+            }
             break;
+        }
+
+        case 'ProjectLayout': {
+            // For individual projects
+            if (pageData.media) {
+                pageData.media = optimizeMediaArray(pageData.media);
+            }
+            // Add next/prev links
+            const allProjectsFragment = createProjectsFeed(allData);
+            const currentProjectSlug = pageData.slug || (pageData.__metadata?.urlPath?.split('/').pop()) || '';
+            const projectIndex = allProjectsFragment.findIndex((p) => p.slug === currentProjectSlug);
+
+            if (projectIndex !== -1) {
+                if (projectIndex > 0) {
+                    pageData.prevProject = pickLinkProps(allProjectsFragment[projectIndex - 1]);
+                }
+                if (projectIndex < allProjectsFragment.length - 1) {
+                    pageData.nextProject = pickLinkProps(allProjectsFragment[projectIndex + 1]);
+                }
+            }
+            break;
+        }
 
         case 'PostFeedLayout': {
             // For post feed pages, populate posts from all available posts
@@ -258,7 +295,7 @@ function createPostsFeed(allData: any[]): any[] {
         .map((post) => ({
             type: 'PostLayout',
             title: post.title || '',
-            slug: post.slug || '',
+            slug: post.slug || (post.__metadata?.urlPath?.split('/').pop()) || '',
             excerpt: post.excerpt || '',
             description: post.description || '',
             date: post.date || null,
@@ -280,7 +317,7 @@ function createProjectsFeed(allData: any[]): any[] {
         .map((project) => ({
             type: 'ProjectLayout',
             title: project.title || '',
-            slug: project.slug || '',
+            slug: project.slug || (project.__metadata?.urlPath?.split('/').pop()) || '',
             excerpt: project.excerpt || '',
             description: project.description || '',
             date: project.date || null,
@@ -298,4 +335,14 @@ function createProjectsFeed(allData: any[]): any[] {
 
 export function clearSmartPropsCache(): void {
     globalCache.clear();
+}
+
+function pickLinkProps(item: any): any {
+    return {
+        title: item.title,
+        slug: item.slug,
+        date: item.date,
+        type: item.type,
+        __metadata: item.__metadata
+    };
 }

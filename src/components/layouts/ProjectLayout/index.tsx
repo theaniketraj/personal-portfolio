@@ -165,7 +165,7 @@ function ProjectMedia({ media }) {
 function ProjectNavItem({ project, className }) {
     return (
         <Annotated content={project}>
-            <Link className={classNames('group flex flex-col gap-6 items-start', className)} href={project}>
+            <Link className={classNames('group flex flex-col gap-6 items-start', className)} href={'/projects/' + project.slug}>
                 {project.featuredImage && (
                     <div className="w-full overflow-hidden aspect-3/2">
                         <ImageBlock

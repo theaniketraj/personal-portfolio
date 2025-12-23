@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import Markdown from 'markdown-to-jsx';
 import * as React from 'react';
 
+import Link from '@/components/atoms/Link';
 import { DynamicComponent } from '@/components/components-registry';
 import ReadingProgress from '@/components/molecules/ReadingProgress';
 import TableOfContents from '@/components/molecules/TableOfContents';
@@ -11,7 +12,10 @@ import HighlightedPreBlock from '@/utils/highlighted-markdown';
 import { slugify } from '@/utils/slugify';
 import BaseLayout from '../BaseLayout';
 
-type ComponentProps = PageComponentProps & PostLayout;
+type ComponentProps = PageComponentProps & PostLayout & {
+    prevPost?: PostLayout;
+    nextPost?: PostLayout;
+};
 
 const getTextFromChildren = (children: React.ReactNode): string => {
     if (typeof children === 'string') return children;
@@ -47,7 +51,7 @@ const Heading3 = ({ children, ...props }) => {
 };
 
 const Component: React.FC<ComponentProps> = (props) => {
-    const { title, date, author, markdownContent, media, bottomSections = [] } = props;
+    const { title, date, author, markdownContent, media, prevPost, nextPost, bottomSections = [] } = props;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('YYYY-MM-DD');
 
@@ -98,6 +102,16 @@ const Component: React.FC<ComponentProps> = (props) => {
                     </aside>
                 </div>
             </article>
+            {(prevPost || nextPost) && (
+                <nav className="px-4 mt-12 mb-20">
+                    <div className="grid max-w-5xl mx-auto gap-x-6 gap-y-12 sm:grid-cols-2 lg:gap-x-8">
+                        {prevPost && <PostNavItem post={prevPost} label="Previous Post" className={undefined} />}
+                        {nextPost && (
+                            <PostNavItem post={nextPost} label="Next Post" className="sm:items-end sm:col-start-2 sm:text-right" />
+                        )}
+                    </div>
+                </nav>
+            )}
             {bottomSections?.map((section, index) => {
                 return <DynamicComponent key={index} {...section} />;
             })}
@@ -108,4 +122,15 @@ export default Component;
 
 function PostMedia({ media }) {
     return <DynamicComponent {...media} className={classNames({ 'w-full': media.type === 'ImageBlock' })} />;
+}
+
+function PostNavItem({ post, label, className }) {
+    return (
+        <Link className={classNames('group flex flex-col gap-3 items-start', className)} href={'/blog/' + post.slug}>
+            <span className="text-sm font-medium tracking-widest text-gray-500 uppercase">{label}</span>
+            <span className="text-xl font-bold leading-tight transition-colors group-hover:text-[var(--theme-primary)]">
+                {post.title}
+            </span>
+        </Link>
+    );
 }
