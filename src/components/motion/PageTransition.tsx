@@ -40,8 +40,8 @@ export const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
                 exit="out"
                 variants={pageVariants}
                 transition={{
-                    duration: 0.5,
-                    ease: "easeInOut"
+                    duration: 0.3,
+                    ease: [0.25, 0.1, 0.25, 1.0] // Ease-in-out cubic-like
                 }}
                 className="min-h-screen"
             >
