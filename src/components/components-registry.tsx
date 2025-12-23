@@ -34,9 +34,9 @@ export const DynamicComponent: React.FC<DynamicComponentProps> = (props) => {
             propsType: typeof props,
             propsKeys: props ? Object.keys(props) : 'props is null/undefined'
         });
-        return <div style={{ 
-            padding: '20px', 
-            border: '2px solid red', 
+        return <div style={{
+            padding: '20px',
+            border: '2px solid red',
             backgroundColor: '#ffe6e6',
             color: '#d00'
         }}>
@@ -53,9 +53,9 @@ export const DynamicComponent: React.FC<DynamicComponentProps> = (props) => {
             availableComponents: Object.keys(components),
             requestedType: modelName
         });
-        return <div style={{ 
-            padding: '20px', 
-            border: '2px solid orange', 
+        return <div style={{
+            padding: '20px',
+            border: '2px solid orange',
             backgroundColor: '#fff3cd',
             color: '#856404'
         }}>
@@ -87,6 +87,8 @@ const components = {
     HeroSection: dynamic(() => import('./sections/HeroSection')),
     ImageBlock: dynamic(() => import('./molecules/ImageBlock')),
     MediaGallerySection: dynamic(() => import('./sections/MediaGallerySection')),
+
+
     PostFeedSection: dynamic(() => import('./sections/PostFeedSection')),
     ProjectFeedSection: dynamic(() => import('./sections/ProjectFeedSection')),
     RecentPostsSection: dynamic(() => import('./sections/RecentPostsSection')),
