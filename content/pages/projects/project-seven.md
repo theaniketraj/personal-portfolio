@@ -443,5 +443,5 @@ The project stands as a testament to how thoughtful engineering, comprehensive t
 
 ## Go-to
 
-| [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://theaniketraj.github.io/SCAN/) | [Docs ↗](https://theaniketraj.github.io/SCAN/docs) |
+| [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://plugins.gradle.org/plugin/io.github.theaniketraj.scan) | [Docs ↗](https://theaniketraj.github.io/SCAN) |
 | ----------------------------------------------- | ------------------------------------------------- | --------------------------------------------------- |
