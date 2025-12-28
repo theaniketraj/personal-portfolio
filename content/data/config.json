@@ -84,20 +84,9 @@
             },
             {
                 "type": "Link",
-                "label": "VITALS (BETA)",
-                "altText": "",
+                "label": "VITALS",
+                "altText": "vitals",
                 "url": "https://theaniketraj.github.io/vitals/",
-                "target": "_blank",
-                "showIcon": true,
-                "icon": "arrowUpRight",
-                "iconPosition": "right",
-                "elementId": ""
-            },
-            {
-                "type": "Link",
-                "label": "KARL",
-                "altText": "",
-                "url": "https://karldocs.netlify.app/",
                 "target": "_blank",
                 "showIcon": true,
                 "icon": "arrowUpRight",
