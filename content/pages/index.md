@@ -63,8 +63,8 @@ sections:
         iconPosition: right
         elementId: ''
     projects:
-      - content/pages/projects/project-six.md
-      - content/pages/projects/project-five.md
+      - content/pages/projects/project-eight.md
+      - content/pages/projects/project-seven.md
     colors: colors-f
     variant: variant-a
     elementId: ''
