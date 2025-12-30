@@ -1,5 +1,7 @@
 # Personal Portfolio - Aniket Raj
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4b21c828-0f7b-47e7-ac24-9f4dd7622dc3/deploy-status)](https://app.netlify.com/projects/theaniketraj/deploys)
+
 Welcome to the repository for my personal portfolio website. This project serves as my digital identity, showcasing my projects, blog posts, and professional journey. It is designed to be a comprehensive and visually appealing representation of my work and skills.
 
 ## Overview
