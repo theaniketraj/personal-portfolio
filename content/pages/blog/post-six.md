@@ -113,11 +113,11 @@ metaTags:
 
 Next.js is a powerful React framework that enables **server-side rendering (SSR)**, **static site generation (SSG)**, and **API routes**, making it a preferred choice for modern web development. However, as a project grows, **maintaining a well-structured codebase** becomes crucial for scalability, maintainability, and efficiency. In this article, we will explore the best way to **structure and organize** a Next.js project for optimal performance.
 
-**1. Understanding the Root Directory**
+## **1. Understanding the Root Directory**
 
 At the root level of a Next.js project, you'll find essential files and folders:
 
-```
+```bash
 /my-next-app
 |- /public
 |- /src
@@ -141,7 +141,7 @@ At the root level of a Next.js project, you'll find essential files and folders:
 
 The `public` folder is used for storing static assets like images, fonts, and favicon files. Files here can be accessed directly via `/images/logo.png` instead of an import.
 
-```
+```bash
 /public
 |- /images
 |- /icons
@@ -152,11 +152,11 @@ The `public` folder is used for storing static assets like images, fonts, and fa
 
 To keep the root directory clean, place all development files inside `src/`.
 
-**a) `pages/` - Routing System**
+**(a) `pages/` - Routing System**
 
 Next.js follows a file-based routing system inside `pages/`.
 
-```
+```bash
 /src/pages
 |- index.tsx (Home Page)
 |- about.tsx
@@ -173,11 +173,11 @@ Next.js follows a file-based routing system inside `pages/`.
 
 - `api/`: Stores API routes that run on the server.
 
-**b) `components/` - Reusable UI Components**
+**(b) `components/` - Reusable UI Components**
 
 Organize UI elements as separate reusable components.
 
-```
+```bash
 /src/components
 |- /Button
 |  |- Button.tsx
@@ -187,54 +187,54 @@ Organize UI elements as separate reusable components.
 |  |- Navbar.module.css
 ```
 
-**c) `layouts/` - Page Layouts**
+**(c) `layouts/` - Page Layouts**
 
 If multiple pages share a common layout, define it in `/layouts/`.
 
-```
+```bash
 /src/layouts
 |- MainLayout.tsx
 |- DashboardLayout.tsx
 ```
 
-**d) `styles/` - Global & Module Styles**
+**(d) `styles/` - Global & Module Styles**
 
 Next.js supports CSS Modules and global stylesheets.
 
-```
+```bash
 /src/styles
 |- global.css
 |- variables.css
 ```
 
-**e) `hooks/` - Custom React Hooks**
+**(e) `hooks/` - Custom React Hooks**
 
 Encapsulates reusable logic inside custom hooks.
 
-```
+```bash
 /src/hooks
 |- useAuth.ts
 |- useFetch.ts
 ```
 
-**f) `utils/` - Utility Functions**
+**(f) `utils/` - Utility Functions**
 
 For helper functions like date formatting, data transformation, etc.
 
-```
+```bash
 /src/utils
 |- dateFormatter.ts
 |- fetchData.ts
 ```
 
-**4. Best Practices for Organization**
+## **4. Best Practices for Organization**
 
-1.  Follow a modular approach - Keep components, hooks, and utilities separate.
+1. Follow a modular approach - Keep components, hooks, and utilities separate.
 
-2.  Use environment variables - Store sensitive credentials in `.env.local`.
+2. Use environment variables - Store sensitive credentials in `.env.local`.
 
-3.  Leverage Next.js API routes - Instead of setting up an external backend.
+3. Leverage Next.js API routes - Instead of setting up an external backend.
 
-4.  Follow naming conventions - Use PascalCase for components, camelCase for functions.
+4. Follow naming conventions - Use PascalCase for components, camelCase for functions.
 
-5.  Optimize performance - Use dynamic imports and Next.js optimizations like ISR (Incremental Static Regeneration).
+5. Optimize performance - Use dynamic imports and Next.js optimizations like ISR (Incremental Static Regeneration).

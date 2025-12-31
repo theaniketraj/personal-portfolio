@@ -73,7 +73,7 @@ TL;DR – 🚀🏍️
 
 Raptor is a **smart helmet** equipped with **accident detection** and an **emergency alert system** to enhance rider safety. Using **real-time sensors** and **AI-based crash detection**, it automatically sends distress signals to emergency contacts and authorities in case of an accident. Designed for **seamless integration with modern mobility**, Raptor ensures swift response times and improved road safety.
 
-# Raptor – Smart Helmet with Accident Detection & Emergency Alert
+## Raptor – Smart Helmet with Accident Detection & Emergency Alert
 
 Raptor is an **AI-powered smart helmet** designed to enhance rider safety through real-time accident detection and emergency alert systems. The helmet integrates IoT sensors, AI-based crash detection, and automated emergency response mechanisms to ensure immediate assistance in case of an accident.
 With the rising number of road accidents involving two-wheelers, many riders fail to receive timely medical attention, leading to severe consequences. Raptor aims to solve this by automatically detecting crashes and alerting emergency contacts with real-time location details.

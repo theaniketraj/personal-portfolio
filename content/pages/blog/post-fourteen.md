@@ -110,6 +110,7 @@ bottomSections:
           - pr-4
         textAlign: left
 ---
+
 ## A Developer’s Guide to Efficient CI/CD Using GitHub Actions
 
 Continuous Integration and Continuous Deployment (CI/CD) are fundamental practices for delivering high‑quality software rapidly and reliably. GitHub Actions provides a flexible, native platform for automating these workflows directly within your GitHub repository. In this guide, we’ll explore the concepts, configuration, best practices, and advanced techniques for building efficient CI/CD pipelines using GitHub Actions.
@@ -118,21 +119,21 @@ Continuous Integration and Continuous Deployment (CI/CD) are fundamental practic
 
 Continuous Integration and Continuous Deployment streamline the software delivery lifecycle by:
 
-*   **Automating Repetitive Tasks**
+- **Automating Repetitive Tasks**
 
-    Every code change triggers an automated build and test cycle, reducing manual intervention.
+  Every code change triggers an automated build and test cycle, reducing manual intervention.
 
-*   **Accelerating Feedback Loops**
+- **Accelerating Feedback Loops**
 
-    Developers receive immediate feedback on code quality, catching errors early.
+  Developers receive immediate feedback on code quality, catching errors early.
 
-*   **Ensuring Consistency**
+- **Ensuring Consistency**
 
-    Builds, tests, and deployments run in managed environments, eliminating “works on my machine” issues.
+  Builds, tests, and deployments run in managed environments, eliminating “works on my machine” issues.
 
-*   **Delivering Value Faster**
+- **Delivering Value Faster**
 
-    Automated deployments enable rapid, reliable releases to staging or production.
+  Automated deployments enable rapid, reliable releases to staging or production.
 
 GitHub Actions integrates these practices directly into your GitHub workflow, minimizing context switches and centralizing configuration.
 
@@ -142,13 +143,13 @@ GitHub Actions is a workflow automation engine that runs directly within GitHub.
 
 Key benefits include:
 
-*   **First‑Class GitHub Integration**: Access secrets, environment variables, and GitHub APIs natively.
+- **First‑Class GitHub Integration**: Access secrets, environment variables, and GitHub APIs natively.
 
-*   **Marketplace Ecosystem**: Reuse community‑maintained actions for testing, building, and deploying.
+- **Marketplace Ecosystem**: Reuse community‑maintained actions for testing, building, and deploying.
 
-*   **Scalable Runners**: Choose GitHub‑hosted runners or bring your own on‑premises machines.
+- **Scalable Runners**: Choose GitHub‑hosted runners or bring your own on‑premises machines.
 
-*   **Rich Expressions**: Control flow with conditionals, contexts, and matrix strategies.
+- **Rich Expressions**: Control flow with conditionals, contexts, and matrix strategies.
 
 ## Core Concepts
 
@@ -156,19 +157,19 @@ Key benefits include:
 
 A **workflow** is a YAML file defining the automation pipeline. It includes:
 
-*   name: Identifier for the workflow.
+- name: Identifier for the workflow.
 
-*   on: Events (e.g., push, pull\_request) or schedules to trigger the workflow.
+- on: Events (e.g., push, pull_request) or schedules to trigger the workflow.
 
-*   jobs: A set of tasks to execute.
+- jobs: A set of tasks to execute.
 
 ### Jobs and Steps
 
-*   **Job**: A collection of sequential steps that run on the same runner. Jobs can run in parallel or depend on one another.
+- **Job**: A collection of sequential steps that run on the same runner. Jobs can run in parallel or depend on one another.
 
-*   **Step**: An individual task within a job, either an action or a shell command.
+- **Step**: An individual task within a job, either an action or a shell command.
 
-```
+```yml
 jobs:
 build:
 runs-on: ubuntu-latest
@@ -185,35 +186,35 @@ uses: actions/checkout@v3
 
 Runners are the virtual machines or containers where jobs execute. Options include:
 
-*   **GitHub‑hosted**: Linux, Windows, or macOS environments managed by GitHub.
+- **GitHub‑hosted**: Linux, Windows, or macOS environments managed by GitHub.
 
-*   **Self‑hosted**: Bring your own servers or VMs for custom hardware or network access.
+- **Self‑hosted**: Bring your own servers or VMs for custom hardware or network access.
 
 ### Events and Triggers
 
 Workflows can be triggered by:
 
-*   **GitHub Events**: push, pull\_request, release, workflow\_dispatch (manual), schedule (cron).
+- **GitHub Events**: push, pull_request, release, workflow_dispatch (manual), schedule (cron).
 
-*   **External Events**: Repository dispatch, workflow dispatch API calls.
+- **External Events**: Repository dispatch, workflow dispatch API calls.
 
 ### Marketplace Actions
 
 The GitHub Marketplace hosts thousands of community‑driven actions for common tasks:
 
-*   Code checkout: actions/checkout
+- Code checkout: actions/checkout
 
-*   Dependency caching: actions/cache
+- Dependency caching: actions/cache
 
-*   Testing frameworks: actions/setup-node, actions/setup-python
+- Testing frameworks: actions/setup-node, actions/setup-python
 
-*   Deployment: azure/webapps-deploy, appleboy/ssh-action
+- Deployment: azure/webapps-deploy, appleboy/ssh-action
 
 ## Getting Started: A Basic CI Workflow
 
 Below is a simple CI workflow for a Node.js project that runs on each push and pull request to **main**:
 
-```
+```yml
 name: CI
 on:
 push:
@@ -252,19 +253,19 @@ steps:
 
 This workflow:
 
-1.  **Checks out** your code.
+1. **Checks out** your code.
 
-2.  **Sets up** Node.js.
+2. **Sets up** Node.js.
 
-3.  **Caches** dependencies for faster builds.
+3. **Caches** dependencies for faster builds.
 
-4.  **Installs** and **tests** your code on every commit.
+4. **Installs** and **tests** your code on every commit.
 
 ## Implementing CD: Deploying to Production
 
 To extend CI to CD, add a deployment job that runs after successful tests. For example, deploying to AWS S3:
 
-```
+```yml
 jobs:
 build:
 # ... test steps ...
@@ -295,25 +296,25 @@ steps:
 
 Key points:
 
-*   Use `needs` to sequence jobs.
+- Use `needs` to sequence jobs.
 
-*   Guard production deploys with `if:` conditions.
+- Guard production deploys with `if:` conditions.
 
-*   Store secrets securely in GitHub repository settings.
+- Store secrets securely in GitHub repository settings.
 
 ## Optimizing for Efficiency
 
 ### Caching Dependencies
 
-*   Use `actions/cache` to store package manager caches (`~/.npm`, `~/.cache/pip`).
+- Use `actions/cache` to store package manager caches (`~/.npm`, `~/.cache/pip`).
 
-*   Derive the cache key from lockfiles (`package-lock.json`, `requirements.txt`) to invalidate when dependencies change.
+- Derive the cache key from lockfiles (`package-lock.json`, `requirements.txt`) to invalidate when dependencies change.
 
 ### Matrix Builds
 
 Run tests against multiple environments in parallel:
 
-```
+```yml
 strategy:
 matrix:
 node-version: [16, 18, 20]
@@ -332,65 +333,61 @@ steps:
 
 Use `actions/upload-artifact` and `actions/download-artifact` to persist build outputs between jobs.
 
-*   Store coverage reports, binaries, or test logs for later inspection.
+- Store coverage reports, binaries, or test logs for later inspection.
 
 ### Workflow Reusability
 
-*   **Composite Actions**: Bundle common step sequences into reusable actions.
+- **Composite Actions**: Bundle common step sequences into reusable actions.
 
-*   **Reusable Workflows**: Define workflows that can be called from multiple repositories, centralizing CI logic.
+- **Reusable Workflows**: Define workflows that can be called from multiple repositories, centralizing CI logic.
 
 ## Security and Best Practices
 
-1.  **Least‑Privilege Permissions**:
+1. **Least‑Privilege Permissions**:
+   - Restrict token scopes in workflows.
 
-    *   Restrict token scopes in workflows.
+   - Use fine‑grained permissions settings in GitHub.
 
-    *   Use fine‑grained permissions settings in GitHub.
+2. **Secret Management**:
+   - Store credentials in GitHub Secrets.
 
-2.  **Secret Management**:
+   - Avoid printing secrets in logs.
 
-    *   Store credentials in GitHub Secrets.
+3. **Branch Protection**:
+   - Require successful CI checks before merging.
 
-    *   Avoid printing secrets in logs.
+   - Use code reviews and status checks to enforce quality gates.
 
-3.  **Branch Protection**:
+4. **Dependency Scanning**:
+   - Integrate security actions (e.g., **`github/codeql-action`**) to detect vulnerabilities.
 
-    *   Require successful CI checks before merging.
-
-    *   Use code reviews and status checks to enforce quality gates.
-
-4.  **Dependency Scanning**:
-
-    *   Integrate security actions (e.g., **`github/codeql-action`**) to detect vulnerabilities.
-
-    *   Audit third‑party actions before use.
+   - Audit third‑party actions before use.
 
 ## Advanced Techniques
 
 ### Self‑Hosted Runners
 
-*   Host your own machines for specialized hardware (GPUs), network access, or caching.
+- Host your own machines for specialized hardware (GPUs), network access, or caching.
 
-*   Install the GitHub Actions runner software and configure labels.
+- Install the GitHub Actions runner software and configure labels.
 
 ### Workflow Callers and Composite Actions
 
-*   Split complex logic into composite actions or reusable workflows.
+- Split complex logic into composite actions or reusable workflows.
 
-*   Call workflows with **`workflow_call`** to centralize CI/CD in a shared repo.
+- Call workflows with **`workflow_call`** to centralize CI/CD in a shared repo.
 
 ### Conditional Execution and Expressions
 
-*   Use **`if:`** to run steps or jobs only when conditions are met (e.g., **`if: contains(github.event.head_commit.message, '[deploy]')`**).
+- Use **`if:`** to run steps or jobs only when conditions are met (e.g., **`if: contains(github.event.head_commit.message, '[deploy]')`**).
 
-*   Leverage contexts (**`github`**, **`env`**, **`matrix`**) for dynamic behavior.
+- Leverage contexts (**`github`**, **`env`**, **`matrix`**) for dynamic behavior.
 
 ### Monitoring and Insights
 
-*   View run durations, success rates, and failures in the Actions tab.
+- View run durations, success rates, and failures in the Actions tab.
 
-*   Export metrics via the GitHub Actions API for external dashboards.
+- Export metrics via the GitHub Actions API for external dashboards.
 
 ## Conclusion
 

@@ -64,7 +64,7 @@ metaTags:
     content: devxaniket
 ---
 
-# **Introduction**
+## **Introduction**
 
 Git is an essential tool for version control, but managing multiple branches effectively can be challenging—especially in team environments where different levels of review and isolation are required before merging changes into the main codebase. **CEIE (Controlled & Isolated Environment for Efficient Git Workflow)** automates the setup of a structured Git repository by initializing three distinct branches:
 
@@ -94,7 +94,7 @@ With **CEIE**, developers can enforce a systematic, layered approach to version 
 
 To install CEIE globally via **npm**, run:
 
-```
+```bash
 npm install -g git-setup-ceie
 
 ```
@@ -103,7 +103,7 @@ npm install -g git-setup-ceie
 
 Once installed, simply navigate to your project directory and run:
 
-```
+```bash
 git-setup-ceie
 
 ```
@@ -162,7 +162,7 @@ This command will:
 
 CEIE simplifies Git repository management by providing a structured, automated workflow that ensures efficient collaboration, stability, and code organization. Whether you're working solo or as part of a team, **CEIE helps enforce best practices while saving time on manual Git setup**.
 
-# Go-to
+## Go-to
 
 | [Repo↗](https://github.com/theaniketraj/git-setup-ceie) | [Portal ↗](https://www.npmjs.com/package/git-setup-ceie) |
 | -------------------------------------------------------- | --------------------------------------------------------- |

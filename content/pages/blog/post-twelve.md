@@ -113,29 +113,30 @@ bottomSections:
           - pr-4
         textAlign: left
 ---
+
 Kotlin’s rise in Android development has brought a renewed emphasis on clean architecture and separation of concerns. Among the architectural patterns available, MVVM (Model–View–ViewModel) stands out as a robust, testable, and lifecycle‑aware approach. In this post, we’ll explore everything you need to know to build Android apps with Kotlin and MVVM: why it matters, how it works, and a step‑by‑step example of a simple to‑do list app.
 
 ## Understanding MVVM
 
 At its core, MVVM divides your code into three main layers:
 
-*   **Model**
+- **Model**
 
-    Represents data and business logic: data classes, repositories, network/database operations.
+  Represents data and business logic: data classes, repositories, network/database operations.
 
-*   **View**
+- **View**
 
-    The UI layer: Activities, Fragments, and XML layouts. It observes state exposed by the ViewModel and forwards user events back to it.
+  The UI layer: Activities, Fragments, and XML layouts. It observes state exposed by the ViewModel and forwards user events back to it.
 
-*   **ViewModel**
+- **ViewModel**
 
-    Acts as an intermediary between Model and View. Exposes UI‑state (e.g., lists of items, loading flags, error messages) via observable constructs (LiveData or Kotlin Flow) and processes user interactions, delegating work to the Model. Crucially, a ViewModel never holds a reference to Android UI classes, making it lifecycle‑aware and easy to test.
+  Acts as an intermediary between Model and View. Exposes UI‑state (e.g., lists of items, loading flags, error messages) via observable constructs (LiveData or Kotlin Flow) and processes user interactions, delegating work to the Model. Crucially, a ViewModel never holds a reference to Android UI classes, making it lifecycle‑aware and easy to test.
 
 Diagrammatically, it looks like this:
 
-```
+```pgsql
 ┌──────────┐    observes LiveData/Flow   ┌────────────┐
-│   View   │◀────────────────────────────┤ ViewModel  │
+│   View   │◀───────────────────────────┤ ViewModel  │
 │(Activity/│    invokes ViewModel methods└────────────┘
 │ Fragment)│────────────────────────────►       │
 └──────────┘                                    │ calls
@@ -150,35 +151,35 @@ Diagrammatically, it looks like this:
 
 ### Why MVVM for Android?
 
-1.  **Separation of Concerns**
+1. **Separation of Concerns**
 
-    Keeping UI logic in Views (Activities/Fragments) minimal and pushing business/data logic into ViewModels and repositories leads to more maintainable code.
+   Keeping UI logic in Views (Activities/Fragments) minimal and pushing business/data logic into ViewModels and repositories leads to more maintainable code.
 
-2.  **Lifecycle Awareness**
+2. **Lifecycle Awareness**
 
-    AndroidX ViewModel survives configuration changes (e.g., device rotation). When an Activity or Fragment is recreated, it automatically reconnects to the same ViewModel instance.
+   AndroidX ViewModel survives configuration changes (e.g., device rotation). When an Activity or Fragment is recreated, it automatically reconnects to the same ViewModel instance.
 
-3.  **Testability**
+3. **Testability**
 
-    ViewModels are plain Kotlin classes (no direct UI or Android dependencies). You can unit‑test them by mocking repositories and verifying state changes.
+   ViewModels are plain Kotlin classes (no direct UI or Android dependencies). You can unit‑test them by mocking repositories and verifying state changes.
 
-4.  **Reactive UI Updates**
+4. **Reactive UI Updates**
 
-    By combining `LiveData` or Kotlin’s `StateFlow` with Data Binding or manual observation, the UI reacts automatically whenever underlying data changes—reducing boilerplate.
+   By combining `LiveData` or Kotlin’s `StateFlow` with Data Binding or manual observation, the UI reacts automatically whenever underlying data changes—reducing boilerplate.
 
-5.  **Kotlin‑First Advantage**
+5. **Kotlin‑First Advantage**
 
-    Coroutines and Flow integrate seamlessly with ViewModel, letting you perform asynchronous operations (e.g., network/database) with structured concurrency (using `viewModelScope`).
+   Coroutines and Flow integrate seamlessly with ViewModel, letting you perform asynchronous operations (e.g., network/database) with structured concurrency (using `viewModelScope`).
 
 ## Core Components in Detail
 
 ### 1. Model Layer
 
-**Data Classes**
+- **Data Classes**
 
 Define domain entities. For a to‑do app, for example:
 
-```
+```kotlin
 data class Todo(
      val id: Int = 0,
      val title: String,
@@ -186,11 +187,11 @@ data class Todo(
 )
 ```
 
-**Repositories**
+- **Repositories**
 
 Provide a clean API for data operations. They may combine multiple data sources—Room (local) and Retrofit (network)—and expose flows or suspend functions:
 
-```
+```kotlin
 class TodoRepository(private val todoDao: TodoDao) {
      // Expose Flow<List> by mapping Room entities → domain models
      val allTodos: Flow<List> = todoDao.getAllTodos()
@@ -217,13 +218,13 @@ class TodoRepository(private val todoDao: TodoDao) {
 }
 ```
 
-*   **Data Sources**
+- **Data Sources**
 
-    Inside the repository, you might have a `localDataSource` (Room DAO) and a `remoteDataSource` (Retrofit API). The repository decides whether to fetch from cache first, then network, or vice versa.
+  Inside the repository, you might have a `localDataSource` (Room DAO) and a `remoteDataSource` (Retrofit API). The repository decides whether to fetch from cache first, then network, or vice versa.
 
 #### Room Example (Local Data Source)
 
-```
+```kotlin
 @Entity(tableName = "todos")
 data class TodoEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
@@ -234,7 +235,7 @@ data class TodoEntity(
 
 **DAO:**
 
-```
+```kotlin
 @Dao
 interface TodoDao {
     @Query("SELECT * FROM todos ORDER BY id DESC")
@@ -254,13 +255,13 @@ interface TodoDao {
 
 A `ViewModel` subclass:
 
-*   Holds `LiveData` or `StateFlow` representing UI state.
+- Holds `LiveData` or `StateFlow` representing UI state.
 
-*   Uses `viewModelScope` to launch coroutines for data operations.
+- Uses `viewModelScope` to launch coroutines for data operations.
 
-*   Exposes functions corresponding to user actions, like `addTodo()`, `toggleTodoCompletion()`, or `deleteTodo()`.
+- Exposes functions corresponding to user actions, like `addTodo()`, `toggleTodoCompletion()`, or `deleteTodo()`.
 
-```
+```kotlin
 class TodoViewModel(
    private val repository: TodoRepository
 ) : ViewModel() {
@@ -322,17 +323,17 @@ class TodoViewModel(
 
 **Notes:**
 
-*   We bundle related state into one `UiState` data class, which minimizes separate LiveData/StateFlow objects.
+- We bundle related state into one `UiState` data class, which minimizes separate LiveData/StateFlow objects.
 
-*   Using `onStart` to set `isLoading = true` ensures the UI can show a progress indicator while the initial data is loading.
+- Using `onStart` to set `isLoading = true` ensures the UI can show a progress indicator while the initial data is loading.
 
-*   Error handling with `catch` updates `UiState.error`.
+- Error handling with `catch` updates `UiState.error`.
 
 #### Lifecycle & SavedStateHandle
 
 If you want to persist certain ViewModel fields across process death (e.g., a partially filled form), inject a `SavedStateHandle`:
 
-```
+```kotlin
 class FormViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
    companion object {
    private const val KEY_INPUT = "user_input"
@@ -347,7 +348,7 @@ var userInput: String?
 
 With Hilt, you simply annotate:
 
-```
+```kotlin
 @HiltViewModel
 class FormViewModel @Inject constructor(
    private val savedStateHandle: SavedStateHandle
@@ -356,15 +357,15 @@ class FormViewModel @Inject constructor(
 
 ### 3. View Layer
 
-*   **Activities/Fragments** observe the ViewModel’s state and update UI accordingly.
+- **Activities/Fragments** observe the ViewModel’s state and update UI accordingly.
 
-*   **XML Layout** can use Data Binding or View Binding. With Data Binding, you bind UI elements directly to ViewModel properties—reducing boilerplate.
+- **XML Layout** can use Data Binding or View Binding. With Data Binding, you bind UI elements directly to ViewModel properties—reducing boilerplate.
 
 Here’s a concise example using a Fragment and Data Binding:
 
 #### XML (`fragment_todo_list.xml`)
 
-```
+```xml
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
@@ -401,8 +402,8 @@ Here’s a concise example using a Fragment and Data Binding:
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No todos yet!"
-        android:visibility="@{(viewModel.uiState.todos.size() == 0) 
-                               && !viewModel.uiState.isLoading 
+        android:visibility="@{(viewModel.uiState.todos.size() == 0)
+                               && !viewModel.uiState.isLoading
                                ? View.VISIBLE : View.GONE}"
         app:layout_constraintTop_toBottomOf="@id/progressBar"
         app:layout_constraintStart_toStartOf="parent"
@@ -436,7 +437,7 @@ Here’s a concise example using a Fragment and Data Binding:
 
 #### Fragment (`TodoListFragment.kt`)
 
-```
+```kotlin
 @AndroidEntryPoint
 class TodoListFragment : Fragment(R.layout.fragment_todo_list) {
 // Hilt‑powered ViewModel injection
@@ -493,7 +494,7 @@ override fun onDestroyView() {
 
 #### RecyclerView Adapter (with ListAdapter + DiffUtil)
 
-```
+```kotlin
 class TodoAdapter(
 private val onCheckChanged: (Todo) -> Unit
 ) : ListAdapter<Todo, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK) {
@@ -528,9 +529,9 @@ override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
 }
 ```
 
-#### `item_todo.xml` might look like:
+#### `item_todo.xml` might look like
 
-```
+```xml
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
@@ -568,25 +569,25 @@ override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
 
 ### ViewModel (`androidx.lifecycle.ViewModel`)
 
-*   Survives configuration changes.
+- Survives configuration changes.
 
-*   Provides `viewModelScope` for coroutine usage (automatically canceled when ViewModel is cleared).
+- Provides `viewModelScope` for coroutine usage (automatically canceled when ViewModel is cleared).
 
 ### LiveData (`androidx.lifecycle.LiveData` / `MutableLiveData`)
 
-*   Lifecycle‑aware observable data holds. Activities and Fragments only receive updates when their lifecycle is at least `STARTED`.
+- Lifecycle‑aware observable data holds. Activities and Fragments only receive updates when their lifecycle is at least `STARTED`.
 
-*   Automatically removes observers when the lifecycle is destroyed (avoiding memory leaks).
+- Automatically removes observers when the lifecycle is destroyed (avoiding memory leaks).
 
 ### Data Binding / View Binding
 
-*   **View Binding**: Generates a binding class for each XML layout, so you never use `findViewById()`.
+- **View Binding**: Generates a binding class for each XML layout, so you never use `findViewById()`.
 
-*   **Data Binding**: More powerful—let you bind UI components directly to ViewModel properties, run expressions inside XML, and use two‑way binding (`@={...}`).
+- **Data Binding**: More powerful—let you bind UI components directly to ViewModel properties, run expressions inside XML, and use two‑way binding (`@={...}`).
 
-*   To enable Data Binding, add in your module’s `build.gradle`:
+- To enable Data Binding, add in your module’s `build.gradle`:
 
-```
+```kotlin
 android {
    buildFeatures {
       databinding true
@@ -596,26 +597,25 @@ android {
 
 ### SavedStateHandle
 
-*   Provides a key/value map that automatically persists data for a ViewModel across process death (if the system needs to kill your app while it’s in the background).
+- Provides a key/value map that automatically persists data for a ViewModel across process death (if the system needs to kill your app while it’s in the background).
 
-*   Inject by adding `SavedStateHandle` to your ViewModel’s constructor (works seamlessly with Hilt).
+- Inject by adding `SavedStateHandle` to your ViewModel’s constructor (works seamlessly with Hilt).
 
 ## Dependency Injection and ViewModel
 
 Using a DI framework simplifies supplying repositories and other dependencies to your ViewModel:
 
-*   **Hilt**
+- **Hilt**
+  1. Annotate your Application class:
 
-    1.  Annotate your Application class:
-
-```
+```kotlin
 @HiltAndroidApp
 class MyApplication : Application()
 ```
 
 2\. In your module:
 
-```
+```kotlin
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
@@ -636,7 +636,7 @@ fun provideTodoRepository(todoDao: TodoDao): TodoRepository =
 
 3\. Annotate your ViewModel:
 
-```
+```kotlin
 @HiltViewModel
 class TodoViewModel @Inject constructor(
 private val repository: TodoRepository
@@ -645,7 +645,7 @@ private val repository: TodoRepository
 
 4\. In your Fragment:
 
-```
+```kotlin
 @AndroidEntryPoint
 class TodoListFragment : Fragment(R.layout.fragment_todo_list) {
 private val viewModel: TodoViewModel by viewModels()
@@ -653,11 +653,11 @@ private val viewModel: TodoViewModel by viewModels()
 }
 ```
 
-**Koin**
+- **Koin**
 
-1.  Define a Koin module:
+1. Define a Koin module:
 
-```
+```kotlin
 val appModule = module {
 single { Room.databaseBuilder(get(), AppDatabase::class.java, "app_db").build() }
 single { get
@@ -670,7 +670,7 @@ viewModel { TodoViewModel(get()) }
 
 2\. Start Koin in your Application:
 
-```
+```kotlin
 class MyApp : Application() {
    override fun onCreate() {
       super.onCreate()
@@ -684,7 +684,7 @@ class MyApp : Application() {
 
 3\. Retrieve `TodoViewModel` in your Fragment:
 
-```
+```kotlin
 class TodoListFragment : Fragment(R.layout.fragment_todo_list) {
 private val viewModel: TodoViewModel by viewModel()
 …
@@ -693,36 +693,34 @@ private val viewModel: TodoViewModel by viewModel()
 
 ## Coroutines & Flow Integration
 
-*   **Coroutines**
+- **Coroutines**
+  - Use `viewModelScope.launch { … }` inside your ViewModel for any suspend calls.
 
-    *   Use `viewModelScope.launch { … }` inside your ViewModel for any suspend calls.
+  - If you’re fetching from a network or performing heavy CPU tasks, switch to `Dispatchers.IO` or `Dispatchers.Default` as appropriate:
 
-    *   If you’re fetching from a network or performing heavy CPU tasks, switch to `Dispatchers.IO` or `Dispatchers.Default` as appropriate:
-
-```
+```kotlin
 viewModelScope.launch(Dispatchers.IO) {
 val items = repository.fetchItemsFromNetwork()
 _uiState.value = _uiState.value.copy(todos = items)
 }
 ```
 
-*   **Flow**
+- **Flow**
+  - Expose continuous streams from Room DAOs (`Flow<List<TodoEntity>>`) or from network sources.
 
-    *   Expose continuous streams from Room DAOs (`Flow<List<TodoEntity>>`) or from network sources.
+  - In the ViewModel, collect with operators like `onStart`, `catch`, `onEach`, then launch into `viewModelScope`.
 
-    *   In the ViewModel, collect with operators like `onStart`, `catch`, `onEach`, then launch into `viewModelScope`.
-
-    *   In the UI, if you’re not using Data Binding, collect the `StateFlow` in a `lifecycleScope`. For Jetpack Compose, call `collectAsState()` inside a composable.
+  - In the UI, if you’re not using Data Binding, collect the `StateFlow` in a `lifecycleScope`. For Jetpack Compose, call `collectAsState()` inside a composable.
 
 ## Handling One‑Time Events
 
 UI events such as navigation actions or showing a Toast shouldn’t re‑trigger on configuration changes. Common patterns include:
 
-*   **Event Wrapper**
+- **Event Wrapper**
 
-    Wrap your event data in a one‑time consumable wrapper:
+  Wrap your event data in a one‑time consumable wrapper:
 
-```
+```kotlin
 open class Event(private val content: T) {
    private var hasBeenHandled = false
    fun getContentIfNotHandled(): T? {
@@ -740,7 +738,7 @@ open class Event(private val content: T) {
 
 Then in your ViewModel:
 
-```
+```kotlin
 private val _navigateToDetail = MutableLiveData<Event>()
 val navigateToDetail: LiveData<Event> = _navigateToDetail
 fun onTodoClicked(id: Int) {
@@ -750,7 +748,7 @@ fun onTodoClicked(id: Int) {
 
 In your Fragment:
 
-```
+```kotlin
 viewModel.navigateToDetail.observe(viewLifecycleOwner) { event ->
    event.getContentIfNotHandled()?.let { id ->
       findNavController().navigate(R.id.action_to_detail, bundleOf("todoId" to id))
@@ -758,31 +756,31 @@ viewModel.navigateToDetail.observe(viewLifecycleOwner) { event ->
 }
 ```
 
-*   **SharedFlow / Channel**
+- **SharedFlow / Channel**
 
-    With Kotlin’s `Channel<T>` or a `MutableSharedFlow<T>`, you can emit events from the ViewModel and collect them in the UI, ensuring each event is handled only once.
+  With Kotlin’s `Channel<T>` or a `MutableSharedFlow<T>`, you can emit events from the ViewModel and collect them in the UI, ensuring each event is handled only once.
 
 ## Navigation Component & Shared ViewModels
 
 When using Jetpack Navigation:
 
-*   **Scoping a ViewModel to a NavGraph**
+- **Scoping a ViewModel to a NavGraph**
 
-    If multiple fragments need to share the same ViewModel (e.g., a master/detail flow), use:
+  If multiple fragments need to share the same ViewModel (e.g., a master/detail flow), use:
 
-```
+```kotlin
 private val sharedViewModel: SharedViewModel by navGraphViewModels(R.id.my_nav_graph)
 ```
 
-*   This keeps the ViewModel alive across all destinations in that graph.
+- This keeps the ViewModel alive across all destinations in that graph.
 
-#### **Safe Args**
+### **Safe Args**
 
-*   Pass data between fragments safely instead of bundling primitives manually:
+- Pass data between fragments safely instead of bundling primitives manually:
 
-1.  Define arguments in your navigation graph:
+1. Define arguments in your navigation graph:
 
-```
+```xml
 <fragment
  android:id="@+id/detailFragment"
  android:name="com.example.DetailFragment">
@@ -794,14 +792,14 @@ private val sharedViewModel: SharedViewModel by navGraphViewModels(R.id.my_nav_g
 
 2\. In the source fragment:
 
-```
+```kotlin
 val action = ListFragmentDirections.actionToDetail(todoId)
 findNavController().navigate(action)
 ```
 
 3\. In the destination fragment:
 
-```
+```kotlin
 private val args: DetailFragmentArgs by navArgs()
 // args.todoId is available here
 ```
@@ -810,7 +808,7 @@ private val args: DetailFragmentArgs by navArgs()
 
 Because ViewModels have no direct UI dependencies, you can unit‑test them:
 
-```
+```kotlin
 @ExperimentalCoroutinesApi
 class TodoViewModelTest {
 @get:Rule
@@ -847,11 +845,11 @@ fun `adding a todo updates state`() = runTest {
 }
 ```
 
-*   Fake repository:
+- Fake repository:
 
 Implement a simple in‑memory repository for testing:
 
-```
+```kotlin
 class FakeTodoRepository : TodoRepository {
 private val todos = MutableStateFlow<List<Todo>>(emptyList())
 override val allTodos: Flow<List<Todo>> = todos
@@ -870,15 +868,15 @@ override suspend fun deleteTodo(todo: Todo) {
 }
 ```
 
-*   **MainDispatcherRule**
+- **MainDispatcherRule**
 
-    A JUnit Rule that sets `Dispatchers.Main` to a `TestCoroutineDispatcher` so you can control coroutine execution during tests.
+  A JUnit Rule that sets `Dispatchers.Main` to a `TestCoroutineDispatcher` so you can control coroutine execution during tests.
 
 ## Jetpack Compose + MVVM
 
 If your project uses **Jetpack Compose**, the pattern is similar, but UI is built declaratively:
 
-```
+```kotlin
 @Composable
 fun TodoScreen(viewModel: TodoViewModel = hiltViewModel()) {
 val uiState by viewModel.uiState.collectAsState()
@@ -931,65 +929,65 @@ Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
 }
 ```
 
-*   Use `collectAsState()` to observe the `StateFlow<UiState>` from the ViewModel.
+- Use `collectAsState()` to observe the `StateFlow<UiState>` from the ViewModel.
 
-*   Compose automatically re‑composes when `uiState` changes.
+- Compose automatically re‑composes when `uiState` changes.
 
-*   Coroutines and business logic remain in the ViewModel—Compose functions are purely declarative.
+- Coroutines and business logic remain in the ViewModel—Compose functions are purely declarative.
 
 ## Best Practices & Common Pitfalls
 
-1.  **Avoid UI References in ViewModel**
+1. **Avoid UI References in ViewModel**
 
-    Never store an `Activity`, `Fragment`, or `View` reference in your ViewModel. If you need resources, consider using `AndroidViewModel` (provides application context), but minimize usage.
+   Never store an `Activity`, `Fragment`, or `View` reference in your ViewModel. If you need resources, consider using `AndroidViewModel` (provides application context), but minimize usage.
 
-2.  **Use a Single Source of Truth**
+2. **Use a Single Source of Truth**
 
-    Let the ViewModel own all UI state. If your Fragment has local variables representing state, you risk state inconsistency on configuration changes.
+   Let the ViewModel own all UI state. If your Fragment has local variables representing state, you risk state inconsistency on configuration changes.
 
-3.  **Bundle Related State into Data Classes**
+3. **Bundle Related State into Data Classes**
 
-    Instead of multiple LiveData objects (for loading, data, and errors), group them into one `UiState` data class. This makes the UI rendering logic simpler.
+   Instead of multiple LiveData objects (for loading, data, and errors), group them into one `UiState` data class. This makes the UI rendering logic simpler.
 
-4.  **Clean Up Observers / Binding**
+4. **Clean Up Observers / Binding**
 
-    In Fragments, always clear your view binding (`_binding = null` in `onDestroyView()`) to avoid memory leaks. Observe LiveData/Flow with `viewLifecycleOwner` to tie the observer to the Fragment’s view lifecycle.
+   In Fragments, always clear your view binding (`_binding = null` in `onDestroyView()`) to avoid memory leaks. Observe LiveData/Flow with `viewLifecycleOwner` to tie the observer to the Fragment’s view lifecycle.
 
-5.  **Minimize Heavy Work on Main Thread**
+5. **Minimize Heavy Work on Main Thread**
 
-    Although LiveData’s `postValue` can be called from background threads, ensure all database and network calls happen on `Dispatchers.IO`. Use `viewModelScope.launch(Dispatchers.IO) { … }` when necessary.
+   Although LiveData’s `postValue` can be called from background threads, ensure all database and network calls happen on `Dispatchers.IO`. Use `viewModelScope.launch(Dispatchers.IO) { … }` when necessary.
 
-6.  **Handle One‑Time Events Correctly**
+6. **Handle One‑Time Events Correctly**
 
-    Use an `Event` wrapper or a `SharedFlow<Event>` for navigation or Snackbar events so that they fire only once, even if the configuration changes.
+   Use an `Event` wrapper or a `SharedFlow<Event>` for navigation or Snackbar events so that they fire only once, even if the configuration changes.
 
-7.  **Dependency Injection**
+7. **Dependency Injection**
 
-    Leverage Hilt or Koin to supply repositories, data sources, and other dependencies. This not only reduces boilerplate but also makes testing easier because you can swap real dependencies with fakes.
+   Leverage Hilt or Koin to supply repositories, data sources, and other dependencies. This not only reduces boilerplate but also makes testing easier because you can swap real dependencies with fakes.
 
-8.  **Don’t Over‑Architect Small Features**
+8. **Don’t Over‑Architect Small Features**
 
-    For trivial screens (e.g., a static About screen), you might not need full MVVM. Use your judgment and keep things as simple as possible without sacrificing maintainability.
+   For trivial screens (e.g., a static About screen), you might not need full MVVM. Use your judgment and keep things as simple as possible without sacrificing maintainability.
 
 ## Advantages and Trade‑Offs
 
 **Pros:**
 
-*   **Modularity & Testability**: ViewModels can be unit‑tested without Android dependencies.
+- **Modularity & Testability**: ViewModels can be unit‑tested without Android dependencies.
 
-*   **Lifecycle Handling**: Automatic retention across configuration changes.
+- **Lifecycle Handling**: Automatic retention across configuration changes.
 
-*   **Reactive UI**: With `LiveData`/`StateFlow`, the UI updates automatically when data changes.
+- **Reactive UI**: With `LiveData`/`StateFlow`, the UI updates automatically when data changes.
 
-*   **Kotlin Coroutines**: Clean asynchronous code inside ViewModel using `viewModelScope`.
+- **Kotlin Coroutines**: Clean asynchronous code inside ViewModel using `viewModelScope`.
 
 **Cons:**
 
-*   **Initial Boilerplate**: More classes and layers compared to a quick one‑Activity app.
+- **Initial Boilerplate**: More classes and layers compared to a quick one‑Activity app.
 
-*   **Learning Curve**: You must become comfortable with coroutines, Flow, Data Binding, and dependency injection.
+- **Learning Curve**: You must become comfortable with coroutines, Flow, Data Binding, and dependency injection.
 
-*   **Memory Overhead**: Multiple ViewModels, especially if they hold large state objects, can increase memory usage.
+- **Memory Overhead**: Multiple ViewModels, especially if they hold large state objects, can increase memory usage.
 
 Even with these trade‑offs, MVVM remains a go‑to pattern for scalable, maintainable Android apps.
 
@@ -997,13 +995,13 @@ Even with these trade‑offs, MVVM remains a go‑to pattern for scalable, maint
 
 MVVM in Kotlin combines clean separation of concerns, lifecycle awareness, and reactive UI updates into one cohesive pattern. By delegating data and business logic to repositories (Model), exposing UI state in ViewModels, and having Views bind or observe that state, you achieve:
 
-*   **Maintainable code**: UI code remains simple; core logic lives in testable classes.
+- **Maintainable code**: UI code remains simple; core logic lives in testable classes.
 
-*   **Smooth UX**: Configuration changes (rotation, language changes) don’t reset your app’s state.
+- **Smooth UX**: Configuration changes (rotation, language changes) don’t reset your app’s state.
 
-*   **Enhanced Test Coverage**: ViewModels and repositories can be unit‑tested independently of Android components.
+- **Enhanced Test Coverage**: ViewModels and repositories can be unit‑tested independently of Android components.
 
-*   **Scalability**: As features grow, adding new screens or flows requires minimal changes to existing code.
+- **Scalability**: As features grow, adding new screens or flows requires minimal changes to existing code.
 
 Whether you’re building your first Android app or refactoring an existing one, adopting MVVM with Kotlin and AndroidX can transform your codebase. Start by defining your data models, setting up repositories, crafting ViewModels that expose a single `UiState`, and connecting your Activities or Fragments via Data Binding or LiveData/Flow observers. With dependency injection (Hilt or Koin) and Kotlin coroutines, you’ll have a modern, robust architecture capable of handling everything from simple to‑do apps to large, data‑driven applications.
 

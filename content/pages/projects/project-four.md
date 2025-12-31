@@ -123,7 +123,7 @@ CEIE leverages **Kotlin for Gradle scripting** to automate repository initializa
 
 CEIE is a **initiative** that redefines Git workflow management by introducing a structured, automated approach to repository handling. With its scalable architecture and future integration plans, CEIE aims to become a **standardized Git workflow solution** for teams and individual developers alike.
 
-# Go-to
+## Go-to
 
 | [Repo ↗](https://github.com/theaniketraj/ceie) | [Portal ↗](https://www.npmjs.com/package/ceie) |
 | ----------------------------------------------- | ----------------------------------------------- |

@@ -53,23 +53,21 @@ metaTags:
       A deep dive into Git’s internal mechanics: object model, staging, commits,
       trees, and more. Learn how Git really works under the hood.
 ---
-**Introduction**
 
-Git is more than just a version-control tool—it’s a content-addressable filesystem and a set of primitives upon which distributed collaboration is built. In this deep dive, we’ll strip away the “git add/commit/push” gloss and peer into Git’s innards: its object model, storage mechanics, and the workflows that emerge from them. By the end, you’ll appreciate why Git is fast, resilient, and remarkably flexible.
+## **Introduction**
+
+Git is more than just a version-control tool it’s a content-addressable filesystem and a set of primitives upon which distributed collaboration is built. In this deep dive, we’ll strip away the “git add/commit/push” gloss and peer into Git’s innards: its object model, storage mechanics, and the workflows that emerge from them. By the end, you’ll appreciate why Git is fast, resilient, and remarkably flexible.
 
 ## 1. The Three States: Working Directory, Index, and Repository
 
-1.  **Working Directory**
+1. **Working Directory**
+   - Your editable files on disk.
 
-    *   Your editable files on disk.
+2. **Index (Staging Area)**
+   - A cached snapshot of what will go into the next commit.
 
-2.  **Index (Staging Area)**
-
-    *   A cached snapshot of what will go into the next commit.
-
-3.  **Repository (.git folder)**
-
-    *   Contains all commits, objects, refs, and metadata.
+3. **Repository (.git folder)**
+   - Contains all commits, objects, refs, and metadata.
 
 When you run `git add`, you’re copying changes from the Working Directory into the Index. A `git commit` transforms the Index into a new commit object inside the Repository.
 
@@ -77,23 +75,19 @@ When you run `git add`, you’re copying changes from the Working Directory into
 
 At its core, Git stores four object types, each identified by a SHA-1 (or SHA-256) hash of its content:
 
-1.  **Blob**
+1. **Blob**
+   - Represents file data (contents only).
 
-    *   Represents file data (contents only).
+   - No filename or metadata-just raw bytes.
 
-    *   No filename or metadata—just raw bytes.
+2. **Tree**
+   - A directory listing: maps filenames to blob or subtree SHA hashes plus permissions.
 
-2.  **Tree**
+3. **Commit**
+   - Points to one tree (the snapshot of your entire project), contains metadata (author, message, timestamp) and zero or more parent commit hashes.
 
-    *   A directory listing: maps filenames to blob or subtree SHA hashes plus permissions.
-
-3.  **Commit**
-
-    *   Points to one tree (the snapshot of your entire project), contains metadata (author, message, timestamp) and zero or more parent commit hashes.
-
-4.  **Tag**
-
-    *   A named pointer to a specific commit, optionally signed.
+4. **Tag**
+   - A named pointer to a specific commit, optionally signed.
 
 > **Why content-addressable?**
 >
@@ -103,11 +97,11 @@ At its core, Git stores four object types, each identified by a SHA-1 (or SHA-25
 
 Every commit object looks roughly like this:
 
-```
-tree   
+```git
+tree
 parent            # absent for the very first commit
-author   
-committer   
+author
+committer
 
 Commit message explaining the snapshot…
 ```
@@ -116,11 +110,11 @@ Git treats these commits as nodes in a **Directed Acyclic Graph (DAG)**: each co
 
 ## 4. References: Branches, Tags, and HEAD
 
-*   **Branches** are simply files in `.git/refs/heads/` containing a single commit SHA.
+- **Branches** are simply files in `.git/refs/heads/` containing a single commit SHA.
 
-*   **Tags** live in `.git/refs/tags/` and point to commits (or annotated tag objects).
+- **Tags** live in `.git/refs/tags/` and point to commits (or annotated tag objects).
 
-*   **HEAD** is a special ref indicating your current checkout. It usually points to a branch ref (e.g., `refs/heads/main`) or directly to a commit (detached HEAD).
+- **HEAD** is a special ref indicating your current checkout. It usually points to a branch ref (e.g., `refs/heads/main`) or directly to a commit (detached HEAD).
 
 Changing branches (`git checkout`) means updating HEAD to point elsewhere, then rebuilding your Working Directory from the target commit’s tree.
 
@@ -128,68 +122,63 @@ Changing branches (`git checkout`) means updating HEAD to point elsewhere, then 
 
 Internally, the Index is a binary file `.git/index` that records:
 
-*   File paths
+- File paths
 
-*   Blob SHA references
+- Blob SHA references
 
-*   File permissions and timestamps
+- File permissions and timestamps
 
 When you `git commit`, Git takes the Index, writes a new tree object, then makes a commit object referencing that tree.
 
 ## 6. Storage on Disk: Loose Objects and Packfiles
 
-*   **Loose Objects**: initially, each new blob/tree/commit is written as a compressed file under `.git/objects/xx/yyyy...`.
+- **Loose Objects**: initially, each new blob/tree/commit is written as a compressed file under `.git/objects/xx/yyyy...`.
 
-*   **Packfiles**: over time, Git consolidates loose objects into packfiles (`.git/objects/pack/pack-*.pack/.idx`) using delta compression to save space and speed up network transfer.
+- **Packfiles**: over time, Git consolidates loose objects into packfiles (`.git/objects/pack/pack-*.pack/.idx`) using delta compression to save space and speed up network transfer.
 
 `git gc --auto` (garbage collection) handles packing, pruning unreachable objects, and optimizing performance.
 
 ## 7. Core Operations Under the Hood
 
-*   **Commit**
+- **Commit**
+  1. Write blobs for staged files.
 
-    1.  Write blobs for staged files.
+  2. Build trees recursively from directories.
 
-    2.  Build trees recursively from directories.
+  3. Create commit object pointing to root tree and parent.
 
-    3.  Create commit object pointing to root tree and parent.
+  4. Update branch ref to new commit SHA.
 
-    4.  Update branch ref to new commit SHA.
+- **Branch**
+  - Create or move a ref file under `.git/refs/heads/`.
 
-*   **Branch**
+- **Merge**
+  1. Find common ancestor commit.
 
-    *   Create or move a ref file under `.git/refs/heads/`.
+  2. Perform a three-way merge of trees.
 
-*   **Merge**
+  3. Write new merge commit with two parents.
 
-    1.  Find common ancestor commit.
+- **Rebase**
+  - Replay commits onto a new base by rewriting commit objects with updated parent SHAs.
 
-    2.  Perform a three-way merge of trees.
+- **Checkout**
+  1. Read target commit’s tree.
 
-    3.  Write new merge commit with two parents.
+  2. Overwrite Working Directory and Index to match.
 
-*   **Rebase**
-
-    *   Replay commits onto a new base by rewriting commit objects with updated parent SHAs.
-
-*   **Checkout**
-
-    1.  Read target commit’s tree.
-
-    2.  Overwrite Working Directory and Index to match.
-
-    3.  Update HEAD to the target ref or commit SHA.
+  3. Update HEAD to the target ref or commit SHA.
 
 ## 8. Why Git Is So Fast and Reliable
 
-*   **Data Integrity**: SHA hashing ensures any corruption is detected.
+- **Data Integrity**: SHA hashing ensures any corruption is detected.
 
-*   **Local-first**: nearly all operations read/write locally—no network needed.
+- **Local-first**: nearly all operations read/write locally-no network needed.
 
-*   **Immutable History**: commits never change once created, making rollbacks trivial.
+- **Immutable History**: commits never change once created, making rollbacks trivial.
 
-*   **Delta Compression in Packs**: efficient storage and transfer.
+- **Delta Compression in Packs**: efficient storage and transfer.
 
 ## Conclusion
 
-Understanding Git’s plumbing—its object model, references, and storage mechanisms—unlocks powerful workflows. You’re no longer just typing commands; you know what truly happens when you stage, commit, branch, or merge. Armed with this knowledge, you can diagnose low-level issues, craft advanced scripts, and leverage Git’s full potential in any development scenario.
+Understanding Git’s plumbing - its object model, references, and storage mechanisms-unlocks powerful workflows. You’re no longer just typing commands; you know what truly happens when you stage, commit, branch, or merge. Armed with this knowledge, you can diagnose low-level issues, craft advanced scripts, and leverage Git’s full potential in any development scenario.

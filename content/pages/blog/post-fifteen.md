@@ -104,32 +104,33 @@ bottomSections:
           - pr-4
         textAlign: left
 ---
+
 ## Introduction
 
 As AI systems become integral to software development workflows drafting code, designing architectures, debugging, and even learning design patterns—the quality of their outputs hinges almost entirely on **your prompts**. Prompt engineering transforms vague instructions into precise, structured, and outcome-driven queries, effectively turning LLMs into reliable collaborators.
 
 ## 1. Why Prompts Matter
 
-*   **No Native “Goals”**: LLMs generate text by pattern matching; they don’t inherently know your intent.
+- **No Native “Goals”**: LLMs generate text by pattern matching; they don’t inherently know your intent.
 
-*   **Direction & Constraints**: Prompts supply context - tone, format, role, examples preventing irrelevant or generic responses.
+- **Direction & Constraints**: Prompts supply context - tone, format, role, examples preventing irrelevant or generic responses.
 
-*   **Maximize Utility**: Good prompts unlock AI’s capabilities for code generation, architectural planning, documentation, and more.
+- **Maximize Utility**: Good prompts unlock AI’s capabilities for code generation, architectural planning, documentation, and more.
 
 ## 2. Core Prompt Engineering Techniques
 
 ### 2.1 Zero-Shot & Few-Shot
 
-*   **Zero-Shot**: Direct instruction without examples.
+- **Zero-Shot**: Direct instruction without examples.
 
-```
+```text
 “Summarize the following API docs in bullet points.”
 
 ```
 
 **Few-Shot**: Provide input/output examples to “show” the model the desired format
 
-```
+```text
 
 Example 1: Input: “…”, Output: “…”
 Example 2: Input: “…”, Output: “…”
@@ -138,25 +139,25 @@ Now summarize this new API doc.
 
 ### 2.2 Role & Context Assignment
 
-*   **Role**: “You are a Senior Front-End Engineer…”
+- **Role**: “You are a Senior Front-End Engineer…”
 
-*   **Context**: “Building a React dashboard for 10k daily users”
+- **Context**: “Building a React dashboard for 10k daily users”
 
-*   **Constraints**: “Use mobile-first, accessible Tailwind CSS, ARIA roles”
+- **Constraints**: “Use mobile-first, accessible Tailwind CSS, ARIA roles”
 
 ### 2.3 Chain-of-Thought (CoT)
 
 Encourage the model to **think step-by-step** before answering:
 
-```
+```text
 “Think step-by-step: how would you optimize React rendering for large tables?”
 ```
 
 ### 2.4 Formatting & Structure
 
-*   **Specify Output Style**: “Answer in ≤150 words as bullet points.”
+- **Specify Output Style**: “Answer in ≤150 words as bullet points.”
 
-*   **Code Blocks**: “Provide only code in a `javascript …`  block with comments.”
+- **Code Blocks**: “Provide only code in a `javascript …` block with comments.”
 
 ## 3. Advanced Prompting Methods
 
@@ -178,12 +179,12 @@ Encourage the model to **think step-by-step** before answering:
 
 **Combine:** Self-Ask → CoT-SC → Reflexion
 
-```
+```text
 Q: Design a scalable microservices chat app for 1 M users.
 1. Self-Ask: “What are core services? What consistency model?” – Answer.
-2. CoT-SC: Generate 3 architecture plans (event-driven, 
+2. CoT-SC: Generate 3 architecture plans (event-driven,
            serverless, pub/sub), vote the best.
-3. Reflexion: “Critique single points of failure, 
+3. Reflexion: “Critique single points of failure,
                security gaps; improve design.”
 →  Final: Detailed diagram + service list + trade-off analysis.
 ```
@@ -192,11 +193,11 @@ Q: Design a scalable microservices chat app for 1 M users.
 
 **Combine:** ReAct → CodeCoT → Reflexion
 
-```
+```text
 You are a senior engineer with tool access.
 ```
 
-```
+```text
 [Thought]: Analyze the Python function for efficiency.
 [Action]: Show me the code.
 [Observation]: (AI “sees” it)
@@ -212,7 +213,7 @@ You are a senior engineer with tool access.
 
 **Combine:** Step-Back → Tree-of-Thoughts → Self-Consistency
 
-```
+```text
 Step-Back: “Which frontend perf concepts apply to React dashboards?”
 ToT: Branch 1 – virtualization; Branch 2 – code splitting; Branch 3 – memoization.
 Self-Consistency: Summarize each approach thrice, pick the most frequent insights.
@@ -223,7 +224,7 @@ Self-Consistency: Summarize each approach thrice, pick the most frequent insight
 
 **Combine:** Meta-Prompt → Prompt-Refinement-Loop → Reflexion
 
-```
+```text
 Meta-Prompt: “Suggest 3 ways to ask about the Observer pattern for Java.”
 Choose one variant; ask for explanation + code skeleton.
 AI self-evaluates: “Is this clear? Add UML and edge cases.”
@@ -234,11 +235,11 @@ AI refines: Provides final polished tutorial.
 
 **Combine:** Program-of-Thoughts (PoT) → Self-Ask → Reflexion
 
-```
+```text
 Use PoT solver():
 ```
 
-```
+```text
 Step-1 (Self-Ask): List endpoints, request/response schemas.
 Step-2: Draft Flask code for routes with validation.
 Step-3: Generate test cases.
@@ -249,7 +250,7 @@ After draft: “Reflect on missing error codes or security concerns; fix them.�
 
 ### Basic
 
-```
+```text
 You are a [role].
 Task: [specific goal].
 Context: [background details].
@@ -260,7 +261,7 @@ Now: [your task].
 
 ### Advanced (Hybrid)
 
-```
+```text
 
 Q: [complex problem].
 Self-Ask: List and answer clarifying questions.
@@ -269,21 +270,21 @@ ReAct: Invoke analysis or code-generation actions as needed.
 Reflexion: Critique and refine final output.
 ```
 
-```
+```text
 Present: [desired deliverable].
 ```
 
 ## 6. Boosting Productivity with Prompt Engineering
 
-*   **Automate Writing & Summaries**: Emails, meeting notes, documentation.
+- **Automate Writing & Summaries**: Emails, meeting notes, documentation.
 
-*   **Accelerate Coding**: Scaffolding, tests, debugging, refactoring.
+- **Accelerate Coding**: Scaffolding, tests, debugging, refactoring.
 
-*   **Speed Design Reviews**: Generate architecture diagrams, trade-off matrices.
+- **Speed Design Reviews**: Generate architecture diagrams, trade-off matrices.
 
-*   **Enhance Learning**: Step-by-step tutorials in design patterns or frameworks.
+- **Enhance Learning**: Step-by-step tutorials in design patterns or frameworks.
 
-*   **Brainstorming**: Idea generation, marketing copy, naming conventions.
+- **Brainstorming**: Idea generation, marketing copy, naming conventions.
 
 ## Conclusion
 
@@ -291,12 +292,9 @@ Prompt engineering is not just “asking a question” it’s **designing a stru
 
 > **Next Steps:**
 >
-> 1.  Identify a real task you want to accelerate (e.g., API design, performance audit).
->
-> 2.  Choose the prompt strategy or hybrid workflow that best fits.
->
-> 3.  Draft, iterate, and refine your prompt using the templates above.
->
-> 4.  Document your process and share your learnings.
+> 1. Identify a real task you want to accelerate (e.g., API design, performance audit).
+> 2. Choose the prompt strategy or hybrid workflow that best fits.
+> 3. Draft, iterate, and refine your prompt using the templates above.
+> 4. Document your process and share your learnings.
 
 Happy prompting!

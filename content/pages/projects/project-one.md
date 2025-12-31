@@ -81,13 +81,13 @@ metaTags:
     content: summary_large_image
 ---
 
-###### **TL;DR –** ♻️🔬
+**TL;DR –** ♻️🔬
 
 Plastecure is an **IoT-powered plastic recycling solution** designed to streamline waste management. It integrates **Arduino, ESP32, and Supabase** to track, categorize, and process plastic waste efficiently. By leveraging real-time data collection and automation, Plastecure promotes **sustainable recycling practices** and **eco-friendly innovation**.
 
-# **Plastecure - Smart Plastic Waste Management System**
+## **Plastecure - Smart Plastic Waste Management System**
 
-### **Project Overview**
+## **Project Overview**
 
 Plastecure is an innovative **IoT-based plastic waste management system** designed to automate and optimize the collection, segregation, and recycling of plastic waste. The project integrates **hardware sensors, cloud-based analytics, and an interactive user interface** to create a seamless solution for tackling plastic pollution effectively.
 
@@ -182,6 +182,6 @@ At **Plastecure**, we **believe** in using **technology** for **environmental im
 
 Award 🏆: **Excellence Award in collaborative Technical Project** (**1st Place**) ( MBA + CSE ) Department
 
-# Go-To
+## Go-To
 
 | [Plastecure ↗](https://plastecure.netlify.app) | [GitHub Repo ↗](https://github.com/theaniketraj/plastecure) |

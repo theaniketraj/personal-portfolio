@@ -208,7 +208,7 @@ The project leverages modern JVM technologies:
 
 SCAN follows the principle of "sensible defaults" - it works immediately upon installation:
 
-```
+```kotlin
 plugins
 {
   id("io.github.theaniketraj.scan") version "2.0.0"
@@ -221,7 +221,7 @@ Simply running `./gradlew scanForSecrets` begins scanning with intelligent def
 
 For teams requiring customization, SCAN offers extensive configuration capabilities:
 
-```
+```config
 scan
 {
   // Detection sensitivity
@@ -295,7 +295,7 @@ The project follows modern DevOps practices:
 
 SCAN integrates naturally with Gradle's task lifecycle:
 
-```
+```bash
 // Automatic integration
 ./gradlew build        // Includes security scanning
 ./gradlew check        // Includes security verification
@@ -310,14 +310,14 @@ Ready-to-use configurations for popular CI/CD platforms:
 
 **GitHub Actions**:
 
-```
+```yaml
 - name: Run Security Scan
   run: ./gradlew scanForSecrets
 ```
 
 **Jenkins Pipeline**:
 
-```
+```groovy
 stage('Security Scan') {
     steps {
         sh './gradlew scanForSecrets'
@@ -413,7 +413,7 @@ Based on the project's architecture and current capabilities, SCAN is positioned
 
 SCAN's entropy detection system represents a sophisticated approach to security scanning. The Shannon entropy calculation:
 
-```
+```text
 H(X) = -Σ p(xi) * log2(p(xi))
 ```
 
@@ -444,4 +444,4 @@ The project stands as a testament to how thoughtful engineering, comprehensive t
 ## Go-to
 
 | [Repo ↗](https://github.com/theaniketraj/SCAN) | [Portal ↗](https://plugins.gradle.org/plugin/io.github.theaniketraj.scan) | [Docs ↗](https://theaniketraj.github.io/SCAN) |
-| ----------------------------------------------- | ------------------------------------------------- | --------------------------------------------------- |
+| ----------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------- |

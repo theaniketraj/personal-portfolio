@@ -110,7 +110,7 @@ Under the hood, VISTA leverages:
 
 Add VISTA to your Gradle project by updating your `settings.gradle.kts` or `build.gradle.kts`:
 
-```
+```kotlin
 plugins {
 id("io.github.theaniketraj.vista") version "1.0.7"
 // Always use latest Version
@@ -123,7 +123,7 @@ Gradle will fetch the plugin from the Gradle Plugin Portal at build time.
 
 Use the `vista { … }` extension block to customize behavior:
 
-```
+```version
 vista {
 // Optional override file (highest priority)
 versionFile.set(file("version.properties"))
@@ -150,7 +150,7 @@ propertyName.set("projectVersion")
 
 Place a `version.properties` file in your project root to force a specific version:
 
-```
+```version.properties
 version=2.3.0
 buildMetadata=20250426.1423
 ```
@@ -172,7 +172,7 @@ VISTA contributes four primary Gradle tasks:
 
 ### GitHub Actions Example
 
-```
+```yaml
 name: Release
 on:
 push:
