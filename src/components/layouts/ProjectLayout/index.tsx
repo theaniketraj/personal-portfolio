@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import Markdown from 'markdown-to-jsx';
 import * as React from 'react';
 
+import Breadcrumbs from '@/components/atoms/Breadcrumbs';
 import Link from '@/components/atoms/Link';
 import { DynamicComponent } from '@/components/components-registry';
 import ImageBlock from '@/components/molecules/ImageBlock';
@@ -97,6 +98,15 @@ const Component: React.FC<ComponentProps> = (props) => {
     return (
         <BaseLayout {...props}>
             <article className="px-4 py-14 lg:py-20">
+                <div className="max-w-5xl mx-auto mb-8">
+                    <Breadcrumbs
+                        items={[
+                            { label: 'Home', url: '/' },
+                            { label: 'Projects', url: '/projects' },
+                            { label: title }
+                        ]}
+                    />
+                </div>
                 <header className="max-w-5xl mx-auto mb-10 sm:mb-14">
                     {client && <div className="text-lg uppercase md:mb-6">{client}</div>}
                     <div className="flex flex-col gap-6 md:flex-row md:justify-between">

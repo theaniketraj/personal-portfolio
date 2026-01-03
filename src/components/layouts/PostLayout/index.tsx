@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import Markdown from 'markdown-to-jsx';
 import * as React from 'react';
 
+import Breadcrumbs from '@/components/atoms/Breadcrumbs';
 import Link from '@/components/atoms/Link';
 import { DynamicComponent } from '@/components/components-registry';
 import ReadingProgress from '@/components/molecules/ReadingProgress';
@@ -60,6 +61,15 @@ const Component: React.FC<ComponentProps> = (props) => {
     return (
         <BaseLayout {...props}>
             <article className="px-4 py-14 lg:py-20">
+                <div className="max-w-5xl mx-auto mb-8">
+                    <Breadcrumbs
+                        items={[
+                            { label: 'Home', url: '/' },
+                            { label: 'Blog', url: '/blog' },
+                            { label: title }
+                        ]}
+                    />
+                </div>
                 <ReadingProgress />
                 <header className="max-w-5xl mx-auto mb-10 sm:mb-14 text-center">
                     <div className="mb-6 uppercase tracking-widest text-sm font-medium text-gray-500">
