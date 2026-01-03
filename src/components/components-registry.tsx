@@ -87,7 +87,7 @@ const components = {
     HeroSection: dynamic(() => import('./sections/HeroSection')),
     ImageBlock: dynamic(() => import('./molecules/ImageBlock')),
     MediaGallerySection: dynamic(() => import('./sections/MediaGallerySection')),
-
+    ParallaxHeroSection: dynamic(() => import('./sections/ParallaxHeroSection')),
 
     PostFeedSection: dynamic(() => import('./sections/PostFeedSection')),
     ProjectFeedSection: dynamic(() => import('./sections/ProjectFeedSection')),
