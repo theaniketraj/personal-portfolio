@@ -152,31 +152,6 @@
         },
         {
             "type": "MetaTag",
-            "property": "og:url",
-            "content": "https://plugins.gradle.org/u/theaniketraj"
-        },
-        {
-            "type": "MetaTag",
-            "property": "og:url",
-            "content": "https://dev.to/theaniketraj"
-        },
-        {
-            "type": "MetaTag",
-            "property": "og:url",
-            "content": "https://www.linkedin.com/in/theaniketraj/"
-        },
-        {
-            "type": "MetaTag",
-            "property": "og:url",
-            "content": "https://www.npmjs.com/~theaniketraj"
-        },
-        {
-            "type": "MetaTag",
-            "property": "og:url",
-            "content": "https://github.com/theaniketraj"
-        },
-        {
-            "type": "MetaTag",
             "property": "twitter:card",
             "content": "summary_large_image"
         },

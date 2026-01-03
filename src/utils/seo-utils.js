@@ -19,18 +19,54 @@ export function seoGenerateMetaTags(page, site) {
         });
     }
 
+    // Generate og:url if not present
+    if (!pageMetaTags['og:url']) {
+        const canonical = seoGenerateCanonical(page, site);
+        if (canonical) {
+            pageMetaTags['og:url'] = canonical;
+        }
+    }
+
     let metaTags = [];
     Object.keys(pageMetaTags).forEach((key) => {
         if (pageMetaTags[key] !== null) {
             metaTags.push({
                 property: key,
                 content: pageMetaTags[key],
-                format: key.startsWith('og') ? 'property' : 'name'
+                format: key.startsWith('og') || key.startsWith('twitter') ? 'property' : 'name'
             });
         }
     });
 
     return metaTags;
+}
+
+export function seoGenerateCanonical(page, site) {
+    let domainUrl = site.env?.URL;
+    if (!domainUrl && site.defaultMetaTags) {
+        const ogUrlTag = site.defaultMetaTags.find((tag) => tag.property === 'og:url');
+        if (ogUrlTag) {
+            domainUrl = ogUrlTag.content;
+        }
+    }
+
+    // fallback to known domain if available or return null
+    if (!domainUrl) return null;
+
+    // formatting
+    domainUrl = domainUrl.replace(/\/$/, ''); // remove trailing slash
+
+    let urlPath = '/';
+    if (page.__metadata?.urlPath) {
+        urlPath = page.__metadata.urlPath;
+    } else if (page.slug) {
+        urlPath = page.slug.startsWith('/') ? page.slug : '/' + page.slug;
+    }
+
+    // Ensure urlPath exists
+    if (!urlPath) return domainUrl;
+
+    return domainUrl + urlPath;
 }
 
 export function seoGenerateTitle(page, site) {

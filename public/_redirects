@@ -12,5 +12,5 @@
 # Projects
 /projects/*       /projects/:splat/index.html 200
 
-# Fallback for SPA routing
+# Fallback to 404 page
 /*                /404.html                 404

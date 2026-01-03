@@ -4,7 +4,7 @@ import React from 'react';
 import { DynamicComponent } from '@/components/components-registry';
 import { PageComponentProps } from '@/types';
 import { allContent } from '@/utils/content';
-import { seoGenerateMetaDescription, seoGenerateMetaTags, seoGenerateTitle } from '@/utils/seo-utils';
+import { seoGenerateCanonical, seoGenerateMetaDescription, seoGenerateMetaTags, seoGenerateTitle } from '@/utils/seo-utils';
 import { createSmartProps } from '@/utils/smart-props';
 
 // Simple error boundary component
@@ -53,12 +53,14 @@ const Page: React.FC<PageComponentProps> = (props) => {
     const title = seoGenerateTitle(page, site) || 'Personal Portfolio';
     const metaTags = seoGenerateMetaTags(page, site) || [];
     const metaDescription = seoGenerateMetaDescription(page, site) || '';
+    const canonicalUrl = seoGenerateCanonical(page, site);
 
     return (
         <>
             <Head>
                 <title>{title}</title>
                 {metaDescription && <meta name="description" content={metaDescription} />}
+                {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
                 {metaTags.map((metaTag, index) => {
                     if (!metaTag?.property && !metaTag?.content) return null;
 
