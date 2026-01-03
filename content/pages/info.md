@@ -103,6 +103,7 @@ sections:
           - type: Link
             label: NPM
             url: 'https://www.npmjs.com/~theaniketraj'
+            target: _blank
             showIcon: false
             iconPosition: right
             icon: arrowUpRight
@@ -114,6 +115,7 @@ sections:
           - type: Link
             label: Gradle
             url: 'https://plugins.gradle.org/u/theaniketraj'
+            target: _blank
             icon: arrowUpRight
             showIcon: false
             iconPosition: right
@@ -125,6 +127,7 @@ sections:
           - type: Link
             label: Dev.To
             url: 'https://dev.to/theaniketraj'
+            target: _blank
             showIcon: false
             icon: arrowUpRight
             iconPosition: right
@@ -136,6 +139,7 @@ sections:
           - type: Link
             label: X
             url: 'https://x.com/theaniketdev'
+            target: _blank
             showIcon: false
             icon: twitter
             iconPosition: right
@@ -147,6 +151,7 @@ sections:
           - type: Link
             label: LinkedIN
             url: 'https://www.linkedin.com/in/theaniketraj/'
+            target: _blank
             showIcon: false
             icon: linkedin
             iconPosition: right
@@ -159,6 +164,7 @@ sections:
           - type: Link
             label: Discord
             url: 'https://discord.com/theaniketraj#8007'
+            target: _blank
             showIcon: false
             icon: arrowUpRight
         styles:
