@@ -8,7 +8,7 @@ export default function ImageBlock(props) {
 
     return (
         <Annotated content={props}>
-            <img id={elementId || null} className={className} src={url} alt={altText} />
+            <img id={elementId || null} className={className} src={url} alt={altText} loading="lazy" decoding="async" />
         </Annotated>
     );
 }

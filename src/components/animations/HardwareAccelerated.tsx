@@ -209,6 +209,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
                     ${isLoaded ? 'loaded' : ''}
                     transition-opacity duration-600
                 `.trim()}
+                loading="lazy"
+                decoding="async"
                 {...props}
             />
         </div>
