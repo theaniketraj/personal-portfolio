@@ -94,9 +94,9 @@ sections:
         iconPosition: right
         elementId: ''
     posts:
+      - content/pages/blog/post-sixteen.md
       - content/pages/blog/post-fifteen.md
       - content/pages/blog/post-fourteen.md
-      - content/pages/blog/post-thirteen.md
     colors: colors-f
     variant: variant-d
     elementId: ''
