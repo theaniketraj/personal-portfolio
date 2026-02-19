@@ -1,10 +1,46 @@
+---
+type: PostLayout
+title: 'Google Search Algorithm: Zero-Fluff Guide'
+date: '2026-02-19'
+excerpt: >-
+  A practical, no-fluff explanation of how Google Search ranks pages, including crawling, indexing, ranking signals, E-E-A-T, backlinks, and Core Web Vitals.
+featuredImage:
+  type: ImageBlock
+  url: /images/google-search-featured.jpg
+  altText: >-
+    Google Search Algorithm: Zero-Fluff Guide | Aniket
+    Raj's Tech Blog
+  caption: >-
+    Google Search Algorithm: Zero-Fluff Guide | Aniket
+    Raj's Tech Blog
+  elementId: ''
+media:
+  type: ImageBlock
+  url: /images/google-search-featured.jpg
+  altText: >-
+    Google Search Algorithm: Zero-Fluff Guide | Aniket
+    Raj's Tech Blog
+  caption: >-
+    Google Search Algorithm: Zero-Fluff Guide | Aniket
+    Raj's Tech Blog
+  elementId: ''
+addTitleSuffix: true
+colors: colors-a
+backgroundImage:
+  type: BackgroundImage
+  url: /images/google-search-bg.jpg
+  backgroundSize: cover
+  backgroundPosition: center
+  backgroundRepeat: no-repeat
+  opacity: 50
+author: content/data/team/aniket-raj.json
+---
+
 # Google Search Algorithm: Zero-Fluff Guide
 
 ## Core Objective
 
 Google’s algorithm ranks pages to show the **most relevant, useful, and trustworthy results** for a specific search query.
-
----
 
 ## 1) How Google Search Works (3 Steps)
 
@@ -39,8 +75,6 @@ If a page:
 - Blocks indexing
 
 …it may not be indexed.
-
----
 
 ### 3. Ranking
 
@@ -83,8 +117,6 @@ This is tied to **E-E-A-T**:
 **Authoritativeness**
 **Trustworthiness**
 
----
-
 ### C. Backlinks (Authority Signal)
 
 Links from other websites act as votes of confidence.
@@ -97,8 +129,6 @@ Important factors:
 - Natural link profile
 
 One strong backlink > 100 weak ones.
-
----
 
 ### D. Page Experience
 
@@ -115,8 +145,6 @@ Measured via **Core Web Vitals**:
 - CLS (layout stability)
 - INP (interaction responsiveness)
 
----
-
 ### E. On-Page Optimization
 
 Google uses page structure to understand content.
@@ -128,8 +156,6 @@ Key elements:
 - URL structure
 - Internal links
 - Image alt text
-
----
 
 ## 3) Important Algorithm Systems
 
@@ -145,8 +171,6 @@ Penalizes:
 - Keyword-stuffed pages
 - Thin content
 
----
-
 ### RankBrain
 
 Machine-learning system that:
@@ -155,8 +179,6 @@ Machine-learning system that:
 - Understands ambiguous queries
 - Adjusts rankings based on behavior
 
----
-
 ### BERT & MUM
 
 Language models that help Google:
@@ -164,8 +186,6 @@ Language models that help Google:
 - Understand context
 - Interpret natural language queries
 - Handle complex searches
-
----
 
 ## 4. What Google Explicitly Penalizes
 
@@ -182,8 +202,6 @@ These can cause:
 - Ranking drops
 - De-indexing
 
----
-
 ## 5. Simplified Ranking Model (Mental Framework)
 
 Google basically evaluates:
@@ -197,8 +215,6 @@ Ranking Score ≈
 + (Technical health)
 ```
 
----
-
 ## 6. Practical SEO Priority Order (80/20 Rule)
 
 If you want results fast:
@@ -208,8 +224,6 @@ If you want results fast:
 3. Get a few high-quality backlinks
 4. Ensure fast, mobile-friendly pages
 5. Fix technical issues
-
----
 
 ## 7. Common Misconceptions
 
@@ -221,8 +235,6 @@ If you want results fast:
 
 **Myth:** SEO is a one-time task
 **Reality:** It’s continuous optimization
-
----
 
 ## TL;DR
 
