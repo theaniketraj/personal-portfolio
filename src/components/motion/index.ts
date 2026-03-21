@@ -7,6 +7,9 @@ export { FadeIn, ScrollReveal, StaggerContainer, StaggerItem } from './ScrollAni
 // Typewriter Effect
 export { TypewriterEffect } from './TypewriterEffect';
 
+// Interactive Typography
+export { InteractiveTypography } from './InteractiveTypography';
+
 // Hardware-Accelerated Scroll Animations
 export {
     FadeInHW,
@@ -43,4 +46,3 @@ export {
     ScrollBasedScale,
     TiltParallax
 } from './ParallaxEffects';
-

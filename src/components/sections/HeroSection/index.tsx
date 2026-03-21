@@ -7,11 +7,11 @@ import { DynamicComponent } from '@/components/components-registry';
 import {
     FadeIn,
     HoverScale,
+    InteractiveTypography,
     ParallaxText,
     ScrollBasedScale,
     StaggerContainer,
-    StaggerItem,
-    TypewriterEffect
+    StaggerItem
 } from '@/components/motion';
 import { HeroSection } from '@/types';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
@@ -35,10 +35,8 @@ export default function Component(props: HeroSection) {
                             <StaggerItem>
                                 <ParallaxText speed={0.1} direction="up">
                                     <FadeIn direction="up">
-                                        <h1 className="text-5xl sm:text-6xl">
-                                            <TypewriterEffect speed="medium" delay={0.2}>
-                                                {title}
-                                            </TypewriterEffect>
+                                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-4 tracking-tighter">
+                                            <InteractiveTypography text={title} />
                                         </h1>
                                     </FadeIn>
                                 </ParallaxText>
