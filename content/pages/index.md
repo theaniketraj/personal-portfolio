@@ -13,7 +13,7 @@ sections:
   - elementId: ''
     colors: colors-f
     backgroundSize: inset
-    title: HELLO. I'M ANIKET RAJ
+    title: HELLO I'M ANIKET RAJ
     subtitle: KMP. UI/UX. CI/CD.
     styles:
       self:
