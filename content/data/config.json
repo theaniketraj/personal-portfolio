@@ -84,9 +84,9 @@
             },
             {
                 "type": "Link",
-                "label": "VITALS",
-                "altText": "vitals",
-                "url": "https://theaniketraj.github.io/vitals/",
+                "label": "VED",
+                "altText": "ved",
+                "url": "https://github.com/vedlanghq",
                 "target": "_blank",
                 "showIcon": true,
                 "icon": "arrowUpRight",
