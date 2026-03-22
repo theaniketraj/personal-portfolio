@@ -86,7 +86,7 @@
                 "type": "Link",
                 "label": "VED",
                 "altText": "ved",
-                "url": "https://github.com/vedlanghq",
+                "url": "https://vedlanghq.netlify.app",
                 "target": "_blank",
                 "showIcon": true,
                 "icon": "arrowUpRight",
