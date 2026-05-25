@@ -143,6 +143,7 @@ function optimizePageData(page: any, allData: any[]): any {
 }
 
 function optimizeSection(section: any, allData: any[]): any {
+    if (!section) return section;
     const optimizedSection = { ...section };
 
     // Handle different section types
@@ -173,18 +174,29 @@ function optimizeSection(section: any, allData: any[]): any {
 }
 
 function resolveAndOptimizeProjects(projectRefs: any[], allData: any[]): any[] {
-    return projectRefs.slice(0, 6).map((projectRef) => {
+    console.log('[resolveAndOptimizeProjects] Input refs:', projectRefs);
+    const result = projectRefs.slice(0, 6).map((projectRef) => {
+        if (!projectRef) return null;
+        
         // If it's a file reference, resolve it
         if (typeof projectRef === 'string' && projectRef.includes('content/pages/projects/')) {
             const slug = projectRef.replace('content/pages/projects/', '').replace('.md', '');
-            const project = allData.find((obj) => obj.__metadata?.modelName === 'ProjectLayout' && obj.slug === slug);
+            console.log('[resolveAndOptimizeProjects] Looking for slug:', slug);
+            const project = allData.find((obj) => {
+                if (obj.__metadata?.modelName !== 'ProjectLayout') return false;
+                // Match by slug in the object or compute from file path
+                const objSlug = obj.slug || (obj.__metadata?.id?.replace('content/pages/projects/', '')?.replace('.md', '') || '');
+                return objSlug === slug;
+            });
 
             if (project) {
+                console.log('[resolveAndOptimizeProjects] Found project:', project.title);
+                const projectSlug = project.slug || (project.__metadata?.id?.replace('content/pages/projects/', '')?.replace('.md', '') || slug);
                 return {
                     // Return only essential fields, strip everything else
                     type: project.type || 'ProjectLayout',
                     title: project.title || '',
-                    slug: project.slug || '',
+                    slug: projectSlug,
                     excerpt: project.excerpt || '',
                     description: project.description || '',
                     date: project.date || null,
@@ -192,15 +204,18 @@ function resolveAndOptimizeProjects(projectRefs: any[], allData: any[]): any[] {
                     client: project.client || '',
                     __metadata: project.__metadata
                 };
+            } else {
+                console.log('[resolveAndOptimizeProjects] Project not found for slug:', slug);
             }
         }
 
         // If it's already an object, return only essential fields
         if (typeof projectRef === 'object') {
+            const slug = projectRef.slug || (projectRef.__metadata?.id?.replace('content/pages/projects/', '')?.replace('.md', '') || '');
             return {
                 type: projectRef.type || 'ProjectLayout',
                 title: projectRef.title || '',
-                slug: projectRef.slug || '',
+                slug: slug,
                 excerpt: projectRef.excerpt || '',
                 description: projectRef.description || '',
                 date: projectRef.date || null,
@@ -210,23 +225,36 @@ function resolveAndOptimizeProjects(projectRefs: any[], allData: any[]): any[] {
             };
         }
 
-        return projectRef;
-    });
+        return null;
+    }).filter(Boolean); // Filter out nulls
+    console.log('[resolveAndOptimizeProjects] Output:', result);
+    return result;
 }
 
 function resolveAndOptimizePosts(postRefs: any[], allData: any[]): any[] {
-    return postRefs.slice(0, 6).map((postRef) => {
+    console.log('[resolveAndOptimizePosts] Input refs:', postRefs);
+    const result = postRefs.slice(0, 6).map((postRef) => {
+        if (!postRef) return null;
+        
         // If it's a file reference, resolve it
         if (typeof postRef === 'string' && postRef.includes('content/pages/blog/')) {
             const slug = postRef.replace('content/pages/blog/', '').replace('.md', '');
-            const post = allData.find((obj) => obj.__metadata?.modelName === 'PostLayout' && obj.slug === slug);
+            console.log('[resolveAndOptimizePosts] Looking for slug:', slug);
+            const post = allData.find((obj) => {
+                if (obj.__metadata?.modelName !== 'PostLayout') return false;
+                // Match by slug in the object or compute from file path
+                const objSlug = obj.slug || (obj.__metadata?.id?.replace('content/pages/blog/', '')?.replace('.md', '') || '');
+                return objSlug === slug;
+            });
 
             if (post) {
+                console.log('[resolveAndOptimizePosts] Found post:', post.title);
+                const postSlug = post.slug || (post.__metadata?.id?.replace('content/pages/blog/', '')?.replace('.md', '') || slug);
                 return {
                     // Return only essential fields for featured posts
                     type: post.type || 'PostLayout',
                     title: post.title || '',
-                    slug: post.slug || '',
+                    slug: postSlug,
                     excerpt: post.excerpt || '',
                     description: post.description || '',
                     date: post.date || null,
@@ -234,15 +262,18 @@ function resolveAndOptimizePosts(postRefs: any[], allData: any[]): any[] {
                     featuredImage: post.featuredImage || null,
                     __metadata: post.__metadata
                 };
+            } else {
+                console.log('[resolveAndOptimizePosts] Post not found for slug:', slug);
             }
         }
 
         // If it's already an object, return only essential fields
         if (typeof postRef === 'object') {
+            const slug = postRef.slug || (postRef.__metadata?.id?.replace('content/pages/blog/', '')?.replace('.md', '') || '');
             return {
                 type: postRef.type || 'PostLayout',
                 title: postRef.title || '',
-                slug: postRef.slug || '',
+                slug: slug,
                 excerpt: postRef.excerpt || '',
                 description: postRef.description || '',
                 date: postRef.date || null,
@@ -252,8 +283,10 @@ function resolveAndOptimizePosts(postRefs: any[], allData: any[]): any[] {
             };
         }
 
-        return postRef;
-    });
+        return null;
+    }).filter(Boolean); // Filter out nulls
+    console.log('[resolveAndOptimizePosts] Output:', result);
+    return result;
 }
 
 function optimizeNavigation(nav: any): any {

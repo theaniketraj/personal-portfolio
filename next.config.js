@@ -62,6 +62,9 @@ const nextConfig = {
         return config;
     },
 
+    // Turbopack configuration
+    turbopack: {},
+
     // Modular imports optimization (moved out of experimental for Next.js 15)
     modularizeImports: {
         dayjs: {

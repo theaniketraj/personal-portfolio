@@ -39,7 +39,7 @@ export default function TableOfContents({ content }: { readonly content: string 
     useEffect(() => {
         if (headings.length === 0) return;
 
-        const headingElements = headings.map((h) => document.getElementById(h.id)).filter(Boolean) as HTMLElement[];
+        const headingElements = headings.map((h) => document.getElementById(h.id)).filter(Boolean);
 
         // Use a Map to track visibility of all headings
         const visibilityMap = new Map<string, boolean>();
@@ -107,7 +107,7 @@ export default function TableOfContents({ content }: { readonly content: string 
                                 className={classNames(
                                     'block py-2 transition-colors duration-200 relative z-10',
                                     activeId === heading.id
-                                        ? 'text-[var(--theme-primary)] font-medium'
+                                        ? 'text-(--theme-primary) font-medium'
                                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                                 )}
                             >
@@ -117,7 +117,7 @@ export default function TableOfContents({ content }: { readonly content: string 
                             {activeId === heading.id && (
                                 <motion.div
                                     layoutId="toc-active-indicator"
-                                    className="absolute left-0 top-0 bottom-0 -ml-[1px] w-[2px] bg-[var(--theme-primary)]"
+                                    className="absolute left-0 top-0 bottom-0 -ml-px w-0.5 bg-(--theme-primary)"
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}

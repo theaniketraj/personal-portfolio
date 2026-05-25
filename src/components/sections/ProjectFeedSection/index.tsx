@@ -16,7 +16,9 @@ export default function ProjectFeedSection(props) {
         <Section elementId={elementId} colors={colors} styles={styles.self}>
             {title && (
                 <HardwareAnimated animation="fadeInScale">
-                    <h2 className={classNames('text-4xl sm:text-5xl', mapStyles({ textAlign: sectionAlign }))}>{title}</h2>
+                    <h2 className={classNames('text-4xl sm:text-5xl', mapStyles({ textAlign: sectionAlign }))}>
+                        {title}
+                    </h2>
                 </HardwareAnimated>
             )}
             {subtitle && (
@@ -69,7 +71,8 @@ function ProjectGrid(props) {
         hasTopMargin,
         headingLevel
     } = props;
-    if (projects.length === 0) {
+    const validProjects = projects.filter(Boolean);
+    if (validProjects.length === 0) {
         return null;
     }
     const TitleTag = headingLevel;
@@ -83,7 +86,7 @@ function ProjectGrid(props) {
                 'mt-12': hasTopMargin
             })}
         >
-            {projects.map((project, index) => (
+            {validProjects.map((project, index) => (
                 <StaggerItem key={`${project.title || 'project'}-${index}`}>
                     <HoverLift className="block max-w-3xl pb-10 border-b border-current group">
                         <Link href={project}>
@@ -101,7 +104,9 @@ function ProjectGrid(props) {
                                 </div>
                             )}
                             <TitleTag className="text-3xl sm:text-4xl">{project.title}</TitleTag>
-                            {showDescription && project.description && <p className="mt-5 text-lg">{project.description}</p>}
+                            {showDescription && project.description && (
+                                <p className="mt-5 text-lg">{project.description}</p>
+                            )}
                             {showReadMoreLink && (
                                 <div className="mt-8">
                                     <span className="inline-flex text-xl transition rounded-full p-4 border-2 border-current group-hover:bottom-shadow-6 group-hover:-translate-y-1.5">
@@ -127,7 +132,8 @@ function ProjectList(props) {
         hasTopMargin,
         headingLevel
     } = props;
-    if (projects.length === 0) {
+    const validProjects = projects.filter(Boolean);
+    if (validProjects.length === 0) {
         return null;
     }
     const TitleTag = headingLevel;
@@ -137,7 +143,7 @@ function ProjectList(props) {
                 'mt-12': hasTopMargin
             })}
         >
-            {projects.map((project, index) => (
+            {validProjects.map((project, index) => (
                 <StaggerItem key={`${project.title || 'project'}-${index}`}>
                     <HoverLift className="block pb-10 border-b border-current group md:pb-12 md:px-4">
                         <Link href={project}>

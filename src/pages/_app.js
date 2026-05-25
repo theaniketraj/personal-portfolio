@@ -15,7 +15,15 @@ export default function MyApp({ Component, pageProps }) {
 
     useEffect(() => {
         setIsMounted(true);
-        document.body.setAttribute('data-theme', page.colors || 'colors-a');
+        document.body.dataset.theme = page.colors || 'colors-a';
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch((error) => {
+                    console.error('Service Worker registration failed:', error);
+                });
+            });
+        }
     }, [page.colors]);
 
     // Show skeleton while loading or before hydration is complete

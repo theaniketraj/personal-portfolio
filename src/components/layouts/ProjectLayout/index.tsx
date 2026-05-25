@@ -100,11 +100,7 @@ const Component: React.FC<ComponentProps> = (props) => {
             <article className="px-4 py-14 lg:py-20">
                 <div className="max-w-5xl mx-auto mb-8">
                     <Breadcrumbs
-                        items={[
-                            { label: 'Home', url: '/' },
-                            { label: 'Projects', url: '/projects' },
-                            { label: title }
-                        ]}
+                        items={[{ label: 'Home', url: '/' }, { label: 'Projects', url: '/projects' }, { label: title }]}
                     />
                 </div>
                 <header className="max-w-5xl mx-auto mb-10 sm:mb-14">
@@ -138,7 +134,7 @@ const Component: React.FC<ComponentProps> = (props) => {
                                         a: CustomLink
                                     }
                                 }}
-                                className="prose sm:prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-[var(--theme-primary)] hover:prose-a:text-[var(--theme-secondary)] transition-colors"
+                                className="prose sm:prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-(--theme-primary) hover:prose-a:text-(--theme-secondary) transition-colors"
                             >
                                 {markdownContent}
                             </Markdown>
@@ -159,7 +155,9 @@ const Component: React.FC<ComponentProps> = (props) => {
                                 className="group flex flex-col items-start w-full px-6 py-8 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors"
                                 href={'/projects/' + prevProject.slug}
                             >
-                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-2">Previous Project</span>
+                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-2">
+                                    Previous Project
+                                </span>
                                 <div className="flex items-center gap-4 w-full">
                                     {prevProject.featuredImage && (
                                         <div className="hidden sm:block w-20 h-14 shrink-0 overflow-hidden rounded">
@@ -169,7 +167,7 @@ const Component: React.FC<ComponentProps> = (props) => {
                                             />
                                         </div>
                                     )}
-                                    <span className="text-xl font-bold leading-tight uppercase transition-colors group-hover:text-[var(--theme-primary)]">
+                                    <span className="text-xl font-bold leading-tight uppercase transition-colors group-hover:text-(--theme-primary)">
                                         {prevProject.title}
                                     </span>
                                 </div>
@@ -180,7 +178,9 @@ const Component: React.FC<ComponentProps> = (props) => {
                                 className="group flex flex-col items-end w-full px-6 py-8 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors text-right"
                                 href={'/projects/' + nextProject.slug}
                             >
-                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-2">Next Project</span>
+                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-2">
+                                    Next Project
+                                </span>
                                 <div className="flex flex-row-reverse items-center gap-4 w-full">
                                     {nextProject.featuredImage && (
                                         <div className="hidden sm:block w-20 h-14 shrink-0 overflow-hidden rounded">
@@ -190,7 +190,7 @@ const Component: React.FC<ComponentProps> = (props) => {
                                             />
                                         </div>
                                     )}
-                                    <span className="text-xl font-bold leading-tight uppercase transition-colors group-hover:text-[var(--theme-primary)]">
+                                    <span className="text-xl font-bold leading-tight uppercase transition-colors group-hover:text-(--theme-primary)">
                                         {nextProject.title}
                                     </span>
                                 </div>

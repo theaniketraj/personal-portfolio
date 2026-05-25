@@ -23,9 +23,9 @@ export default function ReadingProgress() {
     }, []);
 
     return (
-        <div className="fixed top-0 left-0 w-full h-1.5 z-[9999] bg-transparent pointer-events-none">
+        <div className="fixed top-0 left-0 w-full h-1.5 z-9999 bg-transparent pointer-events-none">
             <div
-                className="h-full bg-[var(--theme-primary)] transition-all duration-150 ease-out shadow-[0_0_10px_var(--theme-primary)]"
+                className="h-full bg-(--theme-primary) transition-all duration-150 ease-out shadow-[0_0_10px_var(--theme-primary)]"
                 style={{ width: `${width}%` }}
             />
         </div>

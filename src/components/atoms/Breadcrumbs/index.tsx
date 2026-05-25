@@ -14,7 +14,7 @@ interface BreadcrumbsProps {
     className?: string;
 }
 
-export default function Breadcrumbs({ items, className }: BreadcrumbsProps) {
+export default function Breadcrumbs({ items, className }: Readonly<BreadcrumbsProps>) {
     if (!items || items.length === 0) return null;
 
     return (
@@ -61,15 +61,17 @@ export default function Breadcrumbs({ items, className }: BreadcrumbsProps) {
                                 {item.url && !isLast ? (
                                     <Link
                                         href={item.url}
-                                        className="text-sm md:text-base font-medium text-gray-500 hover:text-[var(--theme-primary)] dark:text-gray-400 dark:hover:text-[var(--theme-primary)] transition-colors line-clamp-1 max-w-[100px] sm:max-w-none"
+                                        className="text-sm md:text-base font-medium text-gray-500 hover:text-(--theme-primary) dark:text-gray-400 dark:hover:text-(--theme-primary) transition-colors line-clamp-1 max-w-25 sm:max-w-none"
                                     >
                                         {item.label}
                                     </Link>
                                 ) : (
                                     <span
                                         className={classNames(
-                                            "text-sm md:text-base font-medium line-clamp-1",
-                                            isLast ? "text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400"
+                                            'text-sm md:text-base font-medium line-clamp-1',
+                                            isLast
+                                                ? 'text-gray-900 dark:text-white'
+                                                : 'text-gray-500 dark:text-gray-400'
                                         )}
                                         aria-current={isLast ? 'page' : undefined}
                                     >

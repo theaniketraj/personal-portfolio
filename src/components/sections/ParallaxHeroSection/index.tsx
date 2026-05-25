@@ -4,40 +4,18 @@ import Markdown from 'markdown-to-jsx';
 import { AnnotatedField } from '@/components/Annotated';
 import { Action } from '@/components/atoms';
 import { DynamicComponent } from '@/components/components-registry';
-import {
-    FadeIn,
-    HoverScale,
-    ParallaxText,
-    ScrollBasedScale,
-    StaggerContainer,
-    StaggerItem
-} from '@/components/motion';
+import { FadeIn, HoverScale, ParallaxText, ScrollBasedScale, StaggerContainer, StaggerItem } from '@/components/motion';
 import { HeroSection } from '@/types';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
 import Section from '../Section';
 
 export default function ParallaxHeroSection(props: HeroSection) {
-    const {
-        elementId,
-        colors,
-        backgroundSize,
-        title,
-        subtitle,
-        text,
-        actions = [],
-        media,
-        styles = {}
-    } = props;
+    const { elementId, colors, backgroundSize, title, subtitle, text, actions = [], media, styles = {} } = props;
     const flexDirection = styles?.self?.flexDirection ?? 'row';
     const alignItems = styles?.self?.alignItems ?? 'center';
 
     return (
-        <Section
-            elementId={elementId}
-            colors={colors}
-            backgroundSize={backgroundSize}
-            styles={styles?.self}
-        >
+        <Section elementId={elementId} colors={colors} backgroundSize={backgroundSize} styles={styles?.self}>
             <div className={classNames('flex', mapFlexDirectionStyles(flexDirection), mapStyles({ alignItems }))}>
                 <div className="flex-1 flex flex-col justify-center">
                     <StaggerContainer className="space-y-6">
@@ -102,10 +80,7 @@ export default function ParallaxHeroSection(props: HeroSection) {
                                         >
                                             {actions.map((action, index) => (
                                                 <HoverScale key={`action-${action.label || index}`} scale={1.05}>
-                                                    <Action
-                                                        {...action}
-                                                        className="inline-flex"
-                                                    />
+                                                    <Action {...action} className="inline-flex" />
                                                 </HoverScale>
                                             ))}
                                         </div>
@@ -131,7 +106,7 @@ export default function ParallaxHeroSection(props: HeroSection) {
     );
 }
 
-function HeroMedia({ media }: { media: any }) {
+function HeroMedia({ media }: Readonly<{ media: any }>) {
     return <DynamicComponent {...media} className="w-full max-w-lg" />;
 }
 

@@ -84,9 +84,9 @@
             },
             {
                 "type": "Link",
-                "label": "VED",
-                "altText": "ved",
-                "url": "https://vedlanghq.netlify.app",
+                "label": "LEXUM",
+                "altText": "lexum",
+                "url": "https://lexumhq.netlify.app",
                 "target": "_blank",
                 "showIcon": true,
                 "icon": "arrowUpRight",
@@ -119,12 +119,7 @@
         "styles": {
             "self": {
                 "width": "narrow",
-                "padding": [
-                    "pt-16",
-                    "pb-16",
-                    "pr-4",
-                    "pl-4"
-                ]
+                "padding": ["pt-16", "pb-16", "pr-4", "pl-4"]
             }
         }
     },

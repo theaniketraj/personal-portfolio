@@ -45,18 +45,23 @@ function getVimeoId(vimeoStr) {
 
     const eventMatches = event.exec(str);
 
-    if (eventMatches && eventMatches[1]) {
+    if (eventMatches?.[1]) {
         return eventMatches[1];
     }
 
     const primary = /https?:\/\/vimeo\.com\/(\d+)/;
 
     const matches = primary.exec(str);
-    if (matches && matches[1]) {
+    if (matches?.[1]) {
         return matches[1];
     }
 
-    const vimeoPipe = ['https?://player.vimeo.com/video/[0-9]+$', 'https?://vimeo.com/channels', 'groups', 'album'].join('|');
+    const vimeoPipe = [
+        'https?://player.vimeo.com/video/[0-9]+$',
+        'https?://vimeo.com/channels',
+        'groups',
+        'album'
+    ].join('|');
 
     const vimeoRegex = new RegExp(vimeoPipe, 'gim');
 

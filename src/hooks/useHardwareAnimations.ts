@@ -236,7 +236,7 @@ export const useReducedMotion = () => {
     const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const mediaQuery = globalThis.matchMedia('(prefers-reduced-motion: reduce)');
         setPrefersReducedMotion(mediaQuery.matches);
 
         const handleChange = (event: MediaQueryListEvent) => {

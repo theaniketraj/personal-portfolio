@@ -2,9 +2,9 @@ import { allModels } from '.stackbit/models';
 import * as types from '@/types';
 import { PAGE_MODEL_NAMES, PageModelType } from '@/types/generated';
 import frontmatter from 'front-matter';
-import * as fs from 'fs';
-import glob from 'glob';
-import path from 'path';
+import * as glob from 'glob';
+import * as fs from 'node:fs';
+import path from 'node:path';
 import { isDev } from './common';
 
 const contentBaseDir = 'content';
@@ -33,13 +33,14 @@ function readContent(file: string): types.ContentObject {
     const rawContent = fs.readFileSync(file, 'utf8');
     let content = null;
     switch (path.extname(file).substring(1)) {
-        case 'md':
+        case 'md': {
             const parsedMd = frontmatter<Record<string, any>>(rawContent);
             content = {
                 ...parsedMd.attributes,
                 markdownContent: parsedMd.body
             };
             break;
+        }
         case 'json':
             try {
                 content = JSON.parse(rawContent);
@@ -58,7 +59,7 @@ function readContent(file: string): types.ContentObject {
             }
             break;
         default:
-            throw Error(`Unhandled file type: ${file}`);
+            throw new Error(`Unhandled file type: ${file}`);
     }
 
     content.__metadata = {
@@ -70,7 +71,7 @@ function readContent(file: string): types.ContentObject {
 }
 
 function resolveReferences(content: types.ContentObject, fileToContent: Record<string, types.ContentObject>) {
-    if (!content || !content.type) return;
+    if (!content?.type) return;
 
     const modelName = content.type;
     if (!content.__metadata) content.__metadata = { modelName };
@@ -102,7 +103,7 @@ function resolveReferences(content: types.ContentObject, fileToContent: Record<s
 }
 
 function contentUrl(obj: types.ContentObject) {
-    const fileName = obj.__metadata.id;
+    const fileName = obj.__metadata.id.replaceAll('\\', '/');
     if (!fileName.startsWith(pagesBaseDir)) {
         console.warn('Content file', fileName, 'expected to be a page, but is not under', pagesBaseDir);
         return;
@@ -123,9 +124,18 @@ export function allContent(): types.ContentObject[] {
         obj.__metadata.urlPath = contentUrl(obj);
     });
 
-    const fileToContent: Record<string, types.ContentObject> = Object.fromEntries(
-        objects.map((e) => [e.__metadata.id, e])
-    );
+    // Create fileToContent map with both backslash and forward slash versions of keys
+    // This handles Windows file paths which use backslashes but YAML references use forward slashes
+    const fileToContent: Record<string, types.ContentObject> = {};
+    objects.forEach((e) => {
+        const id = e.__metadata.id;
+        // Add the original ID
+        fileToContent[id] = e;
+        // Also add the normalized version with forward slashes
+        const normalized = id.replaceAll('\\', '/');
+        fileToContent[normalized] = e;
+    });
+
     objects.forEach((e) => resolveReferences(e, fileToContent));
 
     objects = objects.map((e) => deepClone(e));
@@ -143,11 +153,11 @@ export function allPages(allData: types.ContentObject[]): PageModelType[] {
 /*
 Add annotation data to a content object and its nested children.
 */
-const skipList = ['__metadata'];
+const skipList = new Set(['__metadata']);
 const logAnnotations = false;
 
 function annotateContentObject(o: any, prefix = '', depth = 0) {
-    if (!isDev || !o || typeof o !== 'object' || !o.type || skipList.includes(prefix)) return;
+    if (!isDev || !o || typeof o !== 'object' || !o.type || skipList.has(prefix)) return;
 
     const depthPrefix = '--'.repeat(depth);
     if (depth === 0) {
@@ -155,9 +165,7 @@ function annotateContentObject(o: any, prefix = '', depth = 0) {
             o[types.objectIdAttr] = o.__metadata.id;
             if (logAnnotations)
                 console.log('[annotateContentObject] added object ID:', depthPrefix, o[types.objectIdAttr]);
-        } else {
-            if (logAnnotations) console.warn('[annotateContentObject] NO object ID:', o);
-        }
+        } else if (logAnnotations) console.warn('[annotateContentObject] NO object ID:', o);
     } else {
         o[types.fieldPathAttr] = prefix;
         if (logAnnotations)

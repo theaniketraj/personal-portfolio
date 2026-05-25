@@ -20,7 +20,7 @@ export default function Custom404({ global }) {
                 <title>404 - Page Not Found</title>
             </Head>
             <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 text-center">
-                <h1 className="text-8xl font-bold mb-4 text-[var(--theme-primary)]">404</h1>
+                <h1 className="text-8xl font-bold mb-4 text-(--theme-primary)">404</h1>
                 <h2 className="text-3xl font-semibold mb-6">Page Not Found</h2>
                 <p className="mb-8 text-lg max-w-md text-gray-600 dark:text-gray-300">
                     The page you are looking for might have been removed, had its name changed, or is temporarily

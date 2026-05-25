@@ -15,10 +15,11 @@ import BaseLayout from '../BaseLayout';
 
 type NavigationPost = PostLayout & { slug: string };
 
-type ComponentProps = PageComponentProps & PostLayout & {
-    prevPost?: NavigationPost;
-    nextPost?: NavigationPost;
-};
+type ComponentProps = PageComponentProps &
+    PostLayout & {
+        prevPost?: NavigationPost;
+        nextPost?: NavigationPost;
+    };
 
 const getTextFromChildren = (children: React.ReactNode): string => {
     if (typeof children === 'string') return children;
@@ -63,11 +64,7 @@ const Component: React.FC<ComponentProps> = (props) => {
             <article className="px-4 py-14 lg:py-20">
                 <div className="max-w-5xl mx-auto mb-8">
                     <Breadcrumbs
-                        items={[
-                            { label: 'Home', url: '/' },
-                            { label: 'Blog', url: '/blog' },
-                            { label: title }
-                        ]}
+                        items={[{ label: 'Home', url: '/' }, { label: 'Blog', url: '/blog' }, { label: title }]}
                     />
                 </div>
                 <ReadingProgress />
@@ -101,7 +98,7 @@ const Component: React.FC<ComponentProps> = (props) => {
                                         h3: Heading3
                                     }
                                 }}
-                                className="prose sm:prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-[var(--theme-primary)] hover:prose-a:text-[var(--theme-secondary)] transition-colors"
+                                className="prose sm:prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-(--theme-primary) hover:prose-a:text-(--theme-secondary) transition-colors"
                             >
                                 {markdownContent}
                             </Markdown>
@@ -122,8 +119,10 @@ const Component: React.FC<ComponentProps> = (props) => {
                                 className="group flex flex-col items-start w-full px-6 py-6 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors"
                                 href={'/blog/' + prevPost.slug}
                             >
-                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-1">Previous Post</span>
-                                <span className="text-lg font-bold leading-tight group-hover:text-[var(--theme-primary)] transition-colors">
+                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-1">
+                                    Previous Post
+                                </span>
+                                <span className="text-lg font-bold leading-tight group-hover:text-(--theme-primary) transition-colors">
                                     {prevPost.title}
                                 </span>
                             </Link>
@@ -133,8 +132,10 @@ const Component: React.FC<ComponentProps> = (props) => {
                                 className="group flex flex-col items-end w-full px-6 py-6 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors text-right"
                                 href={'/blog/' + nextPost.slug}
                             >
-                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-1">Next Post</span>
-                                <span className="text-lg font-bold leading-tight group-hover:text-[var(--theme-primary)] transition-colors">
+                                <span className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-1">
+                                    Next Post
+                                </span>
+                                <span className="text-lg font-bold leading-tight group-hover:text-(--theme-primary) transition-colors">
                                     {nextPost.title}
                                 </span>
                             </Link>

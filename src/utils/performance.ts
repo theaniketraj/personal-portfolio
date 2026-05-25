@@ -54,7 +54,7 @@ export const performance = {
 
     // Performance timing marks
     mark: (name: string) => {
-        if (typeof globalThis !== 'undefined' && globalThis.performance && globalThis.performance.mark) {
+        if (typeof globalThis !== 'undefined' && globalThis.performance?.mark) {
             globalThis.performance.mark(name);
         }
     },
@@ -62,8 +62,7 @@ export const performance = {
     measure: (name: string, startMark: string, endMark: string) => {
         if (
             typeof globalThis !== 'undefined' &&
-            globalThis.performance &&
-            globalThis.performance.measure &&
+            globalThis.performance?.measure &&
             globalThis.performance.getEntriesByName
         ) {
             globalThis.performance.measure(name, startMark, endMark);
