@@ -1,5 +1,3 @@
-import { ConfigModel } from '.stackbit/models/Config';
-import { ThemeStyleModel } from '.stackbit/models/ThemeStyle';
 import {
     Config,
     ContentObject,
@@ -19,8 +17,8 @@ import { deepMapObject } from './data-utils';
 export function resolveStaticProps(urlPath: string, allData: ContentObject[]): PageComponentProps {
     const originalPage = allData.find((obj) => obj.__metadata.urlPath === urlPath);
     const globalProps: GlobalProps = {
-        site: allData.find((obj) => obj.__metadata.modelName === ConfigModel.name) as Config,
-        theme: allData.find((obj) => obj.__metadata.modelName === ThemeStyleModel.name) as ThemeStyle
+        site: allData.find((obj) => obj.__metadata.modelName === 'Config') as Config,
+        theme: allData.find((obj) => obj.__metadata.modelName === 'ThemeStyle') as ThemeStyle
     };
 
     function enrichContent(value: any) {

@@ -1,8 +1,6 @@
-import { allModels } from '.stackbit/models';
 import * as types from '@/types';
 import { PAGE_MODEL_NAMES, PageModelType } from '@/types/generated';
 import frontmatter from 'front-matter';
-import * as glob from 'glob';
 import * as fs from 'node:fs';
 import path from 'node:path';
 import { isDev } from './common';
@@ -10,23 +8,30 @@ import { isDev } from './common';
 const contentBaseDir = 'content';
 const pagesBaseDir = contentBaseDir + '/pages';
 
-const allReferenceFields = {};
-allModels.forEach((model) => {
-    model.fields.forEach((field) => {
-        if (field.type === 'reference' || (field.type === 'list' && field.items?.type === 'reference')) {
-            allReferenceFields[model.name + ':' + field.name] = true;
-        }
-    });
-});
+const knownReferenceFields = new Set([
+    'author',
+    'posts',
+    'projects'
+]);
 
 function isRefField(modelName: string, fieldName: string) {
-    return !!allReferenceFields[modelName + ':' + fieldName];
+    return knownReferenceFields.has(fieldName);
 }
 
-const supportedFileTypes = ['md', 'json'];
-function contentFilesInPath(dir: string) {
-    const globPattern = `${dir}/**/*.{${supportedFileTypes.join(',')}}`;
-    return glob.sync(globPattern);
+function contentFilesInPath(dir: string, fileList: string[] = []): string[] {
+    if (!fs.existsSync(dir)) return fileList;
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+        const name = path.join(dir, file);
+        if (fs.statSync(name).isDirectory()) {
+            contentFilesInPath(name, fileList);
+        } else {
+            if (name.endsWith('.md') || name.endsWith('.json')) {
+                fileList.push(name.replaceAll('\\', '/'));
+            }
+        }
+    }
+    return fileList;
 }
 
 function readContent(file: string): types.ContentObject {

@@ -1,9 +1,8 @@
 {
-    "name": "personal-site",
+    "name": "theaniketraj",
     "version": "0.2.2",
     "scripts": {
         "dev": "next dev",
-        "dev:stackbit": "next dev --port 3000",
         "build": "next build && node scripts/generate-sitemap.js",
         "build:netlify": "next build && node scripts/generate-sitemap.js",
         "build:analyze": "next build",
@@ -27,8 +26,6 @@
         "tailwindcss": "4.3.0"
     },
     "devDependencies": {
-        "@stackbit/cms-git": "1.0.38",
-        "@stackbit/types": "2.1.15",
         "@tailwindcss/typography": "0.5.19",
         "@types/glob": "8.1.0",
         "@types/react": "19.2.15",

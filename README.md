@@ -6,12 +6,11 @@ Welcome to the repository for my personal portfolio website. This project serves
 
 ## Overview
 
-This portfolio is built with modern web technologies to ensure high performance, accessibility, and ease of content management. It features a clean, responsive design and a seamless editing experience using Stackbit (Netlify Visual Editor).
+This portfolio is built with modern web technologies to ensure high performance, accessibility, and ease of content management. It features a clean, responsive design.
 
 ## Features
 
 - **Dynamic Content:** Easily manage pages, blogs, and projects via Markdown and JSON files.
-- **Visual Editing:** Integrated with Stackbit for real-time visual editing of content and layout.
 - **Responsive Design:** Fully responsive layout built with Tailwind CSS.
 - **Performance:** Optimized for speed and SEO using Next.js.
 - **Animations:** Smooth transitions and interactions using Framer Motion and React Spring.
@@ -21,7 +20,6 @@ This portfolio is built with modern web technologies to ensure high performance,
 - **Framework:** [Next.js](https://nextjs.org/) (v15)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) (v4)
-- **CMS / Visual Editor:** [Stackbit](https://stackbit.com/)
 - **Deployment:** [Netlify](https://www.netlify.com/)
 - **Animation:** [Framer Motion](https://www.framer.com/motion/)
 - **React Spring** [React Spring](https://react-spring.dev/)
@@ -62,27 +60,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Visual Editor (Stackbit)
 
-To run the project with the Stackbit visual editor locally:
-
-1. **Install the Stackbit CLI (if not already installed):**
-
-   ```bash
-   npm install -g @stackbit/cli
-   ```
-
-2. **Run the Stackbit dev server:**
-
-   ```bash
-   npm run dev:stackbit
-   # or
-   stackbit dev
-   ```
-
-This will output a local URL where you can edit your content visually.
-
-## Project Structure
 
 ```pgsql
 personal-portfolio/
