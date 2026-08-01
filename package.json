@@ -1,6 +1,15 @@
 {
     "name": "theaniketraj",
     "version": "0.2.2",
+    "author": "Aniket Raj",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/theaniketraj/personal-portfolio"
+    },
+    "bugs": {
+        "url": "https://github.com/theaniketraj/personal-portfolio/issues"
+    },
+    "homepage": "https://theaniketraj.netlify.app",
     "scripts": {
         "dev": "next dev",
         "build": "next build && node scripts/generate-sitemap.js",
