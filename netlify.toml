@@ -1,22 +1,10 @@
 [build]
-  publish = "out"
+  publish = ".next"
   command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "20"
-  NODE_OPTIONS = "--max-old-space-size=8192"
+  NODE_VERSION = "24.18.0"
   NEXT_TELEMETRY_DISABLED = "1"
-
-# Cache static assets
-[[headers]]
-  for = "/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/_next/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
 
 # Form handling
 [build.processing]

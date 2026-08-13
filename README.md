@@ -1,39 +1,60 @@
-# Personal Portfolio - Aniket Raj
+<div align="center">
+  <br />
+  <h1>Aniket Raj — Personal Portfolio & Blog</h1>
+  <p>
+    <strong>A high-performance, accessible, and beautifully designed personal website built with Next.js 16, React 19, and Tailwind CSS v4.</strong>
+  </p>
+  <p>
+    <a href="https://theaniketraj.netlify.app">View Live Site</a> •
+    <a href="https://github.com/theaniketraj/personal-portfolio/issues">Report Bug</a> •
+    <a href="https://github.com/theaniketraj/personal-portfolio/issues">Request Feature</a>
+  </p>
+  
+  [![Next.js](https://img.shields.io/badge/Next.js-16.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+  [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/4b21c828-0f7b-47e7-ac24-9f4dd7622dc3/deploy-status)](https://app.netlify.com/projects/theaniketraj/deploys)
+</div>
 
-Welcome to the repository for my personal portfolio website. This project serves as my digital identity, showcasing my projects, blog posts, and professional journey. It is designed to be a comprehensive and visually appealing representation of my work and skills.
+---
 
 ## Overview
 
-This portfolio is built with modern web technologies to ensure high performance, accessibility, and ease of content management. It features a clean, responsive design.
+Welcome to the source code of my personal portfolio and blog. This project serves as a centralized hub for my professional background, technical projects, and blog articles.
 
-## Features
+It is engineered from the ground up for **speed**, **accessibility**, and **modern aesthetics**—leveraging the latest features in the React and Next.js ecosystems, including the App Router, Server Components, and Turbopack.
 
-- **Dynamic Content:** Easily manage pages, blogs, and projects via Markdown and JSON files.
-- **Responsive Design:** Fully responsive layout built with Tailwind CSS.
-- **Performance:** Optimized for speed and SEO using Next.js.
-- **Animations:** Smooth transitions and interactions using Framer Motion and React Spring.
+## Key Features
+
+- **MDX-Powered Content:** Blogs and Project pages are entirely driven by `.mdx` files with full support for GitHub Flavored Markdown and beautiful syntax highlighting via `rehype-pretty-code` and `shiki`.
+- **Dynamic SEO & AI Metadata:** Automatically generates `sitemap.xml`, `robots.txt`, and a dynamic `llms.txt` (a text representation of the portfolio designed specifically for LLMs and AI assistants) at build time.
+- **Top-Tier Accessibility (a11y):** Fully keyboard navigable with strict semantic HTML, intelligent focus trapping, explicit ARIA labels, and logical heading hierarchies.
+- **Hardware-Accelerated Animations:** Smooth page transitions, entry animations, and interactive micro-interactions powered by CSS hardware acceleration and `framer-motion`.
+- **Theme Support:** Clean, beautiful Light and Dark modes with seamless transition toggling.
+- **Modern Stack:** Built on the cutting-edge of the web—Next.js 16 (Turbopack), React 19, and Tailwind CSS v4.
 
 ## Tech Stack
 
-- **Framework:** [Next.js](https://nextjs.org/) (v15)
-- **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/) (v4)
-- **Deployment:** [Netlify](https://www.netlify.com/)
-- **Animation:** [Framer Motion](https://www.framer.com/motion/)
-- **React Spring** [React Spring](https://react-spring.dev/)
+| Category                | Technologies                             |
+| ----------------------- | ---------------------------------------- |
+| **Framework**           | Next.js 16.3 (App Router)                |
+| **Library**             | React 19                                 |
+| **Styling**             | Tailwind CSS v4, `tw-animate-css`        |
+| **Content**             | MDX, `gray-matter`, `next-mdx-remote`    |
+| **Syntax Highlighting** | `rehype-pretty-code`, `shiki`            |
+| **Animations**          | Framer Motion, CSS hardware acceleration |
+| **Icons**               | Lucide React, Custom SVGs                |
+| **Deployment**          | Netlify                                  |
 
 ## Getting Started
 
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-Ensure you have the following installed:
-
-- [Node.js](https://nodejs.org/) (v18 or later recommended)
-- npm (Node Package Manager)
+- Node.js (v18 or higher recommended)
+- `npm`, `yarn`, or `pnpm`
 
 ### Installation
 
@@ -50,52 +71,39 @@ Ensure you have the following installed:
    npm install
    ```
 
-### Running Locally
+3. **Start the development server:**
 
-To start the development server:
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npm run dev
-```
+   _This uses Turbopack by default for lightning-fast HMR._
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
 
-
+## Project Structure
 
 ```pgsql
-personal-portfolio/
-├── content/            # Content files (Markdown/JSON) for pages, data, etc.
-├── public/             # Static assets (images, fonts, etc.)
+├── blog/ # MDX files for blog posts
+├── projects/ # MDX files for project showcase
+├── public/ # Static assets (images, icons, fonts)
 ├── src/
-│   ├── components/     # React components (atoms, molecules, sections, layouts)
-│   ├── css/            # Global styles and Tailwind configuration
-│   ├── hooks/          # Custom React hooks
-│   ├── pages/          # Next.js pages and routing
-│   ├── types/          # TypeScript type definitions
-│   └── utils/          # Utility functions
-├── stackbit.config.ts  # Stackbit configuration
-├── tailwind.config.js  # Tailwind CSS configuration
-└── ...
+│ ├── app/ # Next.js App Router (pages, layouts, API routes)
+│ ├── components/ # Reusable UI components and animations
+│ ├── lib/ # Utility functions (MDX parsing, formatting)
+│ └── ...
+├── next.config.ts # Next.js configuration
+├── package.json # Dependencies and scripts
+└── README.md # This file
 ```
 
-## Deployment
+## Contact
 
-This project is optimized for deployment on **Netlify**.
+**Aniket Raj** - Software & AI Engineer
 
-1. Connect your repository to Netlify.
-2. Configure the build settings:
-   - **Build Command:** `npm run build`
-   - **Publish Directory:** `.next` (or let Netlify detect Next.js)
-3. Deploy!
+- Website: [Portfolio](https://theaniketraj.netlify.app)
+- GitHub: [GitHub](https://github.com/theaniketraj)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/theaniketraj/)
 
-## Author
-
-### **Aniket Raj**
-
-- **Website:** [Portfolio](https://theaniketraj.netlify.app)
-- **GitHub:** [@theaniketraj](https://github.com/theaniketraj)
-- **LinkedIn:** [Aniket Raj](https://www.linkedin.com/in/theaniketraj/)
-
-## License
-
-This project is licensed under the MIT License.
+---

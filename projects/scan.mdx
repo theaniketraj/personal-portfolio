@@ -1,0 +1,86 @@
+---
+title: SCAN
+date: "2025-08-19"
+client: Aniket Raj
+description: An intelligent Gradle plugin that automatically detects secrets, API keys, credentials, and other sensitive information in your codebase.
+metaTitle: "SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj's Project"
+metaDescription: SCAN is an intelligent Gradle plugin that automatically detects secrets, API keys, credentials, and sensitive information in your codebase.
+metaTags:
+  - property: "og:title"
+    content: "SCAN: Sensitive Code Analyzer for Nerds | Aniket Raj's Project"
+  - property: "og:type"
+    content: Gradle Plugin & Security
+  - property: "og:url"
+    content: "https://plugins.gradle.org/plugin/io.github.theaniketraj.scan"
+  - property: "twitter:creator"
+    content: devxaniket
+---
+
+## Overview
+
+SCAN (Sensitive Code Analyzer for Nerds) is an intelligent Gradle plugin designed to automatically detect secrets, API keys, credentials, and other sensitive information in codebases. SCAN serves as a critical security tool that integrates seamlessly into modern development workflows to prevent accidental exposure of sensitive data.
+
+## Project Mission and Core Purpose
+
+The primary mission of SCAN is to act as the first line of defense against security incidents by catching sensitive data before it reaches version control systems. In an era where data breaches and security vulnerabilities are increasingly costly and damaging, SCAN provides developers with an automated, intelligent solution that:
+
+- **Prevents Security Leaks**: Stops builds when sensitive data is detected, preventing accidental commits of secrets.
+- **Integrates Naturally**: Works within existing Gradle workflows without disrupting development processes.
+- **Provides Actionable Intelligence**: Offers detailed context about findings to help developers understand and remediate issues.
+- **Scales Effectively**: Optimized for both small projects and large enterprise codebases.
+
+## Technical Architecture and Innovation
+
+### Multi-Layered Detection Engine
+
+SCAN employs a sophisticated, three-pronged detection strategy:
+
+#### 1. Pattern Recognition System
+
+Uses regex patterns to identify known secret formats:
+
+- **Cloud Credentials**: AWS Access Keys, Google Cloud Platform API keys, Azure storage connection strings
+- **Tokens**: GitHub personal access tokens, GitLab tokens, Bitbucket app passwords
+- **Database Credentials**: JDBC connection strings, MongoDB URLs, Redis connections
+- **API Keys**: Slack tokens, Stripe keys, OpenAI API keys
+- **Cryptographic Keys**: PEM private keys, SSH keys, JWT tokens
+
+#### 2. Entropy Analysis Engine
+
+- Uses Shannon entropy calculation to detect high-randomness strings.
+- Identifies obfuscated or encoded credentials that bypass pattern detection.
+
+#### 3. Context-Aware Intelligence
+
+- Analyzes variable names, comments, and surrounding code structure.
+- Reduces false positives by understanding code context.
+
+## Configuration
+
+```kotlin
+plugins {
+    id("io.github.theaniketraj.scan") version "2.0.0"
+}
+```
+
+Simply running `./gradlew scanForSecrets` begins scanning with intelligent defaults.
+
+```kotlin
+scan {
+    strictMode = true
+    entropyThreshold = 4.5
+    contextAwareScanning = true
+    customPatterns = listOf(
+        "COMPANY_API_[A-Z0-9]{32}",
+        "INTERNAL_SECRET_[a-f0-9]{64}"
+    )
+    failOnSecrets = System.getenv("CI") == "true"
+    generateJsonReport = true
+}
+```
+
+## Go-to
+
+[Repo ↗](https://github.com/theaniketraj/SCAN)
+[Portal ↗](https://plugins.gradle.org/plugin/io.github.theaniketraj.scan)
+[Docs ↗](https://theaniketraj.github.io/SCAN)

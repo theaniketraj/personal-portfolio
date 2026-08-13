@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Netlify Form Mirror</title>
+  </head>
+  <body>
+    <!-- 
+    This is a static HTML mirror of the contact form for Netlify's build bots. 
+    @netlify/plugin-nextjs@5 requires this because App Router obscures the dynamic form at build time.
+    Do not delete this file!
+  -->
+    <form
+      name="contact"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="bot-field" />
+
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="email" name="email" />
+      <input type="text" name="address" />
+      <textarea name="message"></textarea>
+      <input type="checkbox" name="updatesConsent" />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
