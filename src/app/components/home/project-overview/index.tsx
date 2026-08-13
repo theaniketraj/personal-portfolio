@@ -43,6 +43,9 @@ const ProjectOverview = () => {
                       >
                         <h3 className="text-lg sm:text-xl font-medium group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                           {value?.name}
+                          {value?.description
+                            ? ` : ${value.description.split(" ").slice(0, 4).join(" ")}...`
+                            : ""}
                         </h3>
                         <Image
                           src={"/images/icon/tile-arrow-icon.svg"}

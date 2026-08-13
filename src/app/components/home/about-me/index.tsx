@@ -6,11 +6,11 @@ const AboutMe = () => {
   const skills = [
     {
       category: "Languages",
-      items: ["Kotlin", "Java", "Python", "Javascript", "TypeScript", "SQL"],
+      items: ["Java", "Kotlin", "Python", "JavaScript", "TypeScript", "SQL"],
     },
     {
       category: "Android",
-      items: ["Android SDK", "Retrofit", "Coroutines", "Flow", "Hilt"],
+      items: ["Android SDK", "Retrofit", "Coroutines", "Jetpack Compose"],
     },
     { category: "AI/ML", items: ["TensorFlow Lite", "Scikit-learn", "OpenCV"] },
     { category: "Systems & Tools", items: ["CLI tooling", "REST APIs", "Git"] },

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getBlogPosts, getProjects } from "@/lib/mdx";
 
 const experienceData = [
   {
@@ -44,30 +45,23 @@ const educationData = [
   },
 ];
 
-const projectOverview = {
-  projects: [
-    {
-      name: "LAWGIC - AI Powered Legal Research Assistant",
-      url: "/projects/lawgic",
-    },
-    {
-      name: "Plastecure - Smart Plastic Waste Management System",
-      url: "/projects/plastecure",
-    },
-  ],
-  blogs: [
-    {
-      name: "REST vs GraphQL: Which API Style Should You Use and When?",
-      url: "/blog/rest-vs-graphql",
-    },
-    {
-      name: "Kotlin MVVM: Clean Architecture in Android",
-      url: "/blog/kotlin-mvvm-clean-architecture",
-    },
-  ],
-};
-
 export const GET = async () => {
+  const allProjects = getProjects();
+  const allBlogs = getBlogPosts();
+
+  const projectOverview = {
+    projects: allProjects.slice(0, 2).map((project) => ({
+      name: project.title,
+      url: `/projects/${project.slug}`,
+      description: project.description,
+    })),
+    blogs: allBlogs.slice(0, 2).map((blog) => ({
+      name: blog.title,
+      url: `/blog/${blog.slug}`,
+      description: blog.excerpt,
+    })),
+  };
+
   return NextResponse.json({
     experienceData,
     educationData,

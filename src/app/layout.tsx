@@ -21,13 +21,13 @@ const spaceGrotesk = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://theaniketraj.netlify.app"),
   title: {
-    default: "Aniket Raj — Personal Portfolio",
+    default: "Aniket Raj - Personal Portfolio",
     template: "%s | Aniket Raj",
   },
-  description: "Personal Portfolio of Aniket Raj — Software & AI Engineer",
+  description: "Personal Portfolio of Aniket Raj - Software & AI Engineer",
   openGraph: {
-    title: "Aniket Raj — Software & AI Engineer",
-    description: "Personal Portfolio of Aniket Raj — Software & AI Engineer",
+    title: "Aniket Raj - Software & AI Engineer",
+    description: "Personal Portfolio of Aniket Raj - Software & AI Engineer",
     url: "https://theaniketraj.netlify.app",
     siteName: "Aniket Raj",
     locale: "en_US",
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aniket Raj — Software & AI Engineer",
-    description: "Personal Portfolio of Aniket Raj — Software & AI Engineer",
+    title: "Aniket Raj - Software & AI Engineer",
+    description: "Personal Portfolio of Aniket Raj - Software & AI Engineer",
     creator: "@aniketfoundry",
   },
 };

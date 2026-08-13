@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <h1>Aniket Raj — Personal Portfolio & Blog</h1>
+  <h1>Aniket Raj - Personal Portfolio & Blog</h1>
   <p>
     <strong>A high-performance, accessible, and beautifully designed personal website built with Next.js 16, React 19, and Tailwind CSS v4.</strong>
   </p>
@@ -23,7 +23,7 @@
 
 Welcome to the source code of my personal portfolio and blog. This project serves as a centralized hub for my professional background, technical projects, and blog articles.
 
-It is engineered from the ground up for **speed**, **accessibility**, and **modern aesthetics**—leveraging the latest features in the React and Next.js ecosystems, including the App Router, Server Components, and Turbopack.
+It is engineered from the ground up for **speed**, **accessibility**, and **modern aesthetics** leveraging the latest features from the React and Next.js ecosystems, including the App Router, Server Components, and Turbopack.
 
 ## Key Features
 

@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Aniket Raj — Personal Portfolio",
+    name: "Aniket Raj - Personal Portfolio",
     short_name: "Aniket Raj",
-    description: "Personal Portfolio of Aniket Raj — Software & AI Engineer",
+    description: "Personal Portfolio of Aniket Raj - Software & AI Engineer",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

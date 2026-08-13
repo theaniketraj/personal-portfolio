@@ -28,7 +28,7 @@ export default function Contact() {
 
     try {
       const params = new URLSearchParams();
-      params.append("form-name", "contact");
+      params.append("form-name", "sign-up-form");
 
       const sanitizeInput = (str: string) => {
         return str.trim().replaceAll("<", "&lt;").replaceAll(">", "&gt;");
@@ -122,7 +122,7 @@ export default function Contact() {
                 </div>
               ) : (
                 <form
-                  name="contact"
+                  name="sign-up-form"
                   method="POST"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
@@ -130,7 +130,7 @@ export default function Contact() {
                   className="space-y-6"
                 >
                   {/* Netlify Hidden Inputs */}
-                  <input type="hidden" name="form-name" value="contact" />
+                  <input type="hidden" name="form-name" value="sign-up-form" />
                   <div hidden>
                     <input name="bot-field" />
                   </div>

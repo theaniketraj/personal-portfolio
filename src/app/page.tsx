@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Divider from "./components/divider";
 
 export const metadata: Metadata = {
-  title: "Aniket Raj — Software & AI Engineer",
+  title: "Aniket Raj - Software & AI Engineer",
   alternates: {
     canonical: "/",
   },
