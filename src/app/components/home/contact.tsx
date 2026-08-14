@@ -40,7 +40,7 @@ export default function Contact() {
         params.append(key, sanitizedValue);
       });
 
-      const response = await fetch("/", {
+      const response = await fetch("/netlify-form.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: params.toString(),
@@ -124,6 +124,7 @@ export default function Contact() {
                 <form
                   name="sign-up-form"
                   method="POST"
+                  action="/netlify-form.html"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
                   onSubmit={handleSubmit}
