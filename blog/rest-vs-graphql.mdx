@@ -1,46 +1,15 @@
 ---
-title: "REST vs GraphQL: Which API Style Should You Use and When?"
-date: "2025-06-20"
+title: REST vs GraphQL ‣ Which API Style Should You Use and When?
+date: 2025-06-20T00:00:00.000Z
 excerpt: >-
   A comprehensive, technical comparison of REST and GraphQL API styles—covering
   their principles, data-fetching patterns, performance trade-offs, caching
   strategies, security considerations, and ideal use cases.
-metaTitle: >-
-  REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's Tech
-  Blog
-metaDescription: >-
-  A comprehensive, technical comparison of REST and GraphQL API styles—covering
-  their principles, data-fetching patterns, performance trade-offs, caching
-  strategies, security considerations, and ideal use cases.
-metaTags:
-  - property: "og:title"
-    content: >-
-      REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's
-      Tech Blog
-  - property: "og:type"
-    content: Blog
-  - property: "og:description"
-    content: >-
-      A comprehensive, technical comparison of REST and GraphQL API
-      styles—covering their principles, data-fetching patterns, performance     
-      trade-offs, caching strategies, security considerations, and ideal
-      use      cases.
-  - property: "twitter:card"
-    content: summary_large_image
-  - property: "twitter:creator"
-    content: aniketfoundry
-  - property: "twitter:description"
-    content: >-
-      A detailed guide comparing REST and GraphQL API architectures—covering
-      data-fetching, caching, performance, security, and real-world use cases.
-  - property: "twitter:title"
-    content: >-
-      REST vs GraphQL: Which API Style Should You Use and When? | Aniket Raj's
-      Tech Blog
-  - property: "og:url"
-    content: "https://github.com/theaniketraj"
-  - property: "og:url"
-    content: "https://www.linkedin.com/in/theaniketraj/"
+tags:
+  - API Design
+  - Backend
+  - GraphQL
+  - REST
 ---
 
 ## **REST vs GraphQL: Which API Style Should You Use and When?**
@@ -535,7 +504,7 @@ This single request returns precisely the nested data:
      }
      ```
 
-**2. Resolvers and Data Fetching**
+2. **Resolvers and Data Fetching**
 
 - ```json
   const resolvers = {
@@ -555,22 +524,22 @@ This single request returns precisely the nested data:
 
 - Use DataLoader or similar tools to batch and cache DB calls, preventing N+1 query patterns.
 
-**3. Security and Validation**
+3. **Security and Validation**
 
 1. Validate and sanitize input arguments.
 
-2. Implement authentication/authorization middleware at the resolver or field level.
+1. Implement authentication/authorization middleware at the resolver or field level.
 
-3. Apply query complexity analysis to prevent expensive or malicious queries.
+1. Apply query complexity analysis to prevent expensive or malicious queries.
 
-4. **Caching Strategies**
+1. **Caching Strategies**
    - Use persisted queries to allow CDNs to cache based on a query hash.
 
    - Employ client‐side normalized caching (Apollo Client’s InMemoryCache).
 
    - Introduce server‐side caching (e.g., Redis) for frequently requested data subsets.
 
-5. **Subscriptions and Real‐Time Updates**
+1. **Subscriptions and Real‐Time Updates**
    - Choose transport (WebSocket, Server‐Sent Events).
 
    - Implement Pub/Sub layer (e.g., Redis Pub/Sub, MQTT) for notifying subscribed clients.

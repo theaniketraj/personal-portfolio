@@ -54,7 +54,7 @@ export function Breadcrumb({
               ) : (
                 <span
                   aria-current="page"
-                  className="text-primary font-medium text-xs sm:text-sm truncate inline-block max-w-[140px] sm:max-w-[200px] md:max-w-[250px] shrink-0"
+                  className="text-primary font-medium text-xs sm:text-sm truncate inline-block max-w-35 sm:max-w-50 md:max-w-62.5 shrink-0"
                 >
                   {item.label}
                 </span>

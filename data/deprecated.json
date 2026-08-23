@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Nano-Drift",
+    "description": "Nano Drift is a VS Code extension for Android development that collapses the build → deploy → observe loop from minutes to seconds. Save a source file; your device refreshes. No terminals. No manual APK installs. No context switching.",
+    "link": "https://github.com/theaniketraj/nano-drift",
+    "deprecated": true,
+    "deprecated_reason": "Experimental"
+  },
+  {
+    "title": "Vitals",
+    "description": "A Visual Studio Code extension to monitor application metrics and logs in real-time, integrating with tools like Prometheus and Grafana.",
+    "link": "https://github.com/theaniketraj/vitals",
+    "deprecated": true,
+    "deprecated_reason": "Experimental"
+  },
+  {
+    "title": "VISTA",
+    "description": "VISTA (Version Increment and Semantic Tracking Automation) is a CLI Gradle plugin designed to automate semantic versioning for your projects.",
+    "link": "https://github.com/theaniketraj/vista",
+    "deprecated": true,
+    "deprecated_reason": "Superseded"
+  }
+]

@@ -14,6 +14,8 @@ export interface ProjectMeta {
   metaTitle?: string;
   metaDescription?: string;
   metaTags?: Array<{ property?: string; content?: string; name?: string }>;
+  tags?: string[];
+  readingTime?: number;
 }
 
 export interface ProjectData {
@@ -30,11 +32,19 @@ export interface BlogPostMeta {
   metaTitle?: string;
   metaDescription?: string;
   metaTags?: Array<{ property?: string; content?: string; name?: string }>;
+  tags?: string[];
+  readingTime?: number;
 }
 
 export interface BlogPostData {
   meta: BlogPostMeta;
   content: string;
+}
+
+function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200;
+  const wordCount = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(wordCount / wordsPerMinute));
 }
 
 // Get all projects
@@ -48,17 +58,22 @@ export function getProjects(): ProjectMeta[] {
       const slug = file.replace(/\.mdx?$/, "");
       const fullPath = path.join(PROJECTS_DIR, file);
       const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data } = matter(fileContents);
+      const { data, content } = matter(fileContents);
 
       return {
         slug,
         title: data.title || slug,
-        date: data.date || "",
+        date:
+          data.date instanceof Date
+            ? data.date.toISOString().split("T")[0]
+            : data.date || "",
         client: data.client || "Aniket Raj",
         description: data.description || "",
         metaTitle: data.metaTitle,
         metaDescription: data.metaDescription,
         metaTags: data.metaTags,
+        tags: data.tags || [],
+        readingTime: calculateReadingTime(content),
       } as ProjectMeta;
     });
 
@@ -86,12 +101,17 @@ export function getProjectBySlug(slug: string): ProjectData | null {
     meta: {
       slug,
       title: data.title || slug,
-      date: data.date || "",
+      date:
+        data.date instanceof Date
+          ? data.date.toISOString().split("T")[0]
+          : data.date || "",
       client: data.client || "Aniket Raj",
       description: data.description || "",
       metaTitle: data.metaTitle,
       metaDescription: data.metaDescription,
       metaTags: data.metaTags,
+      tags: data.tags || [],
+      readingTime: calculateReadingTime(content),
     },
     content,
   };
@@ -108,17 +128,22 @@ export function getBlogPosts(): BlogPostMeta[] {
       const slug = file.replace(/\.mdx?$/, "");
       const fullPath = path.join(BLOG_DIR, file);
       const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data } = matter(fileContents);
+      const { data, content } = matter(fileContents);
 
       return {
         slug,
         title: data.title || slug,
-        date: data.date || "",
+        date:
+          data.date instanceof Date
+            ? data.date.toISOString().split("T")[0]
+            : data.date || "",
         excerpt: data.excerpt || "",
         author: data.author || "Aniket Raj",
         metaTitle: data.metaTitle,
         metaDescription: data.metaDescription,
         metaTags: data.metaTags,
+        tags: data.tags || [],
+        readingTime: calculateReadingTime(content),
       } as BlogPostMeta;
     });
 
@@ -146,12 +171,17 @@ export function getBlogPostBySlug(slug: string): BlogPostData | null {
     meta: {
       slug,
       title: data.title || slug,
-      date: data.date || "",
+      date:
+        data.date instanceof Date
+          ? data.date.toISOString().split("T")[0]
+          : data.date || "",
       excerpt: data.excerpt || "",
       author: data.author || "Aniket Raj",
       metaTitle: data.metaTitle,
       metaDescription: data.metaDescription,
       metaTags: data.metaTags,
+      tags: data.tags || [],
+      readingTime: calculateReadingTime(content),
     },
     content,
   };

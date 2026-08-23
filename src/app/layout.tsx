@@ -83,7 +83,13 @@ export default function RootLayout({
         ],
         sameAs: [
           "https://github.com/theaniketraj",
+          "https://leetcode.com/theaniketraj",
+          "https://dev.to/theaniketraj",
+          "https://x.com/aniketfoundry",
           "https://www.linkedin.com/in/theaniketraj/",
+          "https://www.npmjs.com/~theaniketraj",
+          "https://medium.com/@theaniketraj",
+          "https://plugins.gradle.org/u/theaniketraj",
         ],
       },
       {
@@ -111,13 +117,19 @@ export default function RootLayout({
         sameAs: [
           "https://github.com/theaniketraj",
           "https://www.linkedin.com/in/theaniketraj/",
+          "https://leetcode.com/theaniketraj",
+          "https://dev.to/theaniketraj",
+          "https://x.com/aniketfoundry",
+          "https://www.npmjs.com/~theaniketraj",
+          "https://medium.com/@theaniketraj",
+          "https://plugins.gradle.org/u/theaniketraj",
         ],
       },
     ],
   };
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
         className={`${inter.className} ${spaceGrotesk.variable}`}
         suppressHydrationWarning

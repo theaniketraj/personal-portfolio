@@ -3,6 +3,7 @@ import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import Image from "next/image";
 import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
 import { MdxPre } from "./mdx-pre";
 
 const components = {
@@ -189,6 +190,7 @@ export function MDXContent({ source }: Readonly<MDXContentProps>) {
           mdxOptions: {
             remarkPlugins: [remarkGfm],
             rehypePlugins: [
+              rehypeSlug,
               [
                 rehypePrettyCode,
                 {

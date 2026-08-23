@@ -68,12 +68,14 @@ const FeaturedWork = () => {
                         alt={value?.title || "Project thumbnail"}
                         width={490}
                         height={300}
-                        className="w-full h-full group-hover:scale-105 transition-all duration-300 ease-in-out"
+                        className="w-full h-auto group-hover:scale-105 transition-all duration-300 ease-in-out"
                       />
                     </Link>
                     <div className="flex flex-col gap-1 sm:gap-2 px-2">
                       <Link href={`/projects/${value?.slug || ""}`}>
-                        <h3 className="text-lg sm:text-xl font-medium text-primary">{value?.title}</h3>
+                        <h3 className="text-lg sm:text-xl font-medium text-primary">
+                          {value?.title}
+                        </h3>
                       </Link>
                       <div className="flex">
                         <p>{value?.roles?.join(", ")}</p>

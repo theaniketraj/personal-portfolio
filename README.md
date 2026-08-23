@@ -4,16 +4,8 @@
   <p>
     <strong>A high-performance, accessible, and beautifully designed personal website built with Next.js 16, React 19, and Tailwind CSS v4.</strong>
   </p>
-  <p>
-    <a href="https://theaniketraj.netlify.app">View Live Site</a> •
-    <a href="https://github.com/theaniketraj/personal-portfolio/issues">Report Bug</a> •
-    <a href="https://github.com/theaniketraj/personal-portfolio/issues">Request Feature</a>
-  </p>
   
-  [![Next.js](https://img.shields.io/badge/Next.js-16.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-  [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+  [![Netlify Status](https://api.netlify.com/api/v1/badges/4b21c828-0f7b-47e7-ac24-9f4dd7622dc3/deploy-status)](https://app.netlify.com/projects/theaniketraj/deploys)
 
 </div>
 

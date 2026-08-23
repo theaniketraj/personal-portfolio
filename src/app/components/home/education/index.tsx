@@ -64,7 +64,9 @@ const Education = () => {
                       </div>
 
                       <div className="flex flex-col gap-2 flex-1 sm:pl-16 ml-2 sm:ml-0">
-                        <h3 className="font-semibold text-base sm:text-lg text-primary">{item.title}</h3>
+                        <h3 className="font-semibold text-base sm:text-lg text-primary">
+                          {item.title}
+                        </h3>
                         <p className="text-primary">{item.subtitle}</p>
                       </div>
                     </div>

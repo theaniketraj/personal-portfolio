@@ -7,7 +7,7 @@ const HeroSection = () => {
   const socialIcon = [
     {
       img: "/images/icon/twitter-icon.svg",
-      href: "https://x.com/theaniketdev",
+      href: "https://x.com/aniketfoundry",
       icon: "Twitter",
     },
     {

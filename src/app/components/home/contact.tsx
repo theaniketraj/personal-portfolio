@@ -6,10 +6,21 @@ import { HardwareAnimated } from "@/components/animations/hardware-animated";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
+const BLOCKED_DOMAINS = new Set([
+  "example.com",
+  "test.com",
+  "fake.com",
+  "hell.com",
+  "mailinator.com",
+  "temp-mail.org",
+  "10minutemail.com",
+  "guerrillamail.com",
+]);
+
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
+    "idle" | "success" | "error" | "invalid_email"
   >("idle");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -25,6 +36,15 @@ export default function Contact() {
       string,
       string
     >;
+
+    const email = formDataObject.email?.toLowerCase() || "";
+    const domain = email.split("@")[1];
+
+    if (domain && BLOCKED_DOMAINS.has(domain)) {
+      setSubmitStatus("invalid_email");
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const params = new URLSearchParams();
@@ -246,6 +266,12 @@ export default function Contact() {
                     <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-500 rounded-xl text-sm">
                       Oops! There was an error sending your message. Please try
                       again.
+                    </div>
+                  )}
+
+                  {submitStatus === "invalid_email" && (
+                    <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 text-yellow-600 dark:text-yellow-500 rounded-xl text-sm">
+                      Please enter a valid, genuine email address.
                     </div>
                   )}
 

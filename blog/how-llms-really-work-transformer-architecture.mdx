@@ -1,45 +1,14 @@
 ---
-title: "How LLMs Really Work: The Transformer Architecture Explained Simply"
-date: "2025-07-05"
+title: How LLMs Really Work ‣ The Transformer Architecture Explained Simply
+date: 2025-07-05T00:00:00.000Z
 excerpt: >-
   A deep technical exploration of Transformer architecture, the core of modern
   large language models covering self-attention, multi-head mechanisms,
   encoder/decoder blocks, positional encodings, and training strategies.
-metaTitle: >-
-  How LLMs Really Work: The Transformer Architecture Explained Simply | Aniket
-  Raj's Tech Blog
-metaDescription: >-
-  A deep technical exploration of Transformer architecture, the core of modern
-  large language models covering self-attention, multi-head mechanisms,
-  encoder/decoder blocks, positional encodings, and training strategies. |
-  Aniket Raj's Tech Blog
-metaTags:
-  - property: "og:title"
-    content: >-
-      How LLMs Really Work: The Transformer Architecture Explained Simply |
-      Aniket Raj's Tech Blog
-  - property: "og:description"
-    content: >-
-      A deep technical exploration of Transformer architecture, the core of
-      modern large language models covering self-attention, multi-head
-      mechanisms, encoder/decoder blocks, positional encodings, and training
-      strategies. | Aniket Raj's Tech Blog
-  - property: "og:type"
-    content: Article
-  - property: "og:url"
-    content: "https://github.com/theaniketraj"
-  - property: "og:url"
-    content: "https://linkedin.com/in/theaniketraj"
-  - property: "twitter:card"
-    content: summary_large_image
-  - property: "twitter:creator"
-    content: aniketfoundry
-  - property: "twitter:description"
-    content: >-
-      A deep technical exploration of Transformer architecture, the core of
-      modern large language models—covering self-attention, multi-head
-      mechanisms, encoder/decoder blocks, positional encodings, and training
-      strategies. | Aniket Raj's Tech Blog
+tags:
+  - AI
+  - Large Language Models
+  - Machine Learning
 ---
 
 Large Language Models (LLMs) such as GPT‑4, BERT, and their successors have revolutionized natural language processing. Yet beneath their impressive capabilities lies one unifying innovation: the Transformer architecture. In this article, we’ll demystify Transformers step by step—without assuming a deep math background—so you can understand how these models learn language, capture context, and generate coherent text.
@@ -64,7 +33,7 @@ At its heart, a Transformer block asks: “For each token in the input, which ot
 
 ### 2.1 Queries, Keys, and Values
 
-Given an input sequence of token embeddings x1, x2, …, xn x₁, x₂, …, xₙ x1​, x2​, …, xn​, we project each token into three vectors:
+Given an input sequence of token embeddings `x1, x2,..., xn, x₁, x₂,...,xₙ,x1,x2,...,xn` we project each token into three vectors:
 
 - **Query (Q)**: “What am I looking for?”
 

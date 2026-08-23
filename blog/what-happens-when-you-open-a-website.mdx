@@ -1,50 +1,21 @@
 ---
-title: "What Happens When You Open a Website: From DNS to Rendering"
-date: "2025-06-15"
+title: What Happens When You Open a Website ‣ From DNS to Rendering
+date: 2025-06-15T00:00:00.000Z
 excerpt: >-
   A deep technical walkthrough of the end-to-end process when you open a
   website—from DNS lookup and TCP/TLS handshakes to HTML parsing, rendering, and
   CDN delivery.
-metaTitle: >-
-  What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
-  Tech Blog
-metaDescription: >-
-  A deep technical walkthrough of the end-to-end process when you open a
-  website—from DNS lookup and TCP/TLS handshakes to HTML parsing, rendering, and
-  CDN delivery. Learn how browsers and networks collaborate to paint pixels on
-  your screen.
-metaTags:
-  - property: "og:title"
-    content: >-
-      What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
-      Tech Blog
-  - property: "og:description"
-    content: >-
-      A deep technical walkthrough of the end-to-end process when you open a
-      website—from DNS lookup and TCP/TLS handshakes to HTML parsing, rendering,
-      and CDN delivery. Learn how browsers and networks collaborate to paint
-      pixels on your screen.
-  - property: "og:type"
-    content: Blog
-  - property: "twitter:card"
-    content: summary_large_image
-  - property: "twitter:title"
-    content: >-
-      What Happens When You Open a Website: From DNS to Rendering | Aniket Raj's
-      Tech Blog
-  - property: "twitter:creator"
-    content: aniketfoundry
-  - property: "og:url"
-    content: "https://github.com/theaniketraj"
-  - property: "og:url"
-    content: "https://linkedin.com/in/theaniketraj"
+tags:
+  - Networking
+  - Web Architecture
+  - System Design
 ---
 
 ## **What Happens When You Open a Website: From DNS to Rendering**
 
 When you type a URL into your browser’s address bar and press Enter, you trigger a sophisticated sequence of network requests, protocol handshakes, and rendering steps. Understanding this end-to-end process is essential for web developers who want to optimize performance, enhance reliability, and debug issues effectively. In this article, we’ll walk through each stage in detail—from DNS lookup to painting pixels on the screen.
 
-## 1. URL Parsing and Origin Determination
+### 1. URL Parsing and Origin Determination
 
 1. **URL Breakdown**
    - **Scheme**: `https`
@@ -63,7 +34,7 @@ When you type a URL into your browser’s address bar and press Enter, you trigg
 
    The browser determines the “origin” (scheme + host + port) to apply same-origin policies and choose appropriate security context.
 
-## 2. DNS Resolution
+### 2. DNS Resolution
 
 1. **Cache Check**
 
@@ -77,7 +48,7 @@ When you type a URL into your browser’s address bar and press Enter, you trigg
 
    You obtain one or more IPv4/IPv6 addresses for the host.
 
-## 3. TCP Connection Establishment
+### 3. TCP Connection Establishment
 
 1. **Three-Way Handshake**
    - Client sends `SYN` packet to server.
@@ -95,7 +66,7 @@ When you type a URL into your browser’s address bar and press Enter, you trigg
 
    The client OS allocates an ephemeral port for the connection, completing the socket.
 
-## 4. TLS Handshake (for HTTPS)
+### 4. TLS Handshake (for HTTPS)
 
 1. **ClientHello**
    - Lists supported TLS versions, cipher suites, and compression methods.
@@ -122,7 +93,7 @@ When you type a URL into your browser’s address bar and press Enter, you trigg
 
    All subsequent HTTP traffic is encrypted with the negotiated cipher suite.
 
-## 5. HTTP Request and Response
+### 5. HTTP Request and Response
 
 1. **Request Construction**
 

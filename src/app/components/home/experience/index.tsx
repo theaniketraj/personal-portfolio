@@ -63,7 +63,9 @@ const Experience = () => {
                         />
                       )}
                       <div className="flex flex-wrap gap-5 items-center justify-between">
-                        <h3 className="text-base sm:text-lg font-medium text-primary">{value?.role}</h3>
+                        <h3 className="text-base sm:text-lg font-medium text-primary">
+                          {value?.role}
+                        </h3>
                         <div className="flex items-center gap-2.5 border border-primary/10 rounded-lg py-1.5 px-3">
                           <div
                             className={`w-4 h-2 rounded-sm ${value?.endYear == "Present" ? "bg-primary" : "bg-primary/10"} `}

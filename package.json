@@ -1,5 +1,7 @@
 {
   "name": "theaniketraj",
+  "displayName": "Aniket Raj Personal Portfolio",
+  "description": "A high-performance, accessible, and beautifully designed personal website.",
   "version": "2.0.0",
   "author": "Aniket Raj",
   "repository": {
@@ -9,6 +11,11 @@
   "bugs": {
     "url": "https://github.com/theaniketraj/personal-portfolio/issues"
   },
+  "keywords": [
+    "portfolio",
+    "personal-portfolio",
+    "portfolio-website"
+  ],
   "homepage": "https://theaniketraj.netlify.app",
   "license": "MIT",
   "scripts": {
@@ -25,13 +32,14 @@
     "framer-motion": "^13.1.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.31.0",
-    "netlify": "^27.1.1",
+    "netlify": "^27.1.2",
     "next": "^16.3.0",
     "next-mdx-remote": "^6.0.0",
     "next-themes": "^0.4.6",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "rehype-pretty-code": "^0.14.5",
+    "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "shiki": "^4.4.3",
     "tailwind-merge": "^3.6.0"
