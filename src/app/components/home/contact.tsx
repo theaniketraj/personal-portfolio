@@ -15,6 +15,37 @@ const BLOCKED_DOMAINS = new Set([
   "temp-mail.org",
   "10minutemail.com",
   "guerrillamail.com",
+  "yopmail.com",
+  "getnada.com",
+  "sharklasers.com",
+  "grr.la",
+  "guerrillamailblock.com",
+  "maildrop.cc",
+  "tempmail.com",
+  "temp-mail.io",
+  "burnermail.io",
+  "mailnesia.com",
+  "emailondeck.com",
+  "throwawaymail.com",
+  "moakt.com",
+  "mintemail.com",
+  "mailcatch.com",
+  "mytrashmail.com",
+  "trashmail.com",
+  "trashmail.me",
+  "dispostable.com",
+  "mail7.io",
+  "mail.tm",
+  "emailn.de",
+  "emailfake.com",
+  "crazymailing.com",
+  "mohmail.com",
+  "inboxes.com",
+  "disposablemail.com",
+  "tempr.email",
+  "dropmail.me",
+  "mailpoof.com",
+  "wtf.com",
 ]);
 
 export default function Contact() {
@@ -37,8 +68,8 @@ export default function Contact() {
       string
     >;
 
-    const email = formDataObject.email?.toLowerCase() || "";
-    const domain = email.split("@")[1];
+    const email = formDataObject.email?.trim().toLowerCase() || "";
+    const domain = email.slice(email.lastIndexOf("@") + 1).replace(/\.$/, "");
 
     if (domain && BLOCKED_DOMAINS.has(domain)) {
       setSubmitStatus("invalid_email");
@@ -48,16 +79,9 @@ export default function Contact() {
 
     try {
       const params = new URLSearchParams();
-      params.append("form-name", "sign-up-form");
-
-      const sanitizeInput = (str: string) => {
-        return str.trim().replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-      };
 
       Object.entries(formDataObject).forEach(([key, value]) => {
-        const sanitizedValue =
-          typeof value === "string" ? sanitizeInput(value) : String(value);
-        params.append(key, sanitizedValue);
+        params.append(key, String(value).trim());
       });
 
       const response = await fetch("/netlify-form.html", {
@@ -147,6 +171,7 @@ export default function Contact() {
                   action="/netlify-form.html"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
+                  data-netlify-recaptcha="true"
                   onSubmit={handleSubmit}
                   className="space-y-6"
                 >
@@ -212,7 +237,7 @@ export default function Contact() {
                         htmlFor="address"
                         className="text-sm font-medium text-muted-foreground"
                       >
-                        Address (Optional)
+                        Location (Optional)
                       </label>
                       <input
                         type="text"
@@ -240,6 +265,8 @@ export default function Contact() {
                       className="w-full flex rounded-xl border border-input bg-background/50 px-4 py-3 text-sm ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 hover:bg-background/80 resize-none"
                     />
                   </div>
+
+                  <div data-netlify-recaptcha="true" className="py-2" />
 
                   <div className="flex items-center gap-3 py-2">
                     <div className="relative flex h-5 w-5 items-center justify-center shrink-0">

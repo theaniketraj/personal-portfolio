@@ -46,45 +46,54 @@ const FeaturedWork = () => {
               </div>
             </div>
           </HardwareAnimated>
-          <div className="grid grid-cols-1 md:grid-cols-2 border-t border-primary/10">
-            {featureWork?.map((value: any, index: number) => {
-              const isRightCol = index % 2 === 1;
+          <div className="border-t border-primary/10">
+            <HardwareAnimated animation="slideInUp">
+              <div className="flex flex-col max-w-3xl mx-auto py-10 px-4 sm:px-7">
+                <h2 className="text-sm tracking-[2px] text-primary uppercase font-medium">
+                  Featured Work
+                </h2>
+              </div>
+            </HardwareAnimated>
+            <div className="grid grid-cols-1 md:grid-cols-2 border-t border-primary/10">
+              {featureWork?.map((value: any, index: number) => {
+                const isRightCol = index % 2 === 1;
 
-              return (
-                <HardwareAnimated
-                  key={index}
-                  animation="fadeInScale"
-                  delay={index * 0.15}
-                >
-                  <div
-                    className={`group flex flex-col gap-3.5 sm:gap-5 p-3.5 sm:p-6 ${isRightCol ? "md:border-l md:border-primary/10" : ""}`}
+                return (
+                  <HardwareAnimated
+                    key={index}
+                    animation="fadeInScale"
+                    delay={index * 0.15}
                   >
-                    <Link
-                      href={`/projects/${value?.slug || ""}`}
-                      className="overflow-hidden"
+                    <div
+                      className={`group flex flex-col gap-3.5 sm:gap-5 p-3.5 sm:p-6 ${isRightCol ? "md:border-l md:border-primary/10" : ""}`}
                     >
-                      <Image
-                        src={value?.image}
-                        alt={value?.title || "Project thumbnail"}
-                        width={490}
-                        height={300}
-                        className="w-full h-auto group-hover:scale-105 transition-all duration-300 ease-in-out"
-                      />
-                    </Link>
-                    <div className="flex flex-col gap-1 sm:gap-2 px-2">
-                      <Link href={`/projects/${value?.slug || ""}`}>
-                        <h3 className="text-lg sm:text-xl font-medium text-primary">
-                          {value?.title}
-                        </h3>
+                      <Link
+                        href={`/projects/${value?.slug || ""}`}
+                        className="overflow-hidden"
+                      >
+                        <Image
+                          src={value?.image}
+                          alt={value?.title || "Project thumbnail"}
+                          width={490}
+                          height={300}
+                          className="w-full h-auto group-hover:scale-105 transition-all duration-300 ease-in-out"
+                        />
                       </Link>
-                      <div className="flex">
-                        <p>{value?.roles?.join(", ")}</p>
+                      <div className="flex flex-col gap-1 sm:gap-2 px-2">
+                        <Link href={`/projects/${value?.slug || ""}`}>
+                          <h3 className="text-lg sm:text-xl font-medium text-primary">
+                            {value?.title}
+                          </h3>
+                        </Link>
+                        <div className="flex">
+                          <p>{value?.roles?.join(", ")}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </HardwareAnimated>
-              );
-            })}
+                  </HardwareAnimated>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

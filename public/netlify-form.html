@@ -1,18 +1,53 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contact Form - Hidden for Netlify</title>
   </head>
 
   <body>
-    <!-- This form is hidden and used only for Netlify form detection -->
-    <form name="sign-up-form" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="firstName" />
-      <input type="text" name="lastName" />
-      <input type="email" name="email" />
-      <input type="text" name="address" />
-      <textarea name="message"></textarea>
-      <input type="checkbox" name="updatesConsent" />
+    <!-- Hidden form used by Netlify for build-time form detection. -->
+    <form
+      name="sign-up-form"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      data-netlify-recaptcha="true"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="sign-up-form" />
+
+      <!-- genuine users should never fill this field. -->
+      <div hidden>
+        <input
+          name="bot-field"
+          id="bot-field"
+          aria-label="bot-field"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
+
+      <input
+        type="text"
+        id="firstName"
+        aria-label="firstName"
+        name="firstName"
+      />
+      <input type="text" id="lastName" aria-label="lastName" name="lastName" />
+      <input type="email" id="email" aria-label="email" name="email" />
+      <input type="text" id="address" aria-label="address" name="address" />
+      <textarea name="message" id="message" aria-label="message"></textarea>
+      <input
+        type="checkbox"
+        id="updatesConsent"
+        aria-label="updatesConsent"
+        name="updatesConsent"
+      />
+
+      <!-- Netlify reCAPTCHA 2 placeholder -->
+      <div data-netlify-recaptcha="true"></div>
     </form>
   </body>
 </html>

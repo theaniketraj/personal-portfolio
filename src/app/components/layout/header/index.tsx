@@ -35,7 +35,7 @@ const Header = () => {
                 </h1>
               </Link>
               <p className="text-violet-700 dark:text-violet-400 font-normal">
-                Software &amp; AI Engineer
+                Software Engineer · Systems & AI
               </p>
               <div className="flex items-center gap-2">
                 <Image
@@ -45,7 +45,7 @@ const Header = () => {
                   height={20}
                   className="dark:invert"
                 />
-                <p className="text-primary">INDIA</p>
+                <p className="text-primary">India</p>
               </div>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-4">

@@ -21,13 +21,16 @@ const spaceGrotesk = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://theaniketraj.netlify.app"),
   title: {
-    default: "Aniket Raj - Personal Portfolio",
+    default:
+      "Aniket Raj - Personal Portfolio | Software Engineer · Systems & AI",
     template: "%s | Aniket Raj",
   },
-  description: "Personal Portfolio of Aniket Raj - Software & AI Engineer",
+  description:
+    "Personal Portfolio of Aniket Raj | Software Engineer · Systems & AI",
   openGraph: {
-    title: "Aniket Raj - Software & AI Engineer",
-    description: "Personal Portfolio of Aniket Raj - Software & AI Engineer",
+    title: "Aniket Raj | Software Engineer · Systems & AI",
+    description:
+      "Personal Portfolio of Aniket Raj | Software Engineer · Systems & AI",
     url: "https://theaniketraj.netlify.app",
     siteName: "Aniket Raj",
     locale: "en_US",
@@ -35,8 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aniket Raj - Software & AI Engineer",
-    description: "Personal Portfolio of Aniket Raj - Software & AI Engineer",
+    title: "Aniket Raj | Software Engineer · Systems & AI",
+    description:
+      "Personal Portfolio of Aniket Raj | Software Engineer · Systems & AI",
     creator: "@aniketfoundry",
   },
 };
@@ -56,7 +60,7 @@ export default function RootLayout({
         alternateName: "Aniket Raj Portfolio",
         url: "https://theaniketraj.netlify.app/",
         image: "https://theaniketraj.netlify.app/icon.png",
-        jobTitle: "Software & AI Engineer",
+        jobTitle: "Aniket Raj | Software Engineer · Systems & AI",
         description:
           "Software & AI Engineer passionate about building innovative and scalable solutions.",
         nationality: "Indian",
@@ -96,7 +100,7 @@ export default function RootLayout({
         "@type": "WebSite",
         "@id": "https://theaniketraj.netlify.app/#website",
         url: "https://theaniketraj.netlify.app/",
-        name: "Aniket Raj",
+        name: "Aniket Raj | Software Engineer · Systems & AI",
         alternateName: "Aniket Raj Portfolio",
         publisher: {
           "@id": "https://theaniketraj.netlify.app/#person",
@@ -108,7 +112,7 @@ export default function RootLayout({
       {
         "@type": "Organization",
         "@id": "https://theaniketraj.netlify.app/#organization",
-        name: "Aniket Raj",
+        name: "Aniket Raj | Software Engineer · Systems & AI",
         url: "https://theaniketraj.netlify.app/",
         logo: {
           "@type": "ImageObject",

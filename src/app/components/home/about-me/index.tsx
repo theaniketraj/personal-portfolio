@@ -26,22 +26,26 @@ const AboutMe = () => {
                   About Me
                 </h2>
                 <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-normal text-primary">
-                  Hey there. I&apos;m Aniket Raj - A Computer Science &amp;
-                  Engineering graduate passionate about{" "}
+                  Hey there. I&apos;m Aniket Raj - A Computer Science and
+                  Engineering graduate who enjoys{" "}
                   <span className="bg-[linear-gradient(90deg,rgba(243,202,77,0.4)_0%,rgba(243,202,77,0.05)_100%)]">
-                    leveraging technology
+                    building systems
                   </span>{" "}
-                  to build scalable, real world{" "}
-                  <span className="border-b-2">software &amp; AI systems</span>.
+                  where software meets real world constraints, from distributed
+                  runtimes &{" "}
+                  <span className="border-b-2">
+                    developer tooling to applied AI{" "}
+                  </span>
+                  .
                 </h3>
                 <p className="text-base sm:text-lg text-secondary font-normal">
-                  Passionate about writing clean, scalable, and efficient Web
-                  and AI applications.
+                  I care about software that is reliable, efficient, and useful
+                  beyond the demo.
                 </p>
               </div>
               <div className="flex flex-col gap-5">
                 <h3 className="text-sm text-primary uppercase font-medium">
-                  Skills &amp; Fluency
+                  Skills
                 </h3>
                 <div className="flex flex-col gap-5">
                   {skills.map((skillGroup, idx) => (
