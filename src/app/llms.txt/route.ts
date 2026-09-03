@@ -27,7 +27,8 @@ export async function GET() {
   content += `- [Agents](${baseUrl}/agents): WebMCP API developer portal and Execution Model\n`;
 
   content += `\n## WebMCP Tools\n`;
-  content += `This portfolio implements WebMCP, providing direct tool execution capabilities for AI agents. When navigating this site, your environment will automatically intercept and register the following read-only capabilities to allow deep data retrieval:\n`;
+  content += `This portfolio implements WebMCP. The browser exposes registered site tools to compatible agents, which include:\n`;
+  content += `- \`get_profile\`: Retrieve my professional background, key focus areas, and basic details.\n`;
   content += `- \`search_projects\`: Query my portfolio projects by domain, technology, or specific capability.\n`;
   content += `- \`get_project\`: Retrieve the full markdown content, architecture, and structured metadata for a specific project.\n`;
   content += `- \`search_articles\`: Query my technical blog posts by topic or tags.\n`;

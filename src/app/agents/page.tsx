@@ -33,11 +33,10 @@ export default function AgentsPage() {
                   </span>
                 </h1>
                 <p className="text-lg sm:text-xl text-secondary leading-relaxed font-(family-name:--font-space-grotesk) max-w-3xl mx-auto">
-                  This portfolio is fully machine-readable. It exposes a strict,
-                  read-only <strong>WebMCP API</strong> that allows AI agents to
-                  query structured metadata, search for relevant projects by
-                  capabilities, and semantically understand the architecture of
-                  my work.
+                  This portfolio exposes an interface for AI agents. Compatible
+                  agents can discover my projects, retrieve structured
+                  information, explore my writing, and prepare actions without
+                  navigating the site like a human.
                 </p>
               </HardwareAnimated>
             </div>
@@ -62,12 +61,12 @@ export default function AgentsPage() {
                       <Lock className="w-5 h-5" />
                     </div>
                     <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
-                      Read-Only Access
+                      Read-Only by Default
                     </h3>
                     <p className="text-sm sm:text-base text-secondary leading-relaxed">
-                      All exposed tools are strictly <strong>read-only</strong>.
-                      No mutations, state changes, or destructive actions are
-                      possible via this interface.
+                      Most exposed tools only retrieve portfolio data. Actions
+                      that modify page state are explicitly marked as
+                      non-read-only and remain user-confirmed.
                     </p>
                   </div>
                 </HardwareAnimated>
@@ -82,9 +81,8 @@ export default function AgentsPage() {
                       Runtime Validation
                     </h3>
                     <p className="text-sm sm:text-base text-secondary leading-relaxed">
-                      Every tool execution intercepts inputs and strictly
-                      validates them against pre-compiled{" "}
-                      <strong>Zod schemas</strong> before processing.
+                      Tool inputs are validated against strict{" "}
+                      <strong>Zod schemas</strong> before execution.
                     </p>
                   </div>
                 </HardwareAnimated>
@@ -113,12 +111,12 @@ export default function AgentsPage() {
                       <Zap className="w-5 h-5" />
                     </div>
                     <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
-                      Zero Latency
+                      Build-Time Content
                     </h3>
                     <p className="text-sm sm:text-base text-secondary leading-relaxed">
-                      All metadata is resolved and cached at build time. Tool
-                      execution returns structured context to the agent with
-                      near zero latency overhead.
+                      Portfolio metadata is derived from local content at build
+                      or runtime rather than fetched from an external database,
+                      allowing for exceptionally low overhead.
                     </p>
                   </div>
                 </HardwareAnimated>
@@ -160,7 +158,7 @@ export default function AgentsPage() {
                           Tools are auto-retrieved
                         </h3>
                         <p className="text-secondary text-sm leading-relaxed">
-                          The agent will automatically read the{" "}
+                          The browser exposes the registered WebMCP tools, which can be seen in{" "}
                           <a
                             href="/llms.txt"
                             target="_blank"
@@ -168,8 +166,8 @@ export default function AgentsPage() {
                             className="text-primary hover:text-violet-500 transition-colors underline underline-offset-4 font-mono text-xs"
                           >
                             llms.txt
-                          </a>{" "}
-                          and detect the available WebMCP tools.
+                          </a>
+                          .
                         </p>
                       </div>
                     </div>

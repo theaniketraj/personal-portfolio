@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 
 const GithubIcon = ({ className }: { className?: string }) => (
@@ -135,7 +134,7 @@ const Footer = () => {
 
             {/* Bottom: Copyright & Back to Top */}
             <div className="flex items-center justify-between gap-4 pt-10 border-t border-primary/10">
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-4">
                 <p className="text-sm font-medium text-muted-foreground">
                   &copy; 2026 Aniket Raj
                 </p>

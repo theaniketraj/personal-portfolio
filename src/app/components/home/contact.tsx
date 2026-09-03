@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useContactDraft } from "@/components/contact-draft-context";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
@@ -53,6 +54,19 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error" | "invalid_email"
   >("idle");
+  const { draftData } = useContactDraft();
+
+  useEffect(() => {
+    if (draftData) {
+      const form = document.forms.namedItem("sign-up-form");
+      if (form) {
+        if (draftData.firstName) (form.elements.namedItem("firstName") as HTMLInputElement).value = draftData.firstName;
+        if (draftData.lastName) (form.elements.namedItem("lastName") as HTMLInputElement).value = draftData.lastName;
+        if (draftData.email) (form.elements.namedItem("email") as HTMLInputElement).value = draftData.email;
+        if (draftData.message) (form.elements.namedItem("message") as HTMLTextAreaElement).value = draftData.message;
+      }
+    }
+  }, [draftData]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();

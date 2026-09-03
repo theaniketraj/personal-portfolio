@@ -33,7 +33,7 @@ const ProjectOverview = () => {
                 </h2>
                 <div className="flex flex-col gap-4 flex-1">
                   <div className="flex flex-col gap-3">
-                    {projectOverview.projects?.map((value, index) => (
+                    {projectOverview.projects?.map((value) => (
                       <Link
                         key={value.url}
                         href={value.url}
@@ -75,7 +75,7 @@ const ProjectOverview = () => {
                 </h2>
                 <div className="flex flex-col gap-4 flex-1">
                   <div className="flex flex-col gap-3">
-                    {projectOverview.blogs?.map((value, index) => (
+                    {projectOverview.blogs?.map((value) => (
                       <Link
                         key={value.url}
                         href={value.url}

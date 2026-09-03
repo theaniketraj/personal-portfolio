@@ -1,4 +1,3 @@
-import React from "react";
 import fs from "node:fs";
 import path from "node:path";
 import { Metadata } from "next";

@@ -1,9 +1,7 @@
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getBlogPosts } from "@/lib/mdx";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

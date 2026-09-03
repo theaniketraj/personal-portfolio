@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// Hardware-accelerated GPU layer promotion hook
 export const useHardwareAcceleration = <T extends HTMLElement>() => {
   const ref = useRef<T>(null);
 

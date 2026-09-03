@@ -6,6 +6,7 @@ import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { WebMCPProvider } from "@/components/webmcp-provider";
+import { ContactDraftProvider } from "@/components/contact-draft-context";
 
 const inter = Inter({
   variable: "--font-inter-sans",
@@ -128,10 +129,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
-          <WebMCPProvider />
-          <Footer />
+          <ContactDraftProvider>
+            <Header />
+            {children}
+            <WebMCPProvider />
+            <Footer />
+          </ContactDraftProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import type { WebMCP } from "webmcp-types";
 
 export const WebMCPStatusBadge = () => {
   const [isActive, setIsActive] = useState(false);
@@ -8,9 +9,8 @@ export const WebMCPStatusBadge = () => {
 
   useEffect(() => {
     setMounted(true);
-    const nav = navigator as any;
-    const doc = document as any;
-    const modelContext = doc.modelContext ?? nav.modelContext;
+    const doc = document as unknown as { modelContext: WebMCP.ModelContext };
+    const modelContext = doc.modelContext;
     
     if (modelContext && "registerTool" in modelContext) {
       setIsActive(true);

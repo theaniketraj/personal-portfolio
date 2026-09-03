@@ -60,7 +60,7 @@ const Experience = () => {
                         </div>
                       </div>
                       <ul>
-                        {value?.bulletPoints?.map((point, pointIndex) => {
+                        {value?.bulletPoints?.map((point) => {
                           return (
                             <li
                               key={point.substring(0, 30)}

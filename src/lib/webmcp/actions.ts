@@ -1,4 +1,3 @@
-import { z } from "zod";
 import { registry } from "./registry";
 import {
   SearchProjectsSchema,
@@ -7,148 +6,157 @@ import {
   GetArticleSchema,
   EmptySchema,
   DraftContactSchema,
+  FindRelevantWorkSchema,
+  EmptyJSONSchema,
+  SearchProjectsJSONSchema,
+  GetProjectJSONSchema,
+  SearchArticlesJSONSchema,
+  GetArticleJSONSchema,
+  FindRelevantWorkJSONSchema,
+  DraftContactJSONSchema,
 } from "./schemas";
-import {
-  getProjects,
-  getProjectBySlug,
-  getBlogPosts,
-  getBlogPostBySlug,
-  getFeaturedProjects,
-} from "@/lib/mdx";
-import { profileData } from "@/lib/content/profile";
+import { PortfolioService } from "@/lib/content/service";
+import type { Profile } from "@/lib/content/profile";
 
 // Register: get_profile
-registry.registerTool({
+registry.registerTool<unknown, Profile>({
   name: "get_profile",
+  title: "Get Profile",
   description: "Get Aniket's profile, including about me and core links",
   schema: EmptySchema,
+  jsonSchema: EmptyJSONSchema,
+  scope: "global",
+  readOnly: true,
   handler: () => {
-    return profileData;
+    return PortfolioService.getProfile();
   },
 });
 
 // Register: search_projects
 registry.registerTool({
   name: "search_projects",
-  description: "Search Aniket's projects by domain, technology, or status",
+  title: "Search Projects",
+  description: "Search Aniket's projects by domain, technology, or status. Returns a summary of each project.",
   schema: SearchProjectsSchema,
+  jsonSchema: SearchProjectsJSONSchema,
+  scope: "global",
+  readOnly: true,
   handler: (args) => {
-    let projects = getProjects();
-
-    if (args.featuredOnly) {
-      projects = getFeaturedProjects();
-    }
-
-    if (args.domain) {
-      projects = projects.filter((p) =>
-        p.domains?.some((d) => d.toLowerCase() === args.domain!.toLowerCase()),
-      );
-    }
-    if (args.technology) {
-      projects = projects.filter((p) =>
-        p.technologies?.some(
-          (t) => t.toLowerCase() === args.technology!.toLowerCase(),
-        ),
-      );
-    }
-    if (args.status) {
-      projects = projects.filter((p) => p.status === args.status);
-    }
-
-    return projects.map((p) => p);
+    return PortfolioService.searchProjects(args);
   },
 });
 
 // Register: get_project
 registry.registerTool({
   name: "get_project",
-  description: "Get full details and content for a specific project by slug",
+  title: "Get Project Metadata",
+  description: "Get structured metadata for a specific project by slug.",
   schema: GetProjectSchema,
+  jsonSchema: GetProjectJSONSchema,
+  scope: "project",
+  readOnly: true,
   handler: (args) => {
-    try {
-      const project = getProjectBySlug(args.slug);
-      if (!project) return { error: `Project not found: ${args.slug}` };
-      return project;
-    } catch (e) {
-      return { error: `Error fetching project: ${e}` };
-    }
+    const project = PortfolioService.getProjectSummary(args.slug);
+    if (!project) return { error: `Project not found: ${args.slug}` };
+    return project;
+  },
+});
+
+// Register: get_project_content
+registry.registerTool({
+  name: "get_project_content",
+  title: "Get Project Content",
+  description: "Get full markdown content and details for a specific project by slug.",
+  schema: GetProjectSchema,
+  jsonSchema: GetProjectJSONSchema,
+  scope: "project",
+  readOnly: true,
+  untrustedContentHint: true,
+  handler: (args) => {
+    const project = PortfolioService.getProjectDetails(args.slug);
+    if (!project) return { error: `Project not found: ${args.slug}` };
+    return project;
   },
 });
 
 // Register: search_articles
 registry.registerTool({
   name: "search_articles",
-  description: "Search Aniket's blog articles by topic",
+  title: "Search Articles",
+  description: "Search Aniket's blog articles by topic or query.",
   schema: SearchArticlesSchema,
+  jsonSchema: SearchArticlesJSONSchema,
+  scope: "global",
+  readOnly: true,
   handler: (args) => {
-    let articles = getBlogPosts();
-
-    if (args.topic) {
-      articles = articles.filter((a) =>
-        a.topics?.some((t) => t.toLowerCase() === args.topic!.toLowerCase()),
-      );
-    }
-
-    return articles;
+    return PortfolioService.searchArticles(args);
   },
 });
 
 // Register: get_article
 registry.registerTool({
   name: "get_article",
-  description: "Get full details and content for a specific article by slug",
+  title: "Get Article Metadata",
+  description: "Get structured metadata for a specific article by slug.",
   schema: GetArticleSchema,
+  jsonSchema: GetArticleJSONSchema,
+  scope: "article",
+  readOnly: true,
   handler: (args) => {
-    try {
-      const article = getBlogPostBySlug(args.slug);
-      if (!article) return { error: `Article not found: ${args.slug}` };
-      return article;
-    } catch (e) {
-      return { error: `Error fetching article: ${e}` };
-    }
+    const article = PortfolioService.getArticleSummary(args.slug);
+    if (!article) return { error: `Article not found: ${args.slug}` };
+    return article;
+  },
+});
+
+// Register: get_article_content
+registry.registerTool({
+  name: "get_article_content",
+  title: "Get Article Content",
+  description: "Get full markdown content and details for a specific article by slug.",
+  schema: GetArticleSchema,
+  jsonSchema: GetArticleJSONSchema,
+  scope: "article",
+  readOnly: true,
+  untrustedContentHint: true,
+  handler: (args) => {
+    const article = PortfolioService.getArticleDetails(args.slug);
+    if (!article) return { error: `Article not found: ${args.slug}` };
+    return article;
   },
 });
 
 // Register: find_relevant_work
 registry.registerTool({
   name: "find_relevant_work",
-  description: "Find related projects and articles for a given keyword",
-  schema: z.object({ keyword: z.string() }),
+  title: "Find Relevant Work",
+  description: "Semantic search for finding relevant projects and articles based on roles, skills, and domains.",
+  schema: FindRelevantWorkSchema,
+  jsonSchema: FindRelevantWorkJSONSchema,
+  scope: "global",
+  readOnly: true,
   handler: (args) => {
-    const keyword = args.keyword.toLowerCase();
-
-    const relevantProjects = getProjects().filter(
-      (p) =>
-        p.title.toLowerCase().includes(keyword) ||
-        p.technologies?.some((t) => t.toLowerCase().includes(keyword)) ||
-        p.domains?.some((d) => d.toLowerCase().includes(keyword)),
-    );
-
-    const relevantArticles = getBlogPosts().filter(
-      (a) =>
-        a.title.toLowerCase().includes(keyword) ||
-        a.topics?.some((t) => t.toLowerCase().includes(keyword)),
-    );
-
-    return { projects: relevantProjects, articles: relevantArticles };
+    return PortfolioService.findRelevantWork(args);
   },
 });
 
 // Register: draft_contact_message
 registry.registerTool({
   name: "draft_contact_message",
+  title: "Draft Contact Message",
   description:
-    "Drafts a message to Aniket on behalf of the user. Automatically scrolls to the contact form and populates it. The user must manually review and click submit.",
+    "Drafts a message to Aniket on behalf of the user. Automatically populates the contact form. The user must manually review and click submit.",
   schema: DraftContactSchema,
+  jsonSchema: DraftContactJSONSchema,
+  scope: "contact",
+  readOnly: false,
   handler: (args) => {
-    // The server doesn't actually send the message; it returns success
-    // because the client-side WebMCPProvider will intercept this tool call
-    // and physically populate the DOM form for human confirmation.
+    // The client-side WebMCPProvider intercepts this tool call and sets the drafted context state.
     return {
       status: "drafted",
-      message:
-        "The contact form has been drafted on the UI. The user must now click submit.",
+      message: "The contact form has been drafted on the UI. The user must now click submit.",
       draftedData: args,
     };
   },
 });
+

@@ -23,7 +23,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test:webmcp": "tsx scripts/test-webmcp.ts"
+    "test:webmcp": "tsx scripts/test-webmcp-registry.ts",
+    "test:content": "tsx scripts/test-content-integrity.ts",
+    "test:browser": "tsx scripts/test-browser-webmcp.ts"
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "^5.15.13",
@@ -45,6 +47,7 @@
     "remark-gfm": "^4.0.1",
     "shiki": "^4.4.3",
     "tailwind-merge": "^3.6.0",
+    "webmcp-types": "^0.1.6",
     "zod": "^4.5.4",
     "zod-to-json-schema": "^3.25.2"
   },
@@ -52,11 +55,13 @@
     "@eslint/eslintrc": "^3.3.7",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/debug": "^4.1.13",
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^26.4.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "eslint": "^10.9.1",
     "eslint-config-next": "^16.3.4",
+    "jsdom": "^30.0.1",
     "tailwindcss": "^4.3.3",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.23.13",
