@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogPosts, getBlogPostBySlug } from "@/lib/mdx";
+import { extractHeadings } from "@/lib/toc";
 import { MDXContent } from "@/components/mdx-content";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { TableOfContents } from "@/components/table-of-contents";
@@ -127,7 +128,7 @@ export default async function BlogPostDetailPage({
 
               {/* Table of Contents - Hidden on mobile, visible on XL screens */}
               <div className="hidden xl:block fixed top-1/2 -translate-y-1/2 right-4 w-auto z-50">
-                <TableOfContents />
+                <TableOfContents headings={extractHeadings(post.content)} />
               </div>
             </div>
 

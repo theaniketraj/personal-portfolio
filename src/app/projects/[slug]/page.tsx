@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProjects, getProjectBySlug } from "@/lib/mdx";
+import { extractHeadings } from "@/lib/toc";
 import { MDXContent } from "@/components/mdx-content";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { TableOfContents } from "@/components/table-of-contents";
@@ -89,7 +90,7 @@ export default async function ProjectDetailPage({
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="transition-transform duration-500 ease-out group-hover:rotate-[180deg] group-hover:scale-110"
+                    className="transition-transform duration-500 ease-out group-hover:rotate-180 group-hover:scale-110"
                   >
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
@@ -126,7 +127,7 @@ export default async function ProjectDetailPage({
 
               {/* Table of Contents - Hidden on mobile, visible on XL screens */}
               <div className="hidden xl:block fixed top-1/2 -translate-y-1/2 right-4 w-auto z-50">
-                <TableOfContents />
+                <TableOfContents headings={extractHeadings(project.content)} />
               </div>
             </div>
 

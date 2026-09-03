@@ -1,4 +1,3 @@
-"use client";
 import { Badge } from "@/components/ui/badge";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
 
@@ -48,19 +47,19 @@ const AboutMe = () => {
                   Skills
                 </h3>
                 <div className="flex flex-col gap-5">
-                  {skills.map((skillGroup, idx) => (
+                  {skills.map((skillGroup) => (
                     <div
-                      key={idx}
+                      key={skillGroup.category}
                       className="grid grid-cols-1 sm:grid-cols-[140px_1fr] md:grid-cols-[160px_1fr] gap-3 sm:gap-4 items-start"
                     >
                       <p className="text-sm font-medium text-muted-foreground sm:pt-1.5">
                         {skillGroup.category}
                       </p>
                       <div className="flex flex-wrap gap-2 sm:gap-3">
-                        {skillGroup.items.map((value, index) => (
+                        {skillGroup.items.map((value) => (
                           <Badge
                             variant={"outline"}
-                            key={index}
+                            key={value}
                             className="py-1.5 px-3 rounded-lg bg-background/50 hover:bg-background/80 transition-colors"
                           >
                             <p className="text-xs sm:text-sm font-medium text-primary">

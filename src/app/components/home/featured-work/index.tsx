@@ -1,27 +1,11 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
+import { getFeaturedProjects } from "@/lib/mdx";
 
 const FeaturedWork = () => {
-  const [featureWork, setFeatureWork] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/featured-work");
-        if (!res.ok) throw new Error("Failed to fetch");
-        const data = await res.json();
-        setFeatureWork(data?.featureWork);
-      } catch (error) {
-        console.error("Error fetching services:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const featureWork = getFeaturedProjects();
 
   return (
     <section>
@@ -55,12 +39,12 @@ const FeaturedWork = () => {
               </div>
             </HardwareAnimated>
             <div className="grid grid-cols-1 md:grid-cols-2 border-t border-primary/10">
-              {featureWork?.map((value: any, index: number) => {
+              {featureWork?.map((project, index) => {
                 const isRightCol = index % 2 === 1;
 
                 return (
                   <HardwareAnimated
-                    key={index}
+                    key={project.slug}
                     animation="fadeInScale"
                     delay={index * 0.15}
                   >
@@ -68,25 +52,25 @@ const FeaturedWork = () => {
                       className={`group flex flex-col gap-3.5 sm:gap-5 p-3.5 sm:p-6 ${isRightCol ? "md:border-l md:border-primary/10" : ""}`}
                     >
                       <Link
-                        href={`/projects/${value?.slug || ""}`}
+                        href={`/projects/${project.slug}`}
                         className="overflow-hidden"
                       >
                         <Image
-                          src={value?.image}
-                          alt={value?.title || "Project thumbnail"}
+                          src={project.image || ""}
+                          alt={project.title || "Project thumbnail"}
                           width={490}
                           height={300}
                           className="w-full h-auto group-hover:scale-105 transition-all duration-300 ease-in-out"
                         />
                       </Link>
                       <div className="flex flex-col gap-1 sm:gap-2 px-2">
-                        <Link href={`/projects/${value?.slug || ""}`}>
+                        <Link href={`/projects/${project.slug}`}>
                           <h3 className="text-lg sm:text-xl font-medium text-primary">
-                            {value?.title}
+                            {project.title}
                           </h3>
                         </Link>
                         <div className="flex">
-                          <p>{value?.roles?.join(", ")}</p>
+                          <p>{project.roles?.join(", ")}</p>
                         </div>
                       </div>
                     </div>

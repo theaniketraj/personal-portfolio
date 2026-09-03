@@ -70,7 +70,7 @@ export default function DeprecatedProjectsPage() {
                 ) : (
                   projects.map((project, index) => (
                     <HardwareAnimated
-                      key={index}
+                      key={project.title}
                       animation="slideInUp"
                       delay={index * 0.08}
                     >

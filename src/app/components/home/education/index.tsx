@@ -1,24 +1,8 @@
-"use client";
-import { useEffect, useState } from "react";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
+import { getEducation } from "@/lib/content/education";
 
 const Education = () => {
-  const [educationData, setEducationData] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/page-data");
-        if (!res.ok) throw new Error("Failed to fetch");
-        const data = await res.json();
-        setEducationData(data?.educationData);
-      } catch (error) {
-        console.error("Error fetching services:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const educationData = getEducation();
 
   return (
     <section>
@@ -39,9 +23,9 @@ const Education = () => {
               <div className="hidden sm:flex absolute left-5 sm:left-[15.9rem] sm:translate-x-1/2 top-0 bottom-0 w-px bg-primary/10" />
 
               <div className="relative">
-                {educationData?.map((item: any, index: any) => (
+                {educationData?.map((item, index) => (
                   <HardwareAnimated
-                    key={index}
+                    key={`${item.title}-${item.date}`}
                     animation="slideInRight"
                     delay={index * 0.15}
                   >

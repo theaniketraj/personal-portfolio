@@ -26,6 +26,15 @@ It is engineered from the ground up for **speed**, **accessibility**, and **mode
 - **Theme Support:** Clean, beautiful Light and Dark modes with seamless transition toggling.
 - **Modern Stack:** Built on the cutting-edge of the web—Next.js 16 (Turbopack), React 19, and Tailwind CSS v4.
 
+## WebMCP & Agent Interfaces
+
+My portfolio implements the **Web Model Context Protocol (WebMCP)**, transforming the website from a standard static site into a structured, machine-readable tool registry for AI agents.
+
+- **Live Tool Registry:** Exposes structured Zod schema definitions via the `/agents` route for AI clients to natively parse.
+- **Semantic Content Graph:** Blog articles and projects are deeply interconnected with rich semantic taxonomy (domains, technologies, and related engineering areas).
+- **Agent Execution Model:** AI agents can retrieve context, find relevant work dynamically based on specific queries, and interact with the portfolio using the WebMCP tool execution framework.
+- **LLM Optimization:** Contains a dedicated `/llms.txt` route specifically engineered to provide immediate context, instructions, and capability pointers to language models crawling the site.
+
 ## Tech Stack
 
 | Category                | Technologies                             |

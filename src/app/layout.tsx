@@ -4,8 +4,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
-
 import { ThemeProvider } from "@/components/theme-provider";
+import { WebMCPProvider } from "@/components/webmcp-provider";
 
 const inter = Inter({
   variable: "--font-inter-sans",
@@ -60,7 +60,7 @@ export default function RootLayout({
         alternateName: "Aniket Raj Portfolio",
         url: "https://theaniketraj.netlify.app/",
         image: "https://theaniketraj.netlify.app/icon.png",
-        jobTitle: "Aniket Raj | Software Engineer · Systems & AI",
+        jobTitle: "Software Engineer",
         description:
           "Software & AI Engineer passionate about building innovative and scalable solutions.",
         nationality: "Indian",
@@ -109,26 +109,6 @@ export default function RootLayout({
         description:
           "Official portfolio website of Aniket Raj — Software & AI Engineer.",
       },
-      {
-        "@type": "Organization",
-        "@id": "https://theaniketraj.netlify.app/#organization",
-        name: "Aniket Raj | Software Engineer · Systems & AI",
-        url: "https://theaniketraj.netlify.app/",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://theaniketraj.netlify.app/icon.png",
-        },
-        sameAs: [
-          "https://github.com/theaniketraj",
-          "https://www.linkedin.com/in/theaniketraj/",
-          "https://leetcode.com/theaniketraj",
-          "https://dev.to/theaniketraj",
-          "https://x.com/aniketfoundry",
-          "https://www.npmjs.com/~theaniketraj",
-          "https://medium.com/@theaniketraj",
-          "https://plugins.gradle.org/u/theaniketraj",
-        ],
-      },
     ],
   };
 
@@ -150,6 +130,7 @@ export default function RootLayout({
         >
           <Header />
           {children}
+          <WebMCPProvider />
           <Footer />
         </ThemeProvider>
       </body>

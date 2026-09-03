@@ -35,7 +35,7 @@ const Header = () => {
                 </h1>
               </Link>
               <p className="text-violet-700 dark:text-violet-400 font-normal">
-                Software Engineer · Systems & AI
+                SDE · Systems & AI
               </p>
               <div className="flex items-center gap-2">
                 <Image
@@ -50,11 +50,11 @@ const Header = () => {
             </div>
             <div className="flex flex-col md:flex-row items-center gap-4">
               <div className="flex items-center gap-2">
-                {socialIcon?.map((value, index) => {
+                {socialIcon?.map((value) => {
                   return (
                     <Link
                       href={value?.href}
-                      key={index}
+                      key={value?.icon}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={value?.icon}

@@ -1,45 +1,17 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import {
+  ProjectSchema,
+  ProjectMeta,
+  ProjectData,
+  BlogPostSchema,
+  BlogPostMeta,
+  BlogPostData,
+} from "./content/types";
 
 const PROJECTS_DIR = path.join(process.cwd(), "projects");
 const BLOG_DIR = path.join(process.cwd(), "blog");
-
-export interface ProjectMeta {
-  slug: string;
-  title: string;
-  date: string;
-  client?: string;
-  description?: string;
-  metaTitle?: string;
-  metaDescription?: string;
-  metaTags?: Array<{ property?: string; content?: string; name?: string }>;
-  tags?: string[];
-  readingTime?: number;
-}
-
-export interface ProjectData {
-  meta: ProjectMeta;
-  content: string;
-}
-
-export interface BlogPostMeta {
-  slug: string;
-  title: string;
-  date: string;
-  excerpt?: string;
-  author?: string;
-  metaTitle?: string;
-  metaDescription?: string;
-  metaTags?: Array<{ property?: string; content?: string; name?: string }>;
-  tags?: string[];
-  readingTime?: number;
-}
-
-export interface BlogPostData {
-  meta: BlogPostMeta;
-  content: string;
-}
 
 function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
@@ -60,26 +32,46 @@ export function getProjects(): ProjectMeta[] {
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
 
+      // Validate with Zod
+      const parsedData = ProjectSchema.parse(data);
+
       return {
         slug,
-        title: data.title || slug,
+        title: parsedData.title || slug,
         date:
-          data.date instanceof Date
-            ? data.date.toISOString().split("T")[0]
-            : data.date || "",
-        client: data.client || "Aniket Raj",
-        description: data.description || "",
-        metaTitle: data.metaTitle,
-        metaDescription: data.metaDescription,
-        metaTags: data.metaTags,
-        tags: data.tags || [],
+          parsedData.date instanceof Date
+            ? parsedData.date.toISOString().split("T")[0]
+            : parsedData.date || "",
+        client: parsedData.client || "Aniket Raj",
+        description: parsedData.description || "",
+        metaTitle: parsedData.metaTitle,
+        metaDescription: parsedData.metaDescription,
+        id: parsedData.id,
+        tags: parsedData.tags || [],
+        featured: parsedData.featured || false,
+        featuredOrder: parsedData.featuredOrder || 0,
+        roles: parsedData.roles || [],
+        image: parsedData.image,
+        domains: parsedData.domains || [],
+        technologies: parsedData.technologies || [],
+        engineeringAreas: parsedData.engineeringAreas || [],
+        capabilities: parsedData.capabilities || [],
+        status: parsedData.status || "active",
+        relatedProjects: parsedData.relatedProjects || [],
+        relatedArticles: parsedData.relatedArticles || [],
         readingTime: calculateReadingTime(content),
       } as ProjectMeta;
     });
 
   return projects.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+}
+
+export function getFeaturedProjects(): ProjectMeta[] {
+  return getProjects()
+    .filter((project) => project.featured)
+    .sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0));
 }
 
 // Get single project by slug
@@ -97,20 +89,33 @@ export function getProjectBySlug(slug: string): ProjectData | null {
   const fileContents = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContents);
 
+  const parsedData = ProjectSchema.parse(data);
+
   return {
     meta: {
       slug,
-      title: data.title || slug,
+      title: parsedData.title || slug,
       date:
-        data.date instanceof Date
-          ? data.date.toISOString().split("T")[0]
-          : data.date || "",
-      client: data.client || "Aniket Raj",
-      description: data.description || "",
-      metaTitle: data.metaTitle,
-      metaDescription: data.metaDescription,
-      metaTags: data.metaTags,
-      tags: data.tags || [],
+        parsedData.date instanceof Date
+          ? parsedData.date.toISOString().split("T")[0]
+          : parsedData.date || "",
+      client: parsedData.client || "Aniket Raj",
+      description: parsedData.description || "",
+      metaTitle: parsedData.metaTitle,
+      metaDescription: parsedData.metaDescription,
+      id: parsedData.id,
+      tags: parsedData.tags || [],
+      featured: parsedData.featured || false,
+      featuredOrder: parsedData.featuredOrder || 0,
+      roles: parsedData.roles || [],
+      image: parsedData.image,
+      domains: parsedData.domains || [],
+      technologies: parsedData.technologies || [],
+      engineeringAreas: parsedData.engineeringAreas || [],
+      capabilities: parsedData.capabilities || [],
+      status: parsedData.status || "active",
+      relatedProjects: parsedData.relatedProjects || [],
+      relatedArticles: parsedData.relatedArticles || [],
       readingTime: calculateReadingTime(content),
     },
     content,
@@ -130,25 +135,31 @@ export function getBlogPosts(): BlogPostMeta[] {
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
 
+      const parsedData = BlogPostSchema.parse(data);
+
       return {
         slug,
-        title: data.title || slug,
+        title: parsedData.title || slug,
         date:
-          data.date instanceof Date
-            ? data.date.toISOString().split("T")[0]
-            : data.date || "",
-        excerpt: data.excerpt || "",
-        author: data.author || "Aniket Raj",
-        metaTitle: data.metaTitle,
-        metaDescription: data.metaDescription,
-        metaTags: data.metaTags,
-        tags: data.tags || [],
+          parsedData.date instanceof Date
+            ? parsedData.date.toISOString().split("T")[0]
+            : parsedData.date || "",
+        excerpt: parsedData.excerpt || "",
+        author: parsedData.author || "Aniket Raj",
+        metaTitle: parsedData.metaTitle,
+        metaDescription: parsedData.metaDescription,
+        id: parsedData.id,
+        tags: parsedData.tags || [],
+        topics: parsedData.topics || [],
+        contentType: parsedData.contentType || [],
+        relatedProjects: parsedData.relatedProjects || [],
+        relatedArticles: parsedData.relatedArticles || [],
         readingTime: calculateReadingTime(content),
       } as BlogPostMeta;
     });
 
   return posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 }
 
@@ -167,20 +178,26 @@ export function getBlogPostBySlug(slug: string): BlogPostData | null {
   const fileContents = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContents);
 
+  const parsedData = BlogPostSchema.parse(data);
+
   return {
     meta: {
       slug,
-      title: data.title || slug,
+      title: parsedData.title || slug,
       date:
-        data.date instanceof Date
-          ? data.date.toISOString().split("T")[0]
-          : data.date || "",
-      excerpt: data.excerpt || "",
-      author: data.author || "Aniket Raj",
-      metaTitle: data.metaTitle,
-      metaDescription: data.metaDescription,
-      metaTags: data.metaTags,
-      tags: data.tags || [],
+        parsedData.date instanceof Date
+          ? parsedData.date.toISOString().split("T")[0]
+          : parsedData.date || "",
+      excerpt: parsedData.excerpt || "",
+      author: parsedData.author || "Aniket Raj",
+      metaTitle: parsedData.metaTitle,
+      metaDescription: parsedData.metaDescription,
+      id: parsedData.id,
+      tags: parsedData.tags || [],
+      topics: parsedData.topics || [],
+      contentType: parsedData.contentType || [],
+      relatedProjects: parsedData.relatedProjects || [],
+      relatedArticles: parsedData.relatedArticles || [],
       readingTime: calculateReadingTime(content),
     },
     content,

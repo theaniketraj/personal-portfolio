@@ -1,26 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
 import { Code, Sparkles } from "lucide-react";
+import { getExperience } from "@/lib/content/experience";
 
 const Experience = () => {
-  const [experienceData, setExperienceData] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/page-data");
-        if (!res.ok) throw new Error("Failed to fetch");
-        const data = await res.json();
-        setExperienceData(data?.experienceData);
-      } catch (error) {
-        console.error("Error fetching services:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const experienceData = getExperience();
 
   return (
     <section>
@@ -37,13 +20,13 @@ const Experience = () => {
           </HardwareAnimated>
           <div className="border-t border-primary/10">
             <div className="flex flex-col max-w-3xl mx-auto px-4 sm:px-7 py-9 md:py-16 ">
-              {experienceData?.map((value: any, index: any) => {
+              {experienceData?.map((value, index) => {
                 const isFirst = index === 0;
                 const isLast = index === experienceData.length - 1;
 
                 return (
                   <HardwareAnimated
-                    key={index}
+                    key={`${value?.role}-${value?.startYear}`}
                     animation="slideInLeft"
                     delay={index * 0.15}
                   >
@@ -77,10 +60,10 @@ const Experience = () => {
                         </div>
                       </div>
                       <ul>
-                        {value?.bulletPoints?.map((point: any, index: any) => {
+                        {value?.bulletPoints?.map((point, pointIndex) => {
                           return (
                             <li
-                              key={index}
+                              key={point.substring(0, 30)}
                               className="flex items-start gap-2 text-base font-normal text-secondary"
                             >
                               <span className="w-2.5 h-2.5 text-secondary">

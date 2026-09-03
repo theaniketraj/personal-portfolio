@@ -135,9 +135,17 @@ const Footer = () => {
 
             {/* Bottom: Copyright & Back to Top */}
             <div className="flex items-center justify-between gap-4 pt-10 border-t border-primary/10">
-              <p className="text-sm font-medium text-muted-foreground">
-                &copy; 2026 Aniket Raj
-              </p>
+              <div className="flex items-center gap-4">
+                <p className="text-sm font-medium text-muted-foreground">
+                  &copy; 2026 Aniket Raj
+                </p>
+                <Link
+                  href="/agents"
+                  className="text-xs text-muted-foreground/50 hover:text-primary transition-colors uppercase tracking-widest font-mono"
+                >
+                  [AI Agents]
+                </Link>
+              </div>
 
               <button
                 type="button"

@@ -1,6 +1,6 @@
 [build]
   publish = ".next"
-  command = "npm run build && cp public/netlify-form.html .next/"
+  command = "npm run test:webmcp && npm run build && cp public/netlify-form.html .next/"
 
 [build.environment]
   NODE_VERSION = "24.18.0"

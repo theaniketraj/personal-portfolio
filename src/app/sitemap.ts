@@ -7,13 +7,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Static routes
   const routes = ["", "/blog", "/projects"].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString().split("T")[0],
   }));
 
   // Dynamic Blog routes
   const blogs = getBlogPosts().map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date).toISOString().split("T")[0],
+    lastModified: new Date(post.date || new Date()).toISOString().split("T")[0],
   }));
 
   // Dynamic Project routes

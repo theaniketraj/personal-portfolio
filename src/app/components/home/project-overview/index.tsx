@@ -1,26 +1,24 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
+import { getProjects, getBlogPosts } from "@/lib/mdx";
 
 const ProjectOverview = () => {
-  const [projectData, setProjectData] = useState<any>(null);
+  const allProjects = getProjects();
+  const allBlogs = getBlogPosts();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/page-data");
-        if (!res.ok) throw new Error("Failed to fetch");
-        const data = await res.json();
-        setProjectData(data?.projectOverview);
-      } catch (error) {
-        console.error("Error fetching page data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const projectOverview = {
+    projects: allProjects.slice(0, 2).map((project) => ({
+      name: project.title,
+      url: `/projects/${project.slug}`,
+      description: project.description,
+    })),
+    blogs: allBlogs.slice(0, 2).map((blog) => ({
+      name: blog.title,
+      url: `/blog/${blog.slug}`,
+      description: blog.excerpt,
+    })),
+  };
 
   return (
     <section>
@@ -35,21 +33,21 @@ const ProjectOverview = () => {
                 </h2>
                 <div className="flex flex-col gap-4 flex-1">
                   <div className="flex flex-col gap-3">
-                    {projectData?.projects?.map((value: any, index: number) => (
+                    {projectOverview.projects?.map((value, index) => (
                       <Link
-                        key={index}
-                        href={value?.url}
+                        key={value.url}
+                        href={value.url}
                         className="group flex items-center justify-between gap-3"
                       >
                         <h3 className="text-lg sm:text-xl font-medium group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                          {value?.name}
-                          {value?.description
+                          {value.name}
+                          {value.description
                             ? ` : ${value.description.split(" ").slice(0, 4).join(" ")}...`
                             : ""}
                         </h3>
                         <Image
                           src={"/images/icon/tile-arrow-icon.svg"}
-                          alt="tile-icon"
+                          alt=""
                           width={24}
                           height={24}
                           className="dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in shrink-0"
@@ -77,18 +75,18 @@ const ProjectOverview = () => {
                 </h2>
                 <div className="flex flex-col gap-4 flex-1">
                   <div className="flex flex-col gap-3">
-                    {projectData?.blogs?.map((value: any, index: number) => (
+                    {projectOverview.blogs?.map((value, index) => (
                       <Link
-                        key={index}
-                        href={value?.url}
+                        key={value.url}
+                        href={value.url}
                         className="group flex items-center justify-between gap-3"
                       >
                         <h3 className="text-lg sm:text-xl font-medium group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                          {value?.name}
+                          {value.name}
                         </h3>
                         <Image
                           src={"/images/icon/tile-arrow-icon.svg"}
-                          alt="tile-icon"
+                          alt=""
                           width={24}
                           height={24}
                           className="dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in shrink-0"

@@ -2,67 +2,42 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Heading } from "@/lib/toc";
 
-interface Heading {
-  id: string;
-  text: string;
-  level: number;
+interface TableOfContentsProps {
+  headings: Heading[];
 }
 
-export function TableOfContents() {
-  const [headings, setHeadings] = useState<Heading[]>([]);
+export function TableOfContents({ headings }: Readonly<TableOfContentsProps>) {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
-    // Use a small timeout to ensure MDX has fully rendered to DOM
-    const timer = setTimeout(() => {
-      const elements = Array.from(
-        document.querySelectorAll(".mdx-content h2, .mdx-content h3"),
-      );
+    if (headings.length === 0) return;
 
-      const parsedHeadings: Heading[] = elements
-        .map((elem) => {
-          // Some headers might have embedded go-to tags or links, we just want the pure text
-          const text =
-            elem.textContent?.replace(/Project Resources/i, "").trim() || "";
-          return {
-            id: elem.id,
-            text: text,
-            level: Number(elem.tagName.replace("H", "")),
-          };
-        })
-        .filter((h) => h.id && h.text);
-
-      setHeadings(parsedHeadings);
-
-      // We'll track all heading elements and see which one is intersecting
-      const observerCallback: IntersectionObserverCallback = (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      };
-
-      const observer = new IntersectionObserver(observerCallback, {
-        // Trigger when the heading reaches the top 20% of the viewport
-        rootMargin: "-20% 0px -80% 0px",
+    // Use IntersectionObserver directly on the known IDs
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id);
+        }
       });
+    };
 
-      elements.forEach((elem) => observer.observe(elem));
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: "-20% 0px -80% 0px",
+    });
 
-      // Set initial active ID if we have headings
-      if (elements.length > 0 && !window.location.hash) {
-        // Just default to first one if at top
-        const firstId = elements[0].id;
-        setActiveId(firstId);
-      }
+    headings.forEach((heading) => {
+      const elem = document.getElementById(heading.id);
+      if (elem) observer.observe(elem);
+    });
 
-      return () => observer.disconnect();
-    }, 150);
+    if (!window.location.hash) {
+      setActiveId(headings[0].id);
+    }
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => observer.disconnect();
+  }, [headings]);
 
   // Auto-scroll the TOC container so the active item is always visible
   useEffect(() => {
