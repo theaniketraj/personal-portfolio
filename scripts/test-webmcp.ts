@@ -17,7 +17,7 @@ async function runTests() {
       if (tool.name === "search_projects") args = { domain: "AI" };
       if (tool.name === "get_project") args = { slug: "lawgic" }; // Assumes "lawgic" project exists
       if (tool.name === "search_articles") args = { topic: "TypeScript" };
-      if (tool.name === "get_article") args = { slug: "how-typescript-became-my-fav" }; 
+      if (tool.name === "get_article") args = { slug: "tech-stack-wars" }; 
       if (tool.name === "find_relevant_work") args = { keyword: "engineering" };
       if (tool.name === "draft_contact_message") args = { firstName: "Test", email: "test@example.com", message: "Hello" };
 

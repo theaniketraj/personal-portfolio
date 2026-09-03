@@ -67,9 +67,10 @@ registry.registerTool({
   handler: (args) => {
     try {
       const project = getProjectBySlug(args.slug);
+      if (!project) return { error: `Project not found: ${args.slug}` };
       return project;
     } catch (e) {
-      return { error: `Project not found: ${args.slug}` };
+      return { error: `Error fetching project: ${e}` };
     }
   },
 });
@@ -100,9 +101,10 @@ registry.registerTool({
   handler: (args) => {
     try {
       const article = getBlogPostBySlug(args.slug);
+      if (!article) return { error: `Article not found: ${args.slug}` };
       return article;
     } catch (e) {
-      return { error: `Article not found: ${args.slug}` };
+      return { error: `Error fetching article: ${e}` };
     }
   },
 });
