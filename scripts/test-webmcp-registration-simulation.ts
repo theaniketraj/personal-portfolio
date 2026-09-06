@@ -1,17 +1,25 @@
 import { JSDOM } from "jsdom";
 import { getWebMCPToolsManifest } from "../src/lib/webmcp/server-actions";
 
+interface MockTool {
+  name: string;
+  title?: string;
+  description?: string;
+  inputSchema?: unknown;
+  annotations?: { readOnlyHint?: boolean };
+}
+
 async function runBrowserSmokeTest() {
-  console.log("=== Browser-Level WebMCP Smoke Test ===\n");
+  console.log("=== WebMCP Registration Simulation ===\n");
 
   // Setup simulated browser environment
   const dom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
-  global.document = dom.window.document as any;
+  global.document = dom.window.document as unknown as Document;
 
   // Mock the draft WebMCP document.modelContext API
-  const registeredTools: any[] = [];
-  (global.document as any).modelContext = {
-    registerTool: (tool: any) => {
+  const registeredTools: MockTool[] = [];
+  (global.document as unknown as { modelContext: { registerTool: (tool: MockTool) => Promise<void> } }).modelContext = {
+    registerTool: (tool: MockTool) => {
       registeredTools.push(tool);
       return Promise.resolve();
     }
@@ -22,7 +30,7 @@ async function runBrowserSmokeTest() {
 
   // Simulate WebMCPProvider registration logic
   for (const tool of tools) {
-    await (global.document as any).modelContext.registerTool({
+    await (global.document as unknown as { modelContext: { registerTool: (tool: MockTool) => Promise<void> } }).modelContext.registerTool({
       name: tool.name,
       title: tool.title,
       description: tool.description,

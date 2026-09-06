@@ -185,7 +185,6 @@ export default function Contact() {
                   action="/netlify-form.html"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
-                  data-netlify-recaptcha="true"
                   onSubmit={handleSubmit}
                   className="space-y-6"
                 >

@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://theaniketraj.netlify.app";
 
   // Static routes
-  const routes = ["", "/blog", "/projects"].map((route) => ({
+  const routes = ["", "/blog", "/projects", "/agents"].map((route) => ({
     url: `${baseUrl}${route}`,
   }));
 

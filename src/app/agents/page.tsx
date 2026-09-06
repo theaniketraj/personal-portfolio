@@ -3,6 +3,8 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
 import { WebMCPStatusBadge } from "@/components/agents/webmcp-status-badge";
 import { Lock, ShieldCheck, Database, Zap } from "lucide-react";
+import { registry } from "@/lib/webmcp/registry";
+import "@/lib/webmcp/actions";
 
 export const metadata: Metadata = {
   title: "Agent Portal | Aniket Raj",
@@ -11,6 +13,8 @@ export const metadata: Metadata = {
 };
 
 export default function AgentsPage() {
+  const tools = registry.getAllTools();
+
   return (
     <main>
       <section className="bg-[url('/images/blog-detail/blog-detail-bg.svg')] dark:bg-[url('/images/blog-detail/blog-detail-bg-dark.svg')] bg-cover bg-center bg-no-repeat min-h-screen">
@@ -123,70 +127,40 @@ export default function AgentsPage() {
               </div>
             </div>
 
-            {/* Instructions Section */}
+            {/* Registry Tools Section */}
             <div className="border-t border-primary/10">
-              <div className="max-w-4xl mx-auto px-4 sm:px-7 py-16 md:py-24">
+              <div className="max-w-5xl mx-auto px-4 sm:px-7 py-16 md:py-24">
                 <HardwareAnimated animation="slideInUp" delay={0.3}>
                   <div className="text-center mb-10">
                     <h2 className="text-3xl sm:text-4xl font-bold text-primary font-(family-name:--font-space-grotesk)">
-                      How to Fetch Data
+                      Tool Registry
                     </h2>
+                    <p className="text-secondary mt-3">
+                      Automatically generated from the live registry.
+                    </p>
                   </div>
 
-                  <div className="flex flex-col gap-6 max-w-2xl mx-auto">
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-mono text-sm shrink-0">
-                        1
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-medium text-primary mb-1">
-                          Point your AI at any page
-                        </h3>
-                        <p className="text-secondary text-sm leading-relaxed">
-                          Simply provide the URL of this portfolio to your agent
-                          (e.g. Claude, ChatGPT, or Cursor).
+                  <div className="flex flex-col gap-6 max-w-4xl mx-auto">
+                    {tools.map((tool, i) => (
+                      <div key={tool.name} className="flex flex-col gap-2 p-6 border border-primary/10 rounded-xl bg-primary/5">
+                        <div className="flex items-center gap-3 justify-between">
+                          <h3 className="text-lg font-mono font-bold text-primary">
+                            {tool.name}
+                          </h3>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs px-2 py-1 bg-primary/10 rounded-full font-mono text-secondary">
+                              {tool.kind}
+                            </span>
+                            <span className="text-xs px-2 py-1 bg-primary/10 rounded-full font-mono text-secondary">
+                              {tool.scope}
+                            </span>
+                          </div>
+                        </div>
+                        <p className="text-secondary text-sm leading-relaxed mt-2">
+                          {tool.description}
                         </p>
                       </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-mono text-sm shrink-0">
-                        2
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-medium text-primary mb-1">
-                          Tools are auto-retrieved
-                        </h3>
-                        <p className="text-secondary text-sm leading-relaxed">
-                          The browser exposes the registered WebMCP tools, which can be seen in{" "}
-                          <a
-                            href="/llms.txt"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:text-violet-500 transition-colors underline underline-offset-4 font-mono text-xs"
-                          >
-                            llms.txt
-                          </a>
-                          .
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-mono text-sm shrink-0">
-                        3
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-medium text-primary mb-1">
-                          Query with natural language
-                        </h3>
-                        <p className="text-secondary text-sm leading-relaxed">
-                          Ask the agent to "list all React projects" or "read
-                          the latest article on system design" and it will
-                          instantly execute the tools to return structured JSON.
-                        </p>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </HardwareAnimated>
               </div>

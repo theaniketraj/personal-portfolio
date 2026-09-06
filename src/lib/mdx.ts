@@ -52,20 +52,22 @@ export function getProjects(): ProjectMeta[] {
         featuredOrder: parsedData.featuredOrder || 0,
         roles: parsedData.roles || [],
         image: parsedData.image,
-        domains: parsedData.domains || [],
-        technologies: parsedData.technologies || [],
-        engineeringAreas: parsedData.engineeringAreas || [],
-        capabilities: parsedData.capabilities || [],
-        status: parsedData.status || "active",
+        domains: parsedData.domains,
+        technologies: parsedData.technologies,
+        engineeringAreas: parsedData.engineeringAreas,
+        capabilities: parsedData.capabilities,
+        status: parsedData.status,
         relatedProjects: parsedData.relatedProjects || [],
         relatedArticles: parsedData.relatedArticles || [],
         readingTime: calculateReadingTime(content),
       } as ProjectMeta;
     });
 
-  return projects.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return projects.sort((a, b) => {
+    const diff = new Date(b.date).getTime() - new Date(a.date).getTime();
+    if (diff !== 0) return diff;
+    return a.slug.localeCompare(b.slug);
+  });
 }
 
 export function getFeaturedProjects(): ProjectMeta[] {
@@ -109,11 +111,11 @@ export function getProjectBySlug(slug: string): ProjectData | null {
       featuredOrder: parsedData.featuredOrder || 0,
       roles: parsedData.roles || [],
       image: parsedData.image,
-      domains: parsedData.domains || [],
-      technologies: parsedData.technologies || [],
-      engineeringAreas: parsedData.engineeringAreas || [],
-      capabilities: parsedData.capabilities || [],
-      status: parsedData.status || "active",
+      domains: parsedData.domains,
+      technologies: parsedData.technologies,
+      engineeringAreas: parsedData.engineeringAreas,
+      capabilities: parsedData.capabilities,
+      status: parsedData.status,
       relatedProjects: parsedData.relatedProjects || [],
       relatedArticles: parsedData.relatedArticles || [],
       readingTime: calculateReadingTime(content),
@@ -150,17 +152,19 @@ export function getBlogPosts(): BlogPostMeta[] {
         metaDescription: parsedData.metaDescription,
         id: parsedData.id,
         tags: parsedData.tags || [],
-        topics: parsedData.topics || [],
-        contentType: parsedData.contentType || [],
+        topics: parsedData.topics,
+        contentType: parsedData.contentType,
         relatedProjects: parsedData.relatedProjects || [],
         relatedArticles: parsedData.relatedArticles || [],
         readingTime: calculateReadingTime(content),
       } as BlogPostMeta;
     });
 
-  return posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return posts.sort((a, b) => {
+    const diff = new Date(b.date).getTime() - new Date(a.date).getTime();
+    if (diff !== 0) return diff;
+    return a.slug.localeCompare(b.slug);
+  });
 }
 
 // Get single blog post by slug
@@ -194,8 +198,8 @@ export function getBlogPostBySlug(slug: string): BlogPostData | null {
       metaDescription: parsedData.metaDescription,
       id: parsedData.id,
       tags: parsedData.tags || [],
-      topics: parsedData.topics || [],
-      contentType: parsedData.contentType || [],
+      topics: parsedData.topics,
+      contentType: parsedData.contentType,
       relatedProjects: parsedData.relatedProjects || [],
       relatedArticles: parsedData.relatedArticles || [],
       readingTime: calculateReadingTime(content),

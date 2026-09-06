@@ -28,12 +28,14 @@ It is engineered from the ground up for **speed**, **accessibility**, and **mode
 
 ## WebMCP & Agent Interfaces
 
-My portfolio implements the **Web Model Context Protocol (WebMCP)**, transforming the website from a standard static site into a structured, machine-readable tool registry for AI agents.
+My portfolio implements the **Web Model Context Protocol (WebMCP)**, exposing a structured tool interface through the browser's WebMCP API. This allows compatible agents to discover and interact with portfolio capabilities directly without relying solely on DOM-based navigation.
 
 - **Live Tool Registry:** Exposes structured Zod schema definitions via the `/agents` route for AI clients to natively parse.
 - **Semantic Content Graph:** Blog articles and projects are deeply interconnected with rich semantic taxonomy (domains, technologies, and related engineering areas).
 - **Agent Execution Model:** AI agents can retrieve context, find relevant work dynamically based on specific queries, and interact with the portfolio using the WebMCP tool execution framework.
 - **LLM Optimization:** Contains a dedicated `/llms.txt` route specifically engineered to provide immediate context, instructions, and capability pointers to language models crawling the site.
+
+> **Note:** WebMCP support is experimental and depends on compatible browser/agent implementations.
 
 ## Tech Stack
 
@@ -54,7 +56,7 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-- Node.js (v18 or higher recommended)
+- Node.js (24.x recommended)
 - `npm`, `yarn`, or `pnpm`
 
 ### Installation
@@ -92,7 +94,7 @@ To get a local copy up and running, follow these simple steps.
 ├── src/
 │ ├── app/ # Next.js App Router (pages, layouts, API routes)
 │ ├── components/ # Reusable UI components and animations
-│ ├── lib/ # Utility functions (MDX parsing, formatting)
+│ ├── lib/ # Content architecture, services, and WebMCP registry
 │ └── ...
 ├── next.config.ts # Next.js configuration
 ├── package.json # Dependencies and scripts

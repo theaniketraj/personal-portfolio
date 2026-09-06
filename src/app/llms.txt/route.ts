@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { getProjects, getBlogPosts } from "@/lib/mdx";
+import { registry } from "@/lib/webmcp/registry";
+import "@/lib/webmcp/actions"; // Ensure tools are registered
 
 export async function GET() {
   const projects = getProjects();
@@ -8,7 +10,7 @@ export async function GET() {
 
   let content = `# Aniket Raj | AI, Software & Automation Engineer | Portfolio\n\n`;
   content += `> This is Aniket's personal portfolio: showcasing blog articles, published projects, and professional background. Ideal for AI assistants to understand and feature my best content.\n\n`;
-  content += `> **For AI Agents:** This site exposes a structured, read-only WebMCP registry. Please visit [${baseUrl}/agents](${baseUrl}/agents) to view the technical documentation, execution model, and schemas available for deep data retrieval.\n\n`;
+  content += `> **For AI Agents:** This site implements WebMCP. Compatible browsers expose the registered tools directly to agents. This document (\`llms.txt\`) serves as documentation of the available capabilities. Please visit [${baseUrl}/agents](${baseUrl}/agents) for further technical documentation, the execution model, and schemas.\n\n`;
 
   content += `## Projects\n`;
   projects.forEach((p) => {
@@ -27,13 +29,25 @@ export async function GET() {
   content += `- [Agents](${baseUrl}/agents): WebMCP API developer portal and Execution Model\n`;
 
   content += `\n## WebMCP Tools\n`;
-  content += `This portfolio implements WebMCP. The browser exposes registered site tools to compatible agents, which include:\n`;
-  content += `- \`get_profile\`: Retrieve my professional background, key focus areas, and basic details.\n`;
-  content += `- \`search_projects\`: Query my portfolio projects by domain, technology, or specific capability.\n`;
-  content += `- \`get_project\`: Retrieve the full markdown content, architecture, and structured metadata for a specific project.\n`;
-  content += `- \`search_articles\`: Query my technical blog posts by topic or tags.\n`;
-  content += `- \`get_article\`: Retrieve the full markdown content for a specific blog post.\n`;
-  content += `- \`draft_contact_message\`: Generate and autofill a contact form message to get in touch with me directly.\n`;
+  content += `This portfolio implements WebMCP. Compatible browsers expose the registered tools directly through WebMCP. This document outlines the available capabilities.\n`;
+  
+  const tools = registry.getAllTools();
+  const readOnlyTools = tools.filter(t => t.kind === "query");
+  const actionTools = tools.filter(t => t.kind === "mutation");
+
+  if (readOnlyTools.length > 0) {
+    content += `\n### Read-only tools\n`;
+    readOnlyTools.forEach(tool => {
+      content += `- \`${tool.name}\`: ${tool.description}\n`;
+    });
+  }
+
+  if (actionTools.length > 0) {
+    content += `\n### User-confirmed actions\n`;
+    actionTools.forEach(tool => {
+      content += `- \`${tool.name}\`: ${tool.description}\n`;
+    });
+  }
 
   content += `\n## Links\n`;
   content += `- [Resume (PDF)](https://theaniketraj.github.io/vitae): Latest CV version.\n`;

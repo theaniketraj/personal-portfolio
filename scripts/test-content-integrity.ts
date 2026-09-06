@@ -59,12 +59,28 @@ async function runIntegrityChecks() {
     if (project.relatedProjects) {
       for (const rel of project.relatedProjects) {
         assert(projectSlugs.has(rel), `Project ${project.slug} has invalid related project: ${rel}`);
+        const relatedProject = projects.find(p => p.slug === rel);
+        if (relatedProject && !relatedProject.relatedProjects?.includes(project.slug)) {
+          console.warn(`Warning: Symmetry Mismatch. Project ${project.slug} references Project ${rel}, but not vice-versa.`);
+        }
       }
     }
     if (project.relatedArticles) {
       for (const rel of project.relatedArticles) {
         assert(articleSlugs.has(rel), `Project ${project.slug} has invalid related article: ${rel}`);
+        const relatedArticle = articles.find(a => a.slug === rel);
+        if (relatedArticle && !relatedArticle.relatedProjects?.includes(project.slug)) {
+          console.warn(`Warning: Symmetry Mismatch. Project ${project.slug} references Article ${rel}, but not vice-versa.`);
+        }
       }
+    }
+    
+    // Orphan check
+    const isOrphan = !project.featured && 
+      !projects.some(p => p.relatedProjects?.includes(project.slug)) &&
+      !articles.some(a => a.relatedProjects?.includes(project.slug));
+    if (isOrphan) {
+      console.warn(`Warning: Project ${project.slug} might be orphaned (not featured, not linked by any project/article).`);
     }
   }
 
@@ -77,12 +93,27 @@ async function runIntegrityChecks() {
     if (article.relatedProjects) {
       for (const rel of article.relatedProjects) {
         assert(projectSlugs.has(rel), `Article ${article.slug} has invalid related project: ${rel}`);
+        const relatedProject = projects.find(p => p.slug === rel);
+        if (relatedProject && !relatedProject.relatedArticles?.includes(article.slug)) {
+          console.warn(`Warning: Symmetry Mismatch. Article ${article.slug} references Project ${rel}, but not vice-versa.`);
+        }
       }
     }
     if (article.relatedArticles) {
       for (const rel of article.relatedArticles) {
         assert(articleSlugs.has(rel), `Article ${article.slug} has invalid related article: ${rel}`);
+        const relatedArticle = articles.find(a => a.slug === rel);
+        if (relatedArticle && !relatedArticle.relatedArticles?.includes(article.slug)) {
+          console.warn(`Warning: Symmetry Mismatch. Article ${article.slug} references Article ${rel}, but not vice-versa.`);
+        }
       }
+    }
+    
+    // Orphan check
+    const isOrphan = !projects.some(p => p.relatedArticles?.includes(article.slug)) &&
+      !articles.some(a => a.relatedArticles?.includes(article.slug));
+    if (isOrphan) {
+      console.warn(`Warning: Article ${article.slug} might be orphaned (not linked by any project/article).`);
     }
   }
 

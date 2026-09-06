@@ -7,6 +7,8 @@ import Footer from "./components/layout/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { WebMCPProvider } from "@/components/webmcp-provider";
 import { ContactDraftProvider } from "@/components/contact-draft-context";
+import { getProjects, getBlogPosts } from "@/lib/mdx";
+import { profileData } from "@/lib/content/profile";
 
 const inter = Inter({
   variable: "--font-inter-sans",
@@ -63,28 +65,15 @@ export default function RootLayout({
         image: "https://theaniketraj.netlify.app/icon.png",
         jobTitle: "Software Engineer",
         description:
-          "Software & AI Engineer passionate about building innovative and scalable solutions.",
+          "Software Engineer focused on systems, applied AI, developer tooling, and reliable software.",
         nationality: "Indian",
         knowsAbout: [
+          "Systems Programming",
           "Distributed Systems",
           "Software Architecture",
-          "Systems Design",
           "Developer Tooling",
-          "Web Development",
-          "Frontend Development",
-          "UI/UX Design",
-          "Kotlin",
-          "HTML",
-          "CSS",
-          "Python",
-          "Java",
-          "JavaScript",
-          "TypeScript",
-          "RESTful APIs",
-          "MySQL",
-          "Android",
-          "AI",
-          "Machine Learning",
+          "Applied AI",
+          "Android Development",
         ],
         sameAs: [
           "https://github.com/theaniketraj",
@@ -113,6 +102,9 @@ export default function RootLayout({
     ],
   };
 
+  const projectsMeta = getProjects();
+  const articlesMeta = getBlogPosts();
+
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
@@ -132,7 +124,7 @@ export default function RootLayout({
           <ContactDraftProvider>
             <Header />
             {children}
-            <WebMCPProvider />
+            <WebMCPProvider profileData={profileData} projectsMeta={projectsMeta} articlesMeta={articlesMeta} />
             <Footer />
           </ContactDraftProvider>
         </ThemeProvider>

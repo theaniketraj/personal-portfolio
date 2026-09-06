@@ -1,10 +1,10 @@
 import { z } from "zod";
 
 export const ProjectSchema = z.object({
-  title: z.string().optional(),
-  date: z.union([z.string(), z.date()]).optional(),
+  title: z.string().min(1),
+  date: z.union([z.string(), z.date()]),
   client: z.string().optional(),
-  description: z.string().optional(),
+  description: z.string().min(1),
   metaTitle: z.string().optional(),
   metaDescription: z.string().optional(),
   id: z.string().optional(),
@@ -14,14 +14,17 @@ export const ProjectSchema = z.object({
   roles: z.array(z.string()).optional(),
   image: z.string().optional(),
   // WebMCP Semantic Taxonomy
-  domains: z.array(z.string()).optional(),
-  technologies: z.array(z.string()).optional(),
-  engineeringAreas: z.array(z.string()).optional(),
-  capabilities: z.array(z.string()).optional(),
-  status: z.enum(["active", "completed", "archived"]).optional(),
+  domains: z.array(z.string()).min(1),
+  technologies: z.array(z.string()).min(1),
+  engineeringAreas: z.array(z.string()).min(1),
+  capabilities: z.array(z.string()).min(1),
+  status: z.enum(["active", "completed", "archived"]),
   // Relationships
   relatedProjects: z.array(z.string()).optional(),
   relatedArticles: z.array(z.string()).optional(),
+}).refine(data => !data.featuredOrder || data.featured, {
+  message: "featuredOrder should only be set if featured is true",
+  path: ["featuredOrder"],
 });
 
 export type ProjectMeta = Omit<
@@ -41,17 +44,17 @@ export interface ProjectData {
 }
 
 export const BlogPostSchema = z.object({
-  title: z.string().optional(),
-  date: z.union([z.string(), z.date()]).optional(),
-  excerpt: z.string().optional(),
+  title: z.string().min(1),
+  date: z.union([z.string(), z.date()]),
+  excerpt: z.string().min(1),
   author: z.string().optional(),
   metaTitle: z.string().optional(),
   metaDescription: z.string().optional(),
   id: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).min(1),
   // WebMCP Semantic Taxonomy
-  topics: z.array(z.string()).optional(),
-  contentType: z.array(z.string()).optional(),
+  topics: z.array(z.string()).min(1),
+  contentType: z.array(z.string()).min(1),
   // Relationships
   relatedProjects: z.array(z.string()).optional(),
   relatedArticles: z.array(z.string()).optional(),

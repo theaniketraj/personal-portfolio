@@ -20,12 +20,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm run test:content && npm run test:webmcp && next build",
     "start": "next start",
     "lint": "eslint .",
     "test:webmcp": "tsx scripts/test-webmcp-registry.ts",
     "test:content": "tsx scripts/test-content-integrity.ts",
-    "test:browser": "tsx scripts/test-browser-webmcp.ts"
+    "test:webmcp-simulation": "tsx scripts/test-webmcp-registration-simulation.ts"
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "^5.15.13",
