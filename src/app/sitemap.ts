@@ -9,12 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
   }));
 
-  // Dynamic Blog routes
-  const blogs = getBlogPosts().map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date || new Date()).toISOString().split("T")[0],
-  }));
-
   // Dynamic Project routes
   const projects = getProjects().map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
@@ -24,5 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       .split("T")[0],
   }));
 
-  return [...routes, ...blogs, ...projects];
+  // Dynamic Blog routes
+  const blogs = getBlogPosts().map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date || new Date()).toISOString().split("T")[0],
+  }));
+
+  return [...routes, ...projects, ...blogs];
 }

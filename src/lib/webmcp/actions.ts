@@ -34,7 +34,14 @@ import {
 import type { Profile } from "@/lib/content/profile";
 
 // Register: get_profile
-registry.registerTool<unknown, Profile & { experienceCount: number; projectCount: number; articleCount: number }>({
+registry.registerTool<
+  unknown,
+  Profile & {
+    experienceCount: number;
+    projectCount: number;
+    articleCount: number;
+  }
+>({
   name: "get_profile",
   title: "Get Profile",
   description: "Get Aniket's profile, including about me and core links",
@@ -45,7 +52,10 @@ registry.registerTool<unknown, Profile & { experienceCount: number; projectCount
   kind: "query",
   toolVersion: 1,
   handler: () => {
-    return PortfolioService.getProfile(getProjects().length, getBlogPosts().length);
+    return PortfolioService.getProfile(
+      getProjects().length,
+      getBlogPosts().length,
+    );
   },
 });
 
@@ -53,7 +63,8 @@ registry.registerTool<unknown, Profile & { experienceCount: number; projectCount
 registry.registerTool({
   name: "search_projects",
   title: "Search Projects",
-  description: "Search Aniket's projects by domain, technology, or status. Returns a summary of each project.",
+  description:
+    "Search Aniket's projects by domain, technology, or status. Returns a summary of each project.",
   schema: SearchProjectsSchema,
   jsonSchema: SearchProjectsJSONSchema,
   outputSchema: SearchProjectsOutputSchema as any,
@@ -69,7 +80,8 @@ registry.registerTool({
 registry.registerTool({
   name: "get_project",
   title: "Get Project Metadata",
-  description: "Retrieve concise structured information about a specific project, including its purpose, technologies, domains, engineering areas, status, and resources. Use this after identifying a project with search_projects.",
+  description:
+    "Retrieve concise structured information about a specific project, including its purpose, technologies, domains, engineering areas, status, and resources. Use this after identifying a project with search_projects.",
   schema: GetProjectSchema,
   jsonSchema: GetProjectJSONSchema,
   outputSchema: GetProjectOutputSchema as any,
@@ -77,7 +89,11 @@ registry.registerTool({
   kind: "query",
   toolVersion: 1,
   handler: (args) => {
-    const project = PortfolioService.getProjectSummary(getProjects(), getBlogPosts(), args.slug);
+    const project = PortfolioService.getProjectSummary(
+      getProjects(),
+      getBlogPosts(),
+      args.slug,
+    );
     if (!project) return { error: `Project not found: ${args.slug}` };
     return project;
   },
@@ -87,7 +103,8 @@ registry.registerTool({
 registry.registerTool({
   name: "get_project_content",
   title: "Get Project Content",
-  description: "Get full markdown content and details for a specific project by slug.",
+  description:
+    "Get full markdown content and details for a specific project by slug.",
   schema: GetProjectSchema,
   jsonSchema: GetProjectJSONSchema,
   outputSchema: GetProjectContentOutputSchema as any,
@@ -130,7 +147,11 @@ registry.registerTool({
   kind: "query",
   toolVersion: 1,
   handler: (args) => {
-    const article = PortfolioService.getArticleSummary(getProjects(), getBlogPosts(), args.slug);
+    const article = PortfolioService.getArticleSummary(
+      getProjects(),
+      getBlogPosts(),
+      args.slug,
+    );
     if (!article) return { error: `Article not found: ${args.slug}` };
     return article;
   },
@@ -140,7 +161,8 @@ registry.registerTool({
 registry.registerTool({
   name: "get_article_content",
   title: "Get Article Content",
-  description: "Get full markdown content and details for a specific article by slug.",
+  description:
+    "Get full markdown content and details for a specific article by slug.",
   schema: GetArticleSchema,
   jsonSchema: GetArticleJSONSchema,
   outputSchema: GetArticleContentOutputSchema as any,
@@ -159,7 +181,8 @@ registry.registerTool({
 registry.registerTool({
   name: "find_relevant_work",
   title: "Find Relevant Work",
-  description: "Deterministic relevance matching to find projects and articles based on roles, skills, and domains.",
+  description:
+    "Deterministic relevance matching to find projects and articles based on roles, skills, and domains.",
   schema: FindRelevantWorkSchema,
   jsonSchema: FindRelevantWorkJSONSchema,
   outputSchema: FindRelevantWorkOutputSchema as any,
@@ -167,7 +190,11 @@ registry.registerTool({
   kind: "query",
   toolVersion: 1,
   handler: (args) => {
-    return PortfolioService.findRelevantWork(getProjects(), getBlogPosts(), args);
+    return PortfolioService.findRelevantWork(
+      getProjects(),
+      getBlogPosts(),
+      args,
+    );
   },
 });
 
@@ -186,7 +213,8 @@ registry.registerTool({
   handler: (args) => {
     return {
       success: true,
-      message: "Contact form draft populated successfully. The user must now review and send it.",
+      message:
+        "Contact form draft populated successfully. The user must now review and send it.",
       draftedData: args,
     };
   },

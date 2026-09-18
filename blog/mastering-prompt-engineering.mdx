@@ -6,6 +6,8 @@ excerpt: >-
   chain of thought to advanced methods and hybrid workflows that empower
   developers to automate tasks, design systems, debug code, and boost
   productivity with AI.
+metaTitle: "Mastering Prompt Engineering ‣ Techniques & Hybrid Workflows for Developers"
+metaDescription: "Dive deep into prompt engineering from core techniques like zero-shot to advanced methods and hybrid workflows that empower developers to automate tasks, design systems, debug code, and boost productivity with AI."
 tags:
   - Prompt Engineering
   - AI
@@ -38,14 +40,12 @@ As AI systems become integral to software development workflows drafting code, d
 - **Zero-Shot**: Direct instruction without examples.
 
 ```text
-“Summarize the following API docs in bullet points.”
-
+Summarize the following API docs in bullet points.
 ```
 
 **Few-Shot**: Provide input/output examples to “show” the model the desired format
 
 ```text
-
 Example 1: Input: “…”, Output: “…”
 Example 2: Input: “…”, Output: “…”
 Now summarize this new API doc.
@@ -64,7 +64,7 @@ Now summarize this new API doc.
 Encourage the model to **think step-by-step** before answering:
 
 ```text
-“Think step-by-step: how would you optimize React rendering for large tables?”
+Think step-by-step: how would you optimize React rendering for large tables?
 ```
 
 ### 2.4 Formatting & Structure
@@ -128,7 +128,7 @@ You are a senior engineer with tool access.
 **Combine:** Step-Back → Tree-of-Thoughts → Self-Consistency
 
 ```text
-Step-Back: “Which frontend perf concepts apply to React dashboards?”
+Step-Back: Which frontend perf concepts apply to React dashboards?
 ToT: Branch 1 – virtualization; Branch 2 – code splitting; Branch 3 – memoization.
 Self-Consistency: Summarize each approach thrice, pick the most frequent insights.
 → Action plan with prioritized optimizations.
@@ -139,7 +139,7 @@ Self-Consistency: Summarize each approach thrice, pick the most frequent insight
 **Combine:** Meta-Prompt → Prompt-Refinement-Loop → Reflexion
 
 ```text
-Meta-Prompt: “Suggest 3 ways to ask about the Observer pattern for Java.”
+Meta-Prompt: Suggest 3 ways to ask about the Observer pattern for Java.
 Choose one variant; ask for explanation + code skeleton.
 AI self-evaluates: “Is this clear? Add UML and edge cases.”
 AI refines: Provides final polished tutorial.
@@ -176,7 +176,6 @@ Now: [your task].
 ### Advanced (Hybrid)
 
 ```text
-
 Q: [complex problem].
 Self-Ask: List and answer clarifying questions.
 CoT-SC: Draft multiple reasoning chains; vote on best.

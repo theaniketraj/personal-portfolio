@@ -28,7 +28,11 @@ interface WebMCPProviderProps {
   articlesMeta: BlogPostMeta[];
 }
 
-export const WebMCPProvider = ({ profileData, projectsMeta, articlesMeta }: WebMCPProviderProps) => {
+export const WebMCPProvider = ({
+  profileData,
+  projectsMeta,
+  articlesMeta,
+}: WebMCPProviderProps) => {
   const pathname = usePathname();
   const { setDraftData } = useContactDraft();
 
@@ -62,7 +66,7 @@ export const WebMCPProvider = ({ profileData, projectsMeta, articlesMeta }: WebM
                     try {
                       const safeArgs = args || {};
                       const signal = options?.signal;
-                      
+
                       if (signal?.aborted) {
                         const error = new Error("Aborted");
                         error.name = "AbortError";
@@ -90,37 +94,61 @@ export const WebMCPProvider = ({ profileData, projectsMeta, articlesMeta }: WebM
                       let result: unknown;
                       switch (tool.name) {
                         case "get_profile":
-                          result = PortfolioService.getProfile(projectsMeta.length, articlesMeta.length);
+                          result = PortfolioService.getProfile(
+                            projectsMeta.length,
+                            articlesMeta.length,
+                          );
                           break;
                         case "search_projects": {
-                          const parsedArgs = SearchProjectsSchema.parse(safeArgs);
-                          result = PortfolioService.searchProjects(projectsMeta, parsedArgs);
+                          const parsedArgs =
+                            SearchProjectsSchema.parse(safeArgs);
+                          result = PortfolioService.searchProjects(
+                            projectsMeta,
+                            parsedArgs,
+                          );
                           break;
                         }
                         case "get_project": {
                           const parsedArgs = GetProjectSchema.parse(safeArgs);
-                          result = PortfolioService.getProjectSummary(projectsMeta, articlesMeta, parsedArgs.slug);
+                          result = PortfolioService.getProjectSummary(
+                            projectsMeta,
+                            articlesMeta,
+                            parsedArgs.slug,
+                          );
                           break;
                         }
                         case "get_project_content":
                           result = await executeGetProjectContent(safeArgs);
                           break;
                         case "search_articles": {
-                          const parsedArgs = SearchArticlesSchema.parse(safeArgs);
-                          result = PortfolioService.searchArticles(articlesMeta, parsedArgs);
+                          const parsedArgs =
+                            SearchArticlesSchema.parse(safeArgs);
+                          result = PortfolioService.searchArticles(
+                            articlesMeta,
+                            parsedArgs,
+                          );
                           break;
                         }
                         case "get_article": {
                           const parsedArgs = GetArticleSchema.parse(safeArgs);
-                          result = PortfolioService.getArticleSummary(projectsMeta, articlesMeta, parsedArgs.slug);
+                          result = PortfolioService.getArticleSummary(
+                            projectsMeta,
+                            articlesMeta,
+                            parsedArgs.slug,
+                          );
                           break;
                         }
                         case "get_article_content":
                           result = await executeGetArticleContent(safeArgs);
                           break;
                         case "find_relevant_work": {
-                          const parsedArgs = FindRelevantWorkSchema.parse(safeArgs);
-                          result = PortfolioService.findRelevantWork(projectsMeta, articlesMeta, parsedArgs);
+                          const parsedArgs =
+                            FindRelevantWorkSchema.parse(safeArgs);
+                          result = PortfolioService.findRelevantWork(
+                            projectsMeta,
+                            articlesMeta,
+                            parsedArgs,
+                          );
                           break;
                         }
                         case "draft_contact_message":

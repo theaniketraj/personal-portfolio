@@ -3,14 +3,15 @@ import { ToolScope } from "./registry";
 export function shouldRegisterToolForRoute(
   toolName: string,
   toolScope: ToolScope,
-  pathname: string
+  pathname: string,
 ): boolean {
   if (toolScope === "site") return true;
 
   if (toolScope === "project-route") {
     const isProjectList = pathname === "/projects";
     const isProjectDetail =
-      pathname.startsWith("/projects/") && pathname.length > "/projects/".length;
+      pathname.startsWith("/projects/") &&
+      pathname.length > "/projects/".length;
 
     if (toolName === "search_projects" && !isProjectList) return false;
     if (toolName.startsWith("get_project") && !isProjectDetail) return false;

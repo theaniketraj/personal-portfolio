@@ -30,9 +30,9 @@ const Header = () => {
           <div className="flex flex-col xs:flex-row items-center xs:items-start justify-center xs:justify-between max-w-3xl mx-auto gap-10 xs:gap-3 px-4 sm:px-7 pt-10 sm:pt-14 pb-8 sm:pb-12">
             <div className="flex flex-col gap-2 sm:gap-3 items-center text-center xs:items-start">
               <Link href="/" aria-label="Go to homepage">
-                <h1 className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+                <span className="text-2xl sm:text-3xl lg:text-[32px] font-normal text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                   Aniket Raj
-                </h1>
+                </span>
               </Link>
               <p className="text-violet-700 dark:text-violet-400 font-normal">
                 SDE · Systems & AI
@@ -80,12 +80,12 @@ const Header = () => {
                   <span className="flex items-center gap-3 bg-primary hover:bg-[linear-gradient(96.09deg,#9282F8_12.17%,#F3CA4D_90.71%)] py-2.5 px-5 rounded-full transition-all">
                     <Image
                       src="/images/icon/spark-icon.svg"
-                      alt="spark-icon"
+                      alt=""
                       width={14}
                       height={14}
-                      className="dark:invert group-hover:invert-0"
+                      className="w-auto h-auto dark:invert group-hover:invert-0"
                     />
-                    <span className="text-sm sm:text-base font-semibold text-primary-foreground group-hover:text-white">
+                    <span className="text-sm sm:text-base font-semibold text-primary-foreground group-hover:text-white ">
                       Get in touch
                     </span>
                   </span>

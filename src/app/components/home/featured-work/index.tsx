@@ -33,7 +33,7 @@ const FeaturedWork = () => {
           <div className="border-t border-primary/10">
             <HardwareAnimated animation="slideInUp">
               <div className="flex flex-col max-w-3xl mx-auto py-10 px-4 sm:px-7">
-                <h2 className="text-sm tracking-[2px] text-primary uppercase font-medium">
+                <h2 className="text-sm tracking-[2px] text-primary uppercase font-medium text-center sm:text-left">
                   Featured Work
                 </h2>
               </div>
@@ -60,6 +60,7 @@ const FeaturedWork = () => {
                           alt={project.title || "Project thumbnail"}
                           width={490}
                           height={300}
+                          priority={index < 2}
                           className="w-full h-auto group-hover:scale-105 transition-all duration-300 ease-in-out"
                         />
                       </Link>

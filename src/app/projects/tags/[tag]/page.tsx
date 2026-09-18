@@ -94,9 +94,9 @@ export default async function ProjectTagPage({
                           </span>
                         </div>
                         <Link href={`/projects/${project.slug}`}>
-                          <h3 className="text-xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                          <h2 className="text-xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                             {project.title}
-                          </h3>
+                          </h2>
                         </Link>
                         <p className="text-sm text-secondary line-clamp-3">
                           {project.description}
@@ -116,6 +116,7 @@ export default async function ProjectTagPage({
                             aria-hidden="true"
                             width={20}
                             height={20}
+                            priority={index < 4}
                             className="dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
                           />
                         </Link>

@@ -30,21 +30,21 @@ export async function GET() {
 
   content += `\n## WebMCP Tools\n`;
   content += `This portfolio implements WebMCP. Compatible browsers expose the registered tools directly through WebMCP. This document outlines the available capabilities.\n`;
-  
+
   const tools = registry.getAllTools();
-  const readOnlyTools = tools.filter(t => t.kind === "query");
-  const actionTools = tools.filter(t => t.kind === "mutation");
+  const readOnlyTools = tools.filter((t) => t.kind === "query");
+  const actionTools = tools.filter((t) => t.kind === "mutation");
 
   if (readOnlyTools.length > 0) {
     content += `\n### Read-only tools\n`;
-    readOnlyTools.forEach(tool => {
+    readOnlyTools.forEach((tool) => {
       content += `- \`${tool.name}\`: ${tool.description}\n`;
     });
   }
 
   if (actionTools.length > 0) {
     content += `\n### User-confirmed actions\n`;
-    actionTools.forEach(tool => {
+    actionTools.forEach((tool) => {
       content += `- \`${tool.name}\`: ${tool.description}\n`;
     });
   }

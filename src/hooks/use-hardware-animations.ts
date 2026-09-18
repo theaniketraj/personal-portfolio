@@ -62,7 +62,6 @@ export const useScrollAnimation = <T extends HTMLElement>(
   return { elementRef, isVisible, hasAnimated };
 };
 
-
 // Reduced Motion Detection
 export const useReducedMotion = () => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -83,5 +82,3 @@ export const useReducedMotion = () => {
 
   return prefersReducedMotion;
 };
-
-

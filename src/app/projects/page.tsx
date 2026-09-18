@@ -2,11 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { getProjects } from "@/lib/mdx";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: "Technical Projects & Frameworks",
   description:
     "Explore technical projects, open-source systems, and AI frameworks built by Aniket Raj.",
   alternates: {
@@ -25,16 +24,18 @@ export default function ProjectsPage() {
             <HardwareAnimated animation="slideInUp">
               <div className="flex flex-col max-w-3xl mx-auto px-4 sm:px-7 py-12 md:py-16 gap-6">
                 <div>
-                  <p className="text-sm tracking-[2px] text-primary uppercase font-medium mb-2">
+                  <p className="text-sm tracking-[2px] text-primary uppercase font-medium mb-2 font-(family-name:--font-space-grotesk)">
                     Portfolio Directory
                   </p>
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-primary">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-primary font-(family-name:--font-space-grotesk)">
                     Technical Projects &amp; Frameworks
                   </h1>
                 </div>
-                <p className="text-secondary text-base leading-relaxed">
-                  A structured collection of open-source libraries, AI systems,
-                  developer tooling, and IoT applications.
+                <p className="text-secondary text-base leading-relaxed font-(family-name:--font-space-grotesk)">
+                  A growing collection of things I’ve built, explored, and
+                  brought to life through code. Some started as ideas, some as
+                  problems, and others simply as things I wanted to understand
+                  by building them.
                 </p>
               </div>
             </HardwareAnimated>
@@ -60,9 +61,9 @@ export default function ProjectsPage() {
                           </span>
                         </div>
                         <Link href={`/projects/${project.slug}`}>
-                          <h3 className="text-xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                          <h2 className="text-xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                             {project.title}
-                          </h3>
+                          </h2>
                         </Link>
                         <p className="text-sm text-secondary line-clamp-3">
                           {project.description}
@@ -81,6 +82,7 @@ export default function ProjectsPage() {
                             aria-hidden="true"
                             width={20}
                             height={20}
+                            priority={index < 4}
                             className="dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
                           />
                         </Link>

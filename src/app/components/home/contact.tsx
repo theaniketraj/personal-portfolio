@@ -60,10 +60,18 @@ export default function Contact() {
     if (draftData) {
       const form = document.forms.namedItem("sign-up-form");
       if (form) {
-        if (draftData.firstName) (form.elements.namedItem("firstName") as HTMLInputElement).value = draftData.firstName;
-        if (draftData.lastName) (form.elements.namedItem("lastName") as HTMLInputElement).value = draftData.lastName;
-        if (draftData.email) (form.elements.namedItem("email") as HTMLInputElement).value = draftData.email;
-        if (draftData.message) (form.elements.namedItem("message") as HTMLTextAreaElement).value = draftData.message;
+        if (draftData.firstName)
+          (form.elements.namedItem("firstName") as HTMLInputElement).value =
+            draftData.firstName;
+        if (draftData.lastName)
+          (form.elements.namedItem("lastName") as HTMLInputElement).value =
+            draftData.lastName;
+        if (draftData.email)
+          (form.elements.namedItem("email") as HTMLInputElement).value =
+            draftData.email;
+        if (draftData.message)
+          (form.elements.namedItem("message") as HTMLTextAreaElement).value =
+            draftData.message;
       }
     }
   }, [draftData]);
@@ -207,7 +215,7 @@ export default function Contact() {
                         id="firstName"
                         name="firstName"
                         required
-                        placeholder="John"
+                        placeholder="Tony"
                         className="w-full flex h-12 rounded-xl border border-input bg-background/50 px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 hover:bg-background/80"
                       />
                     </div>
@@ -222,7 +230,7 @@ export default function Contact() {
                         type="text"
                         id="lastName"
                         name="lastName"
-                        placeholder="Doe"
+                        placeholder="Stark"
                         className="w-full flex h-12 rounded-xl border border-input bg-background/50 px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 hover:bg-background/80"
                       />
                     </div>
@@ -241,7 +249,7 @@ export default function Contact() {
                         id="email"
                         name="email"
                         required
-                        placeholder="john@example.com"
+                        placeholder="tonystark@jarvis.com"
                         className="w-full flex h-12 rounded-xl border border-input bg-background/50 px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 hover:bg-background/80"
                       />
                     </div>

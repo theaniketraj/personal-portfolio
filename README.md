@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <h1>Aniket Raj - Personal Portfolio & Blog</h1>
+  <h1>Personal Portfolio & Blog</h1>
   <p>
     <strong>A high-performance, accessible, and beautifully designed personal website built with Next.js 16, React 19, and Tailwind CSS v4.</strong>
   </p>
@@ -24,7 +24,7 @@ It is engineered from the ground up for **speed**, **accessibility**, and **mode
 - **Top-Tier Accessibility (a11y):** Fully keyboard navigable with strict semantic HTML, intelligent focus trapping, explicit ARIA labels, and logical heading hierarchies.
 - **Hardware-Accelerated Animations:** Smooth page transitions, entry animations, and interactive micro-interactions powered by CSS hardware acceleration and `framer-motion`.
 - **Theme Support:** Clean, beautiful Light and Dark modes with seamless transition toggling.
-- **Modern Stack:** Built on the cutting-edge of the web—Next.js 16 (Turbopack), React 19, and Tailwind CSS v4.
+- **Modern Stack:** Built on the cutting-edge of the web. Next.js (Turbopack), React, and Tailwind CSS.
 
 ## WebMCP & Agent Interfaces
 
@@ -41,9 +41,9 @@ My portfolio implements the **Web Model Context Protocol (WebMCP)**, exposing a 
 
 | Category                | Technologies                             |
 | ----------------------- | ---------------------------------------- |
-| **Framework**           | Next.js 16.3 (App Router)                |
-| **Library**             | React 19                                 |
-| **Styling**             | Tailwind CSS v4, `tw-animate-css`        |
+| **Framework**           | Next.js (App Router)                     |
+| **Library**             | React                                    |
+| **Styling**             | Tailwind CSS, `tw-animate-css`           |
 | **Content**             | MDX, `gray-matter`, `next-mdx-remote`    |
 | **Syntax Highlighting** | `rehype-pretty-code`, `shiki`            |
 | **Animations**          | Framer Motion, CSS hardware acceleration |
@@ -56,7 +56,7 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-- Node.js (24.x recommended)
+- Node.js
 - `npm`, `yarn`, or `pnpm`
 
 ### Installation
@@ -83,7 +83,7 @@ To get a local copy up and running, follow these simple steps.
    _This uses Turbopack by default for lightning-fast HMR._
 
 4. **Open your browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
+   Navigate to <http://localhost:3000> to see the application running.
 
 ## Project Structure
 

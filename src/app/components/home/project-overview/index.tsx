@@ -28,7 +28,7 @@ const ProjectOverview = () => {
             {/* Projects Section */}
             <HardwareAnimated animation="slideInUp">
               <div className="flex flex-col xs:flex-row items-start gap-5 xs:gap-10 md:gap-24 lg:gap-12">
-                <h2 className="max-w-fit lg:max-w-2xs w-full text-sm tracking-[2px] text-primary uppercase font-medium pt-1">
+                <h2 className="w-full xs:w-28 sm:w-36 md:w-48 shrink-0 text-sm tracking-[2px] text-primary uppercase font-medium pt-1">
                   Projects
                 </h2>
                 <div className="flex flex-col gap-4 flex-1">
@@ -70,7 +70,7 @@ const ProjectOverview = () => {
             {/* Blogs Section */}
             <HardwareAnimated animation="slideInUp" delay={0.15}>
               <div className="flex flex-col xs:flex-row items-start gap-5 xs:gap-10 md:gap-24 lg:gap-12">
-                <h2 className="max-w-fit lg:max-w-2xs w-full text-sm tracking-[2px] text-primary uppercase font-medium pt-1">
+                <h2 className="w-full xs:w-28 sm:w-36 md:w-48 shrink-0 text-sm tracking-[2px] text-primary uppercase font-medium pt-1">
                   Blogs
                 </h2>
                 <div className="flex flex-col gap-4 flex-1">

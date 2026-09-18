@@ -1,12 +1,14 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
-import Image from "next/image";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { MdxPre } from "./mdx-pre";
+import { TLDR } from "./mdx-callout";
+import { ArrowUpRight } from "lucide-react";
 
 const components = {
+  TLDR,
   h1: (props: any) => (
     <h1
       {...props}
@@ -138,13 +140,10 @@ const components = {
           className="inline-flex items-center gap-2 px-4 py-2 my-1 rounded-full border border-primary/20 bg-primary/5 hover:bg-violet-600 dark:hover:bg-violet-500 text-primary hover:text-white font-medium text-sm transition-all duration-200 shadow-xs no-underline group"
         >
           <span>{cleanText}</span>
-          <Image
-            src="/images/icon/tile-arrow-icon.svg"
-            alt="arrow"
-            width={16}
-            height={16}
-            className="dark:invert group-hover:invert group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
-          />
+          <span className="relative flex items-center justify-center overflow-hidden w-4 h-4">
+            <ArrowUpRight className="absolute w-4 h-4 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+            <ArrowUpRight className="absolute w-4 h-4 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
+          </span>
         </a>
       );
     }
@@ -198,7 +197,7 @@ export function MDXContent({ source }: Readonly<MDXContentProps>) {
                     light: "github-light",
                     dark: "github-dark",
                   },
-                  keepBackground: true,
+                  keepBackground: false,
                 },
               ],
             ],

@@ -5,6 +5,8 @@ excerpt: >-
   Learn how to implement the MVVM architectural pattern in Kotlin for Android.
   This guide covers Model, View, ViewModel, LiveData, Coroutines, Jetpack
   components, Dependency Injection, and best practices.
+metaTitle: "Kotlin MVVM ‣ A Comprehensive Guide to Clean Architecture in Android"
+metaDescription: "Learn how to implement the MVVM architectural pattern in Kotlin for Android. This guide covers Model, View, ViewModel, LiveData, Coroutines and Jetpack."
 tags:
   - Kotlin
   - Android
@@ -15,6 +17,8 @@ topics:
   - Architecture
 contentType:
   - Technical Guide
+relatedProjects:
+  - project-karl
 ---
 
 Kotlin’s rise in Android development has brought a renewed emphasis on clean architecture and separation of concerns. Among the architectural patterns available, MVVM (Model–View–ViewModel) stands out as a robust, testable, and lifecycle‑aware approach. In this post, we’ll explore everything you need to know to build Android apps with Kotlin and MVVM: why it matters, how it works, and a step‑by‑step example of a simple to‑do list app.
@@ -37,19 +41,20 @@ At its core, MVVM divides your code into three main layers:
 
 Diagrammatically, it looks like this:
 
-```pgsql
-┌──────────┐    observes LiveData/Flow   ┌────────────┐
-│   View   │◀───────────────────────────┤ ViewModel  │
-│(Activity/│    invokes ViewModel methods└────────────┘
-│ Fragment)│────────────────────────────►       │
-└──────────┘                                    │ calls
-▲                                               ▼
-│                                         ┌──────────┐
-│                                         │  Model   │
-│                                         │(Repos,   │
-│                                         │ DataSrc) │
-│                                         └──────────┘
-└───────── user actions ────────────────────────▲
+```text
+┌──────────────┐    observes LiveData/Flow      ┌──────────────┐
+│     View     │<───────────────────────────────┤  ViewModel   │
+│  (Activity/  │                                │              │
+│   Fragment)  │───────────────────────────────>│              │
+└──────────────┘    invokes ViewModel methods   └──────────────┘
+                                                    ▲      │
+                                            returns │      │ calls
+                                            data    │      ▼
+                                                ┌──────────────┐
+                                                │    Model     │
+                                                │   (Repos,    │
+                                                │   DataSrc)   │
+                                                └──────────────┘
 ```
 
 ### Why MVVM for Android?
@@ -84,9 +89,9 @@ Define domain entities. For a to‑do app, for example:
 
 ```kotlin
 data class Todo(
-     val id: Int = 0,
-     val title: String,
-     val isCompleted: Boolean = false
+    val id: Int = 0,
+    val title: String,
+    val isCompleted: Boolean = false
 )
 ```
 
@@ -96,28 +101,22 @@ Provide a clean API for data operations. They may combine multiple data sources�
 
 ```kotlin
 class TodoRepository(private val todoDao: TodoDao) {
-     // Expose Flow<List> by mapping Room entities → domain models
-     val allTodos: Flow<List> = todoDao.getAllTodos()
-         .map { list ->
-             list. Map { entity ->
-                 Todo(
-                      id = entity.id,
-                      title = entity.title,
-                      isCompleted = entity.isCompleted
-                 )
-             }
-         }
-         suspend fun addTodo(todo: Todo) {
-           todoDao.insert(TodoEntity(title = todo.title, isCompleted = todo.isCompleted))
-         }
-         suspend fun updateTodo(todo: Todo) {
-              todoDao.update(
-                  TodoEntity(id = todo.id, title = todo.title, isCompleted = todo.isCompleted)
-              )
-         }
-         suspend fun deleteTodo(todo: Todo) {
-              todoDao.delete(TodoEntity(id = todo.id, title = todo.title, isCompleted = todo.isCompleted))
-         }
+    // Expose Flow<List> by mapping Room entities → domain models
+    val allTodos: Flow<List> =
+            todoDao.getAllTodos().map { list ->
+                list.Map { entity ->
+                    Todo(id = entity.id, title = entity.title, isCompleted = entity.isCompleted)
+                }
+            }
+    suspend fun addTodo(todo: Todo) {
+        todoDao.insert(TodoEntity(title = todo.title, isCompleted = todo.isCompleted))
+    }
+    suspend fun updateTodo(todo: Todo) {
+        todoDao.update(TodoEntity(id = todo.id, title = todo.title, isCompleted = todo.isCompleted))
+    }
+    suspend fun deleteTodo(todo: Todo) {
+        todoDao.delete(TodoEntity(id = todo.id, title = todo.title, isCompleted = todo.isCompleted))
+    }
 }
 ```
 
@@ -141,16 +140,12 @@ data class TodoEntity(
 ```kotlin
 @Dao
 interface TodoDao {
-    @Query("SELECT * FROM todos ORDER BY id DESC")
-    fun getAllTodos(): Flow<List>
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(todo: TodoEntity)
+    @Query("SELECT * FROM todos ORDER BY id DESC") fun getAllTodos(): Flow<List>
+    @Insert(onConflict = OnConflictStrategy.REPLACE) suspend fun insert(todo: TodoEntity)
 
-    @Update
-    suspend fun update(todo: TodoEntity)
+    @Update suspend fun update(todo: TodoEntity)
 
-    @Delete
-    suspend fun delete(todo: TodoEntity)
+    @Delete suspend fun delete(todo: TodoEntity)
 }
 ```
 
@@ -165,61 +160,50 @@ A `ViewModel` subclass:
 - Exposes functions corresponding to user actions, like `addTodo()`, `toggleTodoCompletion()`, or `deleteTodo()`.
 
 ```kotlin
-class TodoViewModel(
-   private val repository: TodoRepository
-) : ViewModel() {
+class TodoViewModel(private val repository: TodoRepository) : ViewModel() {
     // Define a data class representing the combined UI state
     data class UiState(
-       val todos: List<Todo> = emptyList(),
-       val isLoading: Boolean = false,
-       val error: String? = null
-
+            val todos: List<Todo> = emptyList(),
+            val isLoading: Boolean = false,
+            val error: String? = null
     )
 
-   // Backing MutableStateFlow to hold UI state
-   private val _uiState = MutableStateFlow(UiState(isLoading = true))
-   val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+    // Backing MutableStateFlow to hold UI state
+    private val _uiState = MutableStateFlow(UiState(isLoading = true))
+    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
-   init {
-    observeAllTodos()
-   }
+    init {
+        observeAllTodos()
+    }
 
-   private fun observeAllTodos() {
-       repository.allTodos
-          .onStart { _uiState.value = _uiState.value.copy(isLoading = true) }
-          .catch { e ->
-              _uiState.value = _uiState.value.copy(
-                  isLoading = false,
-                  error = e.localizedMessage
-              )
-          }
-          .onEach { list ->
-              _uiState.value = _uiState.value.copy(
-                   todos = list,
-                   isLoading = false,
-                   error = null
-              )
-           }
-          .launchIn(viewModelScope)
+    private fun observeAllTodos() {
+        repository
+                .allTodos
+                .onStart { _uiState.value = _uiState.value.copy(isLoading = true) }
+                .catch { e ->
+                    _uiState.value =
+                            _uiState.value.copy(isLoading = false, error = e.localizedMessage)
+                }
+                .onEach { list ->
+                    _uiState.value =
+                            _uiState.value.copy(todos = list, isLoading = false, error = null)
+                }
+                .launchIn(viewModelScope)
     }
 
     fun addNewTodo(title: String) {
-       viewModelScope.launch {
-           repository.addTodo(Todo(title = title))
-           // No need to manually refresh: Flow emission updates UI
-       }
+        viewModelScope.launch {
+            repository.addTodo(Todo(title = title))
+            // No need to manually refresh: Flow emission updates UI
+        }
     }
 
     fun toggleTodoCompletion(todo: Todo) {
-       viewModelScope.launch {
-           repository.updateTodo(todo.copy(isCompleted = !todo.isCompleted))
-       }
+        viewModelScope.launch { repository.updateTodo(todo.copy(isCompleted = !todo.isCompleted)) }
     }
 
     fun deleteTodo(todo: Todo) {
-       viewModelScope.launch {
-           repository.deleteTodo(todo)
-       }
+        viewModelScope.launch { repository.deleteTodo(todo) }
     }
 }
 ```
@@ -238,14 +222,14 @@ If you want to persist certain ViewModel fields across process death (e.g., a pa
 
 ```kotlin
 class FormViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
-   companion object {
-   private const val KEY_INPUT = "user_input"
-}
-var userInput: String?
-    get() = savedStateHandle.get(KEY_INPUT)
-    set(value) {
-        savedStateHandle.set(KEY_INPUT, value)
+    companion object {
+        private const val KEY_INPUT = "user_input"
     }
+    var userInput: String?
+        get() = savedStateHandle.get(KEY_INPUT)
+        set(value) {
+            savedStateHandle.set(KEY_INPUT, value)
+        }
 }
 ```
 
@@ -271,70 +255,25 @@ Here’s a concise example using a Fragment and Data Binding:
 ```xml
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <variable
-            name="viewModel"
-            type="com.example.app.TodoViewModel" />
+        <variable name="viewModel" type="com.example.app.TodoViewModel" />
     </data>
-<ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    <ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent" android:padding="16dp">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="@{viewModel.uiState.isLoading ? View.VISIBLE : View.GONE}"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ProgressBar android:id="@+id/progressBar" style="@style/Widget.AppCompat.ProgressBar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="@{viewModel.uiState.isLoading ? View.VISIBLE : View.GONE}" app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/todoRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="@{viewModel.uiState.todos.size() > 0 ? View.VISIBLE : View.GONE}"
-        app:layout_constraintTop_toBottomOf="@id/progressBar"
-        app:layout_constraintBottom_toTopOf="@id/addContainer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/todoRecyclerView" android:layout_width="0dp" android:layout_height="0dp" android:visibility="@{viewModel.uiState.todos.size() > 0 ? View.VISIBLE : View.GONE}" app:layout_constraintTop_toBottomOf="@id/progressBar" app:layout_constraintBottom_toTopOf="@id/addContainer" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/emptyTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No todos yet!"
-        android:visibility="@{(viewModel.uiState.todos.size() == 0)
+        <TextView android:id="@+id/emptyTextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No todos yet!" android:visibility="@{(viewModel.uiState.todos.size() == 0)
                                && !viewModel.uiState.isLoading
-                               ? View.VISIBLE : View.GONE}"
-        app:layout_constraintTop_toBottomOf="@id/progressBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+                               ? View.VISIBLE : View.GONE}" app:layout_constraintTop_toBottomOf="@id/progressBar" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/addContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        <LinearLayout android:id="@+id/addContainer" android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="horizontal" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
 
-        <EditText
-            android:id="@+id/todoEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="New todo" />
+            <EditText android:id="@+id/todoEditText" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:hint="New todo" />
 
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add" />
-    </LinearLayout>
-</ConstraintLayout>
+            <Button android:id="@+id/addButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Add" />
+        </LinearLayout>
+    </ConstraintLayout>
 </layout>
 ```
 
@@ -343,92 +282,89 @@ Here’s a concise example using a Fragment and Data Binding:
 ```kotlin
 @AndroidEntryPoint
 class TodoListFragment : Fragment(R.layout.fragment_todo_list) {
-// Hilt‑powered ViewModel injection
-private val viewModel: TodoViewModel by viewModels()
+    // Hilt‑powered ViewModel injection
+    private val viewModel: TodoViewModel by viewModels()
 
-private var _binding: FragmentTodoListBinding? = null
-private val binding get() = _binding!!
+    private var _binding: FragmentTodoListBinding? = null
+    private val binding
+        get() = _binding!!
 
-private lateinit var adapter: TodoAdapter
+    private lateinit var adapter: TodoAdapter
 
-override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    _binding = FragmentTodoListBinding.bind(view)
-    binding.viewModel = viewModel
-    binding.lifecycleOwner = viewLifecycleOwner
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        _binding = FragmentTodoListBinding.bind(view)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
-    setupRecyclerView()
-    observeUiState()
+        setupRecyclerView()
+        observeUiState()
 
-    binding.addButton.setOnClickListener {
-        val title = binding.todoEditText.text.toString().trim()
-        if (title.isNotBlank()) {
-            viewModel.addNewTodo(title)
-            binding.todoEditText.text?.clear()
-        }
-    }
-}
-
-private fun setupRecyclerView() {
-    adapter = TodoAdapter { todo ->
-        viewModel.toggleTodoCompletion(todo)
-    }
-    binding.todoRecyclerView.adapter = adapter
-}
-
-private fun observeUiState() {
-    // If not using Data Binding for list, observe manually
-    lifecycleScope.launchWhenStarted {
-        viewModel.uiState.collect { state ->
-            adapter.submitList(state.todos)
-            state.error?.let { msg ->
-                Toast.makeText(requireContext(), "Error: $msg", Toast.LENGTH_SHORT).show()
-                // Optionally, clear error in ViewModel here
+        binding.addButton.setOnClickListener {
+            val title = binding.todoEditText.text.toString().trim()
+            if (title.isNotBlank()) {
+                viewModel.addNewTodo(title)
+                binding.todoEditText.text?.clear()
             }
         }
     }
-}
 
-override fun onDestroyView() {
-    super.onDestroyView()
-    _binding = null
-}
+    private fun setupRecyclerView() {
+        adapter = TodoAdapter { todo -> viewModel.toggleTodoCompletion(todo) }
+        binding.todoRecyclerView.adapter = adapter
+    }
+
+    private fun observeUiState() {
+        // If not using Data Binding for list, observe manually
+        lifecycleScope.launchWhenStarted {
+            viewModel.uiState.collect { state ->
+                adapter.submitList(state.todos)
+                state.error?.let { msg ->
+                    Toast.makeText(requireContext(), "Error: $msg", Toast.LENGTH_SHORT).show()
+                    // Optionally, clear error in ViewModel here
+                }
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
 ```
 
 #### RecyclerView Adapter (with ListAdapter + DiffUtil)
 
 ```kotlin
-class TodoAdapter(
-private val onCheckChanged: (Todo) -> Unit
-) : ListAdapter<Todo, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK) {
-  companion object {
-    private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Todo>() {
-        override fun areItemsTheSame(old: Todo, new: Todo) = old.id == new.id
-        override fun areContentsTheSame(old: Todo, new: Todo) = old == new
+class TodoAdapter(private val onCheckChanged: (Todo) -> Unit) :
+        ListAdapter<Todo, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK) {
+    companion object {
+        private val DIFF_CALLBACK =
+                object : DiffUtil.ItemCallback<Todo>() {
+                    override fun areItemsTheSame(old: Todo, new: Todo) = old.id == new.id
+                    override fun areContentsTheSame(old: Todo, new: Todo) = old == new
+                }
     }
-}
 
-inner class TodoViewHolder(private val binding: ItemTodoBinding) :
-    RecyclerView.ViewHolder(binding.root) {
-    fun bind(todo: Todo) {
-        binding.todo = todo
-        binding.checkBox.isChecked = todo.isCompleted
-        binding.checkBox.setOnCheckedChangeListener { _, _ ->
-            onCheckChanged(todo)
+    inner class TodoViewHolder(private val binding: ItemTodoBinding) :
+            RecyclerView.ViewHolder(binding.root) {
+        fun bind(todo: Todo) {
+            binding.todo = todo
+            binding.checkBox.isChecked = todo.isCompleted
+            binding.checkBox.setOnCheckedChangeListener { _, _ -> onCheckChanged(todo) }
+            binding.executePendingBindings()
         }
-        binding.executePendingBindings()
     }
-}
 
-override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
-    val inflater = LayoutInflater.from(parent.context)
-    val binding = ItemTodoBinding.inflate(inflater, parent, false)
-    return TodoViewHolder(binding)
-}
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemTodoBinding.inflate(inflater, parent, false)
+        return TodoViewHolder(binding)
+    }
 
-override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-    holder.bind(getItem(position))
-}
+    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
 }
 ```
 
@@ -437,34 +373,15 @@ override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
 ```xml
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <variable
-            name="todo"
-            type="com.example.app.Todo" />
+        <variable name="todo" type="com.example.app.Todo" />
     </data>
-<ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp">
+    <ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="8dp">
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="@{todo.isCompleted}"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <CheckBox android:id="@+id/checkBox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="@{todo.isCompleted}" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@{todo.title}"
-        app:layout_constraintStart_toEndOf="@id/checkBox"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingStart="8dp" />
+        <TextView android:id="@+id/titleTextView" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@{todo.title}" app:layout_constraintStart_toEndOf="@id/checkBox" app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent" android:paddingStart="8dp" />
 
-</ConstraintLayout>
+    </ConstraintLayout>
 </layout>
 ```
 
@@ -522,18 +439,16 @@ class MyApplication : Application()
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-@Provides
-@Singleton
-fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
-return Room.databaseBuilder(context, AppDatabase::class.java, "app_db")
-.fallbackToDestructiveMigration()
-.build()
-}@Provides
-fun provideTodoDao(db: AppDatabase): TodoDao = db.todoDao()
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
+        return Room.databaseBuilder(context, AppDatabase::class.java, "app_db")
+                .fallbackToDestructiveMigration()
+                .build()
+    }
+    @Provides fun provideTodoDao(db: AppDatabase): TodoDao = db.todoDao()
 
-@Provides
-fun provideTodoRepository(todoDao: TodoDao): TodoRepository =
-    TodoRepository(todoDao)
+    @Provides fun provideTodoRepository(todoDao: TodoDao): TodoRepository = TodoRepository(todoDao)
 }
 ```
 
@@ -542,7 +457,7 @@ fun provideTodoRepository(todoDao: TodoDao): TodoRepository =
 ```kotlin
 @HiltViewModel
 class TodoViewModel @Inject constructor(
-private val repository: TodoRepository
+    private val repository: TodoRepository
 ) : ViewModel() { … }
 ```
 
@@ -551,8 +466,8 @@ private val repository: TodoRepository
 ```kotlin
 @AndroidEntryPoint
 class TodoListFragment : Fragment(R.layout.fragment_todo_list) {
-private val viewModel: TodoViewModel by viewModels()
-…
+    private val viewModel: TodoViewModel by viewModels()
+    …
 }
 ```
 
@@ -562,12 +477,10 @@ private val viewModel: TodoViewModel by viewModels()
 
 ```kotlin
 val appModule = module {
-single { Room.databaseBuilder(get(), AppDatabase::class.java, "app_db").build() }
-single { get
-<AppDatabase>
-().todoDao() }
-single { TodoRepository(get()) }
-viewModel { TodoViewModel(get()) }
+    single { Room.databaseBuilder(get(), AppDatabase::class.java, "app_db").build() }
+    single { get<AppDatabase>().todoDao() }
+    single { TodoRepository(get()) }
+    viewModel { TodoViewModel(get()) }
 }
 ```
 
@@ -575,13 +488,13 @@ viewModel { TodoViewModel(get()) }
 
 ```kotlin
 class MyApp : Application() {
-   override fun onCreate() {
-      super.onCreate()
-      startKoin {
-         androidContext(this@MyApp)
-         modules(appModule)
-      }
-   }
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidContext(this@MyApp)
+            modules(appModule)
+        }
+    }
 }
 ```
 
@@ -589,8 +502,8 @@ class MyApp : Application() {
 
 ```kotlin
 class TodoListFragment : Fragment(R.layout.fragment_todo_list) {
-private val viewModel: TodoViewModel by viewModel()
-…
+    private val viewModel: TodoViewModel by viewModel()
+    …
 }
 ```
 
@@ -603,8 +516,8 @@ private val viewModel: TodoViewModel by viewModel()
 
 ```kotlin
 viewModelScope.launch(Dispatchers.IO) {
-val items = repository.fetchItemsFromNetwork()
-_uiState.value = _uiState.value.copy(todos = items)
+    val items = repository.fetchItemsFromNetwork()
+    _uiState.value = _uiState.value.copy(todos = items)
 }
 ```
 
@@ -625,17 +538,17 @@ UI events such as navigation actions or showing a Toast shouldn’t re‑trigger
 
 ```kotlin
 open class Event(private val content: T) {
-   private var hasBeenHandled = false
-   fun getContentIfNotHandled(): T? {
-       return if (hasBeenHandled) {
-           null
-       } else {
-           hasBeenHandled = true
-           content
-       }
-   }
+    private var hasBeenHandled = false
+    fun getContentIfNotHandled(): T? {
+        return if (hasBeenHandled) {
+            null
+        } else {
+            hasBeenHandled = true
+            content
+        }
+    }
 
-   fun peekContent(): T = content
+    fun peekContent(): T = content
 }
 ```
 
@@ -644,6 +557,7 @@ Then in your ViewModel:
 ```kotlin
 private val _navigateToDetail = MutableLiveData<Event>()
 val navigateToDetail: LiveData<Event> = _navigateToDetail
+
 fun onTodoClicked(id: Int) {
    _navigateToDetail.value = Event(id)
 }
@@ -684,12 +598,8 @@ private val sharedViewModel: SharedViewModel by navGraphViewModels(R.id.my_nav_g
 1. Define arguments in your navigation graph:
 
 ```xml
-<fragment
- android:id="@+id/detailFragment"
- android:name="com.example.DetailFragment">
- <argument
-     android:name="todoId"
-     app:argType="integer" />
+<fragment android:id="@+id/detailFragment" android:name="com.example.DetailFragment">
+    <argument android:name="todoId" app:argType="integer" />
 </fragment>
 ```
 
@@ -714,37 +624,36 @@ Because ViewModels have no direct UI dependencies, you can unit‑test them:
 ```kotlin
 @ExperimentalCoroutinesApi
 class TodoViewModelTest {
-@get:Rule
-val mainDispatcherRule = MainDispatcherRule() // Swap Dispatchers.Main for testing
+    @get:Rule val mainDispatcherRule = MainDispatcherRule() // Swap Dispatchers.Main for testing
 
-private lateinit var fakeRepo: FakeTodoRepository
-private lateinit var viewModel: TodoViewModel
+    private lateinit var fakeRepo: FakeTodoRepository
+    private lateinit var viewModel: TodoViewModel
 
-@Before
-fun setup() {
-    fakeRepo = FakeTodoRepository()
-    viewModel = TodoViewModel(fakeRepo)
-}
-
-@Test
-fun `initial state is loading then loaded empty list`() = runTest {
-    viewModel.uiState.test {
-        val first = awaitItem()
-        assertTrue(first.isLoading)
-
-        val second = awaitItem()
-        assertFalse(second.isLoading)
-        assertTrue(second.todos.isEmpty())
+    @Before
+    fun setup() {
+        fakeRepo = FakeTodoRepository()
+        viewModel = TodoViewModel(fakeRepo)
     }
-}
 
-@Test
-fun `adding a todo updates state`() = runTest {
-    viewModel.addNewTodo("Learn MVVM")
-    val state = viewModel.uiState.first { !it.isLoading }
-    assertEquals(1, state.todos.size)
-    assertEquals("Learn MVVM", state.todos[0].title)
-}
+    @Test
+    fun `initial state is loading then loaded empty list`() = runTest {
+        viewModel.uiState.test {
+            val first = awaitItem()
+            assertTrue(first.isLoading)
+
+            val second = awaitItem()
+            assertFalse(second.isLoading)
+            assertTrue(second.todos.isEmpty())
+        }
+    }
+
+    @Test
+    fun `adding a todo updates state`() = runTest {
+        viewModel.addNewTodo("Learn MVVM")
+        val state = viewModel.uiState.first { !it.isLoading }
+        assertEquals(1, state.todos.size)
+        assertEquals("Learn MVVM", state.todos[0].title)
+    }
 }
 ```
 
@@ -754,20 +663,20 @@ Implement a simple in‑memory repository for testing:
 
 ```kotlin
 class FakeTodoRepository : TodoRepository {
-private val todos = MutableStateFlow<List<Todo>>(emptyList())
-override val allTodos: Flow<List<Todo>> = todos
+    private val todos = MutableStateFlow<List<Todo>>(emptyList())
+    override val allTodos: Flow<List<Todo>> = todos
 
-override suspend fun addTodo(todo: Todo) {
-    todos.value = todos.value + todo.copy(id = todos.value.size + 1)
-}
+    override suspend fun addTodo(todo: Todo) {
+        todos.value = todos.value + todo.copy(id = todos.value.size + 1)
+    }
 
-override suspend fun updateTodo(todo: Todo) {
-    todos.value = todos.value.map { if (it.id == todo.id) todo else it }
-}
+    override suspend fun updateTodo(todo: Todo) {
+        todos.value = todos.value.map { if (it.id == todo.id) todo else it }
+    }
 
-override suspend fun deleteTodo(todo: Todo) {
-    todos.value = todos.value.filter { it.id != todo.id }
-}
+    override suspend fun deleteTodo(todo: Todo) {
+        todos.value = todos.value.filter { it.id != todo.id }
+    }
 }
 ```
 
@@ -782,53 +691,55 @@ If your project uses **Jetpack Compose**, the pattern is similar, but UI is buil
 ```kotlin
 @Composable
 fun TodoScreen(viewModel: TodoViewModel = hiltViewModel()) {
-val uiState by viewModel.uiState.collectAsState()
-Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-    if (uiState.isLoading) {
-        CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
-    } else {
-        LazyColumn(modifier = Modifier.weight(1f)) {
-            items(uiState.todos) { todo ->
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
-                ) {
-                    Checkbox(
-                        checked = todo.isCompleted,
-                        onCheckedChange = { viewModel.toggleTodoCompletion(todo) }
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = todo.title,
-                        style = MaterialTheme.typography.body1,
-                        textDecoration = if (todo.isCompleted) TextDecoration.LineThrough else null
-                    )
+    val uiState by viewModel.uiState.collectAsState()
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        if (uiState.isLoading) {
+            CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
+        } else {
+            LazyColumn(modifier = Modifier.weight(1f)) {
+                items(uiState.todos) { todo ->
+                    Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+                    ) {
+                        Checkbox(
+                                checked = todo.isCompleted,
+                                onCheckedChange = { viewModel.toggleTodoCompletion(todo) }
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                                text = todo.title,
+                                style = MaterialTheme.typography.body1,
+                                textDecoration =
+                                        if (todo.isCompleted) TextDecoration.LineThrough else null
+                        )
+                    }
                 }
             }
-        }
-        Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            var text by remember { mutableStateOf("") }
-            TextField(
-                value = text,
-                onValueChange = { text = it },
-                label = { Text("New todo") },
-                modifier = Modifier.weight(1f)
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Button(onClick = {
-                if (text.isNotBlank()) {
-                    viewModel.addNewTodo(text)
-                    text = ""
-                }
-            }) {
-                Text("Add")
+            Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+            ) {
+                var text by remember { mutableStateOf("") }
+                TextField(
+                        value = text,
+                        onValueChange = { text = it },
+                        label = { Text("New todo") },
+                        modifier = Modifier.weight(1f)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Button(
+                        onClick = {
+                            if (text.isNotBlank()) {
+                                viewModel.addNewTodo(text)
+                                text = ""
+                            }
+                        }
+                ) { Text("Add") }
             }
         }
+        uiState.error?.let { err -> Text(text = "Error: $err", color = MaterialTheme.colors.error) }
     }
-    uiState.error?.let { err ->
-        Text(text = "Error: $err", color = MaterialTheme.colors.error)
-    }
-}
 }
 ```
 

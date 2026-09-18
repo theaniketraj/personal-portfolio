@@ -24,16 +24,18 @@ export default function BlogPage() {
             <HardwareAnimated animation="slideInUp">
               <div className="flex flex-col max-w-3xl mx-auto px-4 sm:px-7 py-12 md:py-16 gap-6">
                 <div>
-                  <p className="text-sm tracking-[2px] text-primary uppercase font-medium mb-2">
+                  <p className="text-sm tracking-[2px] text-primary uppercase font-medium mb-2 font-(family-name:--font-space-grotesk)">
                     Writing &amp; Insights
                   </p>
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-primary">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-primary font-(family-name:--font-space-grotesk)">
                     Technical Blog &amp; Engineering Guides
                   </h1>
                 </div>
-                <p className="text-secondary text-base leading-relaxed">
-                  In-depth articles covering Kotlin architecture, AI
-                  transformers, CI/CD, web performance, and software security.
+                <p className="text-secondary text-base leading-relaxed font-(family-name:--font-space-grotesk)">
+                  A collection of things I’ve learned, explored, questioned, and
+                  found worth writing down. Some are technical deep dives,
+                  others are lessons from building, and some are simply ideas I
+                  wanted to think through.
                 </p>
               </div>
             </HardwareAnimated>

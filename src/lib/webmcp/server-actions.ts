@@ -23,16 +23,25 @@ function maskError(error: unknown) {
 }
 
 export async function executeGetProjectContent(args: unknown) {
-  try { return await registry.executeTool("get_project_content", args || {}); }
-  catch (error) { return maskError(error); }
+  try {
+    return await registry.executeTool("get_project_content", args || {});
+  } catch (error) {
+    return maskError(error);
+  }
 }
 
 export async function executeGetArticleContent(args: unknown) {
-  try { return await registry.executeTool("get_article_content", args || {}); }
-  catch (error) { return maskError(error); }
+  try {
+    return await registry.executeTool("get_article_content", args || {});
+  } catch (error) {
+    return maskError(error);
+  }
 }
 
 export async function executeDraftContactMessage(args: unknown) {
-  try { return await registry.executeTool("draft_contact_message", args || {}); }
-  catch (error) { return maskError(error); }
+  try {
+    return await registry.executeTool("draft_contact_message", args || {});
+  } catch (error) {
+    return maskError(error);
+  }
 }

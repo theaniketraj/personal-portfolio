@@ -3,7 +3,7 @@
   command = "npm run build && cp public/netlify-form.html .next/"
 
 [build.environment]
-  NODE_VERSION = "24.18.0"
+  NODE_VERSION = "24.21.0"
   NEXT_TELEMETRY_DISABLED = "1"
 
 # Form handling

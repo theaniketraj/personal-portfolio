@@ -38,7 +38,7 @@ export function MdxCopyButton({
     <button
       type="button"
       className={cn(
-        "relative z-10 inline-flex h-7 w-7 items-center justify-center rounded-md text-zinc-400 hover:bg-zinc-700/50 hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 transition-colors",
+        "relative z-10 inline-flex h-7 w-7 items-center justify-center rounded-md text-secondary hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 transition-colors",
         className,
       )}
       onClick={copyToClipboard}

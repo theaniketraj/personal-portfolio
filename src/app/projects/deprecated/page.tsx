@@ -3,7 +3,7 @@ import path from "node:path";
 import { Metadata } from "next";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { HardwareAnimated } from "@/components/animations/hardware-animated";
-import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Deprecated Projects",
@@ -48,11 +48,11 @@ export default function DeprecatedProjectsPage() {
                   items={[{ label: "Deprecated" }]}
                 />
                 <div className="mt-2">
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-primary mb-2">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-primary mb-2 font-(family-name:--font-space-grotesk)">
                     Deprecated &amp; Experimental
                   </h1>
                 </div>
-                <p className="text-secondary text-base leading-relaxed">
+                <p className="text-secondary text-base leading-relaxed font-(family-name:--font-space-grotesk)">
                   A graveyard of abandoned experiments, projects, and deprecated
                   tools. Some ideas didn&apos;t pan out, some were replaced by
                   better alternatives, and some just exist as reference code.
@@ -111,14 +111,10 @@ export default function DeprecatedProjectsPage() {
                             aria-label={`View source code for ${project.title}`}
                           >
                             <span>View Source Code</span>
-                            <Image
-                              src="/images/icon/tile-arrow-icon.svg"
-                              alt=""
-                              aria-hidden="true"
-                              width={20}
-                              height={20}
-                              className="dark:invert group-hover:translate-x-1.5 group-hover:-translate-y-1.5 transition-all duration-300 ease-in"
-                            />
+                            <span className="relative flex items-center justify-center overflow-hidden w-4.5 h-4.5">
+                              <ArrowUpRight className="absolute w-4.5 h-4.5 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+                              <ArrowUpRight className="absolute w-4.5 h-4.5 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
+                            </span>
                           </a>
                         )}
                       </article>

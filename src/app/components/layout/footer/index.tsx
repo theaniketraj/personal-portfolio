@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg
@@ -47,8 +48,10 @@ const Footer = () => {
           <div className="max-w-3xl mx-auto flex flex-col gap-10 sm:gap-14 px-4 sm:px-7 py-12 sm:py-16">
             {/* Top: Header */}
             <div className="flex flex-col text-2xl sm:text-3xl font-medium tracking-tight">
-              <span className="text-primary">BUILT WITH CURIOSITY.</span>
-              <span className="text-muted-foreground">
+              <span className="text-primary font-(family-name:--font-space-grotesk)">
+                BUILT WITH CURIOSITY.
+              </span>
+              <span className="text-muted-foreground font-(family-name:--font-space-grotesk)">
                 ENGINEERED WITH INTENT.
               </span>
             </div>
@@ -86,24 +89,21 @@ const Footer = () => {
                   href="https://lexumhq.netlify.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-block text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
+                  className="group inline-flex items-center gap-0.5 text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
                 >
-                  Lexum
-                  <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-                </Link>
-                <Link
-                  href="https://versenova.netlify.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-block text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
-                >
-                  Versenova
-                  <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+                  <span className="relative">
+                    Lexum
+                    <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+                  </span>
+                  <span className="relative flex items-center justify-center overflow-hidden w-4.5 h-4.5 ml-0.5">
+                    <ArrowUpRight className="absolute w-4.5 h-4.5 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+                    <ArrowUpRight className="absolute w-4.5 h-4.5 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
+                  </span>
                 </Link>
               </div>
 
               {/* Right: Social Handle Hover Component */}
-              <div className="group flex items-center">
+              <div className="hidden sm:flex group items-center">
                 <div className="flex items-center gap-4 text-muted-foreground transition-all duration-500 ease-out group-hover:scale-95 group-hover:-translate-x-1 origin-right">
                   <Link
                     href="https://github.com/theaniketraj"

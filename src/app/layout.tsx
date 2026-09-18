@@ -124,7 +124,11 @@ export default function RootLayout({
           <ContactDraftProvider>
             <Header />
             {children}
-            <WebMCPProvider profileData={profileData} projectsMeta={projectsMeta} articlesMeta={articlesMeta} />
+            <WebMCPProvider
+              profileData={profileData}
+              projectsMeta={projectsMeta}
+              articlesMeta={articlesMeta}
+            />
             <Footer />
           </ContactDraftProvider>
         </ThemeProvider>

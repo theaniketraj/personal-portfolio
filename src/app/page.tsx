@@ -17,6 +17,7 @@ import Contact from "./components/home/contact";
 const page = () => {
   return (
     <main>
+      <h1 className="sr-only">Aniket Raj - Software & AI Engineer</h1>
       <AboutMe />
       <Divider />
       <FeaturedWork />

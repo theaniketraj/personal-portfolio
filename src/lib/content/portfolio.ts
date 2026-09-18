@@ -25,19 +25,64 @@ export function normalizeTerm(term: string): string {
 }
 
 const ROLE_ALIASES: Record<string, string[]> = {
-  "backend engineer": ["backend", "systems", "api", "infrastructure", "database"],
-  "backend developer": ["backend", "systems", "api", "infrastructure", "database"],
+  "backend engineer": [
+    "backend",
+    "systems",
+    "api",
+    "infrastructure",
+    "database",
+  ],
+  "backend developer": [
+    "backend",
+    "systems",
+    "api",
+    "infrastructure",
+    "database",
+  ],
   "frontend engineer": ["frontend", "react", "ui", "web"],
   "frontend developer": ["frontend", "react", "ui", "web"],
-  "fullstack engineer": ["backend", "frontend", "api", "react", "database", "web"],
-  "fullstack developer": ["backend", "frontend", "api", "react", "database", "web"],
-  "systems engineer": ["systems", "distributed systems", "infrastructure", "rust", "c++"],
+  "fullstack engineer": [
+    "backend",
+    "frontend",
+    "api",
+    "react",
+    "database",
+    "web",
+  ],
+  "fullstack developer": [
+    "backend",
+    "frontend",
+    "api",
+    "react",
+    "database",
+    "web",
+  ],
+  "systems engineer": [
+    "systems",
+    "distributed systems",
+    "infrastructure",
+    "rust",
+    "c++",
+  ],
   "ai engineer": ["ai", "machine learning", "ml", "python", "llm"],
-  "machine learning engineer": ["ai", "machine learning", "ml", "python", "llm"],
+  "machine learning engineer": [
+    "ai",
+    "machine learning",
+    "ml",
+    "python",
+    "llm",
+  ],
 };
 
 export const PortfolioService = {
-  getProfile(projectsCount: number, articlesCount: number): Profile & { experienceCount: number; projectCount: number; articleCount: number } {
+  getProfile(
+    projectsCount: number,
+    articlesCount: number,
+  ): Profile & {
+    experienceCount: number;
+    projectCount: number;
+    articleCount: number;
+  } {
     return {
       ...profileData,
       experienceCount: getExperience().length,
@@ -56,9 +101,11 @@ export const PortfolioService = {
       featuredOnly?: boolean;
       limit?: number;
       sort?: "relevance" | "date" | "featured";
-    }
+    },
   ): ProjectMeta[] {
-    let projects = params.featuredOnly ? projectsData.filter((p) => p.featured) : projectsData;
+    let projects = params.featuredOnly
+      ? projectsData.filter((p) => p.featured)
+      : projectsData;
 
     // Default to active and completed projects unless explicitly asking for archived
     if (!params.status) {
@@ -68,14 +115,14 @@ export const PortfolioService = {
     if (params.domain) {
       const normalizedDomain = normalizeTerm(params.domain);
       projects = projects.filter((p) =>
-        p.domains?.some((d) => normalizeTerm(d) === normalizedDomain)
+        p.domains?.some((d) => normalizeTerm(d) === normalizedDomain),
       );
     }
 
     if (params.technology) {
       const normalizedTech = normalizeTerm(params.technology);
       projects = projects.filter((p) =>
-        p.technologies?.some((t) => normalizeTerm(t) === normalizedTech)
+        p.technologies?.some((t) => normalizeTerm(t) === normalizedTech),
       );
     }
 
@@ -90,13 +137,15 @@ export const PortfolioService = {
       scoredProjects.forEach((item) => {
         const p = item.project;
         let score = 0;
-        
+
         for (const q of tokens) {
           if (p.title.toLowerCase().includes(q)) score += 10;
           if (p.description?.toLowerCase().includes(q)) score += 5;
           if (p.domains?.some((d) => d.toLowerCase().includes(q))) score += 3;
-          if (p.technologies?.some((t) => t.toLowerCase().includes(q))) score += 3;
-          if (p.engineeringAreas?.some((e) => e.toLowerCase().includes(q))) score += 3;
+          if (p.technologies?.some((t) => t.toLowerCase().includes(q)))
+            score += 3;
+          if (p.engineeringAreas?.some((e) => e.toLowerCase().includes(q)))
+            score += 3;
         }
         item.score = score;
       });
@@ -114,7 +163,9 @@ export const PortfolioService = {
         if (a.project.featured && !b.project.featured) return -1;
         if (!a.project.featured && b.project.featured) return 1;
       } else if (sortOrder === "date") {
-        const timeDiff = new Date(b.project.date).getTime() - new Date(a.project.date).getTime();
+        const timeDiff =
+          new Date(b.project.date).getTime() -
+          new Date(a.project.date).getTime();
         if (timeDiff !== 0) return timeDiff;
       }
 
@@ -122,7 +173,8 @@ export const PortfolioService = {
       if (a.project.featured && !b.project.featured) return -1;
       if (!a.project.featured && b.project.featured) return 1;
 
-      const dateDiff = new Date(b.project.date).getTime() - new Date(a.project.date).getTime();
+      const dateDiff =
+        new Date(b.project.date).getTime() - new Date(a.project.date).getTime();
       if (dateDiff !== 0) return dateDiff;
 
       return a.project.slug.localeCompare(b.project.slug);
@@ -135,7 +187,7 @@ export const PortfolioService = {
   getProjectSummary(
     projectsData: ProjectMeta[],
     articlesData: BlogPostMeta[],
-    slug: string
+    slug: string,
   ) {
     const meta = projectsData.find((p) => p.slug === slug);
     if (!meta) return null;
@@ -143,7 +195,9 @@ export const PortfolioService = {
     const relatedProjects = meta.relatedProjects
       ?.map((pSlug) => {
         const p = projectsData.find((pData) => pData.slug === pSlug);
-        return p ? { slug: p.slug, title: p.title, description: p.description } : null;
+        return p
+          ? { slug: p.slug, title: p.title, description: p.description }
+          : null;
       })
       .filter(Boolean);
 
@@ -170,28 +224,28 @@ export const PortfolioService = {
       contentType?: string;
       limit?: number;
       sort?: "relevance" | "date";
-    }
+    },
   ): BlogPostMeta[] {
     let articles = articlesData;
 
     if (params.topic) {
       const normalizedTopic = normalizeTerm(params.topic);
       articles = articles.filter((a) =>
-        a.topics?.some((t) => normalizeTerm(t) === normalizedTopic)
+        a.topics?.some((t) => normalizeTerm(t) === normalizedTopic),
       );
     }
 
     if (params.tags) {
       const normalizedTag = normalizeTerm(params.tags);
       articles = articles.filter((a) =>
-        a.tags?.some((t) => normalizeTerm(t) === normalizedTag)
+        a.tags?.some((t) => normalizeTerm(t) === normalizedTag),
       );
     }
 
     if (params.contentType) {
       const normalizedType = normalizeTerm(params.contentType);
       articles = articles.filter((a) =>
-        a.contentType?.some((t) => normalizeTerm(t) === normalizedType)
+        a.contentType?.some((t) => normalizeTerm(t) === normalizedType),
       );
     }
 
@@ -202,7 +256,7 @@ export const PortfolioService = {
       scoredArticles.forEach((item) => {
         const a = item.article;
         let score = 0;
-        
+
         for (const q of tokens) {
           if (a.title.toLowerCase().includes(q)) score += 10;
           if (a.excerpt?.toLowerCase().includes(q)) score += 5;
@@ -222,12 +276,15 @@ export const PortfolioService = {
       if (sortOrder === "relevance" && params.query) {
         if (b.score !== a.score) return b.score - a.score;
       } else if (sortOrder === "date") {
-        const timeDiff = new Date(b.article.date).getTime() - new Date(a.article.date).getTime();
+        const timeDiff =
+          new Date(b.article.date).getTime() -
+          new Date(a.article.date).getTime();
         if (timeDiff !== 0) return timeDiff;
       }
 
       // Tie Breakers: date DESC -> slug ASC
-      const dateDiff = new Date(b.article.date).getTime() - new Date(a.article.date).getTime();
+      const dateDiff =
+        new Date(b.article.date).getTime() - new Date(a.article.date).getTime();
       if (dateDiff !== 0) return dateDiff;
 
       return a.article.slug.localeCompare(b.article.slug);
@@ -240,7 +297,7 @@ export const PortfolioService = {
   getArticleSummary(
     projectsData: ProjectMeta[],
     articlesData: BlogPostMeta[],
-    slug: string
+    slug: string,
   ) {
     const meta = articlesData.find((a) => a.slug === slug);
     if (!meta) return null;
@@ -248,7 +305,9 @@ export const PortfolioService = {
     const relatedProjects = meta.relatedProjects
       ?.map((pSlug) => {
         const p = projectsData.find((pData) => pData.slug === pSlug);
-        return p ? { slug: p.slug, title: p.title, description: p.description } : null;
+        return p
+          ? { slug: p.slug, title: p.title, description: p.description }
+          : null;
       })
       .filter(Boolean);
 
@@ -275,7 +334,7 @@ export const PortfolioService = {
       domains?: string[];
       keywords?: string[];
       limit?: number;
-    }
+    },
   ) {
     // Score based matching
     const keywords = (params.keywords || []).map(normalizeTerm);
@@ -294,16 +353,31 @@ export const PortfolioService = {
 
     if (allSearchTerms.length === 0) {
       // If no search terms, just return the most recent/featured items
-      const sortedProjects = [...projectsData].sort((a, b) => {
-        if (b.featured !== a.featured) return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-      }).slice(0, Math.min(params.limit || 3, 10))
-        .map(p => ({ project: p, score: 0, matches: [], reason: "Recent project." }));
+      const sortedProjects = [...projectsData]
+        .sort((a, b) => {
+          if (b.featured !== a.featured)
+            return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        })
+        .slice(0, Math.min(params.limit || 3, 10))
+        .map((p) => ({
+          project: p,
+          score: 0,
+          matches: [],
+          reason: "Recent project.",
+        }));
 
-      const sortedArticles = [...articlesData].sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-      }).slice(0, Math.min(params.limit || 3, 10))
-        .map(a => ({ article: a, score: 0, matches: [], reason: "Recent article." }));
+      const sortedArticles = [...articlesData]
+        .sort((a, b) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        })
+        .slice(0, Math.min(params.limit || 3, 10))
+        .map((a) => ({
+          article: a,
+          score: 0,
+          matches: [],
+          reason: "Recent article.",
+        }));
 
       return { projects: sortedProjects, articles: sortedArticles };
     }
@@ -322,12 +396,28 @@ export const PortfolioService = {
       const pCapabilities = (p.capabilities || []).map(normalizeTerm);
 
       for (const term of allSearchTerms) {
-        if (checkMatch(term, pTechs)) { score += 5; matched.push(term); }
-        else if (checkMatch(term, pEngAreas)) { score += 4; matched.push(term); }
-        else if (checkMatch(term, pDomains)) { score += 3; matched.push(term); }
-        else if (checkMatch(term, pCapabilities)) { score += 3; matched.push(term); }
-        else if (checkMatch(term, titleTerms)) { score += 2; matched.push(term); }
-        else if (p.description && normalizeTerm(p.description).includes(term)) { score += 1; matched.push(term); }
+        if (checkMatch(term, pTechs)) {
+          score += 5;
+          matched.push(term);
+        } else if (checkMatch(term, pEngAreas)) {
+          score += 4;
+          matched.push(term);
+        } else if (checkMatch(term, pDomains)) {
+          score += 3;
+          matched.push(term);
+        } else if (checkMatch(term, pCapabilities)) {
+          score += 3;
+          matched.push(term);
+        } else if (checkMatch(term, titleTerms)) {
+          score += 2;
+          matched.push(term);
+        } else if (
+          p.description &&
+          normalizeTerm(p.description).includes(term)
+        ) {
+          score += 1;
+          matched.push(term);
+        }
       }
       return { score, matched: [...new Set(matched)] };
     };
@@ -340,10 +430,19 @@ export const PortfolioService = {
       const aTags = (a.tags || []).map(normalizeTerm);
 
       for (const term of allSearchTerms) {
-        if (checkMatch(term, aTopics)) { score += 4; matched.push(term); }
-        else if (checkMatch(term, aTags)) { score += 3; matched.push(term); }
-        else if (checkMatch(term, titleTerms)) { score += 2; matched.push(term); }
-        else if (a.excerpt && normalizeTerm(a.excerpt).includes(term)) { score += 1; matched.push(term); }
+        if (checkMatch(term, aTopics)) {
+          score += 4;
+          matched.push(term);
+        } else if (checkMatch(term, aTags)) {
+          score += 3;
+          matched.push(term);
+        } else if (checkMatch(term, titleTerms)) {
+          score += 2;
+          matched.push(term);
+        } else if (a.excerpt && normalizeTerm(a.excerpt).includes(term)) {
+          score += 1;
+          matched.push(term);
+        }
       }
       return { score, matched: [...new Set(matched)] };
     };
