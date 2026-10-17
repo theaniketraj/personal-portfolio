@@ -5,8 +5,8 @@ excerpt: >-
   A comprehensive, technical comparison of REST and GraphQL API styles—covering
   their principles, data-fetching patterns, performance trade-offs, caching
   strategies, security considerations, and ideal use cases.
-metaTitle: "REST vs GraphQL ‣ Which API Style Should You Use and When?"
-metaDescription: "A comprehensive, technical comparison of REST and GraphQL API styles—covering their principles, data-fetching patterns, performance trade-offs, caching..."
+metaTitle: 'REST vs GraphQL ‣ Which API Style Should You Use and When?'
+metaDescription: 'A comprehensive, technical comparison of REST and GraphQL API styles—covering their principles, data-fetching patterns, performance trade-offs, caching...'
 tags:
   - API Design
   - Backend
@@ -19,6 +19,8 @@ contentType:
   - Comparison
 relatedArticles:
   - tech-stack-wars
+relatedProjects:
+  - raptor
 ---
 
 ## **REST vs GraphQL: Which API Style Should You Use and When?**
@@ -160,10 +162,7 @@ This single request returns precisely the nested data:
   "data": {
     "user": {
       "name": "Alice",
-      "posts": [
-        { "title": "GraphQL Basics" },
-        { "title": "Advanced Schema Design" }
-      ]
+      "posts": [{ "title": "GraphQL Basics" }, { "title": "Advanced Schema Design" }]
     }
   }
 }
@@ -233,23 +232,23 @@ This single request returns precisely the nested data:
 
   3. For each post, `GET /posts/{postId}/comments/count` (or embed `comments/count` in post resource if designed).
 
-- ```json
-  query {
-    user(id: "42") {
+```json
+query {
+  user(id: "42") {
+    id
+    name
+    posts(limit: 5) {
       id
-      name
-      posts(limit: 5) {
-        id
-        title
-        comments {
-          totalCount
-        }
+      title
+      comments {
+        totalCount
       }
     }
   }
-  ```
+}
+```
 
-  Single request returns all required data.
+- Single request returns all required data.
 
 ### 3.2 Endpoint Structure and Versioning
 
@@ -370,23 +369,22 @@ This single request returns precisely the nested data:
 
 - **GraphQL**
   - Always returns a 200 OK if the GraphQL query executes syntactically; errors appear in the `"errors"` array.
-
-  - ```json
-    {
-      "data": { "user": null },
-      "errors": [
-        {
-          "message": "User not found",
-          "path": ["user"],
-          "extensions": {
-            "code": "NOT_FOUND"
-          }
-        }
-      ]
-    }
-    ```
-
   - Clients must inspect the `"errors"` array to determine success or failure.
+
+```json
+{
+  "data": { "user": null },
+  "errors": [
+    {
+      "message": "User not found",
+      "path": ["user"],
+      "extensions": {
+        "code": "NOT_FOUND"
+      }
+    }
+  ]
+}
+```
 
 ## 4. Use Cases and When to Choose
 
@@ -489,49 +487,48 @@ This single request returns precisely the nested data:
 1. **Schema Definition**
    - Define types, queries, mutations, and subscriptions in SDL.
 
-   - ```json
-     type User {
-       id: ID!
-       name: String!
-       email: String!
-       posts(limit: Int): [Post!]!
-     }
+```json
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  posts(limit: Int): [Post!]!
+}
 
-     type Query {
-       user(id: ID!): User
-       posts(page: Int, perPage: Int): [Post!]!
-     }
+type Query {
+  user(id: ID!): User
+  posts(page: Int, perPage: Int): [Post!]!
+}
 
-     type Mutation {
-       createPost(input: CreatePostInput!): Post!
-     }
+type Mutation {
+  createPost(input: CreatePostInput!): Post!
+}
 
-     input CreatePostInput {
-       authorId: ID!
-       title: String!
-       content: String!
-     }
-     ```
+input CreatePostInput {
+  authorId: ID!
+  title: String!
+  content: String!
+}
+```
 
 2. **Resolvers and Data Fetching**
 
-- ```json
-  const resolvers = {
-    Query: {
-      user: async (_, { id }) => db.findUserById(id),
-      posts: async (_, { page, perPage }) => db.getPosts({ page, perPage }),
-    },
-    User: {
-      posts: async (user, args) => db.getPostsByAuthor(user.id, args),
-    },
-    Mutation: {
-      createPost: async (_, { input }) => db.insertPost(input),
-    }
-  };
-
-  ```
-
 - Use DataLoader or similar tools to batch and cache DB calls, preventing N+1 query patterns.
+
+```json
+const resolvers = {
+  Query: {
+    user: async (_, { id }) => db.findUserById(id),
+    posts: async (_, { page, perPage }) => db.getPosts({ page, perPage }),
+  },
+  User: {
+    posts: async (user, args) => db.getPostsByAuthor(user.id, args),
+  },
+  Mutation: {
+    createPost: async (_, { input }) => db.insertPost(input),
+  }
+};
+```
 
 3. **Security and Validation**
 
@@ -707,32 +704,33 @@ This single request returns precisely the nested data:
   - **Cons**: If a storefront page needs product details + user’s shopping cart + related promotions, client must coordinate multiple requests.
 
 - **GraphQL Approach**
-  - ```graphql
-    type Product {
-      id: ID!
-      name: String!
-      price: Float!
-      description: String
-      variants: [Variant!]!
-      inventoryCount: Int
-      promotions: [Promotion!]!
-    }
 
-    type Query {
-      product(id: ID!): Product
-      products(category: ID, limit: Int, offset: Int): [Product!]!
-    }
+```graphql
+type Product {
+  id: ID!
+  name: String!
+  price: Float!
+  description: String
+  variants: [Variant!]!
+  inventoryCount: Int
+  promotions: [Promotion!]!
+}
 
-    type Cart {
-      id: ID!
-      items: [CartItem!]!
-      total: Float!
-    }
+type Query {
+  product(id: ID!): Product
+  products(category: ID, limit: Int, offset: Int): [Product!]!
+}
 
-    type Query {
-      userCart(userId: ID!): Cart
-    }
-    ```
+type Cart {
+  id: ID!
+  items: [CartItem!]!
+  total: Float!
+}
+
+type Query {
+  userCart(userId: ID!): Cart
+}
+```
 
 - **Client Query**:
 
@@ -784,26 +782,27 @@ query Storefront($productId: ID!, $userId: ID!) {
   - **Drawbacks**: Excessive round trips when displaying a feed with nested comments/reactions.
 
 - **GraphQL Approach**
-  - ```graphql
-    type User {
-      id: ID!
-      name: String!
-      followers(limit: Int): [User!]!
-      feed(limit: Int): [Post!]!
-    }
 
-    type Post {
-      id: ID!
-      author: User!
-      content: String!
-      comments(limit: Int): [Comment!]!
-      reactions: [Reaction!]!
-    }
+```graphql
+type User {
+  id: ID!
+  name: String!
+  followers(limit: Int): [User!]!
+  feed(limit: Int): [Post!]!
+}
 
-    type Query {
-      user(id: ID!): User
-    }
-    ```
+type Post {
+  id: ID!
+  author: User!
+  content: String!
+  comments(limit: Int): [Comment!]!
+  reactions: [Reaction!]!
+}
+
+type Query {
+  user(id: ID!): User
+}
+```
 
 - **Client Query**:
 

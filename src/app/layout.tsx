@@ -1,138 +1,132 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
-import "./globals.css";
-import Header from "./components/layout/header";
-import Footer from "./components/layout/footer";
-import { ThemeProvider } from "@/components/theme-provider";
-import { WebMCPProvider } from "@/components/webmcp-provider";
-import { ContactDraftProvider } from "@/components/contact-draft-context";
-import { getProjects, getBlogPosts } from "@/lib/mdx";
-import { profileData } from "@/lib/content/profile";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
+import './globals.css';
+import Header from './components/layout/header';
+import Footer from './components/layout/footer';
+import { ThemeProvider } from '@/components/theme-provider';
+import { RouteBorderBeam } from '@/components/animations/route-border-beam';
+import { WebMCPProvider } from '@/components/webmcp-provider';
+import { ContactDraftProvider } from '@/components/contact-draft-context';
+import { getProjects, getBlogPosts } from '@/lib/mdx';
+import { profileData } from '@/lib/content/profile';
 
 const inter = Inter({
-  variable: "--font-inter-sans",
-  subsets: ["latin"],
+    variable: '--font-inter-sans',
+    subsets: ['latin']
 });
 
 const spaceGrotesk = localFont({
-  src: "./fonts/SpaceGrotesk.ttf",
-  variable: "--font-space-grotesk",
-  display: "swap",
+    src: './fonts/SpaceGrotesk.ttf',
+    variable: '--font-space-grotesk',
+    display: 'swap'
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://theaniketraj.netlify.app"),
-  title: {
-    default:
-      "Aniket Raj - Personal Portfolio | Software Engineer · Systems & AI",
-    template: "%s | Aniket Raj",
-  },
-  description:
-    "Personal Portfolio of Aniket Raj | Software Engineer · Systems & AI",
-  openGraph: {
-    title: "Aniket Raj | Software Engineer · Systems & AI",
-    description:
-      "Personal Portfolio of Aniket Raj | Software Engineer · Systems & AI",
-    url: "https://theaniketraj.netlify.app",
-    siteName: "Aniket Raj",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Aniket Raj | Software Engineer · Systems & AI",
-    description:
-      "Personal Portfolio of Aniket Raj | Software Engineer · Systems & AI",
-    creator: "@aniketfoundry",
-  },
+    metadataBase: new URL('https://theaniketraj.netlify.app'),
+    title: {
+        default: `${profileData.name} - Personal Portfolio | ${profileData.title}`,
+        template: `%s | ${profileData.name}`
+    },
+    description: profileData.description,
+    openGraph: {
+        title: `${profileData.name} | ${profileData.title}`,
+        description: profileData.description,
+        url: 'https://theaniketraj.netlify.app',
+        siteName: profileData.name,
+        locale: 'en_US',
+        type: 'website',
+        images: [
+            {
+                url: 'https://theaniketraj.netlify.app/icon-512.png',
+                width: 512,
+                height: 512,
+                alt: `${profileData.name} | ${profileData.title}`
+            }
+        ]
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: `${profileData.name} | ${profileData.title}`,
+        description: profileData.description,
+        creator: '@aniketfoundry',
+        images: ['https://theaniketraj.netlify.app/icon-512.png']
+    }
 };
 
 export default function RootLayout({
-  children,
+    children
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://theaniketraj.netlify.app/#person",
-        name: "Aniket Raj",
-        alternateName: "Aniket Raj Portfolio",
-        url: "https://theaniketraj.netlify.app/",
-        image: "https://theaniketraj.netlify.app/icon.png",
-        jobTitle: "Software Engineer",
-        description:
-          "Software Engineer focused on systems, applied AI, developer tooling, and reliable software.",
-        nationality: "Indian",
-        knowsAbout: [
-          "Systems Programming",
-          "Distributed Systems",
-          "Software Architecture",
-          "Developer Tooling",
-          "Applied AI",
-          "Android Development",
-        ],
-        sameAs: [
-          "https://github.com/theaniketraj",
-          "https://leetcode.com/theaniketraj",
-          "https://dev.to/theaniketraj",
-          "https://x.com/aniketfoundry",
-          "https://www.linkedin.com/in/theaniketraj/",
-          "https://www.npmjs.com/~theaniketraj",
-          "https://medium.com/@theaniketraj",
-          "https://plugins.gradle.org/u/theaniketraj",
-        ],
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://theaniketraj.netlify.app/#website",
-        url: "https://theaniketraj.netlify.app/",
-        name: "Aniket Raj | Software Engineer · Systems & AI",
-        alternateName: "Aniket Raj Portfolio",
-        publisher: {
-          "@id": "https://theaniketraj.netlify.app/#person",
-        },
-        inLanguage: "en",
-        description:
-          "Official portfolio website of Aniket Raj — Software & AI Engineer.",
-      },
-    ],
-  };
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'Person',
+                '@id': 'https://theaniketraj.netlify.app/#person',
+                name: profileData.name,
+                alternateName: `${profileData.name} Portfolio`,
+                url: 'https://theaniketraj.netlify.app/',
+                image: 'https://theaniketraj.netlify.app/icon-512.png',
+                jobTitle: profileData.role,
+                description: profileData.description,
+                nationality: 'Indian',
+                knowsAbout: [
+                    'Systems Programming',
+                    'Distributed Systems',
+                    'Software Architecture',
+                    'Developer Tooling',
+                    'Applied AI',
+                    'Android Development'
+                ],
+                sameAs: [
+                    profileData.links.github,
+                    profileData.links.twitter,
+                    profileData.links.linkedin,
+                    'https://leetcode.com/theaniketraj',
+                    'https://dev.to/theaniketraj',
+                    'https://www.npmjs.com/~theaniketraj',
+                    'https://medium.com/@theaniketraj',
+                    'https://plugins.gradle.org/u/theaniketraj'
+                ]
+            },
+            {
+                '@type': 'WebSite',
+                '@id': 'https://theaniketraj.netlify.app/#website',
+                url: 'https://theaniketraj.netlify.app/',
+                name: `${profileData.name} | ${profileData.title}`,
+                alternateName: `${profileData.name} Portfolio`,
+                publisher: {
+                    '@id': 'https://theaniketraj.netlify.app/#person'
+                },
+                inLanguage: 'en',
+                description: profileData.description
+            }
+        ]
+    };
 
-  const projectsMeta = getProjects();
-  const articlesMeta = getBlogPosts();
+    const projectsMeta = getProjects();
+    const articlesMeta = getBlogPosts();
 
-  return (
-    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body
-        className={`${inter.className} ${spaceGrotesk.variable}`}
-        suppressHydrationWarning
-      >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ContactDraftProvider>
-            <Header />
-            {children}
-            <WebMCPProvider
-              profileData={profileData}
-              projectsMeta={projectsMeta}
-              articlesMeta={articlesMeta}
-            />
-            <Footer />
-          </ContactDraftProvider>
-        </ThemeProvider>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+            <body className={`${inter.className} ${spaceGrotesk.variable}`} suppressHydrationWarning>
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+                <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+                    <ContactDraftProvider>
+                        <Header />
+                        {children}
+                        <WebMCPProvider
+                            profileData={profileData}
+                            projectsMeta={projectsMeta}
+                            articlesMeta={articlesMeta}
+                        />
+                        <Footer />
+                        <RouteBorderBeam />
+                    </ContactDraftProvider>
+                </ThemeProvider>
+            </body>
+        </html>
+    );
 }

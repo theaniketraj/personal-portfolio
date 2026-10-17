@@ -103,7 +103,7 @@ To get a local copy up and running, follow these simple steps.
 
 ## Contact
 
-**Aniket Raj** - Software & AI Engineer
+**Aniket Raj** - Software Engineer · Systems & AI
 
 - Website: [Portfolio](https://theaniketraj.netlify.app)
 - GitHub: [GitHub](https://github.com/theaniketraj)

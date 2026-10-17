@@ -1,36 +1,38 @@
-import { Metadata } from "next";
-import Divider from "./components/divider";
+import { Metadata } from 'next';
+import { profileData } from '@/lib/content/profile';
+import Divider from './components/divider';
+import AboutMe from './components/home/about-me';
+import Education from './components/home/education';
+import Experience from './components/home/experience';
+import FeaturedWork from './components/home/featured-work';
+import ProjectOverview from './components/home/project-overview';
+import Contact from './components/home/contact';
 
 export const metadata: Metadata = {
-  title: "Aniket Raj - Software & AI Engineer",
-  alternates: {
-    canonical: "/",
-  },
+    alternates: {
+        canonical: '/'
+    }
 };
-import AboutMe from "./components/home/about-me";
-import Education from "./components/home/education";
-import Experience from "./components/home/experience";
-import FeaturedWork from "./components/home/featured-work";
-import ProjectOverview from "./components/home/project-overview";
-import Contact from "./components/home/contact";
 
 const page = () => {
-  return (
-    <main>
-      <h1 className="sr-only">Aniket Raj - Software & AI Engineer</h1>
-      <AboutMe />
-      <Divider />
-      <FeaturedWork />
-      <Divider />
-      <Experience />
-      <Divider />
-      <Education />
-      <Divider />
-      <ProjectOverview />
-      <Divider />
-      <Contact />
-    </main>
-  );
+    return (
+        <main>
+            <h1 className="sr-only">
+                {profileData.name} - {profileData.title}
+            </h1>
+            <AboutMe />
+            <Divider />
+            <FeaturedWork />
+            <Divider />
+            <Experience />
+            <Divider />
+            <Education />
+            <Divider />
+            <ProjectOverview />
+            <Divider />
+            <Contact />
+        </main>
+    );
 };
 
 export default page;
