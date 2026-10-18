@@ -20,13 +20,16 @@ export function Breadcrumb({ items, backHref, backLabel }: Readonly<BreadcrumbPr
             <Link
                 href={backHref}
                 aria-label={`Go back to ${backLabel}`}
-                className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary/10 text-primary font-mono text-xs font-medium transition-all shadow-2xs shrink-0"
+                className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-primary font-mono text-xs font-medium transition-all shadow-2xs shrink-0"
             >
-                <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform duration-200" />
+                <ArrowLeft
+                    className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform duration-200"
+                    aria-hidden="true"
+                />
                 <span>{backLabel}</span>
             </Link>
 
-            <ChevronRight className="w-3.5 h-3.5 text-primary/30 shrink-0" />
+            <ChevronRight className="w-3.5 h-3.5 text-primary/30 shrink-0" aria-hidden="true" />
 
             {/* Path Items */}
             <div className="flex items-center gap-2 overflow-hidden">
@@ -34,11 +37,13 @@ export function Breadcrumb({ items, backHref, backLabel }: Readonly<BreadcrumbPr
                     const isLast = index === items.length - 1;
                     return (
                         <React.Fragment key={item.label}>
-                            {index > 0 && <ChevronRight className="w-3.5 h-3.5 text-primary/30 shrink-0" />}
+                            {index > 0 && (
+                                <ChevronRight className="w-3.5 h-3.5 text-primary/30 shrink-0" aria-hidden="true" />
+                            )}
                             {item.href && !isLast ? (
                                 <Link
                                     href={item.href}
-                                    className="text-secondary hover:text-primary font-medium text-xs sm:text-sm transition-colors shrink-0"
+                                    className="text-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xs font-medium text-xs sm:text-sm transition-colors shrink-0"
                                 >
                                     {item.label}
                                 </Link>

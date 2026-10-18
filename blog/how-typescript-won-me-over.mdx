@@ -19,6 +19,13 @@ relatedArticles:
   - modern-web-delivery-cms-cdn-ssg-ssr
 ---
 
+{/* prettier-ignore */}
+<TLDR>
+  - **The Core Value:** TypeScript adds compile-time static type checking to JavaScript, transforming implicit mental models into explicit, self-documenting code contracts.
+  - **Engineering Impact:** Catches structural and nullability bugs before runtime, enables reliable automated refactoring, and elevates IDE autocomplete into instant architectural documentation.
+  - **The Trade-off:** Requires upfront type design and compilation overhead, but massively decreases long-term technical debt and bug-fix cycles in multi-developer codebases.
+</TLDR>
+
 JavaScript is like juggling flaming torches in the dark. It’s fast, thrilling, and entirely forgiving right until you drop one on your foot. TypeScript turns the lights on.
 
 ## The Architecture of Confidence: Why TypeScript is the Inevitable Foundation for Modern Software
@@ -49,7 +56,7 @@ In this article, we'll explore how TypeScript changes the way developers build a
 
 ## The Invariants of System Design
 
-In any complex software system, certain rules must remain true throughout the application's lifecycle. These rules, often called *invariants*, act as contracts between different modules, components, and services.
+In any complex software system, certain rules must remain true throughout the application's lifecycle. These rules, often called _invariants_, act as contracts between different modules, components, and services.
 
 Consider a large SaaS application with multiple modules. Data moves through several layers: an API returns a response, a service processes it, a state management store holds it, and a UI component uses it to render the interface. Each layer depends on the data it receives being structured as expected.
 
@@ -131,11 +138,11 @@ This fundamentally changes the developer experience. Instead of switching contex
 
 If you've worked with backend languages like Kotlin or Java, you're probably familiar with **nominal typing**. In these systems, type compatibility is generally based on a type's declared identity and its relationships to other types. This provides strong guarantees, but it can also introduce extra boilerplate, such as Data Transfer Objects (DTOs), adapter classes, and interfaces that sometimes make an architecture more rigid than necessary.
 
-JavaScript takes a more flexible approach through *duck typing*. The idea is simple: if an object has the properties and methods you need, you can use it, regardless of where it came from or what it is called.
+JavaScript takes a more flexible approach through _duck typing_. The idea is simple: if an object has the properties and methods you need, you can use it, regardless of where it came from or what it is called.
 
 TypeScript builds on this flexibility with **static structural typing**. It checks whether a value has the required structure at compile time, giving developers useful type safety without forcing every object to inherit from a specific class or explicitly implement an interface.
 
-In practice, this means TypeScript focuses on the *shape* of a value rather than its declared name or inheritance history. If an object contains the properties required by an interface, it can generally be used wherever that interface is expected.
+In practice, this means TypeScript focuses on the _shape_ of a value rather than its declared name or inheritance history. If an object contains the properties required by an interface, it can generally be used wherever that interface is expected.
 
 The result is a practical balance: you get many of the benefits of static type checking while keeping the flexibility that makes JavaScript so useful for application development.
 

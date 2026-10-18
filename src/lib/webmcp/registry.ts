@@ -1,6 +1,14 @@
 import { z } from 'zod';
 
-export type ToolScope = 'site' | 'project-route' | 'article-route' | 'contact';
+export type ToolScope =
+    | 'site'
+    | 'project-list'
+    | 'project-detail'
+    | 'article-list'
+    | 'article-detail'
+    | 'contact'
+    | 'project-route'
+    | 'article-route';
 export type ToolKind = 'query' | 'mutation';
 
 export interface ToolDefinition<TInput, TOutput> {

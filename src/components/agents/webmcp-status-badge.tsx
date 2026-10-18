@@ -18,8 +18,13 @@ export const WebMCPStatusBadge = () => {
 
     return (
         <div className="flex flex-col items-center gap-2">
-            <div className="flex items-center gap-2 bg-background/80 backdrop-blur border border-primary/20 px-3 py-1.5 rounded-full shadow-sm">
+            <div
+                role="status"
+                aria-label={`WebMCP status: ${isSupported ? 'Supported' : 'Unavailable'}`}
+                className="flex items-center gap-2 bg-background/80 backdrop-blur border border-primary/20 px-3 py-1.5 rounded-full shadow-sm"
+            >
                 <div
+                    aria-hidden="true"
                     className={`w-2 h-2 rounded-full ${isSupported ? 'bg-emerald-500 animate-pulse' : 'bg-red-500'}`}
                 />
                 <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">

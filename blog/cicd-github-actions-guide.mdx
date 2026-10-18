@@ -24,6 +24,13 @@ relatedArticles:
   - understanding-how-git-works
 ---
 
+{/* prettier-ignore */}
+<TLDR>
+  - **Core Concepts:** Continuous Integration (CI) automates code verification, linting, and tests on commit; Continuous Deployment (CD) automates release delivery to staging/production.
+  - **GitHub Actions Primitives:** Workflows triggered by repository events, running jobs in parallel or sequentially inside containerized virtual runners composed of reusable actions.
+  - **Best Practices:** Pin action versions using full commit SHAs, isolate secrets in GitHub Secrets, optimize run times with dependency caching, and enforce branch protection rules.
+</TLDR>
+
 Continuous Integration and Continuous Deployment (CI/CD) are fundamental practices for delivering high‑quality software rapidly and reliably. GitHub Actions provides a flexible, native platform for automating these workflows directly within your GitHub repository. In this guide, we’ll explore the concepts, configuration, best practices, and advanced techniques for building efficient CI/CD pipelines using GitHub Actions.
 
 ## Why CI/CD Matters

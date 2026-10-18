@@ -21,12 +21,13 @@ export function extractHeadings(source: string): Heading[] {
             // Strip markdown formatting like **bold** or *italic* or `code`
             text = text.replace(/[*_`]/g, '');
 
-            // Replicate the client-side "Go-To" logic
+            // Preserve source heading ID (matching rehype-slug)
+            const id = slugger.slug(text);
+
+            // Replicate the client-side "Go-To" display text logic
             if (text.toLowerCase().includes('go-to')) {
                 text = 'Project Resources';
             }
-
-            const id = slugger.slug(text);
 
             return {
                 id,

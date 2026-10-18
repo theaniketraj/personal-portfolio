@@ -19,7 +19,14 @@ relatedArticles:
   - cicd-github-actions-guide
 ---
 
-# **Introduction**
+{/* prettier-ignore */}
+<TLDR>
+  - **Git as a Filesystem:** Git is fundamentally a content-addressable storage system using SHA-1/SHA-256 hashes to index and retrieve immutable data snapshots.
+  - **Four Core Objects:** Blobs (raw file contents), Trees (directory structures mapping filenames to blobs/trees), Commits (pointers to root trees + metadata), and Annotated Tags.
+  - **The 3 Stages:** Working Directory (local files on disk), Staging Area/Index (prepared snapshot for commit), and Repository (`.git` database storing the DAG).
+</TLDR>
+
+## **Introduction**
 
 Git is more than just a version-control tool it’s a content-addressable filesystem and a set of primitives upon which distributed collaboration is built. In this deep dive, we’ll strip away the “git add/commit/push” gloss and peer into Git’s innards: its object model, storage mechanics, and the workflows that emerge from them. By the end, you’ll appreciate why Git is fast, resilient, and remarkably flexible.
 

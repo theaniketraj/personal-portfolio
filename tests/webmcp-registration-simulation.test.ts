@@ -1,4 +1,5 @@
 import { JSDOM } from 'jsdom';
+import { z } from 'zod';
 import { getWebMCPToolsManifest } from '../src/lib/webmcp/server-actions';
 
 interface MockTool {
@@ -86,6 +87,114 @@ async function runBrowserSmokeTest() {
             'draft_contact_message is correctly marked as not read-only'
         );
     }
+
+    // --- Execution Pipeline & Negative Output Validation Tests ---
+    console.log('\n--- Testing Execution Pipeline & Output Schema Enforcement ---');
+
+    // Simulate browser execution wrapper with input and output validation
+    const createExecutor = (tool: {
+        name: string;
+        inputSchema: z.ZodType<any>;
+        outputSchema: z.ZodType<any>;
+        execute: (args: any) => Promise<any> | any;
+    }) => {
+        return async (args: any) => {
+            try {
+                let parsedArgs: any;
+                try {
+                    parsedArgs = tool.inputSchema.parse(args || {});
+                } catch (valErr: any) {
+                    return JSON.stringify({
+                        isError: true,
+                        error: {
+                            code: 'INPUT_VALIDATION_ERROR',
+                            message: `Error executing tool: ${valErr.message}`
+                        }
+                    });
+                }
+
+                let rawResult: any;
+                try {
+                    rawResult = await tool.execute(parsedArgs);
+                } catch (execErr: any) {
+                    return JSON.stringify({
+                        isError: true,
+                        error: {
+                            code: 'EXECUTION_ERROR',
+                            message: `Error executing tool: ${execErr.message}`
+                        }
+                    });
+                }
+
+                let validatedResult: any;
+                try {
+                    validatedResult = tool.outputSchema.parse(rawResult);
+                } catch (outErr: any) {
+                    return JSON.stringify({
+                        isError: true,
+                        error: {
+                            code: 'OUTPUT_VALIDATION_ERROR',
+                            message: `Error executing tool: ${outErr.message}`
+                        }
+                    });
+                }
+
+                return typeof validatedResult === 'object' ? JSON.stringify(validatedResult) : String(validatedResult);
+            } catch (error: any) {
+                return JSON.stringify({
+                    isError: true,
+                    error: {
+                        code: 'INTERNAL_ERROR',
+                        message: `Error executing tool: ${error.message}`
+                    }
+                });
+            }
+        };
+    };
+
+    // 1. Negative Input Validation Test
+    const inputTestExecutor = createExecutor({
+        name: 'test_input',
+        inputSchema: z.object({ slug: z.string().min(1) }),
+        outputSchema: z.object({ success: z.boolean() }),
+        execute: () => ({ success: true })
+    });
+    const inputFailRaw = await inputTestExecutor({ slug: '' });
+    const inputFail = JSON.parse(inputFailRaw);
+    assert(inputFail.isError === true, 'Input validation failure returns isError: true');
+    assert(inputFail.error?.code === 'INPUT_VALIDATION_ERROR', 'Input validation error code is INPUT_VALIDATION_ERROR');
+
+    // 2. Negative Output Validation Test (forces malformed handler output through outputSchema.parse)
+    const outputTestExecutor = createExecutor({
+        name: 'test_output_enforcement',
+        inputSchema: z.object({ id: z.string() }),
+        outputSchema: z.object({ title: z.string(), count: z.number() }).strict(),
+        execute: () => {
+            // Malformed handler output: wrong type for count, extra unexpected field
+            return { title: 'Test', count: 'NOT_A_NUMBER', rogueField: true };
+        }
+    });
+    const outputFailRaw = await outputTestExecutor({ id: '123' });
+    const outputFail = JSON.parse(outputFailRaw);
+    assert(outputFail.isError === true, 'Malformed output correctly rejected with isError: true');
+    assert(
+        outputFail.error?.code === 'OUTPUT_VALIDATION_ERROR',
+        'Output validation error code is OUTPUT_VALIDATION_ERROR'
+    );
+
+    // 3. Valid Execution Test
+    const validTestExecutor = createExecutor({
+        name: 'test_valid',
+        inputSchema: z.object({ slug: z.string() }),
+        outputSchema: z.object({ slug: z.string(), status: z.string() }),
+        execute: (args) => ({ slug: args.slug, status: 'active' })
+    });
+    const validRaw = await validTestExecutor({ slug: 'valid-slug' });
+    const validParsed = JSON.parse(validRaw);
+    assert(
+        validParsed.slug === 'valid-slug' && validParsed.status === 'active',
+        'Valid execution passes output validation and returns parsed object'
+    );
 
     console.log(`\n=== Test Results ===`);
     console.log(`Assertions Passed: ${passed}`);

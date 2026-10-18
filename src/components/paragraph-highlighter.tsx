@@ -16,7 +16,14 @@ export function ParagraphHighlighter({ children }: Readonly<{ children: React.Re
         const container = containerRef.current;
         if (!container) return;
 
+        const isMobileOrTouch = () => window.matchMedia('(max-width: 767px), (hover: none)').matches;
+
         const handleMouseOver = (e: MouseEvent) => {
+            if (isMobileOrTouch()) {
+                setHighlightStyle((prev) => (prev.opacity === 0 ? prev : { ...prev, opacity: 0 }));
+                return;
+            }
+
             const target = e.target as HTMLElement;
             // Exclude blockquotes and TLDR callouts completely
             if (target.closest('blockquote, [data-tldr]')) {
@@ -88,21 +95,30 @@ export function ParagraphHighlighter({ children }: Readonly<{ children: React.Re
             setHighlightStyle((prev) => ({ ...prev, opacity: 0 }));
         };
 
+        const handleResize = () => {
+            if (isMobileOrTouch()) {
+                setHighlightStyle((prev) => (prev.opacity === 0 ? prev : { ...prev, opacity: 0 }));
+            }
+        };
+
         // Use mousemove for more immediate reaction, or mouseover
         container.addEventListener('mouseover', handleMouseOver);
         container.addEventListener('mouseleave', handleMouseLeave);
+        window.addEventListener('resize', handleResize);
 
         return () => {
             container.removeEventListener('mouseover', handleMouseOver);
             container.removeEventListener('mouseleave', handleMouseLeave);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
     return (
         <div ref={containerRef} className="relative w-full group/highlighter">
             <div
-                className="absolute rounded-xl bg-amber-400/20 dark:bg-amber-300/10 pointer-events-none transition-all duration-300 ease-out z-0"
+                className="hidden md:block absolute rounded-xl bg-amber-400/20 dark:bg-amber-300/10 pointer-events-none transition-all duration-300 ease-out z-0"
                 style={highlightStyle}
+                aria-hidden="true"
             />
             <div className="relative z-10">{children}</div>
         </div>

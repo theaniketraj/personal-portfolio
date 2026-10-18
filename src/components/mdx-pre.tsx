@@ -41,7 +41,7 @@ export function MdxPre({ children, className, ...props }: Readonly<MdxPreProps>)
     return (
         <div className="relative group my-8 w-full" {...dataProps}>
             <div className="flex items-center justify-between px-4 py-2 bg-primary/3 border border-b-0 border-primary/10 rounded-t-xl h-11">
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5" aria-hidden="true">
                     <div className="w-3 h-3 rounded-full bg-primary/10"></div>
                     <div className="w-3 h-3 rounded-full bg-primary/10"></div>
                     <div className="w-3 h-3 rounded-full bg-primary/10"></div>
@@ -55,11 +55,15 @@ export function MdxPre({ children, className, ...props }: Readonly<MdxPreProps>)
                     )}
                     {isCollapsible && (
                         <button
+                            type="button"
                             onClick={() => setIsCollapsed(!isCollapsed)}
-                            className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity text-secondary hover:text-primary flex items-center justify-center cursor-pointer"
+                            className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xs p-0.5 transition-opacity text-secondary hover:text-primary flex items-center justify-center cursor-pointer"
+                            aria-label={isCollapsed ? 'Expand code block' : 'Collapse code block'}
+                            aria-expanded={!isCollapsed}
                             title={isCollapsed ? 'Expand code' : 'Collapse code'}
                         >
                             <ChevronDown
+                                aria-hidden="true"
                                 className={cn(
                                     'w-5 h-5 transition-transform duration-300',
                                     !isCollapsed && 'rotate-180'
@@ -67,7 +71,7 @@ export function MdxPre({ children, className, ...props }: Readonly<MdxPreProps>)
                             />
                         </button>
                     )}
-                    <div className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                    <div className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
                         <MdxCopyButton text={text} />
                     </div>
                 </div>

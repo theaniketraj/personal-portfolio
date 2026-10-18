@@ -28,7 +28,7 @@ const Footer = () => {
                                     href="https://theaniketraj.github.io/vitae"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group relative inline-block text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
+                                    className="group relative inline-block text-muted-foreground hover:text-primary text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                 >
                                     CV{''}
                                     <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
@@ -37,14 +37,14 @@ const Footer = () => {
                                     href="mailto:theaniketraj@hotmail.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group relative inline-block text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
+                                    className="group relative inline-block text-muted-foreground hover:text-primary text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                 >
                                     Contact{''}
                                     <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
                                 </Link>
                                 <Link
                                     href="/blog"
-                                    className="group relative inline-block text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
+                                    className="group relative inline-block text-muted-foreground hover:text-primary text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                 >
                                     Blog{''}
                                     <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
@@ -53,15 +53,21 @@ const Footer = () => {
                                     href="https://lexumhq.netlify.app"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group inline-flex items-center gap-0.5 text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
+                                    className="group inline-flex items-center gap-0.5 text-muted-foreground hover:text-primary text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                 >
                                     <span className="relative">
                                         Lexum{''}
                                         <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
                                     </span>
                                     <span className="relative flex items-center justify-center overflow-hidden w-4.5 h-4.5 ml-0.5">
-                                        <ArrowUpRight className="absolute w-4.5 h-4.5 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
-                                        <ArrowUpRight className="absolute w-4.5 h-4.5 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
+                                        <ArrowUpRight
+                                            className="absolute w-4.5 h-4.5 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full"
+                                            aria-hidden="true"
+                                        />
+                                        <ArrowUpRight
+                                            className="absolute w-4.5 h-4.5 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0"
+                                            aria-hidden="true"
+                                        />
                                     </span>
                                 </Link>
                             </div>
@@ -74,11 +80,12 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         aria-label="GitHub"
-                                        className="group transition-opacity"
+                                        className="group transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                     >
                                         <Image
                                             src="/images/icon/github-icon.svg"
-                                            alt="GitHub"
+                                            alt=""
+                                            aria-hidden="true"
                                             width={8}
                                             height={8}
                                             className="w-4.5 h-4.5 opacity-70 group-hover:opacity-100 transition-opacity dark:invert"
@@ -90,11 +97,12 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         aria-label="LinkedIn"
-                                        className="group transition-opacity"
+                                        className="group transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                     >
                                         <Image
                                             src="/images/icon/linkedin-icon.svg"
-                                            alt="LinkedIn"
+                                            alt=""
+                                            aria-hidden="true"
                                             width={8}
                                             height={8}
                                             className="w-4.5 h-4.5 opacity-70 group-hover:opacity-100 transition-opacity dark:invert"
@@ -106,11 +114,12 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         aria-label="Gradle"
-                                        className="group transition-opacity"
+                                        className="group transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                     >
                                         <Image
                                             src="/images/icon/gradle.svg"
-                                            alt="Gradle"
+                                            alt=""
+                                            aria-hidden="true"
                                             width={8}
                                             height={8}
                                             className="w-4.5 h-4.5 opacity-70 group-hover:opacity-100 transition-opacity dark:invert"
@@ -129,7 +138,7 @@ const Footer = () => {
                                 </p>
                                 <Link
                                     href="/agents"
-                                    className="text-xs text-muted-foreground/50 hover:text-primary transition-colors uppercase tracking-widest font-mono"
+                                    className="text-xs text-muted-foreground/50 hover:text-primary transition-colors uppercase tracking-widest font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                 >
                                     [AI Agents]
                                 </Link>
@@ -138,16 +147,17 @@ const Footer = () => {
                             <button
                                 type="button"
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                                className="group flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+                                aria-label="Back to top"
+                                className="group flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                             >
-                                <span className="group-hover:-translate-y-1 transition-transform">
+                                <span className="group-hover:-translate-y-1 transition-transform" aria-hidden="true">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="16"
                                         height="16"
                                         viewBox="0 0 24 24"
                                         fill="none"
-                                        aria-label="Back to top"
+                                        aria-hidden="true"
                                         stroke="currentColor"
                                         strokeWidth="2"
                                         strokeLinecap="round"

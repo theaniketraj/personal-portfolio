@@ -34,10 +34,18 @@ const Experience = () => {
                                             className={`flex flex-col gap-5 border-dashed border-primary/10 cursor-default ${isFirst ? 'pt-0' : 'pt-8 sm:pt-10'} ${isLast ? 'pb-0 border-b-0' : 'pb-8 sm:pb-10 border-b'}`}
                                         >
                                             {value?.icon === 'Code' && (
-                                                <Code className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                                                <Code
+                                                    className="w-8 h-8 text-primary"
+                                                    strokeWidth={1.5}
+                                                    aria-hidden="true"
+                                                />
                                             )}
                                             {value?.icon === 'Sparkles' && (
-                                                <Sparkles className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                                                <Sparkles
+                                                    className="w-8 h-8 text-primary"
+                                                    strokeWidth={1.5}
+                                                    aria-hidden="true"
+                                                />
                                             )}
                                             <div className="flex flex-wrap gap-5 items-center justify-between">
                                                 <h3 className="text-base sm:text-lg font-medium text-primary cursor-default">
@@ -45,6 +53,7 @@ const Experience = () => {
                                                 </h3>
                                                 <div className="flex items-center gap-2.5 border border-primary/10 rounded-lg py-1.5 px-3">
                                                     <div
+                                                        aria-hidden="true"
                                                         className={`w-4 h-2 rounded-sm ${value?.endYear == 'Present' ? 'bg-primary' : 'bg-primary/10'} `}
                                                     />
                                                     <p className="text-sm xs:text-base text-primary cursor-default">
@@ -59,7 +68,12 @@ const Experience = () => {
                                                             key={point.substring(0, 30)}
                                                             className="flex items-start gap-2 text-base font-normal text-secondary cursor-default"
                                                         >
-                                                            <span className="w-2.5 h-2.5 text-secondary">•</span>
+                                                            <span
+                                                                className="w-2.5 h-2.5 text-secondary"
+                                                                aria-hidden="true"
+                                                            >
+                                                                •
+                                                            </span>
                                                             {point}
                                                         </li>
                                                     );

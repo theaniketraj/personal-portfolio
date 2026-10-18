@@ -23,6 +23,8 @@ const CliTerminal: React.FC<CliTerminalProps> = ({ isOpen, onClose }) => {
     const [isFullscreen, setIsFullscreen] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
+    const dialogRef = useRef<HTMLDivElement>(null);
+    const previousActiveElementRef = useRef<HTMLElement | null>(null);
 
     // Initial boot sequence
     useEffect(() => {
@@ -51,10 +53,14 @@ const CliTerminal: React.FC<CliTerminalProps> = ({ isOpen, onClose }) => {
         }
     }, [isOpen, history.length]);
 
-    // Focus input when opened
+    // Focus management: track active element and focus terminal input
     useEffect(() => {
         if (isOpen) {
-            setTimeout(() => inputRef.current?.focus(), 100);
+            previousActiveElementRef.current = document.activeElement as HTMLElement | null;
+            const timer = setTimeout(() => inputRef.current?.focus(), 100);
+            return () => clearTimeout(timer);
+        } else if (previousActiveElementRef.current) {
+            previousActiveElementRef.current.focus();
         }
     }, [isOpen]);
 
@@ -263,22 +269,50 @@ const CliTerminal: React.FC<CliTerminalProps> = ({ isOpen, onClose }) => {
 
     if (!isOpen) return null;
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            onClose();
+            return;
+        }
+
+        if (e.key === 'Tab') {
+            if (!dialogRef.current) return;
+            const focusableElements = dialogRef.current.querySelectorAll<HTMLElement>(
+                'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            );
+            if (focusableElements.length === 0) return;
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        }
+    };
+
     return (
         <div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
+            aria-labelledby="cli-terminal-title"
             className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-8"
-            onKeyDown={(e) => {
-                if (e.key === 'Escape') {
-                    onClose();
-                }
-            }}
+            onKeyDown={handleKeyDown}
         >
             <button
                 type="button"
                 className="absolute inset-0 w-full h-full bg-black/40 dark:bg-black/60 backdrop-blur-sm cursor-default border-none outline-none transition-opacity"
                 onClick={onClose}
-                aria-label="Close terminal"
+                aria-hidden="true"
                 tabIndex={-1}
             />
             <div
@@ -291,28 +325,39 @@ const CliTerminal: React.FC<CliTerminalProps> = ({ isOpen, onClose }) => {
                     inputRef.current?.focus();
                 }}
             >
+                <h2 id="cli-terminal-title" className="sr-only">
+                    Interactive Terminal Console
+                </h2>
+
                 {/* Header */}
                 <div className="flex items-center justify-between px-3 py-1.5 border-b border-gray-200/50 dark:border-white/10 select-none bg-black/5 dark:bg-white/5">
                     <div className="flex items-center text-gray-500 dark:text-gray-400">
-                        <img src="/images/icon/cmd.svg" alt="Terminal" className="w-9 h-9 opacity-70 dark:invert" />
+                        <img
+                            src="/images/icon/cmd.svg"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-9 h-9 opacity-70 dark:invert"
+                        />
                     </div>
                     <div className="flex items-center gap-1 text-gray-400 dark:text-gray-500">
                         <button
+                            type="button"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setIsFullscreen(!isFullscreen);
                             }}
-                            className="hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 p-1 rounded transition-colors cursor-pointer flex items-center justify-center"
-                            aria-label="Toggle Fullscreen"
+                            className="hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 p-1 rounded transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9282F8]"
+                            aria-label={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
                         >
                             {isFullscreen ? <Minimize size={16} /> : <Maximize size={16} />}
                         </button>
                         <button
+                            type="button"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 onClose();
                             }}
-                            className="hover:text-red-500 dark:hover:text-red-400 hover:bg-red-500/10 p-1 rounded transition-colors cursor-pointer flex items-center justify-center"
+                            className="hover:text-red-500 dark:hover:text-red-400 hover:bg-red-500/10 p-1 rounded transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9282F8]"
                             aria-label="Close Terminal"
                         >
                             <X size={17} />
@@ -358,7 +403,8 @@ const CliTerminal: React.FC<CliTerminalProps> = ({ isOpen, onClose }) => {
                                 }
                             }}
                             placeholder="Type 'help' to examine capabilities..."
-                            className="flex-1 bg-transparent border-none focus:ring-0 focus:ring-offset-0 text-gray-900 dark:text-gray-100 placeholder:text-gray-400/70 dark:placeholder:text-gray-600 text-sm sm:text-base outline-none! shadow-none! caret-violet-500 font-medium"
+                            aria-label="Terminal command input"
+                            className="flex-1 bg-transparent border-none focus:ring-0 focus:ring-offset-0 text-gray-900 dark:text-gray-100 placeholder:text-gray-400/70 dark:placeholder:text-gray-600 text-sm sm:text-base outline-none! shadow-none! caret-violet-500 font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#9282F8]"
                             style={{ outline: 'none', boxShadow: 'none' }}
                             autoComplete="off"
                             spellCheck="false"

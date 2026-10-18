@@ -37,7 +37,7 @@ const ProjectOverview = () => {
                                             <Link
                                                 key={value.url}
                                                 href={value.url}
-                                                className="group flex items-center justify-between gap-3"
+                                                className="group flex items-center justify-between gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                             >
                                                 <h3 className="text-lg sm:text-xl font-medium group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                                                     {value.name}
@@ -48,6 +48,7 @@ const ProjectOverview = () => {
                                                 <Image
                                                     src={'/images/icon/tile-arrow-icon.svg'}
                                                     alt=""
+                                                    aria-hidden="true"
                                                     width={24}
                                                     height={24}
                                                     style={{ width: 'auto', height: 'auto' }}
@@ -59,7 +60,7 @@ const ProjectOverview = () => {
                                     <div>
                                         <Link
                                             href="/projects"
-                                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors pt-2"
+                                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors pt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                         >
                                             See all projects
                                         </Link>
@@ -80,7 +81,7 @@ const ProjectOverview = () => {
                                             <Link
                                                 key={value.url}
                                                 href={value.url}
-                                                className="group flex items-center justify-between gap-3"
+                                                className="group flex items-center justify-between gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                             >
                                                 <h3 className="text-lg sm:text-xl font-medium group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                                                     {value.name}
@@ -88,6 +89,7 @@ const ProjectOverview = () => {
                                                 <Image
                                                     src={'/images/icon/tile-arrow-icon.svg'}
                                                     alt=""
+                                                    aria-hidden="true"
                                                     width={24}
                                                     height={24}
                                                     style={{ width: 'auto', height: 'auto' }}
@@ -99,7 +101,7 @@ const ProjectOverview = () => {
                                     <div>
                                         <Link
                                             href="/blog"
-                                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors pt-2"
+                                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors pt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                         >
                                             See all blogs
                                         </Link>

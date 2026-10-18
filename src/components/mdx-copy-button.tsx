@@ -34,15 +34,20 @@ export function MdxCopyButton({ text, className, ...props }: Readonly<CopyButton
         <button
             type="button"
             className={cn(
-                'relative z-10 inline-flex h-7 w-7 items-center justify-center rounded-md text-secondary hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 transition-colors cursor-pointer',
+                'relative z-10 inline-flex h-7 w-7 items-center justify-center rounded-md text-secondary hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 transition-colors cursor-pointer',
                 className
             )}
             onClick={copyToClipboard}
-            title="Copy code"
+            aria-label={hasCopied ? 'Code copied to clipboard' : 'Copy code to clipboard'}
+            title={hasCopied ? 'Copied!' : 'Copy code'}
             {...props}
         >
-            <span className="sr-only">Copy</span>
-            {hasCopied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
+            <span className="sr-only">{hasCopied ? 'Code copied to clipboard' : 'Copy code to clipboard'}</span>
+            {hasCopied ? (
+                <Check className="h-3.5 w-3.5 text-green-500" aria-hidden="true" />
+            ) : (
+                <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+            )}
         </button>
     );
 }

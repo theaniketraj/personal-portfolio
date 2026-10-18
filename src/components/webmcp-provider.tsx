@@ -175,19 +175,66 @@ export const WebMCPProvider = ({ profileData, projectsMeta, articlesMeta }: WebM
 
                                             const browserTool = browserTools[tool.name];
                                             if (!browserTool) {
-                                                throw new Error('Unknown tool: ' + tool.name);
+                                                return JSON.stringify({
+                                                    isError: true,
+                                                    error: {
+                                                        code: 'UNKNOWN_TOOL',
+                                                        message: `Error executing tool: Unknown tool ${tool.name}`
+                                                    }
+                                                });
                                             }
 
                                             // Unified execution pipeline:
                                             // 1. Input schema validation (prevents mutations or handler run on invalid data)
                                             const safeArgs = args || {};
-                                            const parsedArgs = browserTool.inputSchema.parse(safeArgs);
+                                            let parsedArgs: unknown;
+                                            try {
+                                                parsedArgs = browserTool.inputSchema.parse(safeArgs);
+                                            } catch (valErr) {
+                                                const message =
+                                                    valErr instanceof Error ? valErr.message : 'Invalid input';
+                                                return JSON.stringify({
+                                                    isError: true,
+                                                    error: {
+                                                        code: 'INPUT_VALIDATION_ERROR',
+                                                        message: `Error executing tool: ${message}`
+                                                    }
+                                                });
+                                            }
 
                                             // 2. Client-side handler execution
-                                            const rawResult = await browserTool.execute(parsedArgs);
+                                            let rawResult: unknown;
+                                            try {
+                                                rawResult = await browserTool.execute(parsedArgs);
+                                            } catch (execErr) {
+                                                const message =
+                                                    execErr instanceof Error ? execErr.message : 'Handler failed';
+                                                return JSON.stringify({
+                                                    isError: true,
+                                                    error: {
+                                                        code: 'EXECUTION_ERROR',
+                                                        message: `Error executing tool: ${message}`
+                                                    }
+                                                });
+                                            }
 
                                             // 3. Output schema validation (ensures runtime output complies with contract)
-                                            const validatedResult = browserTool.outputSchema.parse(rawResult);
+                                            let validatedResult: unknown;
+                                            try {
+                                                validatedResult = browserTool.outputSchema.parse(rawResult);
+                                            } catch (outErr) {
+                                                const message =
+                                                    outErr instanceof Error
+                                                        ? outErr.message
+                                                        : 'Output validation failed';
+                                                return JSON.stringify({
+                                                    isError: true,
+                                                    error: {
+                                                        code: 'OUTPUT_VALIDATION_ERROR',
+                                                        message: `Error executing tool: ${message}`
+                                                    }
+                                                });
+                                            }
 
                                             // 4. Return serialized string according to WebMCP browser convention
                                             return typeof validatedResult === 'object'
@@ -197,7 +244,13 @@ export const WebMCPProvider = ({ profileData, projectsMeta, articlesMeta }: WebM
                                             console.error(`WebMCP tool ${tool.name} failed:`, error);
                                             const message =
                                                 error instanceof Error ? error.message : 'Tool execution failed.';
-                                            return `Error executing tool: ${message}`;
+                                            return JSON.stringify({
+                                                isError: true,
+                                                error: {
+                                                    code: 'INTERNAL_ERROR',
+                                                    message: `Error executing tool: ${message}`
+                                                }
+                                            });
                                         }
                                     },
                                     annotations: {

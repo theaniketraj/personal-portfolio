@@ -21,6 +21,13 @@ relatedArticles:
   - google-search-algorithm-guide
 ---
 
+{/* prettier-ignore */}
+<TLDR>
+  - **The Request Pipeline:** URL parsing → DNS resolution → TCP 3-way handshake → TLS 1.3 cryptographic negotiation → HTTP request transmission.
+  - **Server & Edge Processing:** CDN cache hits or reverse proxy routing (Nginx) → dynamic SSR or static file retrieval → HTTP streaming response with status headers.
+  - **Browser Critical Rendering Path:** HTML tokenization into DOM → CSSOM generation → Render Tree calculation → Layout (reflow) → Paint → GPU Compositing.
+</TLDR>
+
 ## What Happens When You Open a Website: From DNS to Rendering
 
 When you type a URL into your browser’s address bar and press Enter, you trigger a sophisticated sequence of network requests, protocol handshakes, and rendering steps. Understanding this end-to-end process is essential for web developers who want to optimize performance, enhance reliability, and debug issues effectively. In this article, we’ll walk through each stage in detail—from DNS lookup to painting pixels on the screen.

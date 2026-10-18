@@ -13,7 +13,7 @@ const AboutMe = () => {
                                 <h2 className="text-sm tracking-[2px] cursor-default text-primary uppercase font-medium">
                                     About Me
                                 </h2>
-                                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-normal cursor-default text-primary text-justify">
+                                <p className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-normal cursor-default text-primary text-justify">
                                     Hey there. I&apos;m Aniket Raj - A Computer Science and Engineering graduate who
                                     enjoys{' '}
                                     <span className="bg-[linear-gradient(90deg,rgba(243,202,77,0.4)_0%,rgba(243,202,77,0.05)_100%)]">
@@ -21,7 +21,7 @@ const AboutMe = () => {
                                     </span>{' '}
                                     where software meets real world constraints, from distributed runtimes &{' '}
                                     <span className="border-b-2">developer tooling to applied AI.</span>
-                                </h3>
+                                </p>
                                 <p className="text-base sm:text-lg cursor-default text-secondary font-normal text-justify">
                                     I care about software that is reliable, efficient, and useful beyond the demo.
                                 </p>

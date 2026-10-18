@@ -23,6 +23,7 @@ interface ScrollAnimationOptions {
 // Intersection Observer hook for hardware-accelerated scroll animations
 export const useScrollAnimation = <T extends HTMLElement>(options: ScrollAnimationOptions = {}) => {
     const [isVisible, setIsVisible] = useState(false);
+    const [isReady, setIsReady] = useState(false);
     const [hasAnimated, setHasAnimated] = useState(false);
     const elementRef = useRef<T>(null);
 
@@ -31,6 +32,15 @@ export const useScrollAnimation = <T extends HTMLElement>(options: ScrollAnimati
     const triggerOnce = options.triggerOnce ?? true;
 
     useEffect(() => {
+        // If IntersectionObserver is unavailable, keep content visible without pre-animation hiding
+        if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+            setIsVisible(true);
+            return;
+        }
+
+        // Mark as ready once the client animation system has successfully initialized
+        setIsReady(true);
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -57,7 +67,7 @@ export const useScrollAnimation = <T extends HTMLElement>(options: ScrollAnimati
         };
     }, [threshold, rootMargin, triggerOnce, hasAnimated]);
 
-    return { elementRef, isVisible, hasAnimated };
+    return { elementRef, isVisible, isReady, hasAnimated };
 };
 
 // Reduced Motion Detection

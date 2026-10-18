@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { getProjects } from '@/lib/mdx';
 import { HardwareAnimated } from '@/components/animations/hardware-animated';
 import { Metadata } from 'next';
+import { createOpenGraph } from '@/lib/content/profile';
 
 export const metadata: Metadata = {
     title: 'Technical Projects & Frameworks',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/projects'
     },
-    openGraph: {
+    openGraph: createOpenGraph({
         title: 'Technical Projects & Frameworks | Aniket Raj',
         description:
             'A collection of software, experiments, and things built by Aniket Raj while exploring ideas, solving problems, and learning through making.',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
                 alt: 'Technical Projects & Frameworks | Aniket Raj'
             }
         ]
-    },
+    }),
     twitter: {
         card: 'summary_large_image',
         title: 'Technical Projects & Frameworks | Aniket Raj',
@@ -39,7 +39,7 @@ export default function ProjectsPage() {
     const projects = getProjects();
 
     return (
-        <main>
+        <main id="main-content" tabIndex={-1} className="outline-none">
             <section>
                 <div className="container">
                     <div className="border-x border-primary/10">
@@ -77,7 +77,10 @@ export default function ProjectsPage() {
                                                         {project.date}
                                                     </span>
                                                 </div>
-                                                <Link href={`/projects/${project.slug}`}>
+                                                <Link
+                                                    href={`/projects/${project.slug}`}
+                                                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                                >
                                                     <h2 className="text-xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                                                         {project.title}
                                                     </h2>
@@ -90,18 +93,16 @@ export default function ProjectsPage() {
                                                 <Link
                                                     href={`/projects/${project.slug}`}
                                                     aria-label={`View case study: ${project.title}`}
-                                                    className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors"
+                                                    className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                                 >
                                                     <span>View Case Study / Docs</span>
-                                                    <Image
+                                                    <img
                                                         src="/images/icon/tile-arrow-icon.svg"
                                                         alt=""
                                                         aria-hidden="true"
                                                         width={20}
                                                         height={20}
-                                                        priority={index < 4}
-                                                        style={{ width: 'auto', height: 'auto' }}
-                                                        className="dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
+                                                        className="w-5 h-5 dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
                                                     />
                                                 </Link>
                                             </div>
@@ -115,7 +116,7 @@ export default function ProjectsPage() {
                         <div className="border-t border-primary/10 py-10 px-4 sm:px-7 flex justify-center bg-primary/5 hover:bg-primary/10 transition-colors">
                             <Link
                                 href="/projects/deprecated"
-                                className="group flex flex-col items-center gap-2 text-center"
+                                className="group flex flex-col items-center gap-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                             >
                                 <span className="text-xs font-mono uppercase text-secondary group-hover:text-primary transition-colors">
                                     Archived & Experimental
@@ -128,7 +129,7 @@ export default function ProjectsPage() {
                                         height="18"
                                         viewBox="0 0 24 24"
                                         fill="none"
-                                        aria-label="View deprecated projects"
+                                        aria-hidden="true"
                                         stroke="currentColor"
                                         strokeWidth="2"
                                         strokeLinecap="round"

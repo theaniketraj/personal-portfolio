@@ -22,7 +22,7 @@ const FeaturedWork = () => {
                                         href="https://theaniketraj.github.io/vitae"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="py-3 px-5"
+                                        className="py-3 px-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md"
                                     >
                                         View Resume / CV
                                     </Link>
@@ -47,20 +47,30 @@ const FeaturedWork = () => {
                                         <div
                                             className={`group flex flex-col gap-3.5 sm:gap-5 p-3.5 sm:p-6 ${isRightCol ? 'md:border-l md:border-primary/10' : ''}`}
                                         >
-                                            <Link href={`/projects/${project.slug}`} className="overflow-hidden">
+                                            <Link
+                                                href={`/projects/${project.slug}`}
+                                                tabIndex={-1}
+                                                aria-hidden="true"
+                                                className="overflow-hidden rounded-sm"
+                                            >
                                                 <Image
                                                     src={project.image || ''}
-                                                    alt={project.title || 'Project thumbnail'}
+                                                    alt={
+                                                        project.title ? `${project.title} preview` : 'Project thumbnail'
+                                                    }
                                                     width={490}
                                                     height={300}
                                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 490px"
-                                                    priority={index < 2}
+                                                    loading="lazy"
                                                     style={{ width: '100%', height: 'auto' }}
                                                     className="w-full h-auto group-hover:scale-105 transition-all duration-300 ease-in-out"
                                                 />
                                             </Link>
                                             <div className="flex flex-col gap-1 sm:gap-2 px-2">
-                                                <Link href={`/projects/${project.slug}`}>
+                                                <Link
+                                                    href={`/projects/${project.slug}`}
+                                                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                                >
                                                     <h3 className="text-lg sm:text-xl font-medium text-primary">
                                                         {project.title}
                                                     </h3>

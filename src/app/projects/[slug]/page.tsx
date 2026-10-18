@@ -1,11 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProjects, getProjectBySlug, slugifyTag } from '@/lib/mdx';
+import { getProjects, getProjectBySlug, getBlogPosts, slugifyTag } from '@/lib/mdx';
 import { extractHeadings } from '@/lib/toc';
 import { MDXContent } from '@/components/mdx-content';
 import { Breadcrumb } from '@/components/breadcrumb';
 import { TableOfContents } from '@/components/table-of-contents';
+import { createOpenGraph, profileData, getSiteUrl } from '@/lib/content/profile';
+import type { ProjectMeta, BlogPostMeta } from '@/lib/content/types';
 
 interface ProjectPageProps {
     params: Promise<{ slug: string }>;
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
         alternates: {
             canonical: `/projects/${slug}`
         },
-        openGraph: {
+        openGraph: createOpenGraph({
             title,
             description,
             url: `/projects/${slug}`,
@@ -43,7 +45,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
                     alt: title
                 }
             ]
-        },
+        }),
         twitter: {
             card: 'summary_large_image',
             title,
@@ -62,12 +64,53 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
     }
 
     const allProjects = getProjects();
+    const allPosts = getBlogPosts();
     const currentIndex = allProjects.findIndex((p) => p.slug === slug);
     const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
     const nextProject = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
+    const relatedProjects = (project.meta.relatedProjects || [])
+        .map((pSlug) => allProjects.find((p) => p.slug === pSlug))
+        .filter((p): p is ProjectMeta => Boolean(p));
+
+    const relatedArticles = (project.meta.relatedArticles || [])
+        .map((aSlug) => allPosts.find((p) => p.slug === aSlug))
+        .filter((a): a is BlogPostMeta => Boolean(a));
+
+    const hasRelated = relatedProjects.length > 0 || relatedArticles.length > 0;
+
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        '@id': getSiteUrl(`/projects/${slug}/#project`),
+        name: project.meta.title,
+        description: project.meta.metaDescription || project.meta.description || project.meta.title,
+        applicationCategory: project.meta.domains?.[0] || 'DeveloperApplication',
+        operatingSystem: 'Cross-platform',
+        author: {
+            '@type': 'Person',
+            '@id': `${profileData.url}/#person`,
+            name: profileData.name,
+            url: getSiteUrl('/')
+        },
+        publisher: {
+            '@type': 'Person',
+            '@id': `${profileData.url}/#person`,
+            name: profileData.name
+        },
+        datePublished: project.meta.date,
+        url: getSiteUrl(`/projects/${slug}`),
+        keywords: project.meta.technologies || project.meta.tags || [],
+        image: project.meta.image ? getSiteUrl(project.meta.image) : getSiteUrl('/icon-512.png'),
+        relatedLink: [
+            ...relatedProjects.map((p) => getSiteUrl(`/projects/${p.slug}`)),
+            ...relatedArticles.map((a) => getSiteUrl(`/blog/${a.slug}`))
+        ]
+    };
+
     return (
-        <main>
+        <main id="main-content" tabIndex={-1} className="outline-none">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <section>
                 <div className="container">
                     <div className="border-x border-primary/10">
@@ -80,7 +123,8 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                     items={[{ label: project.meta.title }]}
                                 />
                                 <div className="text-sm text-secondary font-(family-name:--font-space-grotesk) flex items-center h-7.5 cursor-default">
-                                    {project.meta.date}
+                                    <time dateTime={project.meta.date}>{project.meta.date}</time>
+                                    <span className="sr-only">, created by {profileData.name}</span>
                                 </div>
                             </div>
                             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary tracking-tight mb-4 font-(family-name:--font-space-grotesk) cursor-default">
@@ -102,7 +146,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        aria-label="Reading Time"
+                                        aria-hidden="true"
                                         className="transition-transform duration-500 ease-out group-hover:rotate-180 group-hover:scale-110"
                                     >
                                         <circle cx="12" cy="12" r="10" />
@@ -117,7 +161,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                             <React.Fragment key={tag}>
                                                 <Link
                                                     href={`/projects/tags/${slugifyTag(tag)}`}
-                                                    className="group relative inline-block text-secondary hover:text-primary text-sm font-medium transition-colors cursor-pointer"
+                                                    className="group relative inline-block text-secondary hover:text-primary text-sm font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                                 >
                                                     {tag}
                                                     <span className="absolute left-0 -bottom-0.5 h-px w-full bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
@@ -142,6 +186,29 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                             </div>
                         </div>
 
+                        {/* Related Work & Connected Systems (Accessible in DOM for AI agents & crawlers; visually hidden to eliminate UI clutter) */}
+                        {hasRelated && (
+                            <nav aria-label="Related Systems and Deep Dives" className="sr-only">
+                                <h2>Related Systems & Deep Dives</h2>
+                                <ul>
+                                    {relatedProjects.map((rp) => (
+                                        <li key={rp.slug}>
+                                            <Link href={`/projects/${rp.slug}`}>
+                                                {rp.title}: {rp.description}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                    {relatedArticles.map((ra) => (
+                                        <li key={ra.slug}>
+                                            <Link href={`/blog/${ra.slug}`}>
+                                                {ra.title}: {ra.excerpt}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        )}
+
                         {/* Next / Previous Project Navigation */}
                         <div className="max-w-3xl mx-auto px-4 sm:px-7 py-8 border-t border-primary/10 flex justify-between items-center gap-4 text-sm font-medium">
                             <div className="flex-1 min-w-0">
@@ -149,7 +216,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                     <Link
                                         href={`/projects/${prevProject.slug}`}
                                         aria-label={`Previous project: ${prevProject.title}`}
-                                        className="group flex flex-col gap-1 text-left text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
+                                        className="group flex flex-col gap-1 text-left text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                     >
                                         <span className="text-xs font-mono uppercase text-secondary shrink-0 flex items-center gap-1.5">
                                             <svg
@@ -162,7 +229,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                                 strokeWidth="2"
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                aria-label="Previous Project"
+                                                aria-hidden="true"
                                                 className="transition-transform group-hover:-translate-x-1"
                                             >
                                                 <path d="m12 19-7-7 7-7" />
@@ -177,7 +244,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                 ) : (
                                     <Link
                                         href="/projects"
-                                        className="text-xs font-mono uppercase text-secondary hover:text-primary transition-colors shrink-0"
+                                        className="text-xs font-mono uppercase text-secondary hover:text-primary transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                     >
                                         <span className="flex items-center gap-1.5">
                                             <svg
@@ -190,7 +257,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                                 strokeWidth="2"
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                aria-label="All Projects"
+                                                aria-hidden="true"
                                                 className="transition-transform group-hover:-translate-x-1"
                                             >
                                                 <path d="m12 19-7-7 7-7" />
@@ -207,7 +274,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                     <Link
                                         href={`/projects/${nextProject.slug}`}
                                         aria-label={`Next project: ${nextProject.title}`}
-                                        className="group flex flex-col gap-1 text-right text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
+                                        className="group flex flex-col gap-1 text-right text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                     >
                                         <span className="text-xs font-mono uppercase text-secondary shrink-0 flex items-center justify-end gap-1.5">
                                             Next Project
@@ -221,7 +288,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                                 strokeWidth="2"
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                aria-label="Next Project"
+                                                aria-hidden="true"
                                                 className="transition-transform group-hover:translate-x-1"
                                             >
                                                 <path d="M5 12h14" />
@@ -235,7 +302,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                 ) : (
                                     <Link
                                         href="/projects"
-                                        className="text-xs font-mono uppercase text-secondary hover:text-primary transition-colors shrink-0"
+                                        className="text-xs font-mono uppercase text-secondary hover:text-primary transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                     >
                                         <span className="flex items-center justify-end gap-1.5">
                                             All Projects{' '}
@@ -249,7 +316,7 @@ export default async function ProjectDetailPage({ params }: Readonly<ProjectPage
                                                 strokeWidth="2"
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                aria-label="All Projects"
+                                                aria-hidden="true"
                                                 className="transition-transform group-hover:translate-x-1"
                                             >
                                                 <path d="M5 12h14" />

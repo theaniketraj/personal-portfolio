@@ -38,8 +38,14 @@ export function normalizeTerm(term: string): string {
     });
 }
 
+export function tokenizeSearchQuery(query: string): { rawTokens: string[]; tokens: string[] } {
+    const rawTokens = query.toLowerCase().split(/\s+/).filter(Boolean);
+    const tokens = rawTokens.map(normalizeTerm);
+    return { rawTokens, tokens };
+}
+
 export function normalizeSearchQuery(query: string): string[] {
-    return query.toLowerCase().split(/\s+/).filter(Boolean).map(normalizeTerm);
+    return tokenizeSearchQuery(query).tokens;
 }
 
 export function matchesTerm(stored: string, queryToken: string, rawQueryToken?: string): boolean {
@@ -91,16 +97,33 @@ const mapToArticleSummary = (a: BlogPostMeta) => ({
     contentType: a.contentType
 });
 
+export function normalizeRole(role: string): string {
+    return role.toLowerCase().trim().replace(/[-_]+/g, ' ').replace(/\s+/g, ' ');
+}
+
 const ROLE_ALIASES: Record<string, string[]> = {
-    'backend engineer': ['backend', 'systems', 'api', 'infrastructure', 'database'],
-    'backend developer': ['backend', 'systems', 'api', 'infrastructure', 'database'],
-    'frontend engineer': ['frontend', 'react', 'ui', 'web'],
-    'frontend developer': ['frontend', 'react', 'ui', 'web'],
-    'fullstack engineer': ['backend', 'frontend', 'api', 'react', 'database', 'web'],
-    'fullstack developer': ['backend', 'frontend', 'api', 'react', 'database', 'web'],
-    'systems engineer': ['systems', 'distributed systems', 'infrastructure', 'rust', 'c++'],
-    'ai engineer': ['ai', 'machine learning', 'ml', 'python', 'llm'],
-    'machine learning engineer': ['ai', 'machine learning', 'ml', 'python', 'llm']
+    'ai engineer': ['ai', 'artificial intelligence', 'machine learning', 'ml', 'python', 'llm', 'nlp'],
+    'artificial intelligence engineer': [
+        'ai',
+        'artificial intelligence',
+        'machine learning',
+        'ml',
+        'python',
+        'llm',
+        'nlp'
+    ],
+    'ai developer': ['ai', 'artificial intelligence', 'machine learning', 'ml', 'python', 'llm', 'nlp'],
+    'ml engineer': ['ai', 'artificial intelligence', 'machine learning', 'ml', 'python', 'llm'],
+    'machine learning engineer': ['ai', 'artificial intelligence', 'machine learning', 'ml', 'python', 'llm'],
+    'backend engineer': ['backend', 'systems', 'api', 'infrastructure', 'database', 'postgresql'],
+    'backend developer': ['backend', 'systems', 'api', 'infrastructure', 'database', 'postgresql'],
+    'frontend engineer': ['frontend', 'react', 'ui', 'web', 'typescript'],
+    'frontend developer': ['frontend', 'react', 'ui', 'web', 'typescript'],
+    'fullstack engineer': ['backend', 'frontend', 'api', 'react', 'database', 'web', 'typescript', 'fullstack'],
+    'full stack engineer': ['backend', 'frontend', 'api', 'react', 'database', 'web', 'typescript', 'fullstack'],
+    'fullstack developer': ['backend', 'frontend', 'api', 'react', 'database', 'web', 'typescript', 'fullstack'],
+    'full stack developer': ['backend', 'frontend', 'api', 'react', 'database', 'web', 'typescript', 'fullstack'],
+    'systems engineer': ['systems', 'distributed systems', 'infrastructure', 'rust', 'c++', 'control plane']
 };
 
 export const PortfolioService = {
@@ -162,8 +185,7 @@ export const PortfolioService = {
         let scoredProjects = projects.map((p) => ({ project: p, score: 0 }));
 
         if (params.query) {
-            const rawTokens = params.query.toLowerCase().split(/\s+/).filter(Boolean);
-            const tokens = rawTokens.map(normalizeTerm);
+            const { rawTokens, tokens } = tokenizeSearchQuery(params.query);
             scoredProjects.forEach((item) => {
                 const p = item.project;
                 let score = 0;
@@ -265,8 +287,7 @@ export const PortfolioService = {
         let scoredArticles = articles.map((a) => ({ article: a, score: 0 }));
 
         if (params.query) {
-            const rawTokens = params.query.toLowerCase().split(/\s+/).filter(Boolean);
-            const tokens = rawTokens.map(normalizeTerm);
+            const { rawTokens, tokens } = tokenizeSearchQuery(params.query);
             scoredArticles.forEach((item) => {
                 const a = item.article;
                 let score = 0;
@@ -279,6 +300,7 @@ export const PortfolioService = {
                     if (a.excerpt && matchesTerm(a.excerpt, q, rawQ)) score += 5;
                     if (a.topics?.some((t) => matchesTerm(t, q, rawQ))) score += 3;
                     if (a.tags?.some((t) => matchesTerm(t, q, rawQ))) score += 3;
+                    if (a.contentType?.some((c) => matchesTerm(c, q, rawQ))) score += 3;
                 }
                 item.score = score;
             });
@@ -351,14 +373,21 @@ export const PortfolioService = {
         const domains = (params.domains || []).map(normalizeTerm);
         const roleTerms: string[] = [];
         if (params.role) {
-            const normalizedRole = normalizeTerm(params.role);
-            roleTerms.push(normalizedRole);
-            if (ROLE_ALIASES[normalizedRole]) {
-                roleTerms.push(...ROLE_ALIASES[normalizedRole]);
+            const rawRole = params.role.toLowerCase().trim();
+            const normalizedRole = normalizeRole(params.role);
+            const techNormRole = normalizeTerm(params.role);
+
+            roleTerms.push(rawRole, normalizedRole, techNormRole);
+
+            const aliasKeys = [normalizedRole, rawRole, techNormRole];
+            for (const key of aliasKeys) {
+                if (ROLE_ALIASES[key]) {
+                    roleTerms.push(...ROLE_ALIASES[key]);
+                }
             }
         }
 
-        const allSearchTerms = [...keywords, ...skills, ...domains, ...roleTerms];
+        const allSearchTerms = [...new Set([...keywords, ...skills, ...domains, ...roleTerms.map(normalizeTerm)])];
 
         if (allSearchTerms.length === 0) {
             // If no search terms, just return the most recent/featured items

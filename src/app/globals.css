@@ -48,6 +48,12 @@ html {
     scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -760,5 +766,60 @@ figure[data-rehype-pretty-code-figure] code {
 @media (min-width: 640px) {
     .border-beam-rail-right {
         right: 28px;
+    }
+}
+
+/* Route entrance animation (CSS compositor thread, zero JS bundle overhead) */
+@keyframes page-enter {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-page-enter {
+    animation: page-enter 200ms ease-out;
+}
+
+/* Accessibility: Global Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    /* Route entrance animation */
+    .animate-page-enter {
+        animation: none !important;
+    }
+
+    /* 404 Illustration and character animations */
+    #handboy,
+    #girllight,
+    #hairgirl,
+    #zero {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    /* 404 Birds background */
+    .container-bird,
+    .bird,
+    .bird-anim,
+    .wing,
+    .wing-left,
+    .wing-right,
+    .wing-right-top,
+    .wing-left-top {
+        animation: none !important;
+        display: none !important;
+    }
+
+    /* Route transition border beam sweep */
+    .border-beam-rail-left,
+    .border-beam-rail-right {
+        animation: none !important;
+        display: none !important;
     }
 }

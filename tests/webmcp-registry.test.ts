@@ -462,6 +462,47 @@ async function runTests() {
             'find_relevant_work returns projects and articles arrays'
         );
 
+        // Role matching regression tests: AI Engineer, ML Engineer, Backend Engineer, Fullstack Engineer
+        const relevantAI = (await registry.executeTool('find_relevant_work', {
+            role: 'AI Engineer',
+            limit: 3
+        })) as { projects: Array<{ project: { slug: string }; matches: string[] }> };
+        assert(
+            Array.isArray(relevantAI.projects) && relevantAI.projects.length > 0,
+            "find_relevant_work with role 'AI Engineer' returns matching projects"
+        );
+        const aiHasExpectedMatches = relevantAI.projects.some((p) =>
+            p.matches.some((m) => ['ai', 'artificial intelligence', 'machine learning', 'ml', 'nlp', 'llm'].includes(m))
+        );
+        assert(aiHasExpectedMatches, "'AI Engineer' successfully expands to AI/ML/NLP taxonomy terms");
+
+        const relevantML = (await registry.executeTool('find_relevant_work', {
+            role: 'ML Engineer',
+            limit: 3
+        })) as { projects: Array<{ project: { slug: string }; matches: string[] }> };
+        assert(
+            Array.isArray(relevantML.projects) && relevantML.projects.length > 0,
+            "find_relevant_work with role 'ML Engineer' returns matching projects"
+        );
+
+        const relevantBackend = (await registry.executeTool('find_relevant_work', {
+            role: 'Backend Engineer',
+            limit: 3
+        })) as { projects: Array<{ project: { slug: string }; matches: string[] }> };
+        assert(
+            Array.isArray(relevantBackend.projects) && relevantBackend.projects.length > 0,
+            "find_relevant_work with role 'Backend Engineer' returns matching projects"
+        );
+
+        const relevantFullstack = (await registry.executeTool('find_relevant_work', {
+            role: 'Fullstack Engineer',
+            limit: 3
+        })) as { projects: Array<{ project: { slug: string }; matches: string[] }> };
+        assert(
+            Array.isArray(relevantFullstack.projects) && relevantFullstack.projects.length > 0,
+            "find_relevant_work with role 'Fullstack Engineer' returns matching projects"
+        );
+
         // Finding D: draft_contact_message minimal result
         const draftRes = (await registry.executeTool('draft_contact_message', {
             firstName: 'Test',
@@ -488,46 +529,120 @@ async function runTests() {
     console.log('\n--- Testing Route Scoping ---');
     const { shouldRegisterToolForRoute } = require('../src/lib/webmcp/scopes');
 
+    // 1. Site scope (global)
     assert(shouldRegisterToolForRoute('get_profile', 'site', '/'), 'site scope works on /');
     assert(shouldRegisterToolForRoute('get_profile', 'site', '/projects'), 'site scope works on /projects');
+    assert(shouldRegisterToolForRoute('find_relevant_work', 'site', '/blog'), 'site scope works on /blog');
 
+    // 2. Project List scope
     assert(
-        shouldRegisterToolForRoute('search_projects', 'project-route', '/projects'),
-        'search_projects works on /projects'
+        shouldRegisterToolForRoute('search_projects', 'project-list', '/projects'),
+        'project-list scope works on /projects'
     );
     assert(
-        !shouldRegisterToolForRoute('search_projects', 'project-route', '/projects/lawgic'),
-        'search_projects blocked on /projects/[slug]'
+        !shouldRegisterToolForRoute('search_projects', 'project-list', '/projects/lawgic'),
+        'project-list scope blocked on /projects/[slug]'
     );
     assert(
-        !shouldRegisterToolForRoute('search_projects', 'project-route', '/blog'),
-        'search_projects blocked on /blog'
-    );
-
-    assert(
-        !shouldRegisterToolForRoute('get_project', 'project-route', '/projects'),
-        'get_project blocked on /projects'
+        !shouldRegisterToolForRoute('search_projects', 'project-list', '/projects/deprecated'),
+        'project-list scope blocked on /projects/deprecated'
     );
     assert(
-        shouldRegisterToolForRoute('get_project', 'project-route', '/projects/lawgic'),
-        'get_project works on /projects/[slug]'
+        !shouldRegisterToolForRoute('search_projects', 'project-list', '/projects/tags/ai'),
+        'project-list scope blocked on /projects/tags/[tag]'
     );
-
-    assert(shouldRegisterToolForRoute('search_articles', 'article-route', '/blog'), 'search_articles works on /blog');
     assert(
-        !shouldRegisterToolForRoute('search_articles', 'article-route', '/blog/tech-stack-wars'),
-        'search_articles blocked on /blog/[slug]'
-    );
-    assert(!shouldRegisterToolForRoute('get_article', 'article-route', '/blog'), 'get_article blocked on /blog');
-    assert(
-        shouldRegisterToolForRoute('get_article', 'article-route', '/blog/tech-stack-wars'),
-        'get_article works on /blog/[slug]'
+        !shouldRegisterToolForRoute('search_projects', 'project-list', '/blog'),
+        'project-list scope blocked on /blog'
     );
 
+    // 3. Project Detail scope
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-detail', '/projects'),
+        'project-detail scope blocked on /projects'
+    );
+    assert(
+        shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/lawgic'),
+        'project-detail scope works on /projects/[slug]'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/deprecated'),
+        'project-detail scope blocked on /projects/deprecated'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/tags/ai'),
+        'project-detail scope blocked on /projects/tags/[tag]'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-detail', '/blog/tech-stack-wars'),
+        'project-detail scope blocked on /blog/[slug]'
+    );
+
+    // 4. Article List scope
+    assert(shouldRegisterToolForRoute('search_articles', 'article-list', '/blog'), 'article-list scope works on /blog');
+    assert(
+        !shouldRegisterToolForRoute('search_articles', 'article-list', '/blog/tech-stack-wars'),
+        'article-list scope blocked on /blog/[slug]'
+    );
+    assert(
+        !shouldRegisterToolForRoute('search_articles', 'article-list', '/blog/tags/typescript'),
+        'article-list scope blocked on /blog/tags/[tag]'
+    );
+    assert(
+        !shouldRegisterToolForRoute('search_articles', 'article-list', '/projects'),
+        'article-list scope blocked on /projects'
+    );
+
+    // 5. Article Detail scope
+    assert(
+        !shouldRegisterToolForRoute('get_article', 'article-detail', '/blog'),
+        'article-detail scope blocked on /blog'
+    );
+    assert(
+        shouldRegisterToolForRoute('get_article', 'article-detail', '/blog/tech-stack-wars'),
+        'article-detail scope works on /blog/[slug]'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_article', 'article-detail', '/blog/tags/typescript'),
+        'article-detail scope blocked on /blog/tags/[tag]'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_article', 'article-detail', '/projects/lawgic'),
+        'article-detail scope blocked on /projects/[slug]'
+    );
+
+    // 6. Contact scope
     assert(shouldRegisterToolForRoute('draft_contact_message', 'contact', '/'), 'contact scope works on /');
     assert(
         !shouldRegisterToolForRoute('draft_contact_message', 'contact', '/projects'),
         'contact scope blocked on /projects'
+    );
+    assert(!shouldRegisterToolForRoute('draft_contact_message', 'contact', '/blog'), 'contact scope blocked on /blog');
+
+    // 7. Backward compatibility for legacy composite scopes
+    assert(
+        shouldRegisterToolForRoute('search_projects', 'project-route', '/projects'),
+        'legacy project-route search_projects works on /projects'
+    );
+    assert(
+        !shouldRegisterToolForRoute('search_projects', 'project-route', '/projects/lawgic'),
+        'legacy project-route search_projects blocked on /projects/[slug]'
+    );
+    assert(
+        shouldRegisterToolForRoute('get_project', 'project-route', '/projects/lawgic'),
+        'legacy project-route get_project works on /projects/[slug]'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-route', '/projects'),
+        'legacy project-route get_project blocked on /projects'
+    );
+    assert(
+        shouldRegisterToolForRoute('search_articles', 'article-route', '/blog'),
+        'legacy article-route search_articles works on /blog'
+    );
+    assert(
+        shouldRegisterToolForRoute('get_article', 'article-route', '/blog/tech-stack-wars'),
+        'legacy article-route get_article works on /blog/[slug]'
     );
 
     console.log(`\n=== Test Results ===`);

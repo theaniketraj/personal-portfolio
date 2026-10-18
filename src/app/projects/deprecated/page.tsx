@@ -3,6 +3,7 @@ import { Breadcrumb } from '@/components/breadcrumb';
 import { HardwareAnimated } from '@/components/animations/hardware-animated';
 import { ArrowUpRight } from 'lucide-react';
 import { getDeprecatedProjects } from '@/lib/mdx';
+import { createOpenGraph } from '@/lib/content/profile';
 
 export const metadata: Metadata = {
     title: 'Deprecated Projects',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
         index: false,
         follow: true
     },
-    openGraph: {
+    openGraph: createOpenGraph({
         title: 'Deprecated Projects | Aniket Raj',
         description: 'A catalogue of experimental, deprecated, or abandoned projects by Aniket Raj.',
         url: '/projects/deprecated',
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
                 alt: 'Deprecated Projects | Aniket Raj'
             }
         ]
-    },
+    }),
     twitter: {
         card: 'summary_large_image',
         title: 'Deprecated Projects | Aniket Raj',
@@ -40,7 +41,7 @@ export default function DeprecatedProjectsPage() {
     const projects = getDeprecatedProjects();
 
     return (
-        <main>
+        <main id="main-content" tabIndex={-1} className="outline-none">
             <section>
                 <div className="container">
                     <div className="border-x border-primary/10">
@@ -85,7 +86,12 @@ export default function DeprecatedProjectsPage() {
                                                 </div>
 
                                                 {project.link ? (
-                                                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                                    <a
+                                                        href={project.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                                    >
                                                         <h2 className="text-xl sm:text-2xl font-medium text-primary group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors mb-3">
                                                             {project.title}
                                                         </h2>
@@ -105,13 +111,19 @@ export default function DeprecatedProjectsPage() {
                                                         href={project.link}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors"
+                                                        className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                                         aria-label={`View source code for ${project.title}`}
                                                     >
                                                         <span>View Source Code</span>
                                                         <span className="relative flex items-center justify-center overflow-hidden w-4.5 h-4.5">
-                                                            <ArrowUpRight className="absolute w-4.5 h-4.5 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
-                                                            <ArrowUpRight className="absolute w-4.5 h-4.5 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
+                                                            <ArrowUpRight
+                                                                className="absolute w-4.5 h-4.5 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full"
+                                                                aria-hidden="true"
+                                                            />
+                                                            <ArrowUpRight
+                                                                className="absolute w-4.5 h-4.5 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0"
+                                                                aria-hidden="true"
+                                                            />
                                                         </span>
                                                     </a>
                                                 )}

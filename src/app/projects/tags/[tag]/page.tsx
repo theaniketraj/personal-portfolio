@@ -5,6 +5,7 @@ import { getProjects, slugifyTag } from '@/lib/mdx';
 import { HardwareAnimated } from '@/components/animations/hardware-animated';
 import { notFound } from 'next/navigation';
 import { Breadcrumb } from '@/components/breadcrumb';
+import { createOpenGraph } from '@/lib/content/profile';
 
 export async function generateStaticParams() {
     await Promise.resolve();
@@ -22,12 +23,33 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     const { tag } = await params;
     const projects = getProjects();
     const originalTag = projects.flatMap((p) => p.tags || []).find((t) => slugifyTag(t) === tag);
+    const displayTag = originalTag || tag.replaceAll('-', ' ');
+    const title = `Projects tagged with "${displayTag}"`;
+    const description = `A collection of projects tagged with ${displayTag} by Aniket Raj.`;
     return {
-        title: `Projects tagged with "${originalTag || tag.replaceAll('-', ' ')}"`,
+        title,
+        description,
+        alternates: {
+            canonical: `/projects/tags/${tag}`
+        },
         robots: {
             index: false,
             follow: true
-        }
+        },
+        openGraph: createOpenGraph({
+            title: `${title} | Aniket Raj`,
+            description,
+            url: `/projects/tags/${tag}`,
+            type: 'website',
+            images: [
+                {
+                    url: '/icon-512.png',
+                    width: 512,
+                    height: 512,
+                    alt: title
+                }
+            ]
+        })
     };
 }
 
@@ -45,12 +67,10 @@ export default async function ProjectTagPage({
         notFound();
     }
 
-    const filteredProjects = projects.filter((project) =>
-        project.tags?.some((t) => slugifyTag(t) === tag)
-    );
+    const filteredProjects = projects.filter((project) => project.tags?.some((t) => slugifyTag(t) === tag));
 
     return (
-        <main>
+        <main id="main-content" tabIndex={-1} className="outline-none">
             <section>
                 <div className="container">
                     <div className="border-x border-primary/10">
@@ -89,7 +109,10 @@ export default async function ProjectTagPage({
                                                         {project.date}
                                                     </span>
                                                 </div>
-                                                <Link href={`/projects/${project.slug}`}>
+                                                <Link
+                                                    href={`/projects/${project.slug}`}
+                                                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                                >
                                                     <h2 className="text-xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                                                         {project.title}
                                                     </h2>
@@ -103,7 +126,7 @@ export default async function ProjectTagPage({
                                                 <Link
                                                     href={`/projects/${project.slug}`}
                                                     aria-label={`View case study: ${project.title}`}
-                                                    className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors mt-auto"
+                                                    className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors mt-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                                 >
                                                     <span>View Case Study / Docs</span>
                                                     <Image

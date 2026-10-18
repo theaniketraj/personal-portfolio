@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 const page = () => {
     return (
-        <main>
+        <main id="main-content" tabIndex={-1} className="outline-none">
             <h1 className="sr-only">
                 {profileData.name} - {profileData.title}
             </h1>

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumb } from '@/components/breadcrumb';
 import { HardwareAnimated } from '@/components/animations/hardware-animated';
 import { WebMCPStatusBadge } from '@/components/agents/webmcp-status-badge';
+import { createOpenGraph } from '@/lib/content/profile';
 import {
     Lock,
     ShieldCheck,
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/agents'
     },
-    openGraph: {
+    openGraph: createOpenGraph({
         title: 'Agent Portal | Aniket Raj',
         description:
             "WebMCP developer portal for AI agents to discover projects, articles, and capabilities on Aniket Raj's portfolio.",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
                 alt: 'Agent Portal | Aniket Raj'
             }
         ]
-    },
+    }),
     twitter: {
         card: 'summary_large_image',
         title: 'Agent Portal | Aniket Raj',
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
 
 export default function AgentsPage() {
     return (
-        <main className="overflow-x-hidden w-full">
+        <main id="main-content" tabIndex={-1} className="overflow-x-hidden w-full outline-none">
             <section className="min-h-screen">
                 <div className="container">
                     <div className="border-x border-primary/10">
@@ -126,7 +127,7 @@ export default function AgentsPage() {
                                             <div className="hidden md:flex flex-col items-center justify-center relative w-[320px] h-52 shrink-0 mt-17 z-10">
                                                 <svg
                                                     className="absolute inset-0 w-full h-full pointer-events-none"
-                                                    aria-label="SVG Curves"
+                                                    aria-hidden="true"
                                                     viewBox="0 0 320 208"
                                                     fill="none"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -286,6 +287,7 @@ export default function AgentsPage() {
                                                             <div className="absolute left-1/2 -translate-x-1/2 shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full border-[3px] md:border-4 border-background bg-background shadow-[0_0_20px_rgba(var(--primary),0.3)] flex items-center justify-center text-primary z-10 group hover:scale-110 transition-transform duration-300">
                                                                 <div className="absolute inset-0 bg-primary/10 rounded-full"></div>
                                                                 <step.icon
+                                                                    aria-hidden="true"
                                                                     className="relative z-10 group-hover:drop-shadow-[0_0_8px_rgba(var(--primary),0.8)] transition-all w-6 h-6 md:w-8 md:h-8"
                                                                     strokeWidth={1.5}
                                                                 />
@@ -332,7 +334,7 @@ export default function AgentsPage() {
                                 <HardwareAnimated animation="fadeInScale" delay={0.1}>
                                     <div className="group flex flex-col p-6 sm:p-8 border-b border-primary/10 hover:bg-primary/5 transition-colors h-full">
                                         <div className="w-10 h-10 border border-primary/10 rounded-lg flex items-center justify-center mb-5 text-primary bg-background/50">
-                                            <Lock className="w-5 h-5" />
+                                            <Lock className="w-5 h-5" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
                                             Read-Only by Default
@@ -348,7 +350,7 @@ export default function AgentsPage() {
                                 <HardwareAnimated animation="fadeInScale" delay={0.2}>
                                     <div className="group flex flex-col p-6 sm:p-8 md:border-l md:border-primary/10 border-b border-primary/10 hover:bg-primary/5 transition-colors h-full">
                                         <div className="w-10 h-10 border border-primary/10 rounded-lg flex items-center justify-center mb-5 text-primary bg-background/50">
-                                            <ShieldCheck className="w-5 h-5" />
+                                            <ShieldCheck className="w-5 h-5" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
                                             Runtime Validation
@@ -364,7 +366,7 @@ export default function AgentsPage() {
                                 <HardwareAnimated animation="fadeInScale" delay={0.3}>
                                     <div className="group flex flex-col p-6 sm:p-8 border-b border-primary/10 hover:bg-primary/5 transition-colors h-full">
                                         <div className="w-10 h-10 border border-primary/10 rounded-lg flex items-center justify-center mb-5 text-primary bg-background/50">
-                                            <Database className="w-5 h-5" />
+                                            <Database className="w-5 h-5" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
                                             Semantic Taxonomy
@@ -380,7 +382,7 @@ export default function AgentsPage() {
                                 <HardwareAnimated animation="fadeInScale" delay={0.4}>
                                     <div className="group flex flex-col p-6 sm:p-8 md:border-l md:border-primary/10 border-b border-primary/10 hover:bg-primary/5 transition-colors h-full">
                                         <div className="w-10 h-10 border border-primary/10 rounded-lg flex items-center justify-center mb-5 text-primary bg-background/50">
-                                            <Zap className="w-5 h-5" />
+                                            <Zap className="w-5 h-5" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
                                             Build-Time Content
@@ -419,10 +421,14 @@ export default function AgentsPage() {
                                                 href="https://github.com/theaniketraj/personal-portfolio/tree/main/src/lib/webmcp"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="group flex items-center gap-2 whitespace-nowrap px-6 py-3 bg-primary text-background font-medium rounded-lg hover:bg-primary/90 transition-all duration-300"
+                                                className="group flex items-center gap-2 whitespace-nowrap px-6 py-3 bg-primary text-background font-medium rounded-lg hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all duration-300"
                                             >
-                                                View implementation{''}
-                                                <span className="relative flex items-center justify-center overflow-hidden w-5 h-5">
+                                                <span>View implementation</span>
+                                                <span className="sr-only"> (opens in a new tab)</span>
+                                                <span
+                                                    aria-hidden="true"
+                                                    className="relative flex items-center justify-center overflow-hidden w-5 h-5"
+                                                >
                                                     <ArrowUpRight className="absolute w-5 h-5 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
                                                     <ArrowUpRight className="absolute w-5 h-5 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
                                                 </span>

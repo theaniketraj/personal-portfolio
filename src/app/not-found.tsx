@@ -5,7 +5,7 @@ import { NotFoundIllustration } from '@/components/illustrations/not-found-illus
 
 function Birds() {
     return (
-        <div className="container-bird pointer-events-none opacity-50 z-0">
+        <div className="container-bird pointer-events-none opacity-50 z-0" aria-hidden="true">
             {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="bird bird-anim">
                     <div className="bird-container">
@@ -24,7 +24,7 @@ function Birds() {
 
 export default function NotFound() {
     return (
-        <main className="flex-1 flex flex-col">
+        <main id="main-content" tabIndex={-1} className="flex-1 flex flex-col outline-none">
             <div className="container flex-1 flex flex-col">
                 <div className="border-x border-primary/10 flex-1 flex flex-col items-center justify-between pt-16 md:pt-24 pb-0 relative overflow-hidden">
                     {/* Background Glow Effect */}

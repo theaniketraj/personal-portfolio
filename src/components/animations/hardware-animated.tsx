@@ -27,7 +27,7 @@ export const HardwareAnimated: React.FC<HardwareAnimatedProps> = ({
     threshold = 0.1,
     triggerOnce = true
 }) => {
-    const { elementRef, isVisible } = useScrollAnimation<HTMLDivElement>({
+    const { elementRef, isVisible, isReady } = useScrollAnimation<HTMLDivElement>({
         threshold,
         triggerOnce
     });
@@ -41,16 +41,17 @@ export const HardwareAnimated: React.FC<HardwareAnimatedProps> = ({
         }
     };
 
-    const animationClass = prefersReducedMotion ? '' : `animate-${animation}`;
+    // Keep content visible by default; only apply pre-animation hidden state
+    // once the client has confirmed observation and animations are enabled.
+    const canAnimate = isReady && !prefersReducedMotion;
+    const animationClass = canAnimate ? (isVisible ? `animate-${animation}` : 'opacity-0') : '';
 
     return (
         <div
             ref={combinedRef}
-            className={`gpu-accelerated performance-layer ${
-                isVisible ? animationClass : 'opacity-0'
-            } ${className}`.trim()}
+            className={`gpu-accelerated performance-layer ${animationClass} ${className}`.trim()}
             style={{
-                animationDelay: `${delay}s`
+                animationDelay: canAnimate && isVisible ? `${delay}s` : undefined
             }}
         >
             {children}
@@ -71,8 +72,9 @@ export const StaggeredContainer: React.FC<StaggeredContainerProps> = ({
     itemDelay = 0.1,
     animation = 'slideInUp'
 }) => {
-    const { elementRef, isVisible } = useScrollAnimation<HTMLDivElement>();
+    const { elementRef, isVisible, isReady } = useScrollAnimation<HTMLDivElement>();
     const prefersReducedMotion = useReducedMotion();
+    const canAnimate = isReady && !prefersReducedMotion;
 
     return (
         <div ref={elementRef} className={className}>
@@ -82,7 +84,7 @@ export const StaggeredContainer: React.FC<StaggeredContainerProps> = ({
                     <HardwareAnimated
                         key={child.key ?? `stagger-${index}`}
                         animation={animation}
-                        delay={isVisible && !prefersReducedMotion ? index * itemDelay : 0}
+                        delay={canAnimate && isVisible ? index * itemDelay : 0}
                     >
                         {child}
                     </HardwareAnimated>

@@ -121,6 +121,7 @@ export const ProfileOutputSchema = z
         focus: z.array(z.string()),
         location: z.string(),
         resumeUrl: z.string(),
+        url: z.string(),
         links: z.object({
             github: z.string(),
             linkedin: z.string(),

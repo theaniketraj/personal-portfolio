@@ -11,13 +11,14 @@ import { ParagraphHighlighter } from './paragraph-highlighter';
 
 const components: MDXRemoteProps['components'] = {
     TLDR,
+    // Demote any Markdown h1 (#) in body content to an h2 to preserve a single h1 per page
     h1: (props: React.ComponentProps<'h1'>) => (
-        <h1
+        <h2
             {...props}
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mt-8 mb-4 tracking-tight border-b border-primary/10 pb-3 cursor-default"
         >
             {props.children}
-        </h1>
+        </h2>
     ),
     h2: (props: React.ComponentProps<'h2'>) => {
         const isGoTo = typeof props.children === 'string' && props.children.toLowerCase().includes('go-to');
@@ -25,8 +26,9 @@ const components: MDXRemoteProps['components'] = {
             return (
                 <h2
                     {...props}
-                    className="text-xl sm:text-2xl font-semibold text-primary mt-10 mb-4 tracking-tight border-b border-primary/10 pb-2 flex items-center gap-2 cursor-default"
+                    className="text-xl sm:text-2xl font-semibold text-primary mt-10 mb-4 tracking-tight border-b border-primary/10 pb-2 flex items-center gap-2 cursor-default scroll-mt-24"
                 >
+                    <span id="project-resources" className="scroll-mt-24" />
                     <span>Project Resources</span>
                 </h2>
             );
@@ -107,6 +109,10 @@ const components: MDXRemoteProps['components'] = {
     td: (props: React.ComponentProps<'td'>) => (
         <td {...props} className="p-3 border-b border-primary/10 text-secondary cursor-default" />
     ),
+    img: (props: React.ComponentProps<'img'>) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img {...props} alt={props.alt || ''} className="rounded-xl border border-primary/10 max-w-full h-auto my-6" />
+    ),
     a: ({ href, children, ...props }: React.ComponentProps<'a'>) => {
         const isInternal = href && (href.startsWith('/') || href.startsWith('#'));
         const textStr = typeof children === 'string' ? children : '';
@@ -127,11 +133,15 @@ const components: MDXRemoteProps['components'] = {
                     target={isInternal ? '_self' : '_blank'}
                     rel="noopener noreferrer"
                     {...props}
-                    className="group inline-block p-0.5 my-1 rounded-full bg-[linear-gradient(96.09deg,#9282F8_12.17%,#F3CA4D_90.71%)] no-underline transition-all duration-300 hover:shadow-[0_0_16px_rgba(146,130,248,0.35)] cursor-pointer"
+                    className="group inline-block p-0.5 my-1 rounded-full bg-[linear-gradient(96.09deg,#9282F8_12.17%,#F3CA4D_90.71%)] no-underline transition-all duration-300 hover:shadow-[0_0_16px_rgba(146,130,248,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer"
                 >
                     <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-background group-hover:bg-transparent text-primary group-hover:text-zinc-950 font-medium text-sm transition-all duration-300">
                         <span>{cleanText}</span>
-                        <span className="relative flex items-center justify-center overflow-hidden w-4 h-4">
+                        {!isInternal && <span className="sr-only"> (opens in a new tab)</span>}
+                        <span
+                            aria-hidden="true"
+                            className="relative flex items-center justify-center overflow-hidden w-4 h-4"
+                        >
                             <ArrowUpRight className="absolute w-4 h-4 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
                             <ArrowUpRight className="absolute w-4 h-4 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
                         </span>
@@ -145,7 +155,7 @@ const components: MDXRemoteProps['components'] = {
                 <Link
                     href={href}
                     {...props}
-                    className="font-medium text-primary hover:text-violet-600 dark:hover:text-violet-400 gradient-underline transition-colors duration-200 cursor-pointer"
+                    className="font-medium text-primary hover:text-violet-600 dark:hover:text-violet-400 gradient-underline transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xs"
                 >
                     {children}
                 </Link>
@@ -158,9 +168,10 @@ const components: MDXRemoteProps['components'] = {
                 target="_blank"
                 rel="noopener noreferrer"
                 {...props}
-                className="group font-medium text-primary hover:text-violet-600 dark:hover:text-violet-400 gradient-underline transition-colors duration-200 cursor-pointer"
+                className="group font-medium text-primary hover:text-violet-600 dark:hover:text-violet-400 gradient-underline transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xs"
             >
                 <span>{children}</span>
+                <span className="sr-only"> (opens in a new tab)</span>
             </a>
         );
     },

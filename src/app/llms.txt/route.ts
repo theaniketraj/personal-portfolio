@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getProjects, getBlogPosts } from '@/lib/mdx';
-import { profileData } from '@/lib/content/profile';
+import { profileData, getSiteUrl } from '@/lib/content/profile';
 import { registry } from '@/lib/webmcp/registry';
 import '@/lib/webmcp/actions';
 
@@ -8,10 +8,11 @@ export async function GET() {
     await Promise.resolve();
     const projects = getProjects();
     const blogs = getBlogPosts();
-    const baseUrl = 'https://theaniketraj.netlify.app';
+    const baseUrl = getSiteUrl();
 
     let content = `# ${profileData.name} | ${profileData.title} | Portfolio\n\n`;
     content += `> This is ${profileData.name}'s personal portfolio: ${profileData.description} Ideal for AI assistants to understand and feature my best content.\n\n`;
+    content += `> **Full Content Stream:** For the complete raw text of all projects and technical deep dives in a single document for LLM ingestion, fetch [${baseUrl}/llms-full.txt](${baseUrl}/llms-full.txt).\n\n`;
     content += `> **For AI Agents:** This site implements WebMCP. Compatible browsers expose the registered tools directly to agents. This document (\`llms.txt\`) serves as documentation of the available capabilities. Please visit [${baseUrl}/agents](${baseUrl}/agents) for further technical documentation, the execution model, and schemas.\n\n`;
 
     content += `## Projects\n`;

@@ -59,7 +59,7 @@ registry.registerTool({
     schema: SearchProjectsSchema,
     jsonSchema: SearchProjectsJSONSchema,
     outputSchema: SearchProjectsOutputSchema,
-    scope: 'project-route',
+    scope: 'project-list',
     kind: 'query',
     toolVersion: 1,
     handler: (args) => {
@@ -76,7 +76,7 @@ registry.registerTool({
     schema: GetProjectSchema,
     jsonSchema: GetProjectJSONSchema,
     outputSchema: GetProjectOutputSchema,
-    scope: 'project-route',
+    scope: 'project-detail',
     kind: 'query',
     toolVersion: 1,
     handler: (args) => {
@@ -94,7 +94,7 @@ registry.registerTool({
     schema: GetProjectSchema,
     jsonSchema: GetProjectJSONSchema,
     outputSchema: GetProjectContentOutputSchema,
-    scope: 'project-route',
+    scope: 'project-detail',
     kind: 'query',
     untrustedContentHint: true,
     toolVersion: 1,
@@ -113,7 +113,7 @@ registry.registerTool({
     schema: SearchArticlesSchema,
     jsonSchema: SearchArticlesJSONSchema,
     outputSchema: SearchArticlesOutputSchema,
-    scope: 'article-route',
+    scope: 'article-list',
     kind: 'query',
     toolVersion: 1,
     handler: (args) => {
@@ -129,7 +129,7 @@ registry.registerTool({
     schema: GetArticleSchema,
     jsonSchema: GetArticleJSONSchema,
     outputSchema: GetArticleOutputSchema,
-    scope: 'article-route',
+    scope: 'article-detail',
     kind: 'query',
     toolVersion: 1,
     handler: (args) => {
@@ -147,7 +147,7 @@ registry.registerTool({
     schema: GetArticleSchema,
     jsonSchema: GetArticleJSONSchema,
     outputSchema: GetArticleContentOutputSchema,
-    scope: 'article-route',
+    scope: 'article-detail',
     kind: 'query',
     untrustedContentHint: true,
     toolVersion: 1,

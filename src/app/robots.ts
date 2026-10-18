@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/lib/content/profile';
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -6,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: '*',
             allow: '/'
         },
-        sitemap: 'https://theaniketraj.netlify.app/sitemap.xml'
+        sitemap: getSiteUrl('/sitemap.xml')
     };
 }

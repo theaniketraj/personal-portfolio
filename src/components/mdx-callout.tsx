@@ -12,8 +12,11 @@ export function TLDR({ children }: Readonly<{ children: React.ReactNode }>) {
             className="group my-6 rounded-xl border border-primary/10 bg-primary/2 shadow-sm overflow-hidden"
         >
             <button
+                type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex items-center justify-between p-4 md:p-5 cursor-pointer hover:bg-primary/4 transition-colors focus:outline-none"
+                aria-expanded={isOpen}
+                aria-controls="tldr-panel"
+                className="w-full flex items-center justify-between p-4 md:p-5 cursor-pointer hover:bg-primary/4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset transition-colors"
             >
                 <div className="flex items-center gap-3">
                     <div
@@ -24,20 +27,27 @@ export function TLDR({ children }: Readonly<{ children: React.ReactNode }>) {
                         }`}
                     >
                         <Lightbulb
+                            aria-hidden="true"
                             className={`w-4 h-4 transition-all duration-500 ${
                                 isOpen ? 'fill-[#F3CA4D]/20' : 'fill-transparent'
                             }`}
                         />
                     </div>
-                    <h2 className="m-0! mt-0! mb-0! border-0! text-lg font-semibold text-primary">TL;DR</h2>
+                    <span id="tldr-heading" className="m-0! mt-0! mb-0! border-0! text-lg font-semibold text-primary">
+                        TL;DR
+                    </span>
                 </div>
                 <div
+                    aria-hidden="true"
                     className={`text-secondary transition-transform duration-300 ${isOpen ? 'rotate-90' : 'rotate-0'}`}
                 >
                     <ChevronRight className="w-5 h-5" />
                 </div>
             </button>
             <div
+                id="tldr-panel"
+                role="region"
+                aria-labelledby="tldr-heading"
                 className={`grid transition-all duration-300 ease-in-out ${
                     isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                 }`}

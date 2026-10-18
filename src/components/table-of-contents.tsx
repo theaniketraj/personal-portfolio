@@ -82,6 +82,7 @@ export function TableOfContents({ headings }: Readonly<TableOfContentsProps>) {
     return (
         <nav
             ref={navRef}
+            aria-label="Table of contents"
             className={`group relative flex flex-col items-end gap-3 py-4 pl-4 pr-2 bg-background max-h-[70vh] overflow-y-auto scrollbar-none [&::-webkit-scrollbar]:hidden transition-all duration-300 ${isNearBottom ? 'opacity-0 pointer-events-none translate-y-4' : 'opacity-100 translate-y-0'}`}
         >
             {headings.map((heading) => {
@@ -93,10 +94,11 @@ export function TableOfContents({ headings }: Readonly<TableOfContentsProps>) {
                         key={heading.id}
                         id={`toc-link-${heading.id}`}
                         href={`#${heading.id}`}
-                        className="flex items-center justify-end h-5 cursor-pointer shrink-0"
+                        className="flex items-center justify-end h-5 cursor-pointer shrink-0 rounded-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:[&>span]:max-w-70 focus-visible:[&>span]:opacity-100"
                         aria-label={heading.text}
+                        aria-current={isActive ? 'location' : undefined}
                     >
-                        {/* The text revealed on hover (expands to the left) */}
+                        {/* The text revealed on hover and keyboard focus (expands to the left) */}
                         <span
                             className={`mr-4 overflow-hidden max-w-0 opacity-0 group-hover:max-w-70 group-hover:opacity-100 transition-all duration-500 ease-out whitespace-nowrap text-sm text-right ${
                                 isActive ? 'text-primary font-medium' : 'text-muted-foreground hover:text-primary'
@@ -107,6 +109,7 @@ export function TableOfContents({ headings }: Readonly<TableOfContentsProps>) {
 
                         {/* The line (strip) on the right edge */}
                         <div
+                            aria-hidden="true"
                             className={`h-0.5 rounded-full transition-all duration-300 shrink-0 ${
                                 isActive
                                     ? 'w-6 bg-primary shadow-[0_0_8px_rgba(28,33,43,0.5)] dark:shadow-[0_0_8px_rgba(255,255,255,0.4)]'

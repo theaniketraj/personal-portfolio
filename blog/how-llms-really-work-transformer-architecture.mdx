@@ -23,6 +23,13 @@ relatedArticles:
   - mastering-prompt-engineering
 ---
 
+{/* prettier-ignore */}
+<TLDR>
+  - **Core Concept:** Transformers replace sequential recurrence (RNNs) with multi-head self-attention, processing all tokens simultaneously to capture bidirectional context.
+  - **Key Architecture:** Composed of stacked encoders and decoders, positional encodings for sequence order, scaled dot-product attention, and feed-forward layers.
+  - **Why It Matters:** Enables massive parallel training on modern hardware, eliminating long-range dependency vanishing gradients and powering modern generative AI.
+</TLDR>
+
 Large Language Models (LLMs) such as GPT‑4, BERT, and their successors have revolutionized natural language processing. Yet beneath their impressive capabilities lies one unifying innovation: the Transformer architecture. In this article, we’ll demystify Transformers step by step—without assuming a deep math background—so you can understand how these models learn language, capture context, and generate coherent text.
 
 ## 1. From RNNs to Transformers: Why the Shift?

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
@@ -9,7 +9,7 @@ import { RouteBorderBeam } from '@/components/animations/route-border-beam';
 import { WebMCPProvider } from '@/components/webmcp-provider';
 import { ContactDraftProvider } from '@/components/contact-draft-context';
 import { getProjects, getBlogPosts } from '@/lib/mdx';
-import { profileData } from '@/lib/content/profile';
+import { profileData, getSiteUrl, createOpenGraph } from '@/lib/content/profile';
 
 const inter = Inter({
     variable: '--font-inter-sans',
@@ -22,35 +22,39 @@ const spaceGrotesk = localFont({
     display: 'swap'
 });
 
+export const viewport: Viewport = {
+    themeColor: [
+        { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+        { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' }
+    ]
+};
+
 export const metadata: Metadata = {
-    metadataBase: new URL('https://theaniketraj.netlify.app'),
+    metadataBase: new URL(getSiteUrl()),
     title: {
         default: `${profileData.name} - Personal Portfolio | ${profileData.title}`,
         template: `%s | ${profileData.name}`
     },
     description: profileData.description,
-    openGraph: {
+    openGraph: createOpenGraph({
         title: `${profileData.name} | ${profileData.title}`,
         description: profileData.description,
-        url: 'https://theaniketraj.netlify.app',
-        siteName: profileData.name,
-        locale: 'en_US',
-        type: 'website',
+        url: getSiteUrl(),
         images: [
             {
-                url: 'https://theaniketraj.netlify.app/icon-512.png',
+                url: getSiteUrl('/icon-512.png'),
                 width: 512,
                 height: 512,
                 alt: `${profileData.name} | ${profileData.title}`
             }
         ]
-    },
+    }),
     twitter: {
         card: 'summary_large_image',
         title: `${profileData.name} | ${profileData.title}`,
         description: profileData.description,
         creator: '@aniketfoundry',
-        images: ['https://theaniketraj.netlify.app/icon-512.png']
+        images: [getSiteUrl('/icon-512.png')]
     }
 };
 
@@ -64,11 +68,11 @@ export default function RootLayout({
         '@graph': [
             {
                 '@type': 'Person',
-                '@id': 'https://theaniketraj.netlify.app/#person',
+                '@id': `${profileData.url}/#person`,
                 name: profileData.name,
                 alternateName: `${profileData.name} Portfolio`,
-                url: 'https://theaniketraj.netlify.app/',
-                image: 'https://theaniketraj.netlify.app/icon-512.png',
+                url: getSiteUrl('/'),
+                image: getSiteUrl('/icon-512.png'),
                 jobTitle: profileData.role,
                 description: profileData.description,
                 nationality: 'Indian',
@@ -93,12 +97,12 @@ export default function RootLayout({
             },
             {
                 '@type': 'WebSite',
-                '@id': 'https://theaniketraj.netlify.app/#website',
-                url: 'https://theaniketraj.netlify.app/',
+                '@id': `${profileData.url}/#website`,
+                url: getSiteUrl('/'),
                 name: `${profileData.name} | ${profileData.title}`,
                 alternateName: `${profileData.name} Portfolio`,
                 publisher: {
-                    '@id': 'https://theaniketraj.netlify.app/#person'
+                    '@id': `${profileData.url}/#person`
                 },
                 inLanguage: 'en',
                 description: profileData.description
@@ -114,6 +118,12 @@ export default function RootLayout({
             <body className={`${inter.className} ${spaceGrotesk.variable}`} suppressHydrationWarning>
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
                 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+                    <a
+                        href="#main-content"
+                        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:border focus:border-border focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring"
+                    >
+                        Skip to main content
+                    </a>
                     <ContactDraftProvider>
                         <Header />
                         {children}

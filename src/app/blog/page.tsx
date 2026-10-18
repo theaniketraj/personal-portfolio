@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { getBlogPosts } from '@/lib/mdx';
 import { HardwareAnimated } from '@/components/animations/hardware-animated';
 import { Metadata } from 'next';
+import { createOpenGraph } from '@/lib/content/profile';
 
 export const metadata: Metadata = {
     title: 'Blog & Technical Writing',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/blog'
     },
-    openGraph: {
+    openGraph: createOpenGraph({
         title: 'Blog & Technical Writing | Aniket Raj',
         description:
             'A collection of writing by Aniket Raj covering ideas, lessons, technical explorations, and observations gathered along the way.',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
                 alt: 'Blog & Technical Writing | Aniket Raj'
             }
         ]
-    },
+    }),
     twitter: {
         card: 'summary_large_image',
         title: 'Blog & Technical Writing | Aniket Raj',
@@ -39,7 +39,7 @@ export default function BlogPage() {
     const posts = getBlogPosts();
 
     return (
-        <main>
+        <main id="main-content" tabIndex={-1} className="outline-none">
             <section>
                 <div className="container">
                     <div className="border-x border-primary/10">
@@ -69,9 +69,14 @@ export default function BlogPage() {
                                             className={`group ${index !== posts.length - 1 ? 'border-b border-primary/15 pb-10' : ''}`}
                                         >
                                             <div className="flex items-center gap-3 text-xs font-mono text-secondary mb-3">
-                                                <time dateTime={post.date} className="cursor-default">{post.date}</time>
+                                                <time dateTime={post.date} className="cursor-default">
+                                                    {post.date}
+                                                </time>
                                             </div>
-                                            <Link href={`/blog/${post.slug}`}>
+                                            <Link
+                                                href={`/blog/${post.slug}`}
+                                                className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                            >
                                                 <h2 className="text-xl sm:text-2xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors mb-3">
                                                     {post.title}
                                                 </h2>
@@ -82,17 +87,16 @@ export default function BlogPage() {
                                             <Link
                                                 href={`/blog/${post.slug}`}
                                                 aria-label={`Read article: ${post.title}`}
-                                                className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors"
+                                                className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                                             >
                                                 <span>Read Article</span>
-                                                <Image
+                                                <img
                                                     src="/images/icon/tile-arrow-icon.svg"
                                                     alt=""
                                                     aria-hidden="true"
                                                     width={20}
                                                     height={20}
-                                                    style={{ width: 'auto', height: 'auto' }}
-                                                    className="dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
+                                                    className="w-5 h-5 dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
                                                 />
                                             </Link>
                                         </article>
