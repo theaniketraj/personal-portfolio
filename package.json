@@ -37,7 +37,7 @@
         "github-slugger": "^2.0.0",
         "gray-matter": "^4.0.3",
         "lucide-react": "^1.59.0",
-        "netlify": "^27.13.0",
+        "netlify": "^27.15.0",
         "next": "^16.4.2",
         "next-mdx-remote": "^6.0.0",
         "next-themes": "^0.4.6",
