@@ -44,7 +44,12 @@ export const HardwareAnimated: React.FC<HardwareAnimatedProps> = ({
     // Keep content visible by default; only apply pre-animation hidden state
     // once the client has confirmed observation and animations are enabled.
     const canAnimate = isReady && !prefersReducedMotion;
-    const animationClass = canAnimate ? (isVisible ? `animate-${animation}` : 'opacity-0') : '';
+    let animationClass = '';
+    if (canAnimate && isVisible) {
+        animationClass = `animate-${animation}`;
+    } else if (canAnimate) {
+        animationClass = 'opacity-0';
+    }
 
     return (
         <div

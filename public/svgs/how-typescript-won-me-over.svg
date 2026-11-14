@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" width="2400" height="1260" viewBox="0 0 2400 1260" role="img" aria-labelledby="ts-og-title ts-og-desc">
+  <title id="ts-og-title">How TypeScript Won Me Over</title>
+  <desc id="ts-og-desc">A monochromatic engineering illustration showing a JavaScript data object structurally matching a TypeScript interface, passing a compile-time check, and emitting ordinary JavaScript with type declarations erased.</desc>
+
+  <defs>
+    <pattern id="ts-og-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="ts-og-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9282F8"/>
+      <stop offset="1" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <linearGradient id="ts-og-accent-vertical" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9282F8"/>
+      <stop offset="1" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <marker id="ts-og-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Background and architectural framing -->
+  <g id="ts-og-background">
+    <rect width="2400" height="1260" fill="#0A0A0A"/>
+    <rect width="2400" height="1260" fill="url(#ts-og-grid)"/>
+    <path d="M80 0V1260M2320 0V1260" stroke="#FFFFFF" stroke-opacity="0.11" stroke-width="2"/>
+    <path d="M80 88H2320M80 1110H2320" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="2"/>
+    <path d="M1260 145V1060" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="2"/>
+    <path d="M150 112H420" stroke="url(#ts-og-accent)" stroke-width="4"/>
+  </g>
+
+  <!-- Editorial title zone -->
+  <g id="ts-og-editorial">
+    <text x="150" y="190" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="600" letter-spacing="4.2">LANGUAGES / TYPE SYSTEMS</text>
+
+    <text x="145" y="365" fill="#F4F4F5" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="105" font-weight="650" letter-spacing="-3.6">How TypeScript</text>
+    <text x="145" y="490" fill="#F4F4F5" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="105" font-weight="650" letter-spacing="-3.6">Won Me Over</text>
+    <text x="151" y="560" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500" letter-spacing="0.5">A Mini Memoire</text>
+
+    <path d="M150 625H1080" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2"/>
+    <text x="150" y="700" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="39" font-weight="500">
+      <tspan x="150" dy="0">Turning implicit assumptions into</tspan>
+      <tspan x="150" dy="54">explicit, machine-checkable contracts.</tspan>
+    </text>
+
+    <g id="ts-og-thesis-note">
+      <rect x="150" y="825" width="950" height="158" fill="#FFFFFF" fill-opacity="0.018" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2"/>
+      <rect x="150" y="825" width="5" height="158" fill="url(#ts-og-accent-vertical)"/>
+      <text x="185" y="875" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="3.2">THE SHIFT</text>
+      <text x="185" y="930" fill="#F4F4F5" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="34" font-weight="500">Design the shape. Check the contract.</text>
+      <text x="185" y="965" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="23">Make relationships easier to understand and refactor.</text>
+    </g>
+
+    <text x="150" y="1065" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="21" letter-spacing="1.4">STATIC CHECKING  ·  STRUCTURAL TYPING  ·  TYPE ERASURE</text>
+  </g>
+
+  <!-- Main technical diagram -->
+  <g id="ts-og-diagram">
+    <text x="1325" y="190" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="600" letter-spacing="3.4">THE TYPE CONTRACT</text>
+    <text x="2220" y="190" text-anchor="end" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="21" letter-spacing="1.5">01 / 03</text>
+    <path d="M1325 220H2220" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="2"/>
+
+    <!-- Input value card -->
+    <g id="ts-og-input-value">
+      <rect x="1325" y="280" width="385" height="405" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.17" stroke-width="2"/>
+      <path d="M1325 342H1710" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2"/>
+      <circle cx="1355" cy="312" r="6" fill="#A1A1AA"/>
+      <text x="1377" y="320" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="1.7">JAVASCRIPT VALUE</text>
+      <text x="1360" y="389" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">const tier = {</text>
+
+      <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="25">
+        <text x="1385" y="455" fill="#A1A1AA">id</text>
+        <text x="1515" y="455" fill="#F4F4F5">"org_17"</text>
+        <path d="M1360 475H1675" stroke="#FFFFFF" stroke-opacity="0.09" stroke-width="1.5"/>
+        <text x="1385" y="525" fill="#A1A1AA">name</text>
+        <text x="1515" y="525" fill="#F4F4F5">"Professional"</text>
+        <path d="M1360 545H1675" stroke="#FFFFFF" stroke-opacity="0.09" stroke-width="1.5"/>
+        <text x="1385" y="595" fill="#A1A1AA">maxSeats</text>
+        <text x="1515" y="595" fill="#F4F4F5">25</text>
+      </g>
+      <text x="1360" y="650" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">};</text>
+    </g>
+
+    <!-- Structural correspondence connectors -->
+    <g id="ts-og-structural-match" fill="none" stroke="#A1A1AA" stroke-opacity="0.75" stroke-width="2">
+      <path d="M1710 452H1818"/>
+      <path d="M1710 522H1818"/>
+      <path d="M1710 592H1818"/>
+      <circle cx="1710" cy="452" r="4" fill="#A1A1AA" stroke="none"/>
+      <circle cx="1818" cy="452" r="4" fill="#A1A1AA" stroke="none"/>
+      <circle cx="1710" cy="522" r="4" fill="#A1A1AA" stroke="none"/>
+      <circle cx="1818" cy="522" r="4" fill="#A1A1AA" stroke="none"/>
+      <circle cx="1710" cy="592" r="4" fill="#A1A1AA" stroke="none"/>
+      <circle cx="1818" cy="592" r="4" fill="#A1A1AA" stroke="none"/>
+    </g>
+
+    <!-- Type contract card -->
+    <g id="ts-og-type-contract">
+      <rect x="1818" y="280" width="402" height="405" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.17" stroke-width="2"/>
+      <path d="M1818 342H2220" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2"/>
+      <rect x="1848" y="301" width="20" height="20" fill="none" stroke="#F3CA4D" stroke-width="2"/>
+      <path d="M1853 311L1858 316L1865 306" fill="none" stroke="#F3CA4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1882" y="320" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="1.4">TYPE CONTRACT</text>
+      <text x="1855" y="389" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">interface</text>
+      <text x="1855" y="424" fill="#F4F4F5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24">SubscriptionTier {</text>
+      <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24">
+        <text x="1875" y="485" fill="#D4D4D8">id:</text>
+        <text x="1960" y="485" fill="#A1A1AA">string;</text>
+        <text x="1875" y="555" fill="#D4D4D8">name:</text>
+        <text x="1960" y="555" fill="#A1A1AA">string;</text>
+        <text x="1875" y="625" fill="#D4D4D8">maxSeats:</text>
+        <text x="2010" y="625" fill="#A1A1AA">number;</text>
+      </g>
+      <text x="1855" y="660" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">}</text>
+    </g>
+
+    <!-- Compiler check bar -->
+    <g id="ts-og-compiler-check">
+      <rect x="1325" y="735" width="895" height="112" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="2"/>
+      <rect x="1325" y="735" width="7" height="112" fill="url(#ts-og-accent-vertical)"/>
+      <rect x="1360" y="766" width="54" height="50" fill="none" stroke="#A1A1AA" stroke-opacity="0.65" stroke-width="2"/>
+      <text x="1387" y="800" text-anchor="middle" fill="#F4F4F5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="600">TS</text>
+      <text x="1440" y="782" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="600" letter-spacing="1.5">COMPILE-TIME CHECK</text>
+      <text x="1440" y="818" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="22">The compiler checks the declared structure.</text>
+      <path d="M2090 790H2138" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="2"/>
+      <circle cx="2168" cy="790" r="21" fill="none" stroke="#F3CA4D" stroke-width="2"/>
+      <path d="M2158 790L2165 797L2179 781" fill="none" stroke="#F3CA4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Type erasure and emitted JavaScript -->
+    <g id="ts-og-type-erasure">
+      <text x="1325" y="905" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="2.2">TYPE ERASURE</text>
+      <rect x="1325" y="930" width="382" height="120" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.13" stroke-width="2"/>
+      <text x="1350" y="972" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="21">interface SubscriptionTier</text>
+      <path d="M1348 982L1680 982" stroke="#F3CA4D" stroke-opacity="0.75" stroke-width="2"/>
+      <text x="1350" y="1020" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="21">type-only declaration</text>
+
+      <path d="M1730 990H1800" stroke="#A1A1AA" stroke-width="2" marker-end="url(#ts-og-arrow)"/>
+      <text x="1765" y="960" text-anchor="middle" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="1">BUILD</text>
+
+      <rect x="1830" y="930" width="390" height="120" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.13" stroke-width="2"/>
+      <text x="1855" y="970" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" letter-spacing="1.4">EMITTED JAVASCRIPT</text>
+      <text x="1855" y="1015" fill="#F4F4F5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="21">function renderDashboard(tier) { ... }</text>
+    </g>
+  </g>
+
+  <!-- Bottom conceptual rail -->
+  <g id="ts-og-journey-rail">
+    <path d="M150 1150H2250" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="2"/>
+    <circle cx="150" cy="1150" r="5" fill="#F4F4F5"/>
+    <circle cx="880" cy="1150" r="5" fill="#A1A1AA"/>
+    <circle cx="1580" cy="1150" r="5" fill="#F3CA4D"/>
+    <text x="150" y="1205" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="1.6">EXPLICIT SHAPES</text>
+    <text x="880" y="1205" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="1.6">COMPILE-TIME FEEDBACK</text>
+    <text x="1580" y="1205" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="1.6">SAFER REFACTORING</text>
+    <text x="2250" y="1205" text-anchor="end" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="19" letter-spacing="1.5">ANIKET RAJ / ENGINEERING NOTES</text>
+  </g>
+</svg>

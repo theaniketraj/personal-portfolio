@@ -7,15 +7,18 @@ export function proxy(request: NextRequest) {
 
     // 0. Generic Tag Route Normalization
     // Replaces slashes in tag URL paths with dashes to support multi-segment tag URLs
-    // (e.g. /projects/tags/ci/cd -> /projects/tags/ci-cd, /blog/tags/ui/ux -> /blog/tags/ui-ux)
-    const tagMatch = new RegExp(/^\/(projects|blog)\/tags\/(.+)$/).exec(pathname);
+    // (e.g. /projects/tags/ci/cd -> /projects/tags/ci-cd, /blog/tags/ui/ux -> /blog/tags/ui-ux, /tags/ci/cd -> /tags/ci-cd)
+    const tagMatch = new RegExp(/^\/(?:(projects|blog)\/tags|tags)\/(.+)$/).exec(pathname);
     if (tagMatch) {
         const [, section, rawTag] = tagMatch;
         const trimmedTag = rawTag.replace(/\/+$/, '');
         if (trimmedTag.includes('/')) {
             const normalizedSlug = slugifyTag(trimmedTag);
             if (normalizedSlug) {
-                const targetUrl = new URL(`/${section}/tags/${normalizedSlug}`, request.url);
+                const targetUrl = new URL(
+                    section ? `/${section}/tags/${normalizedSlug}` : `/tags/${normalizedSlug}`,
+                    request.url
+                );
                 return NextResponse.redirect(targetUrl, 308);
             }
         }
@@ -50,9 +53,13 @@ export function proxy(request: NextRequest) {
         cleanPath === '/projects/tags' ||
         cleanPath.startsWith('/blog/tags/') ||
         cleanPath === '/blog/tags' ||
+        cleanPath.startsWith('/tags/') ||
+        cleanPath === '/tags' ||
         cleanPath === '/projects/deprecated';
 
-    if (isNoIndexRoute) {
+    if (cleanPath === '/wishlist') {
+        response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+    } else if (isNoIndexRoute) {
         response.headers.set('X-Robots-Tag', 'noindex, follow');
     } else if (!isStaticAsset) {
         response.headers.set('X-Robots-Tag', 'index, follow');

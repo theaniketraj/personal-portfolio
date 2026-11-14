@@ -28,7 +28,7 @@ const ProjectOverview = () => {
                         {/* Projects Section */}
                         <HardwareAnimated animation="slideInUp">
                             <div className="flex flex-col xs:flex-row items-start gap-5 xs:gap-10 md:gap-24 lg:gap-12">
-                                <h2 className="w-full xs:w-28 sm:w-36 md:w-48 shrink-0 text-sm tracking-[2px] text-primary uppercase font-medium pt-1 cursor-default">
+                                <h2 className="w-full xs:w-28 sm:w-36 md:w-48 shrink-0 text-sm tracking-[2px] text-primary uppercase font-medium pt-1 cursor-default select-none">
                                     Projects
                                 </h2>
                                 <div className="flex flex-col gap-4 flex-1">
@@ -60,7 +60,7 @@ const ProjectOverview = () => {
                                     <div>
                                         <Link
                                             href="/projects"
-                                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors pt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors pt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm select-none"
                                         >
                                             See all projects
                                         </Link>
@@ -72,7 +72,7 @@ const ProjectOverview = () => {
                         {/* Blogs Section */}
                         <HardwareAnimated animation="slideInUp" delay={0.15}>
                             <div className="flex flex-col xs:flex-row items-start gap-5 xs:gap-10 md:gap-24 lg:gap-12">
-                                <h2 className="w-full xs:w-28 sm:w-36 md:w-48 shrink-0 text-sm tracking-[2px] text-primary uppercase font-medium pt-1 cursor-default">
+                                <h2 className="w-full xs:w-28 sm:w-36 md:w-48 shrink-0 text-sm tracking-[2px] text-primary uppercase font-medium pt-1 cursor-default select-none">
                                     Blogs
                                 </h2>
                                 <div className="flex flex-col gap-4 flex-1">
@@ -101,7 +101,7 @@ const ProjectOverview = () => {
                                     <div>
                                         <Link
                                             href="/blog"
-                                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors pt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary hover:text-violet-600 dark:hover:text-violet-400 transition-colors pt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm select-none"
                                         >
                                             See all blogs
                                         </Link>

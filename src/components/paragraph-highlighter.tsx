@@ -2,6 +2,53 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 
+const isMobileOrTouch = () =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px), (hover: none)').matches;
+
+const isExcludedResourceParagraph = (block: HTMLElement): boolean => {
+    if (block.tagName.toLowerCase() !== 'p' || !block.querySelector('a.rounded-full')) {
+        return false;
+    }
+    const rawText = block.textContent?.replace(/[\s↗→]/g, '') || '';
+    const linksText = Array.from(block.querySelectorAll('a'))
+        .map((a) => a.textContent?.replace(/[\s↗→]/g, '') || '')
+        .join('');
+
+    return rawText === linksText;
+};
+
+const isExcludedBlock = (block: HTMLElement): boolean => {
+    if (block.closest('blockquote, [data-tldr]')) {
+        return true;
+    }
+    const text = block.textContent?.trim();
+    if (text === 'Project Resources' || text === 'TL;DR') {
+        return true;
+    }
+    return isExcludedResourceParagraph(block);
+};
+
+const getTargetBlock = (target: HTMLElement, container: HTMLElement): HTMLElement | null => {
+    if (target.closest('blockquote, [data-tldr]')) {
+        return null;
+    }
+
+    const block = target.closest('li, p, h1, h2, h3, h4, h5, h6') as HTMLElement | null;
+    if (!block || isExcludedBlock(block)) {
+        return null;
+    }
+
+    // If paragraph is inside a list item, highlight parent list item for bullet point inclusion
+    if (block.tagName.toLowerCase() === 'p') {
+        const parentLi = block.closest('li');
+        if (parentLi && container.contains(parentLi)) {
+            return parentLi;
+        }
+    }
+
+    return container.contains(block) ? block : null;
+};
+
 export function ParagraphHighlighter({ children }: Readonly<{ children: React.ReactNode }>) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [highlightStyle, setHighlightStyle] = useState({
@@ -16,79 +63,36 @@ export function ParagraphHighlighter({ children }: Readonly<{ children: React.Re
         const container = containerRef.current;
         if (!container) return;
 
-        const isMobileOrTouch = () => window.matchMedia('(max-width: 767px), (hover: none)').matches;
-
         const handleMouseOver = (e: MouseEvent) => {
             if (isMobileOrTouch()) {
                 setHighlightStyle((prev) => (prev.opacity === 0 ? prev : { ...prev, opacity: 0 }));
                 return;
             }
 
-            const target = e.target as HTMLElement;
-            // Exclude blockquotes and TLDR callouts completely
-            if (target.closest('blockquote, [data-tldr]')) {
+            const block = getTargetBlock(e.target as HTMLElement, container);
+            if (!block) {
                 setHighlightStyle((prev) => ({ ...prev, opacity: 0 }));
                 return;
             }
 
-            // Target all standard text blocks in MDX
-            let block = target.closest('li, p, h1, h2, h3, h4, h5, h6');
+            // Calculate position relative to container using bounding rects
+            const containerRect = container.getBoundingClientRect();
+            const blockRect = block.getBoundingClientRect();
 
-            // Exclusions
-            if (block) {
-                if (block.closest('blockquote, [data-tldr]')) {
-                    block = null;
-                }
-                // Exclude the Project Resources or TL;DR heading
-                else if (block.textContent?.trim() === 'Project Resources' || block.textContent?.trim() === 'TL;DR') {
-                    block = null;
-                }
-                // Exclude paragraphs that purely contain Project Resource button links
-                else if (block.tagName.toLowerCase() === 'p' && block.querySelector('a.rounded-full')) {
-                    const rawText = block.textContent?.replace(/[\s↗→]/g, '') || '';
-                    const linksText = Array.from(block.querySelectorAll('a'))
-                        .map((a) => a.textContent?.replace(/[\s↗→]/g, '') || '')
-                        .join('');
+            // Add padding around the text
+            const paddingX = 16;
+            const paddingY = 6;
 
-                    if (rawText === linksText) {
-                        block = null;
-                    }
-                }
-            }
+            // List items have bullet points outside the bounding rect (list-style-position: outside)
+            const extraLeft = block.tagName.toLowerCase() === 'li' ? 24 : 0;
 
-            // If we matched a paragraph, but it's inside a list item,
-            // we should highlight the parent container so bullet points are fully included in the highlight box.
-            if (block?.tagName.toLowerCase() === 'p') {
-                const parentContainer = block.closest('li');
-                if (parentContainer && container.contains(parentContainer)) {
-                    block = parentContainer;
-                }
-            }
-
-            if (block && container.contains(block)) {
-                // Calculate position relative to container using bounding rects
-                const containerRect = container.getBoundingClientRect();
-                const blockRect = block.getBoundingClientRect();
-
-                // Add a bit of padding around the text
-                const paddingX = 16;
-                const paddingY = 6;
-
-                // List items have bullet points that sit outside the bounding rect (list-style-position: outside).
-                // We add extra left padding to ensure the bullet dot is fully enclosed in the highlight.
-                const extraLeft = block.tagName.toLowerCase() === 'li' ? 24 : 0;
-
-                setHighlightStyle({
-                    opacity: 1,
-                    top: blockRect.top - containerRect.top - paddingY,
-                    left: blockRect.left - containerRect.left - paddingX - extraLeft,
-                    width: blockRect.width + paddingX * 2 + extraLeft,
-                    height: blockRect.height + paddingY * 2
-                });
-            } else {
-                // If hovered over something else (like an image margin or outside content), hide highlight
-                setHighlightStyle((prev) => ({ ...prev, opacity: 0 }));
-            }
+            setHighlightStyle({
+                opacity: 1,
+                top: blockRect.top - containerRect.top - paddingY,
+                left: blockRect.left - containerRect.left - paddingX - extraLeft,
+                width: blockRect.width + paddingX * 2 + extraLeft,
+                height: blockRect.height + paddingY * 2
+            });
         };
 
         const handleMouseLeave = () => {
@@ -101,7 +105,6 @@ export function ParagraphHighlighter({ children }: Readonly<{ children: React.Re
             }
         };
 
-        // Use mousemove for more immediate reaction, or mouseover
         container.addEventListener('mouseover', handleMouseOver);
         container.addEventListener('mouseleave', handleMouseLeave);
         window.addEventListener('resize', handleResize);

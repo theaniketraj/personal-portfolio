@@ -2,7 +2,7 @@
   <br />
   <h1>Personal Portfolio & Blog</h1>
   <p>
-    <strong>A high-performance, accessible, and beautifully designed personal website built with Next.js 16, React 19, and Tailwind CSS v4.</strong>
+    <strong>A high-performance, accessible, and beautifully designed personal website built with Next.js, React, and Tailwind CSS.</strong>
   </p>
   
   [![Netlify Status](https://api.netlify.com/api/v1/badges/4b21c828-0f7b-47e7-ac24-9f4dd7622dc3/deploy-status)](https://app.netlify.com/projects/theaniketraj/deploys)
@@ -22,7 +22,7 @@ It is engineered from the ground up for **speed**, **accessibility**, and **mode
 - **MDX-Powered Content:** Blogs and Project pages are entirely driven by `.mdx` files with full support for GitHub Flavored Markdown and beautiful syntax highlighting via `rehype-pretty-code` and `shiki`.
 - **Dynamic SEO & AI Metadata:** Automatically generates `sitemap.xml`, `robots.txt`, and a dynamic `llms.txt` (a text representation of the portfolio designed specifically for LLMs and AI assistants) at build time.
 - **Top-Tier Accessibility (a11y):** Fully keyboard navigable with strict semantic HTML, intelligent focus trapping, explicit ARIA labels, and logical heading hierarchies.
-- **Hardware-Accelerated Animations:** Smooth page transitions, entry animations, and interactive micro-interactions powered by CSS hardware acceleration and `framer-motion`.
+- **Hardware-Accelerated Animations:** Smooth page transitions, entry animations, and interactive micro-interactions powered by CSS hardware acceleration.
 - **Theme Support:** Clean, beautiful Light and Dark modes with seamless transition toggling.
 - **Modern Stack:** Built on the cutting-edge of the web. Next.js (Turbopack), React, and Tailwind CSS.
 
@@ -108,5 +108,3 @@ To get a local copy up and running, follow these simple steps.
 - Website: [Portfolio](https://theaniketraj.netlify.app)
 - GitHub: [GitHub](https://github.com/theaniketraj)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/theaniketraj/)
-
----

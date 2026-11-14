@@ -17,7 +17,16 @@ const Header = () => {
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === '`') {
+            if (e.key === '`' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                const target = e.target instanceof HTMLElement ? e.target : null;
+                const isInsideTerminal = Boolean(target?.closest('#cli-terminal-dialog'));
+                if (
+                    !isInsideTerminal &&
+                    target &&
+                    (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)
+                ) {
+                    return;
+                }
                 e.preventDefault();
                 setIsCliOpen((prev) => !prev);
             }
@@ -62,10 +71,10 @@ const Header = () => {
                                     </span>
                                 </span>
                             </Link>
-                            <p className="w-fit font-medium cursor-default select-none header-gradient-text">
+                            <p className="w-fit font-medium cursor-default select-none header-gradient-text font-(family-name:--font-space-grotesk)">
                                 SDE · Systems & AI
                             </p>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-2 select-none">
                                 <Image
                                     src={'/images/icon/map-icon.svg'}
                                     alt=""
@@ -78,7 +87,7 @@ const Header = () => {
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row items-center gap-4">
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-2 select-none">
                                 {socialIcon?.map((value) => {
                                     return (
                                         <Link
@@ -106,6 +115,7 @@ const Header = () => {
                                     aria-label="Open Terminal CLI"
                                     aria-haspopup="dialog"
                                     aria-expanded={isCliOpen}
+                                    aria-controls="cli-terminal-dialog"
                                     className="w-9.5 h-9.5 sm:w-11.5 sm:h-11.5 flex items-center justify-center hover:bg-primary/5 border border-primary/10 rounded-full transition-colors group cursor-pointer relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                                 >
                                     <Image
@@ -127,7 +137,7 @@ const Header = () => {
                             </div>
                             <Button
                                 asChild
-                                className="h-auto rounded-full p-0.5! focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                                className="h-auto rounded-full p-0.5! focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 select-none"
                             >
                                 <Link
                                     href="/#contact"
@@ -154,7 +164,7 @@ const Header = () => {
                 </div>
             </div>
             <Divider />
-            {isCliOpen && <CliTerminal isOpen={isCliOpen} onClose={() => setIsCliOpen(false)} />}
+            <CliTerminal isOpen={isCliOpen} onClose={() => setIsCliOpen(false)} />
         </header>
     );
 };

@@ -778,7 +778,7 @@ fun TodoScreen(viewModel: TodoViewModel = hiltViewModel()) {
 
 5. **Minimize Heavy Work on Main Thread**
 
-   Although LiveData’s `postValue` can be called from background threads, ensure all database and network calls happen on `Dispatchers.IO`. Use `viewModelScope.launch(Dispatchers.IO) { … }` when necessary.
+   Although LiveData’s `postValue` can be called from background threads, ensure all database and network calls happen on `Dispatchers.IO`. Use `viewModelScope.launch (Dispatchers.IO) { … }` when necessary.
 
 6. **Handle One‑Time Events Correctly**
 

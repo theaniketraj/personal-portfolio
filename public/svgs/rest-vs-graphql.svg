@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" width="2400" height="1260" viewBox="0 0 2400 1260" role="img" aria-labelledby="rest-graphql-title rest-graphql-desc">
+  <title id="rest-graphql-title">REST vs GraphQL: choosing an API style</title>
+  <desc id="rest-graphql-desc">A restrained technical comparison. REST exposes resource-oriented HTTP endpoints, while GraphQL exposes a typed query endpoint through which a client selects nested fields. Neither approach is universally superior; the choice depends on data shape, caching, complexity, and team needs.</desc>
+
+  <defs>
+    <pattern id="rest-graphql-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#FFFFFF" stroke-opacity=".035" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="rest-graphql-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9282F8"/>
+      <stop offset="1" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <marker id="rest-graphql-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10" fill="none" stroke="#A1A1AA" stroke-width="1.2"/>
+    </marker>
+    <marker id="rest-graphql-arrow-light" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10" fill="none" stroke="#F4F4F5" stroke-width="1.2"/>
+    </marker>
+    <style>
+      .display { font-family:"Space Grotesk","Inter",Arial,sans-serif; fill:#F4F4F5; }
+      .sans { font-family:"Inter",Arial,sans-serif; }
+      .mono { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+      .muted { fill:#A1A1AA; }
+      .soft { fill:#D4D4D8; }
+      .primary { fill:#F4F4F5; }
+      .hair { stroke:#FFFFFF; stroke-opacity:.13; stroke-width:2; fill:none; }
+      .hair-strong { stroke:#FFFFFF; stroke-opacity:.24; stroke-width:2; fill:none; }
+      .flow { stroke:#A1A1AA; stroke-width:2.5; fill:none; marker-end:url(#rest-graphql-arrow); }
+      .flow-bright { stroke:#F4F4F5; stroke-width:2.5; fill:none; marker-end:url(#rest-graphql-arrow-light); }
+      .label { font-family:"Inter",Arial,sans-serif; font-size:24px; font-weight:600; letter-spacing:2.8px; }
+      .micro { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:22px; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <g id="rest-graphql-background">
+    <rect width="2400" height="1260" fill="#0A0A0A"/>
+    <rect width="2400" height="1260" fill="url(#rest-graphql-grid)"/>
+    <path d="M120 120H2280M120 1140H2280" stroke="#FFFFFF" stroke-opacity=".10" stroke-width="2"/>
+    <path d="M120 120V1140M2280 120V1140" stroke="#FFFFFF" stroke-opacity=".07" stroke-width="2"/>
+    <path d="M120 120h72M2208 120h72M120 1140h72M2208 1140h72" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3"/>
+  </g>
+
+  <!-- Editorial title block -->
+  <g id="rest-graphql-editorial">
+    <text x="160" y="190" class="sans muted" font-size="28" font-weight="600" letter-spacing="5">ENGINEERING DEEP DIVE</text>
+    <path d="M160 224H470" stroke="url(#rest-graphql-accent)" stroke-width="4" stroke-linecap="round"/>
+    <text x="160" y="365" class="display" font-size="116" font-weight="700" letter-spacing="-3">REST vs GraphQL</text>
+    <text x="160" y="475" class="display" font-size="78" font-weight="600" letter-spacing="-1.6">Which API Style Should</text>
+    <text x="160" y="565" class="display" font-size="78" font-weight="600" letter-spacing="-1.6">You Use and When?</text>
+
+    <text x="164" y="665" class="sans muted" font-size="36" font-weight="400">
+      <tspan x="164" dy="0">Two API models with different approaches to</tspan>
+      <tspan x="164" dy="52">data shape, caching, and complexity.</tspan>
+    </text>
+
+    <g id="rest-graphql-editorial-meta" transform="translate(160 770)">
+      <path d="M0 0H900" class="hair"/>
+      <text x="0" y="58" class="sans soft" font-size="25" font-weight="600" letter-spacing="2.4">THE CENTRAL TRADE-OFF</text>
+      <text x="0" y="116" class="display" font-size="42" font-weight="600">Resources vs. Queries</text>
+      <text x="0" y="166" class="sans muted" font-size="27">Fixed resource interfaces or client-shaped data selection.</text>
+    </g>
+  </g>
+
+  <!-- Right-side comparison panels -->
+  <g id="rest-graphql-diagram">
+    <text x="1240" y="190" class="sans muted" font-size="25" font-weight="600" letter-spacing="3.5">TWO CONTRACTS · TWO DATA-FETCHING MODELS</text>
+
+    <!-- REST panel -->
+    <g id="rest-graphql-rest-panel">
+      <rect x="1240" y="245" width="475" height="660" rx="10" fill="#111111" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="2"/>
+      <path d="M1240 330H1715" class="hair"/>
+      <text x="1280" y="300" class="display" font-size="48" font-weight="600">REST</text>
+      <text x="1658" y="296" class="mono muted" font-size="19" text-anchor="end">01 / RESOURCES</text>
+
+      <text x="1280" y="382" class="sans muted" font-size="22" letter-spacing="1.5">CLIENT</text>
+      <rect x="1280" y="405" width="395" height="68" rx="6" fill="#171717" stroke="#FFFFFF" stroke-opacity=".22" stroke-width="2"/>
+      <text x="1305" y="448" class="mono primary" font-size="27">Storefront / App</text>
+
+      <path d="M1478 473V525" class="flow"/>
+      <path d="M1345 525H1610" stroke="#A1A1AA" stroke-width="2" fill="none"/>
+      <path d="M1345 525V558M1478 525V558M1610 525V558" stroke="#A1A1AA" stroke-width="2" fill="none"/>
+
+      <g id="rest-graphql-rest-endpoints">
+        <rect x="1270" y="558" width="150" height="154" rx="6" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".19" stroke-width="2"/>
+        <text x="1290" y="594" class="mono" fill="#F3CA4D" font-size="21">GET</text>
+        <text x="1290" y="635" class="mono primary" font-size="22">/users</text>
+        <text x="1290" y="671" class="mono muted" font-size="19">/42</text>
+        <path d="M1290 687H1400" stroke="#FFFFFF" stroke-opacity=".14" stroke-width="2"/>
+
+        <rect x="1403" y="558" width="150" height="154" rx="6" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".19" stroke-width="2"/>
+        <text x="1423" y="594" class="mono" fill="#F3CA4D" font-size="21">GET</text>
+        <text x="1423" y="635" class="mono primary" font-size="22">/posts</text>
+        <text x="1423" y="671" class="mono muted" font-size="19">?user=42</text>
+        <path d="M1423 687H1533" stroke="#FFFFFF" stroke-opacity=".14" stroke-width="2"/>
+
+        <rect x="1536" y="558" width="150" height="154" rx="6" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".19" stroke-width="2"/>
+        <text x="1556" y="594" class="mono" fill="#F3CA4D" font-size="21">GET</text>
+        <text x="1556" y="635" class="mono primary" font-size="22">/comments</text>
+        <text x="1556" y="671" class="mono muted" font-size="19">?post=…</text>
+        <path d="M1556 687H1666" stroke="#FFFFFF" stroke-opacity=".14" stroke-width="2"/>
+      </g>
+      <text x="1280" y="770" class="sans soft" font-size="24" font-weight="600">Resource-oriented endpoints</text>
+      <text x="1280" y="812" class="sans muted" font-size="22">Standard HTTP semantics</text>
+      <text x="1280" y="850" class="sans muted" font-size="22">Natural fit for HTTP caching</text>
+      <text x="1280" y="880" class="mono muted" font-size="18">MULTIPLE REQUESTS MAY BE NEEDED</text>
+    </g>
+
+    <!-- GraphQL panel -->
+    <g id="rest-graphql-graphql-panel">
+      <rect x="1745" y="245" width="535" height="660" rx="10" fill="#111111" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="2"/>
+      <path d="M1745 330H2280" class="hair"/>
+      <text x="1785" y="300" class="display" font-size="48" font-weight="600">GraphQL</text>
+      <text x="2240" y="296" class="mono muted" font-size="19" text-anchor="end">02 / QUERY</text>
+
+      <text x="1785" y="382" class="sans muted" font-size="22" letter-spacing="1.5">CLIENT</text>
+      <rect x="1785" y="405" width="455" height="68" rx="6" fill="#171717" stroke="#FFFFFF" stroke-opacity=".22" stroke-width="2"/>
+      <text x="1810" y="448" class="mono primary" font-size="27">Storefront / App</text>
+
+      <path d="M2012 473V518" class="flow-bright"/>
+      <rect x="1870" y="519" width="285" height="66" rx="6" fill="#151515" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="2"/>
+      <circle cx="1897" cy="552" r="6" fill="#F3CA4D"/>
+      <text x="1920" y="560" class="mono primary" font-size="27">POST /graphql</text>
+
+      <path d="M2012 585V623" class="flow"/>
+      <rect x="1810" y="624" width="405" height="222" rx="6" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".19" stroke-width="2"/>
+      <text x="1840" y="665" class="mono muted" font-size="20">QUERY SHAPE</text>
+      <path d="M1850 690V808M1850 714H1880M1850 757H1880M1880 757V795M1880 795H1910" stroke="#A1A1AA" stroke-width="2" fill="none"/>
+      <circle cx="1850" cy="714" r="4" fill="#F4F4F5"/>
+      <circle cx="1880" cy="757" r="4" fill="#F4F4F5"/>
+      <circle cx="1910" cy="795" r="4" fill="#F4F4F5"/>
+      <text x="1900" y="722" class="mono primary" font-size="23">user { id, name }</text>
+      <text x="1930" y="765" class="mono primary" font-size="23">posts(limit: 5)</text>
+      <text x="1960" y="803" class="mono soft" font-size="22">comments { count }</text>
+      <text x="1785" y="880" class="mono muted" font-size="18">CLIENT-SHAPED NESTED DATA</text>
+    </g>
+
+    <!-- Balance / no universal winner -->
+    <g id="rest-graphql-neutral-choice">
+      <path d="M1715 580H1745" stroke="url(#rest-graphql-accent)" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="1730" cy="580" r="7" fill="#F4F4F5"/>
+      <text x="1760" y="970" class="sans muted" font-size="22" text-anchor="middle">No universal winner</text>
+    </g>
+  </g>
+
+  <!-- Bottom decision rail -->
+  <g id="rest-graphql-journey-rail">
+    <path d="M160 1010H2240" class="hair-strong"/>
+    <text x="160" y="1058" class="sans muted" font-size="22" font-weight="600" letter-spacing="3">DECISION LENS</text>
+
+    <g transform="translate(160 1110)">
+      <text x="0" y="0" class="mono primary" font-size="25" font-weight="600">REST</text>
+      <text x="100" y="0" class="sans muted" font-size="22">Predictable resources · HTTP caching · Public integrations</text>
+    </g>
+    <g transform="translate(1260 1110)">
+      <text x="0" y="0" class="mono primary" font-size="25" font-weight="600">GRAPHQL</text>
+      <text x="170" y="0" class="sans muted" font-size="22">Flexible fields · Nested data · Aggregated clients</text>
+    </g>
+  </g>
+</svg>

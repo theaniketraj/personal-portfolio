@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1260" viewBox="0 0 2400 1260" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Kotlin MVVM and Clean Architecture in Android</title>
+  <desc id="svg-desc">A restrained architecture diagram showing an Android View exchanging UI events and reactive state with a lifecycle-aware ViewModel. The ViewModel delegates data operations to a repository, which coordinates local Room and remote Retrofit data sources.</desc>
+  <defs>
+    <pattern id="kotlin-mvvm-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="kotlin-mvvm-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9282F8"/>
+      <stop offset="1" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <marker id="kotlin-mvvm-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="#D4D4D8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="kotlin-mvvm-arrow-accent" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="#F3CA4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .eyebrow { font-family: Inter, Arial, sans-serif; font-size: 28px; font-weight: 600; letter-spacing: 4px; fill: #A1A1AA; }
+      .title { font-family: "Space Grotesk", Inter, Arial, sans-serif; font-size: 104px; font-weight: 600; letter-spacing: -3px; fill: #F4F4F5; }
+      .subtitle { font-family: Inter, Arial, sans-serif; font-size: 36px; font-weight: 400; fill: #A1A1AA; }
+      .section-label { font-family: Inter, Arial, sans-serif; font-size: 24px; font-weight: 600; letter-spacing: 3px; fill: #A1A1AA; }
+      .node-title { font-family: Inter, Arial, sans-serif; font-size: 34px; font-weight: 600; fill: #F4F4F5; }
+      .node-sub { font-family: Inter, Arial, sans-serif; font-size: 24px; font-weight: 400; fill: #A1A1AA; }
+      .micro { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 22px; font-weight: 400; fill: #A1A1AA; letter-spacing: .5px; }
+      .rail-text { font-family: Inter, Arial, sans-serif; font-size: 25px; font-weight: 600; letter-spacing: 1.5px; fill: #D4D4D8; }
+      .hairline { fill: none; stroke: #FFFFFF; stroke-opacity: .13; stroke-width: 2; }
+      .connector { fill: none; stroke: #D4D4D8; stroke-opacity: .72; stroke-width: 2.5; marker-end: url(#kotlin-mvvm-arrow); }
+      .return-connector { fill: none; stroke: #A1A1AA; stroke-opacity: .72; stroke-width: 2.2; stroke-dasharray: 8 8; marker-end: url(#kotlin-mvvm-arrow); }
+      .node { fill: #111111; stroke: #FFFFFF; stroke-opacity: .22; stroke-width: 2; }
+      .node-soft { fill: #0D0D0D; stroke: #FFFFFF; stroke-opacity: .15; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <!-- Canvas and architectural rails -->
+  <g id="background">
+    <rect width="2400" height="1260" fill="#0A0A0A"/>
+    <rect width="2400" height="1260" fill="url(#kotlin-mvvm-grid)"/>
+    <path d="M64 0V1260M2336 0V1260" stroke="#FFFFFF" stroke-opacity=".075" stroke-width="2"/>
+    <path d="M120 100H2280" stroke="#FFFFFF" stroke-opacity=".08" stroke-width="2"/>
+    <path d="M120 1090H2280" stroke="#FFFFFF" stroke-opacity=".10" stroke-width="2"/>
+    <path d="M120 100H330" stroke="url(#kotlin-mvvm-accent)" stroke-width="3"/>
+  </g>
+
+  <!-- Editorial zone -->
+  <g id="editorial">
+    <text class="eyebrow" x="150" y="220">ANDROID ENGINEERING / ARCHITECTURE</text>
+    <text class="micro" x="150" y="286">A COMPREHENSIVE GUIDE</text>
+
+    <text class="title" x="150" y="430">Kotlin MVVM</text>
+    <text class="title" x="150" y="558">Clean</text>
+    <text class="title" x="150" y="686">Architecture</text>
+    <text class="title" x="150" y="814">for Android</text>
+
+    <path d="M150 868H1060" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="2"/>
+    <text class="subtitle" x="150" y="932">Separate UI, state, and data responsibilities</text>
+    <text class="subtitle" x="150" y="982">while keeping screens lifecycle-aware and testable.</text>
+
+    <g id="editorial-callout" transform="translate(150 1000)">
+      <path d="M0 0H5V54H0" fill="none" stroke="url(#kotlin-mvvm-accent)" stroke-width="4"/>
+      <text class="micro" x="24" y="21" fill="#D4D4D8">CORE IDEA</text>
+      <text class="micro" x="24" y="49">View observes state; ViewModel owns UI logic.</text>
+    </g>
+  </g>
+
+  <!-- Architecture diagram -->
+  <g id="architecture-diagram">
+    <text class="section-label" x="1260" y="190">RESPONSIBILITY MODEL</text>
+    <text class="micro" x="2170" y="190" text-anchor="end">01 / MVVM</text>
+    <path d="M1260 216H2250" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="2"/>
+
+    <!-- Presentation boundary -->
+    <g id="presentation-layer">
+      <rect x="1260" y="252" width="990" height="300" rx="8" class="hairline"/>
+      <text class="section-label" x="1294" y="294">PRESENTATION</text>
+      <text class="micro" x="2215" y="294" text-anchor="end">UI + STATE</text>
+
+      <rect x="1300" y="332" width="340" height="166" rx="6" class="node"/>
+      <path d="M1300 332H1390" stroke="#F4F4F5" stroke-width="3"/>
+      <text class="micro" x="1330" y="374">01 / SCREEN</text>
+      <text class="node-title" x="1330" y="425">View</text>
+      <text class="node-sub" x="1330" y="464">Activity · Fragment</text>
+
+      <rect x="1880" y="332" width="330" height="166" rx="6" class="node"/>
+      <path d="M1880 332H1970" stroke="url(#kotlin-mvvm-accent)" stroke-width="3"/>
+      <text class="micro" x="1910" y="374">02 / STATE HOLDER</text>
+      <text class="node-title" x="1910" y="425">ViewModel</text>
+      <text class="node-sub" x="1910" y="464">viewModelScope · UiState</text>
+
+      <!-- Bidirectional View / ViewModel contract -->
+      <path d="M1640 398H1870" class="connector"/>
+      <text class="micro" x="1755" y="382" text-anchor="middle">UI EVENTS</text>
+      <path d="M1880 466H1650" class="return-connector"/>
+      <text class="micro" x="1765" y="493" text-anchor="middle">StateFlow / LiveData</text>
+
+      <text class="micro" x="1300" y="530">Render state</text>
+      <text class="micro" x="2210" y="530" text-anchor="end">No Activity / View references</text>
+    </g>
+
+    <!-- Model and data boundary -->
+    <g id="model-data-layer">
+      <rect x="1260" y="594" width="990" height="480" rx="8" class="hairline"/>
+      <text class="section-label" x="1294" y="636">MODEL / DATA ACCESS</text>
+      <text class="micro" x="2215" y="636" text-anchor="end">REPOSITORY + SOURCES</text>
+
+      <!-- Delegation from VM to repository -->
+      <path d="M2045 498V698" class="connector"/>
+      <text class="micro" x="2070" y="595">operations</text>
+      <path d="M1940 698V520" class="return-connector"/>
+      <text class="micro" x="1908" y="596" text-anchor="end">Flow / results</text>
+
+      <rect x="1570" y="698" width="390" height="126" rx="6" class="node"/>
+      <path d="M1570 698H1670" stroke="#F4F4F5" stroke-width="3"/>
+      <text class="micro" x="1602" y="737">03 / DATA API</text>
+      <text class="node-title" x="1602" y="782">Repository</text>
+      <text class="node-sub" x="1602" y="812">TodoRepository</text>
+
+      <!-- Repository to local / remote data sources -->
+      <path d="M1765 824V862H1480V900" class="connector"/>
+      <path d="M1765 862H2050V900" class="connector"/>
+      <text class="micro" x="1480" y="885" text-anchor="middle">LOCAL</text>
+      <text class="micro" x="2050" y="885" text-anchor="middle">REMOTE</text>
+
+      <rect x="1300" y="900" width="360" height="124" rx="6" class="node-soft"/>
+      <text class="micro" x="1330" y="940">04A / DATABASE</text>
+      <text class="node-title" x="1330" y="986">Room</text>
+      <text class="node-sub" x="1440" y="986">DAO · Flow</text>
+
+      <rect x="1870" y="900" width="340" height="124" rx="6" class="node-soft"/>
+      <text class="micro" x="1900" y="940">04B / NETWORK</text>
+      <text class="node-title" x="1900" y="986">Retrofit</text>
+      <text class="node-sub" x="2040" y="986">API</text>
+
+      <text class="micro" x="1298" y="1054">Repository can coordinate local and remote sources.</text>
+    </g>
+  </g>
+
+  <!-- Bottom journey rail -->
+  <g id="journey-rail">
+    <text class="section-label" x="150" y="1132">DATA &amp; STATE PATH</text>
+    <g transform="translate(535 1098)">
+      <text class="rail-text" x="0" y="28">USER EVENT</text>
+      <path d="M178 18H238" class="connector"/>
+      <text class="rail-text" x="265" y="28">VIEWMODEL</text>
+      <path d="M455 18H515" class="connector"/>
+      <text class="rail-text" x="542" y="28">REPOSITORY</text>
+      <path d="M735 18H795" class="connector"/>
+      <text class="rail-text" x="822" y="28">ROOM / API</text>
+      <path d="M1005 18H1065" class="connector"/>
+      <text class="rail-text" x="1092" y="28">UI STATE</text>
+    </g>
+    <text class="micro" x="2250" y="1132" text-anchor="end">KOTLIN · ANDROIDX</text>
+  </g>
+</svg>

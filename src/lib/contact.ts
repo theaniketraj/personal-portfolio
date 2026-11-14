@@ -51,14 +51,14 @@ export interface ContactFormData {
 }
 
 export type ContactSubmitStatus = 'idle' | 'success' | 'error' | 'invalid_email' | 'validation_error';
-export type ContactErrorField = 'firstName' | 'email' | 'message' | null;
+export type ContactErrorField = 'firstName' | 'lastName' | 'email' | 'address' | 'message' | null;
 
 export type ContactValidationResult =
     | { valid: true; data: ContactFormData; isBot: boolean }
     | {
           valid: false;
           error: string;
-          field: 'firstName' | 'email' | 'message';
+          field: 'firstName' | 'lastName' | 'email' | 'address' | 'message';
           status: 'validation_error' | 'invalid_email';
       };
 
@@ -108,8 +108,35 @@ export function validateContactForm(rawEntries: Record<string, string>): Contact
         };
     }
 
+    if (lastName.length > 100) {
+        return {
+            valid: false,
+            error: 'Last name must be 100 characters or fewer.',
+            field: 'lastName',
+            status: 'validation_error'
+        };
+    }
+
+    if (!email) {
+        return {
+            valid: false,
+            error: 'Please enter a valid email address.',
+            field: 'email',
+            status: 'invalid_email'
+        };
+    }
+
+    if (email.length > 254) {
+        return {
+            valid: false,
+            error: 'Email address must be 254 characters or fewer.',
+            field: 'email',
+            status: 'invalid_email'
+        };
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
+    if (!emailRegex.test(email)) {
         return {
             valid: false,
             error: 'Please enter a valid email address.',
@@ -125,6 +152,15 @@ export function validateContactForm(rawEntries: Record<string, string>): Contact
             error: 'Please enter a genuine, non-disposable email address.',
             field: 'email',
             status: 'invalid_email'
+        };
+    }
+
+    if (address.length > 300) {
+        return {
+            valid: false,
+            error: 'Address must be 300 characters or fewer.',
+            field: 'address',
+            status: 'validation_error'
         };
     }
 
@@ -155,7 +191,8 @@ export function validateContactForm(rawEntries: Record<string, string>): Contact
             email,
             address,
             message,
-            updatesConsent
+            updatesConsent,
+            botField: ''
         }
     };
 }
@@ -167,6 +204,7 @@ export async function submitContactForm(data: ContactFormData): Promise<ContactS
     try {
         const params = new URLSearchParams();
         params.append('form-name', 'sign-up-form');
+        params.append('bot-field', data.botField || '');
         params.append('firstName', data.firstName);
         if (data.lastName) params.append('lastName', data.lastName);
         params.append('email', data.email);

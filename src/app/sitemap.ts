@@ -3,22 +3,21 @@ import { getBlogPosts, getProjects } from '@/lib/mdx';
 import { getSiteUrl } from '@/lib/content/profile';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    // Static routes
-    const routes = ['', '/blog', '/projects', '/agents'].map((route) => ({
-        url: getSiteUrl(route),
-        lastModified: new Date()
+    // Static routes: modification dates are not tracked, omit lastModified entirely
+    const routes: MetadataRoute.Sitemap = ['', '/blog', '/projects', '/agents'].map((route) => ({
+        url: getSiteUrl(route)
     }));
 
-    // Dynamic Project routes
-    const projects = getProjects().map((project) => ({
+    // Dynamic Project routes: only emit lastModified when an accurate updatedAt exists
+    const projects: MetadataRoute.Sitemap = getProjects().map((project) => ({
         url: getSiteUrl(`/projects/${project.slug}`),
-        lastModified: project.date ? new Date(project.date) : new Date()
+        lastModified: project.updatedAt ? new Date(project.updatedAt) : undefined
     }));
 
-    // Dynamic Blog routes
-    const blogs = getBlogPosts().map((post) => ({
+    // Dynamic Blog routes: only emit lastModified when an accurate updatedAt exists
+    const blogs: MetadataRoute.Sitemap = getBlogPosts().map((post) => ({
         url: getSiteUrl(`/blog/${post.slug}`),
-        lastModified: post.date ? new Date(post.date) : new Date()
+        lastModified: post.updatedAt ? new Date(post.updatedAt) : undefined
     }));
 
     return [...routes, ...projects, ...blogs];

@@ -1,11 +1,8 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { getProjects, slugifyTag } from '@/lib/mdx';
-import { HardwareAnimated } from '@/components/animations/hardware-animated';
 import { notFound } from 'next/navigation';
-import { Breadcrumb } from '@/components/breadcrumb';
+import { getProjects, getBlogPosts, slugifyTag } from '@/lib/mdx';
 import { createOpenGraph } from '@/lib/content/profile';
+import { UnifiedTagView } from '@/components/unified-tag-view';
 
 export async function generateStaticParams() {
     await Promise.resolve();
@@ -22,15 +19,39 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }): Promise<Metadata> {
     const { tag } = await params;
     const projects = getProjects();
-    const originalTag = projects.flatMap((p) => p.tags || []).find((t) => slugifyTag(t) === tag);
+    const posts = getBlogPosts();
+
+    const originalTag =
+        projects.flatMap((p) => p.tags || []).find((t) => slugifyTag(t) === tag) ||
+        posts.flatMap((p) => p.tags || []).find((t) => slugifyTag(t) === tag);
+
     const displayTag = originalTag || tag.replaceAll('-', ' ');
-    const title = `Projects tagged with "${displayTag}"`;
-    const description = `A collection of projects tagged with ${displayTag} by Aniket Raj.`;
+
+    const filteredProjects = projects.filter((project) => project.tags?.some((t) => slugifyTag(t) === tag));
+    const filteredPosts = posts.filter((post) => post.tags?.some((t) => slugifyTag(t) === tag));
+
+    const hasProjects = filteredProjects.length > 0;
+    const hasPosts = filteredPosts.length > 0;
+
+    let title: string;
+    let description: string;
+
+    if (hasProjects && hasPosts) {
+        title = `Projects & Articles tagged with "${displayTag}"`;
+        description = `Explore projects and technical articles tagged with ${displayTag} by Aniket Raj.`;
+    } else if (hasProjects) {
+        title = `Projects tagged with "${displayTag}"`;
+        description = `Explore projects tagged with ${displayTag} by Aniket Raj.`;
+    } else {
+        title = `Articles tagged with "${displayTag}"`;
+        description = `Explore technical articles tagged with ${displayTag} by Aniket Raj.`;
+    }
+
     return {
         title,
         description,
         alternates: {
-            canonical: `/projects/tags/${tag}`
+            canonical: `/tags/${tag}`
         },
         robots: {
             index: false,
@@ -39,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
         openGraph: createOpenGraph({
             title: `${title} | Aniket Raj`,
             description,
-            url: `/projects/tags/${tag}`,
+            url: `/tags/${tag}`,
             type: 'website',
             images: [
                 {
@@ -60,95 +81,22 @@ export default async function ProjectTagPage({
 }>) {
     const { tag } = await params;
     const projects = getProjects();
+    const posts = getBlogPosts();
 
-    const originalTag = projects.flatMap((p) => p.tags || []).find((t) => slugifyTag(t) === tag);
+    const originalTag =
+        projects.flatMap((p) => p.tags || []).find((t) => slugifyTag(t) === tag) ||
+        posts.flatMap((p) => p.tags || []).find((t) => slugifyTag(t) === tag);
 
     if (!originalTag) {
         notFound();
     }
 
     const filteredProjects = projects.filter((project) => project.tags?.some((t) => slugifyTag(t) === tag));
+    const filteredPosts = posts.filter((post) => post.tags?.some((t) => slugifyTag(t) === tag));
 
-    return (
-        <main id="main-content" tabIndex={-1} className="outline-none">
-            <section>
-                <div className="container">
-                    <div className="border-x border-primary/10">
-                        <HardwareAnimated animation="slideInUp">
-                            <div className="flex flex-col max-w-3xl mx-auto px-4 sm:px-7 pt-12 pb-8 gap-6">
-                                <Breadcrumb
-                                    backHref="/projects"
-                                    backLabel="All Projects"
-                                    items={[{ label: `Tag: ${originalTag}` }]}
-                                />
-                                <div>
-                                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-primary mt-2 cursor-default">
-                                        Projects tagged: <span className="font-semibold">{originalTag}</span>
-                                    </h1>
-                                </div>
-                                <p className="text-secondary text-base leading-relaxed cursor-default">
-                                    Showing {filteredProjects.length} project
-                                    {filteredProjects.length !== 1 ? 's' : ''} related to {originalTag}.
-                                </p>
-                            </div>
-                        </HardwareAnimated>
+    if (filteredProjects.length === 0 && filteredPosts.length === 0) {
+        notFound();
+    }
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-primary/10">
-                            {filteredProjects.map((project, index) => {
-                                const isRightCol = index % 2 === 1;
-                                return (
-                                    <HardwareAnimated key={project.slug} animation="fadeInScale" delay={index * 0.1}>
-                                        <div
-                                            className={`group flex flex-col justify-between p-6 sm:p-8 ${
-                                                isRightCol ? 'md:border-l md:border-primary/10' : ''
-                                            } border-b border-primary/10 hover:bg-primary/5 transition-colors h-full`}
-                                        >
-                                            <div className="flex flex-col gap-3">
-                                                <div className="flex items-center justify-between">
-                                                    <span className="text-xs font-mono text-secondary border border-primary/10 rounded-md px-2.5 py-0.5 cursor-default">
-                                                        {project.date}
-                                                    </span>
-                                                </div>
-                                                <Link
-                                                    href={`/projects/${project.slug}`}
-                                                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-                                                >
-                                                    <h2 className="text-xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                                                        {project.title}
-                                                    </h2>
-                                                </Link>
-                                                <p className="text-sm text-secondary line-clamp-3 cursor-default">
-                                                    {project.description}
-                                                </p>
-                                            </div>
-
-                                            <div className="pt-5 flex flex-col gap-5">
-                                                <Link
-                                                    href={`/projects/${project.slug}`}
-                                                    aria-label={`View case study: ${project.title}`}
-                                                    className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors mt-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-                                                >
-                                                    <span>View Case Study / Docs</span>
-                                                    <Image
-                                                        src="/images/icon/tile-arrow-icon.svg"
-                                                        alt=""
-                                                        aria-hidden="true"
-                                                        width={20}
-                                                        height={20}
-                                                        priority={index < 4}
-                                                        style={{ width: 'auto', height: 'auto' }}
-                                                        className="dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
-                                                    />
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </HardwareAnimated>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    );
+    return <UnifiedTagView originalTag={originalTag} tagSlug={tag} projects={filteredProjects} posts={filteredPosts} />;
 }

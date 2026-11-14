@@ -9,6 +9,19 @@ import { TLDR } from './mdx-callout';
 import { ArrowUpRight } from 'lucide-react';
 import { ParagraphHighlighter } from './paragraph-highlighter';
 
+function getNodeText(node: React.ReactNode): string {
+    if (typeof node === 'string' || typeof node === 'number') {
+        return String(node);
+    }
+    if (Array.isArray(node)) {
+        return node.map(getNodeText).join('');
+    }
+    if (React.isValidElement(node) && node.props && (node.props as any).children) {
+        return getNodeText((node.props as any).children);
+    }
+    return '';
+}
+
 const components: MDXRemoteProps['components'] = {
     TLDR,
     // Demote any Markdown h1 (#) in body content to an h2 to preserve a single h1 per page
@@ -20,28 +33,14 @@ const components: MDXRemoteProps['components'] = {
             {props.children}
         </h2>
     ),
-    h2: (props: React.ComponentProps<'h2'>) => {
-        const isGoTo = typeof props.children === 'string' && props.children.toLowerCase().includes('go-to');
-        if (isGoTo) {
-            return (
-                <h2
-                    {...props}
-                    className="text-xl sm:text-2xl font-semibold text-primary mt-10 mb-4 tracking-tight border-b border-primary/10 pb-2 flex items-center gap-2 cursor-default scroll-mt-24"
-                >
-                    <span id="project-resources" className="scroll-mt-24" />
-                    <span>Project Resources</span>
-                </h2>
-            );
-        }
-        return (
-            <h2
-                {...props}
-                className="text-xl sm:text-2xl font-semibold text-primary mt-8 mb-4 tracking-tight border-b border-primary/10 pb-2 cursor-default"
-            >
-                {props.children}
-            </h2>
-        );
-    },
+    h2: (props: React.ComponentProps<'h2'>) => (
+        <h2
+            {...props}
+            className="text-xl sm:text-2xl font-semibold text-primary mt-8 mb-4 tracking-tight border-b border-primary/10 pb-2 cursor-default"
+        >
+            {props.children}
+        </h2>
+    ),
     h3: (props: React.ComponentProps<'h3'>) => (
         <h3 {...props} className="text-lg sm:text-xl font-medium text-primary mt-6 mb-3 cursor-default">
             {props.children}
@@ -115,9 +114,9 @@ const components: MDXRemoteProps['components'] = {
     ),
     a: ({ href, children, ...props }: React.ComponentProps<'a'>) => {
         const isInternal = href && (href.startsWith('/') || href.startsWith('#'));
-        const textStr = typeof children === 'string' ? children : '';
+        const textStr = getNodeText(children);
 
-        // Check if it's a Go-To action link button
+        // Check if it's an action link button
         const isButtonLink =
             textStr.includes('↗') ||
             textStr.includes('→') ||
@@ -133,17 +132,23 @@ const components: MDXRemoteProps['components'] = {
                     target={isInternal ? '_self' : '_blank'}
                     rel="noopener noreferrer"
                     {...props}
-                    className="group inline-block p-0.5 my-1 rounded-full bg-[linear-gradient(96.09deg,#9282F8_12.17%,#F3CA4D_90.71%)] no-underline transition-all duration-300 hover:shadow-[0_0_16px_rgba(146,130,248,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer"
+                    className="group inline-block p-0.5 my-1 rounded-full bg-[linear-gradient(96.09deg,#9282F8_12.17%,#F3CA4D_90.71%)] no-underline transition-all duration-300 hover:shadow-[0_0_16px_rgba(146,130,248,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer font-bold"
                 >
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-background group-hover:bg-transparent text-primary group-hover:text-zinc-950 font-medium text-sm transition-all duration-300">
-                        <span>{cleanText}</span>
+                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-background group-hover:bg-transparent text-primary group-hover:text-zinc-950 font-bold text-sm transition-all duration-300">
+                        <span className="font-bold">{cleanText}</span>
                         {!isInternal && <span className="sr-only"> (opens in a new tab)</span>}
                         <span
                             aria-hidden="true"
                             className="relative flex items-center justify-center overflow-hidden w-4 h-4"
                         >
-                            <ArrowUpRight className="absolute w-4 h-4 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
-                            <ArrowUpRight className="absolute w-4 h-4 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
+                            <ArrowUpRight
+                                className="absolute w-4 h-4 transition-transform duration-300 group-hover:translate-x-full group-hover:-translate-y-full"
+                                strokeWidth={2.5}
+                            />
+                            <ArrowUpRight
+                                className="absolute w-4 h-4 -translate-x-full translate-y-full transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0"
+                                strokeWidth={2.5}
+                            />
                         </span>
                     </span>
                 </a>

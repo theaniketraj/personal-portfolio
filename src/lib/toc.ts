@@ -24,11 +24,6 @@ export function extractHeadings(source: string): Heading[] {
             // Preserve source heading ID (matching rehype-slug)
             const id = slugger.slug(text);
 
-            // Replicate the client-side "Go-To" display text logic
-            if (text.toLowerCase().includes('go-to')) {
-                text = 'Project Resources';
-            }
-
             return {
                 id,
                 text,

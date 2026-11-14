@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" width="2400" height="1260" viewBox="0 0 2400 1260" role="img" aria-labelledby="gs-title gs-desc">
+  <title id="gs-title">Google Search Algorithm — Crawling, Indexing and Ranking</title>
+  <desc id="gs-desc">A minimalist engineering diagram showing web pages discovered through links and sitemaps, interpreted and stored in an index, then ordered into search results using relevance, content quality, backlinks, page experience and technical health.</desc>
+
+  <defs>
+    <linearGradient id="gs-brand-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9282F8"/>
+      <stop offset="1" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <linearGradient id="gs-index-accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4F4F5" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#A1A1AA" stop-opacity=".42"/>
+    </linearGradient>
+    <pattern id="gs-grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#FFFFFF" stroke-opacity=".045" stroke-width="1.5"/>
+    </pattern>
+    <marker id="gs-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="#A1A1AA" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="gs-arrow-bright" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="#F4F4F5" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .font-display { font-family: "Space Grotesk", "Inter", Arial, sans-serif; }
+      .font-sans { font-family: "Inter", Arial, sans-serif; }
+      .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .primary { fill: #F4F4F5; }
+      .secondary { fill: #A1A1AA; }
+      .muted { fill: #71717A; }
+      .hairline { stroke: #FFFFFF; stroke-opacity: .12; fill: none; }
+      .diagram-line { stroke: #A1A1AA; stroke-opacity: .62; fill: none; stroke-width: 2.5; }
+      .node { fill: #0A0A0A; stroke: #D4D4D8; stroke-opacity: .72; stroke-width: 2.5; }
+      .small-label { font: 600 24px "Inter", Arial, sans-serif; letter-spacing: 3.3px; }
+      .stage-label { font: 600 27px "Inter", Arial, sans-serif; letter-spacing: 2.2px; }
+      .annotation { font: 500 22px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .3px; }
+    </style>
+  </defs>
+
+  <!-- Canvas -->
+  <g id="gs-background">
+    <rect width="2400" height="1260" fill="#0A0A0A"/>
+    <rect width="2400" height="1260" fill="url(#gs-grid)"/>
+    <path d="M120 0V1260M2280 0V1260" stroke="#FFFFFF" stroke-opacity=".10" stroke-width="2"/>
+    <path d="M120 72H2280M120 1188H2280" stroke="#FFFFFF" stroke-opacity=".10" stroke-width="2"/>
+    <path d="M120 72H360" stroke="url(#gs-brand-accent)" stroke-width="3" opacity=".8"/>
+  </g>
+
+  <!-- Editorial zone -->
+  <g id="gs-editorial">
+    <text x="160" y="166" class="font-sans primary" font-size="28" font-weight="600" letter-spacing="5.5">ENGINEERING DEEP DIVE</text>
+    <text x="160" y="212" class="font-mono secondary" font-size="23" letter-spacing="2.2">SEARCH SYSTEMS  /  SEO</text>
+
+    <text x="154" y="384" class="font-display primary" font-size="112" font-weight="700" letter-spacing="-4">Google Search</text>
+    <text x="154" y="510" class="font-display primary" font-size="126" font-weight="700" letter-spacing="-4.8">Algorithm</text>
+
+    <path d="M160 568H1040" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="2"/>
+    <path d="M160 568H330" stroke="url(#gs-brand-accent)" stroke-width="4"/>
+
+    <text x="160" y="650" class="font-sans" fill="#A1A1AA" font-size="39" font-weight="500">
+      <tspan x="160" dy="0">A practical model of how pages are</tspan>
+      <tspan x="160" dy="57">discovered, understood, and ranked.</tspan>
+    </text>
+
+    <g id="gs-core-model" transform="translate(160 830)">
+      <text x="0" y="0" class="font-sans secondary" font-size="24" font-weight="600" letter-spacing="3.6">THE MENTAL MODEL</text>
+      <text x="0" y="64" class="font-display primary" font-size="39" font-weight="500">
+        Relevance <tspan fill="#71717A">+</tspan> Quality <tspan fill="#71717A">+</tspan> Authority
+      </text>
+      <text x="0" y="116" class="font-display primary" font-size="39" font-weight="500">
+        <tspan fill="#71717A">+</tspan> Experience <tspan fill="#71717A">+</tspan> Technical health
+      </text>
+      <text x="0" y="174" class="font-mono muted" font-size="21" letter-spacing="1.1">A SIMPLIFIED WAY TO THINK ABOUT RANKING</text>
+    </g>
+  </g>
+
+  <!-- Diagram frame -->
+  <g id="gs-diagram" transform="translate(1240 132)">
+    <rect x="0" y="0" width="1000" height="890" fill="#101010" fill-opacity=".58" stroke="#FFFFFF" stroke-opacity=".14" stroke-width="2"/>
+    <path d="M0 74H1000" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="2"/>
+    <text x="42" y="48" class="font-mono secondary" font-size="22" letter-spacing="2.4">SEARCH PIPELINE</text>
+    <text x="955" y="48" text-anchor="end" class="font-mono muted" font-size="20" letter-spacing="1.8">01 — 03</text>
+
+    <!-- Stage headings -->
+    <g id="gs-stage-headings">
+      <text x="64" y="136" class="stage-label primary">CRAWL</text>
+      <text x="64" y="170" class="font-sans secondary" font-size="22">Discover URLs</text>
+
+      <text x="380" y="136" class="stage-label primary">INDEX</text>
+      <text x="380" y="170" class="font-sans secondary" font-size="22">Understand pages</text>
+
+      <text x="704" y="136" class="stage-label primary">RANK</text>
+      <text x="704" y="170" class="font-sans secondary" font-size="22">Order results</text>
+    </g>
+
+    <!-- Phase connectors -->
+    <path d="M282 390H345" class="diagram-line" marker-end="url(#gs-arrow)"/>
+    <path d="M606 390H670" class="diagram-line" marker-end="url(#gs-arrow)"/>
+
+    <!-- Crawling: web graph + sitemap -->
+    <g id="gs-crawling" transform="translate(58 225)">
+      <path d="M108 72L44 135L150 168L202 95L108 72L150 168L44 135L202 95" fill="none" stroke="#71717A" stroke-opacity=".76" stroke-width="2.5"/>
+      <path d="M108 72L108 222L44 135M150 168L108 222L202 95" fill="none" stroke="#71717A" stroke-opacity=".48" stroke-width="2"/>
+      <circle cx="108" cy="72" r="14" class="node"/>
+      <circle cx="44" cy="135" r="11" class="node"/>
+      <circle cx="150" cy="168" r="12" class="node"/>
+      <circle cx="202" cy="95" r="11" class="node"/>
+      <circle cx="108" cy="222" r="10" class="node"/>
+      <circle cx="108" cy="72" r="4" fill="#F4F4F5"/>
+      <path d="M108 72L150 168" stroke="#F4F4F5" stroke-opacity=".6" stroke-width="3"/>
+      <rect x="9" y="258" width="220" height="48" rx="4" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".17" stroke-width="2"/>
+      <circle cx="31" cy="282" r="5" fill="#A1A1AA"/>
+      <text x="48" y="290" class="font-mono secondary" font-size="20">LINKS / SITEMAPS</text>
+      <text x="9" y="344" class="font-mono muted" font-size="18">URL DISCOVERY</text>
+    </g>
+
+    <!-- Indexing: parsed document and stored representation -->
+    <g id="gs-indexing" transform="translate(365 224)">
+      <rect x="35" y="26" width="200" height="254" rx="5" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="2"/>
+      <path d="M58 56H211" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="3"/>
+      <path d="M58 91H193M58 111H204M58 131H171" stroke="#A1A1AA" stroke-opacity=".65" stroke-width="4" stroke-linecap="round"/>
+      <rect x="58" y="157" width="153" height="43" fill="#FFFFFF" fill-opacity=".035" stroke="#FFFFFF" stroke-opacity=".15" stroke-width="1.5"/>
+      <text x="70" y="185" class="font-mono secondary" font-size="17">SCHEMA DATA</text>
+      <path d="M58 222H190M58 240H169" stroke="#71717A" stroke-width="3" stroke-linecap="round"/>
+      <path d="M18 8H53M18 8V44M217 8H252M252 8V44M18 258V294H53M217 294H252V258" fill="none" stroke="#A1A1AA" stroke-opacity=".72" stroke-width="2"/>
+      <text x="35" y="328" class="font-mono muted" font-size="18">CONTENT / METADATA</text>
+    </g>
+
+    <!-- Ranking: ordered search result set -->
+    <g id="gs-ranking" transform="translate(686 236)">
+      <text x="0" y="0" class="font-mono muted" font-size="18" letter-spacing="1.5">QUERY MATCH</text>
+      <rect x="0" y="23" width="252" height="66" rx="4" fill="#FFFFFF" fill-opacity=".055" stroke="#FFFFFF" stroke-opacity=".34" stroke-width="2"/>
+      <text x="18" y="64" class="font-mono primary" font-size="22">01</text>
+      <path d="M61 47H222M61 64H181" stroke="#D4D4D8" stroke-opacity=".74" stroke-width="4" stroke-linecap="round"/>
+      <path d="M0 23H42" stroke="url(#gs-brand-accent)" stroke-width="4"/>
+      <rect x="0" y="104" width="252" height="66" rx="4" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="2"/>
+      <text x="18" y="145" class="font-mono secondary" font-size="22">02</text>
+      <path d="M61 128H205M61 145H166" stroke="#71717A" stroke-width="4" stroke-linecap="round"/>
+      <rect x="0" y="185" width="252" height="66" rx="4" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="2"/>
+      <text x="18" y="226" class="font-mono secondary" font-size="22">03</text>
+      <path d="M61 209H188M61 226H157" stroke="#52525B" stroke-width="4" stroke-linecap="round"/>
+      <text x="0" y="289" class="font-mono muted" font-size="18">ORDERED RESULTS</text>
+    </g>
+
+    <!-- Ranking factors -->
+    <path d="M38 625H962" stroke="#FFFFFF" stroke-opacity=".13" stroke-width="2"/>
+    <text x="42" y="670" class="font-sans secondary" font-size="22" font-weight="600" letter-spacing="3">RANKING SIGNALS</text>
+
+    <g id="gs-ranking-signals" transform="translate(40 700)">
+      <g>
+        <rect x="0" y="0" width="174" height="118" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".17" stroke-width="2"/>
+        <path d="M0 0H44" stroke="url(#gs-brand-accent)" stroke-width="4"/>
+        <text x="15" y="42" class="font-sans primary" font-size="22" font-weight="600">INTENT</text>
+        <text x="15" y="77" class="font-mono muted" font-size="17">QUERY FIT</text>
+      </g>
+      <g transform="translate(184 0)">
+        <rect x="0" y="0" width="174" height="118" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".17" stroke-width="2"/>
+        <text x="15" y="42" class="font-sans primary" font-size="21" font-weight="600">CONTENT</text>
+        <text x="15" y="77" class="font-mono muted" font-size="17">E-E-A-T</text>
+      </g>
+      <g transform="translate(368 0)">
+        <rect x="0" y="0" width="174" height="118" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".17" stroke-width="2"/>
+        <text x="15" y="42" class="font-sans primary" font-size="22" font-weight="600">LINKS</text>
+        <text x="15" y="77" class="font-mono muted" font-size="17">AUTHORITY</text>
+      </g>
+      <g transform="translate(552 0)">
+        <rect x="0" y="0" width="174" height="118" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".17" stroke-width="2"/>
+        <text x="15" y="42" class="font-sans primary" font-size="21" font-weight="600">EXPERIENCE</text>
+        <text x="15" y="77" class="font-mono muted" font-size="17">CWV / UX</text>
+      </g>
+      <g transform="translate(736 0)">
+        <rect x="0" y="0" width="184" height="118" fill="#0A0A0A" stroke="#FFFFFF" stroke-opacity=".17" stroke-width="2"/>
+        <text x="15" y="42" class="font-sans primary" font-size="20" font-weight="600">TECHNICAL</text>
+        <text x="15" y="77" class="font-mono muted" font-size="17">HEALTH</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom journey rail -->
+  <g id="gs-journey-rail">
+    <path d="M160 1080H2240" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="2"/>
+    <text x="160" y="1142" class="font-sans secondary" font-size="22" font-weight="600" letter-spacing="3.2">THE JOURNEY</text>
+
+    <g transform="translate(490 1100)">
+      <text x="0" y="42" class="font-mono primary" font-size="27" letter-spacing="1.3">DISCOVER</text>
+      <path d="M153 32H248" stroke="#71717A" stroke-width="2" marker-end="url(#gs-arrow)"/>
+      <text x="276" y="42" class="font-mono primary" font-size="27" letter-spacing="1.3">UNDERSTAND</text>
+      <path d="M475 32H570" stroke="#71717A" stroke-width="2" marker-end="url(#gs-arrow)"/>
+      <text x="598" y="42" class="font-mono primary" font-size="27" letter-spacing="1.3">EVALUATE</text>
+      <path d="M771 32H866" stroke="url(#gs-brand-accent)" stroke-width="3" marker-end="url(#gs-arrow-bright)"/>
+      <text x="894" y="42" class="font-mono primary" font-size="27" letter-spacing="1.3">ORDER</text>
+    </g>
+
+    <text x="2240" y="1142" text-anchor="end" class="font-mono muted" font-size="20" letter-spacing="1.5">ANIKET RAJ  /  ENGINEERING NOTES</text>
+  </g>
+</svg>

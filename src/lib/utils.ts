@@ -17,3 +17,5 @@ export function slugifyTag(tag: string): string {
         .replace(/-+/g, '-')
         .replace(/^-+|-+$/g, '');
 }
+
+export { serializeJsonLd } from './jsonld';

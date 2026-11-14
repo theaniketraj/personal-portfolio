@@ -10,17 +10,37 @@ import {
     BlogPostMeta,
     BlogPostData,
     DeprecatedProject,
-    DeprecatedProjectSchema
+    DeprecatedProjectSchema,
+    WishlistItem,
+    WishlistItemSchema
 } from './content/types';
 
 const PROJECTS_DIR = path.join(process.cwd(), 'projects');
 const BLOG_DIR = path.join(process.cwd(), 'blog');
 const DEPRECATED_PATH = path.join(process.cwd(), 'data', 'deprecated.json');
+const WISHLIST_PATH = path.join(process.cwd(), 'data', 'wishlist.json');
 
 function calculateReadingTime(content: string): number {
     const wordsPerMinute = 200;
     const wordCount = content.trim().split(/\s+/).length;
     return Math.max(1, Math.ceil(wordCount / wordsPerMinute));
+}
+
+function formatRequiredDate(date: Date | string | undefined): string {
+    if (date instanceof Date) {
+        return date.toISOString().split('T')[0];
+    }
+    return date || '';
+}
+
+function formatOptionalDate(date: Date | string | undefined): string | undefined {
+    if (!date) {
+        return undefined;
+    }
+    if (date instanceof Date) {
+        return date.toISOString().split('T')[0];
+    }
+    return date;
 }
 
 // Get all projects
@@ -42,10 +62,8 @@ export function getProjects(): ProjectMeta[] {
             return {
                 slug,
                 title: parsedData.title || slug,
-                date:
-                    parsedData.date instanceof Date
-                        ? parsedData.date.toISOString().split('T')[0]
-                        : parsedData.date || '',
+                date: formatRequiredDate(parsedData.date),
+                updatedAt: formatOptionalDate(parsedData.updatedAt),
                 client: parsedData.client || 'Aniket Raj',
                 description: parsedData.description || '',
                 metaTitle: parsedData.metaTitle,
@@ -63,6 +81,13 @@ export function getProjects(): ProjectMeta[] {
                 status: parsedData.status,
                 relatedProjects: parsedData.relatedProjects || [],
                 relatedArticles: parsedData.relatedArticles || [],
+                schemaType: parsedData.schemaType,
+                programmingLanguage: parsedData.programmingLanguage,
+                runtimePlatform: parsedData.runtimePlatform,
+                applicationCategory: parsedData.applicationCategory,
+                operatingSystem: parsedData.operatingSystem,
+                genre: parsedData.genre,
+                about: parsedData.about,
                 readingTime: calculateReadingTime(content)
             } as ProjectMeta;
         });
@@ -80,12 +105,23 @@ export function getFeaturedProjects(): ProjectMeta[] {
         .sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0));
 }
 
+function resolveContentFilePath(directory: string, slug: string): string | null {
+    const mdxPath = path.join(directory, `${slug}.mdx`);
+    if (fs.existsSync(mdxPath)) {
+        return mdxPath;
+    }
+
+    const mdPath = path.join(directory, `${slug}.md`);
+    if (fs.existsSync(mdPath)) {
+        return mdPath;
+    }
+
+    return null;
+}
+
 // Get single project by slug
 export function getProjectBySlug(slug: string): ProjectData | null {
-    const mdxPath = path.join(PROJECTS_DIR, `${slug}.mdx`);
-    const mdPath = path.join(PROJECTS_DIR, `${slug}.md`);
-    const filePath = fs.existsSync(mdxPath) ? mdxPath : fs.existsSync(mdPath) ? mdPath : null;
-
+    const filePath = resolveContentFilePath(PROJECTS_DIR, slug);
     if (!filePath) return null;
 
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -97,7 +133,8 @@ export function getProjectBySlug(slug: string): ProjectData | null {
         meta: {
             slug,
             title: parsedData.title || slug,
-            date: parsedData.date instanceof Date ? parsedData.date.toISOString().split('T')[0] : parsedData.date || '',
+            date: formatRequiredDate(parsedData.date),
+            updatedAt: formatOptionalDate(parsedData.updatedAt),
             client: parsedData.client || 'Aniket Raj',
             description: parsedData.description || '',
             metaTitle: parsedData.metaTitle,
@@ -115,6 +152,13 @@ export function getProjectBySlug(slug: string): ProjectData | null {
             status: parsedData.status,
             relatedProjects: parsedData.relatedProjects || [],
             relatedArticles: parsedData.relatedArticles || [],
+            schemaType: parsedData.schemaType,
+            programmingLanguage: parsedData.programmingLanguage,
+            runtimePlatform: parsedData.runtimePlatform,
+            applicationCategory: parsedData.applicationCategory,
+            operatingSystem: parsedData.operatingSystem,
+            genre: parsedData.genre,
+            about: parsedData.about,
             readingTime: calculateReadingTime(content)
         },
         content
@@ -139,10 +183,8 @@ export function getBlogPosts(): BlogPostMeta[] {
             return {
                 slug,
                 title: parsedData.title || slug,
-                date:
-                    parsedData.date instanceof Date
-                        ? parsedData.date.toISOString().split('T')[0]
-                        : parsedData.date || '',
+                date: formatRequiredDate(parsedData.date),
+                updatedAt: formatOptionalDate(parsedData.updatedAt),
                 excerpt: parsedData.excerpt || '',
                 author: parsedData.author || 'Aniket Raj',
                 metaTitle: parsedData.metaTitle,
@@ -166,10 +208,7 @@ export function getBlogPosts(): BlogPostMeta[] {
 
 // Get single blog post by slug
 export function getBlogPostBySlug(slug: string): BlogPostData | null {
-    const mdxPath = path.join(BLOG_DIR, `${slug}.mdx`);
-    const mdPath = path.join(BLOG_DIR, `${slug}.md`);
-    const filePath = fs.existsSync(mdxPath) ? mdxPath : fs.existsSync(mdPath) ? mdPath : null;
-
+    const filePath = resolveContentFilePath(BLOG_DIR, slug);
     if (!filePath) return null;
 
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -181,7 +220,8 @@ export function getBlogPostBySlug(slug: string): BlogPostData | null {
         meta: {
             slug,
             title: parsedData.title || slug,
-            date: parsedData.date instanceof Date ? parsedData.date.toISOString().split('T')[0] : parsedData.date || '',
+            date: formatRequiredDate(parsedData.date),
+            updatedAt: formatOptionalDate(parsedData.updatedAt),
             excerpt: parsedData.excerpt || '',
             author: parsedData.author || 'Aniket Raj',
             metaTitle: parsedData.metaTitle,
@@ -204,6 +244,14 @@ export function getDeprecatedProjects(): DeprecatedProject[] {
     const fileContents = fs.readFileSync(DEPRECATED_PATH, 'utf8');
     const parsedData = JSON.parse(fileContents);
     return z.array(DeprecatedProjectSchema).parse(parsedData);
+}
+
+// Get all wishlist items
+export function getWishlistItems(): WishlistItem[] {
+    if (!fs.existsSync(WISHLIST_PATH)) return [];
+    const fileContents = fs.readFileSync(WISHLIST_PATH, 'utf8');
+    const parsedData = JSON.parse(fileContents);
+    return z.array(WishlistItemSchema).parse(parsedData);
 }
 
 export { slugifyTag } from './utils';

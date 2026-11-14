@@ -51,7 +51,11 @@ export const metadata: Metadata = {
 
 export default function AgentsPage() {
     return (
-        <main id="main-content" tabIndex={-1} className="overflow-x-hidden w-full outline-none">
+        <main
+            id="main-content"
+            tabIndex={-1}
+            className="overflow-x-hidden w-full outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
+        >
             <section className="min-h-screen">
                 <div className="container">
                     <div className="border-x border-primary/10">
@@ -62,12 +66,12 @@ export default function AgentsPage() {
                                     <Breadcrumb backHref="/" backLabel="Home" items={[{ label: 'Agent Portal' }]} />
                                     <WebMCPStatusBadge />
                                 </div>
-                                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter mb-6 font-(family-name:--font-space-grotesk)">
+                                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter cursor-default mb-6 font-(family-name:--font-space-grotesk)">
                                     <span className="bg-[linear-gradient(96.09deg,#9282F8_12.17%,#F3CA4D_90.71%)] bg-clip-text text-transparent">
                                         Agent Portal
                                     </span>
                                 </h1>
-                                <p className="text-lg sm:text-xl text-secondary leading-relaxed font-(family-name:--font-space-grotesk) max-w-3xl mx-auto">
+                                <p className="text-lg sm:text-xl text-secondary leading-relaxed cursor-default font-(family-name:--font-space-grotesk) max-w-3xl mx-auto">
                                     This portfolio exposes an interface for AI agents. Compatible agents can discover my
                                     projects, retrieve structured information, explore my writing, and prepare actions
                                     without navigating the site like a human.
@@ -80,10 +84,10 @@ export default function AgentsPage() {
                             <div className="max-w-5xl mx-auto px-4 sm:px-7 py-10 md:py-16">
                                 <HardwareAnimated animation="slideInUp" delay={0.2}>
                                     <div className="text-center">
-                                        <h2 className="text-3xl sm:text-4xl font-bold text-primary font-(family-name:--font-space-grotesk) mb-4">
+                                        <h2 className="text-3xl sm:text-4xl font-bold text-primary cursor-default font-(family-name:--font-space-grotesk) mb-4">
                                             The Idea
                                         </h2>
-                                        <p className="text-lg text-secondary max-w-lg mx-auto leading-relaxed">
+                                        <p className="text-lg text-secondary max-w-lg mx-auto cursor-default leading-relaxed">
                                             A website shouldn&apos;t need to be reverse-engineered by an agent. Humans
                                             interpret interfaces visually. Agents should be able to interact with
                                             explicit capabilities.
@@ -101,10 +105,10 @@ export default function AgentsPage() {
                                         <div className="flex flex-col md:flex-row w-full justify-between items-center md:items-start gap-12 md:gap-0">
                                             {/* Human Column */}
                                             <div className="flex-1 flex flex-col z-10 items-center md:items-start text-center md:text-left">
-                                                <h3 className="text-3xl font-bold text-primary font-(family-name:--font-space-grotesk) h-9 flex items-center justify-center md:justify-start w-full md:w-auto mb-8">
+                                                <h3 className="text-3xl font-bold text-primary font-(family-name:--font-space-grotesk) h-9 flex items-center justify-center md:justify-start w-full md:w-auto mb-8 cursor-default">
                                                     Human
                                                 </h3>
-                                                <div className="flex flex-col gap-8 w-full items-center md:items-start">
+                                                <div className="flex flex-col gap-8 w-full items-center cursor-default md:items-start">
                                                     {['Visual navigation', 'Projects', 'Articles', 'Forms'].map(
                                                         (item) => (
                                                             <div
@@ -186,7 +190,7 @@ export default function AgentsPage() {
                                                 </svg>
 
                                                 {/* Pill */}
-                                                <div className="bg-background border border-primary/20 px-6 py-3 rounded-full text-sm font-mono text-primary/80 z-10 shadow-sm relative">
+                                                <div className="bg-background border border-primary/20 px-6 py-3 rounded-full text-sm font-mono text-primary/80 z-10 shadow-sm relative cursor-default select-none">
                                                     SAME CONTENT MODEL
                                                 </div>
                                             </div>
@@ -194,17 +198,17 @@ export default function AgentsPage() {
                                             {/* Mobile Pill */}
                                             <div className="md:hidden flex flex-col items-center justify-center relative py-12 w-full">
                                                 <div className="absolute top-0 bottom-0 w-px bg-primary/20"></div>
-                                                <div className="bg-background border border-primary/20 px-6 py-3 rounded-full text-sm font-mono text-primary/80 z-10 shadow-sm relative">
+                                                <div className="bg-background border border-primary/20 px-6 py-3 rounded-full text-sm font-mono text-primary/80 z-10 shadow-sm relative cursor-default select-none">
                                                     SAME CONTENT MODEL
                                                 </div>
                                             </div>
 
                                             {/* Agent Column */}
                                             <div className="flex-1 flex flex-col z-10 items-center md:items-end text-center md:text-right">
-                                                <h3 className="text-3xl font-bold text-primary font-(family-name:--font-space-grotesk) h-9 flex items-center justify-center md:justify-end w-full md:w-auto mb-8">
+                                                <h3 className="text-3xl font-bold text-primary font-(family-name:--font-space-grotesk) h-9 flex items-center justify-center md:justify-end w-full md:w-auto mb-8 cursor-default">
                                                     Agent
                                                 </h3>
-                                                <div className="flex flex-col gap-8 w-full items-center md:items-end">
+                                                <div className="flex flex-col gap-8 w-full items-center cursor-default md:items-end">
                                                     {[
                                                         'Structured tools',
                                                         'Project discovery',
@@ -236,7 +240,7 @@ export default function AgentsPage() {
                             <div className="max-w-5xl mx-auto px-4 sm:px-7 py-12 md:py-20">
                                 <HardwareAnimated animation="slideInUp" delay={0.4}>
                                     <div className="max-w-2xl mx-auto">
-                                        <h2 className="text-3xl sm:text-4xl font-bold text-primary font-(family-name:--font-space-grotesk) text-center mb-12">
+                                        <h2 className="text-3xl sm:text-4xl font-bold text-primary cursor-default font-(family-name:--font-space-grotesk) text-center mb-12">
                                             Under the Hood
                                         </h2>
 
@@ -244,7 +248,7 @@ export default function AgentsPage() {
                                             {/* Central Glowing Spine */}
                                             <div className="absolute left-1/2 top-8 bottom-8 w-0.5 bg-linear-to-b from-primary/0 via-primary/50 to-primary/0 -translate-x-1/2 z-0 shadow-[0_0_10px_rgba(var(--primary),0.5)]"></div>
 
-                                            <div className="flex flex-col gap-16 relative z-10">
+                                            <div className="flex flex-col gap-16 relative z-10 cursor-default">
                                                 {[
                                                     {
                                                         name: 'Content',
@@ -320,10 +324,10 @@ export default function AgentsPage() {
                         <div className="border-t border-primary/10">
                             <HardwareAnimated animation="slideInUp" delay={0.2}>
                                 <div className="flex flex-col items-center text-center max-w-5xl mx-auto px-4 sm:px-7 py-12 md:py-16 gap-3">
-                                    <h2 className="text-3xl sm:text-4xl font-bold text-primary font-(family-name:--font-space-grotesk)">
+                                    <h2 className="text-3xl sm:text-4xl font-bold text-primary cursor-default font-(family-name:--font-space-grotesk)">
                                         Execution Model
                                     </h2>
-                                    <p className="text-secondary max-w-2xl text-base leading-relaxed">
+                                    <p className="text-secondary max-w-2xl text-base leading-relaxed cursor-default">
                                         How agents interact with this environment.
                                     </p>
                                 </div>
@@ -336,10 +340,10 @@ export default function AgentsPage() {
                                         <div className="w-10 h-10 border border-primary/10 rounded-lg flex items-center justify-center mb-5 text-primary bg-background/50">
                                             <Lock className="w-5 h-5" aria-hidden="true" />
                                         </div>
-                                        <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
+                                        <h3 className="text-xl font-medium text-primary mb-2 cursor-default font-(family-name:--font-space-grotesk)">
                                             Read-Only by Default
                                         </h3>
-                                        <p className="text-sm sm:text-base text-secondary leading-relaxed">
+                                        <p className="text-sm sm:text-base text-secondary leading-relaxed cursor-default">
                                             Most exposed tools only retrieve portfolio data. Actions that modify page
                                             state are explicitly marked as non-read-only and remain user-confirmed.
                                         </p>
@@ -352,10 +356,10 @@ export default function AgentsPage() {
                                         <div className="w-10 h-10 border border-primary/10 rounded-lg flex items-center justify-center mb-5 text-primary bg-background/50">
                                             <ShieldCheck className="w-5 h-5" aria-hidden="true" />
                                         </div>
-                                        <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
+                                        <h3 className="text-xl font-medium text-primary mb-2 cursor-default font-(family-name:--font-space-grotesk)">
                                             Runtime Validation
                                         </h3>
-                                        <p className="text-sm sm:text-base text-secondary leading-relaxed">
+                                        <p className="text-sm sm:text-base text-secondary leading-relaxed cursor-default">
                                             Tool inputs are validated against strict <strong>Zod schemas</strong> before
                                             execution.
                                         </p>
@@ -368,12 +372,12 @@ export default function AgentsPage() {
                                         <div className="w-10 h-10 border border-primary/10 rounded-lg flex items-center justify-center mb-5 text-primary bg-background/50">
                                             <Database className="w-5 h-5" aria-hidden="true" />
                                         </div>
-                                        <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
+                                        <h3 className="text-xl font-medium text-primary mb-2 cursor-default font-(family-name:--font-space-grotesk)">
                                             Semantic Taxonomy
                                         </h3>
-                                        <p className="text-sm sm:text-base text-secondary leading-relaxed">
-                                            Data isn't just plain text. Projects and articles are richly categorized by
-                                            domains, capabilities, technologies, and engineering areas.
+                                        <p className="text-sm sm:text-base text-secondary leading-relaxed cursor-default">
+                                            Data isn&apos;t just plain text. Projects and articles are richly
+                                            categorized by domains, capabilities, technologies, and engineering areas.
                                         </p>
                                     </div>
                                 </HardwareAnimated>
@@ -384,10 +388,10 @@ export default function AgentsPage() {
                                         <div className="w-10 h-10 border border-primary/10 rounded-lg flex items-center justify-center mb-5 text-primary bg-background/50">
                                             <Zap className="w-5 h-5" aria-hidden="true" />
                                         </div>
-                                        <h3 className="text-xl font-medium text-primary mb-2 font-(family-name:--font-space-grotesk)">
+                                        <h3 className="text-xl font-medium text-primary mb-2 cursor-default font-(family-name:--font-space-grotesk)">
                                             Build-Time Content
                                         </h3>
-                                        <p className="text-sm sm:text-base text-secondary leading-relaxed">
+                                        <p className="text-sm sm:text-base text-secondary leading-relaxed cursor-default">
                                             Portfolio metadata is derived from local content at build or runtime rather
                                             than fetched from an external database, allowing for exceptionally low
                                             overhead.
@@ -402,17 +406,17 @@ export default function AgentsPage() {
                             <div className="max-w-5xl mx-auto px-4 sm:px-7 py-16 md:py-24">
                                 <HardwareAnimated animation="fadeInScale" delay={0.5}>
                                     <div className="text-center">
-                                        <h2 className="text-3xl sm:text-4xl font-bold text-primary font-(family-name:--font-space-grotesk) mb-6">
+                                        <h2 className="text-3xl sm:text-4xl font-bold text-primary cursor-default font-(family-name:--font-space-grotesk) mb-6">
                                             Why?
                                         </h2>
-                                        <p className="text-xl text-secondary max-w-2xl mx-auto leading-relaxed mb-12">
+                                        <p className="text-xl text-secondary max-w-2xl mx-auto leading-relaxed mb-12 cursor-default">
                                             The web is no longer consumed only by humans.
                                             <br />
                                             This portfolio should work for both.
                                         </p>
 
                                         <div className="p-8 border border-primary/10 bg-background/50 rounded-2xl max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-                                            <p className="text-secondary text-left text-sm sm:text-base flex-1 border-l-2 border-primary/30 pl-4">
+                                            <p className="text-secondary text-left text-sm sm:text-base flex-1 border-l-2 border-primary/30 pl-4 cursor-default">
                                                 WebMCP is an evolving web capability.
                                                 <br className="hidden sm:block" />
                                                 The site remains fully usable without it.
@@ -423,7 +427,7 @@ export default function AgentsPage() {
                                                 rel="noopener noreferrer"
                                                 className="group flex items-center gap-2 whitespace-nowrap px-6 py-3 bg-primary text-background font-medium rounded-lg hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all duration-300"
                                             >
-                                                <span>View implementation</span>
+                                                <span>View Implementation</span>
                                                 <span className="sr-only"> (opens in a new tab)</span>
                                                 <span
                                                     aria-hidden="true"

@@ -24,7 +24,11 @@ function Birds() {
 
 export default function NotFound() {
     return (
-        <main id="main-content" tabIndex={-1} className="flex-1 flex flex-col outline-none">
+        <main
+            id="main-content"
+            tabIndex={-1}
+            className="flex-1 flex flex-col outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
+        >
             <div className="container flex-1 flex flex-col">
                 <div className="border-x border-primary/10 flex-1 flex flex-col items-center justify-between pt-16 md:pt-24 pb-0 relative overflow-hidden">
                     {/* Background Glow Effect */}
@@ -35,10 +39,10 @@ export default function NotFound() {
 
                     <div className="max-w-2xl mx-auto px-4 sm:px-7 text-center z-10 flex-1 flex flex-col justify-center mb-8">
                         <HardwareAnimated animation="slideInUp">
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-6 mb-4 cursor-default font-(family-name:--font-space-grotesk)">
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-6 mb-4 cursor-default select-none font-(family-name:--font-space-grotesk)">
                                 <span className="gradient-text">Page Not Found</span>
                             </h1>
-                            <p className="text-muted-foreground text-lg max-w-lg mx-auto mb-10 cursor-default font-(family-name:--font-space-grotesk)">
+                            <p className="text-muted-foreground text-lg max-w-lg mx-auto mb-10 cursor-default select-none font-(family-name:--font-space-grotesk)">
                                 Oops! It seems you&apos;ve ventured into the unknown. The page you&apos;re looking for
                                 doesn&apos;t exist or has been moved to a new URL.
                             </p>
@@ -47,7 +51,7 @@ export default function NotFound() {
                                 <Button
                                     asChild
                                     size="lg"
-                                    className="rounded-full px-8 h-12 text-base font-semibold font-(family-name:--font-space-grotesk)"
+                                    className="rounded-full px-8 h-12 text-base font-semibold select-none font-(family-name:--font-space-grotesk)"
                                 >
                                     <Link href="/">Return Home</Link>
                                 </Button>
@@ -55,7 +59,7 @@ export default function NotFound() {
                                     asChild
                                     variant="outline"
                                     size="lg"
-                                    className="rounded-full px-8 h-12 text-base font-semibold border-primary/20 hover:bg-primary/5 font-(family-name:--font-space-grotesk)"
+                                    className="rounded-full px-8 h-12 text-base font-semibold border-primary/20 hover:bg-primary/5 select-none font-(family-name:--font-space-grotesk)"
                                 >
                                     <Link href="/projects">View Projects</Link>
                                 </Button>

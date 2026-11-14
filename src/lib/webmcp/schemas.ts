@@ -139,6 +139,7 @@ export const ProjectSummaryOutputSchema = z
         title: z.string(),
         description: z.string(),
         date: z.string(),
+        updatedAt: z.string().optional(),
         status: z.string(),
         domains: z.array(z.string()).optional(),
         technologies: z.array(z.string()).optional(),
@@ -180,6 +181,7 @@ export const ProjectContentMetaOutputSchema = z
         title: z.string(),
         description: z.string(),
         date: z.string(),
+        updatedAt: z.string().optional(),
         status: z.string(),
         client: z.string().optional(),
         metaTitle: z.string().optional(),
@@ -196,7 +198,14 @@ export const ProjectContentMetaOutputSchema = z
         capabilities: z.array(z.string()).optional(),
         relatedProjects: z.array(z.string()).optional(),
         relatedArticles: z.array(z.string()).optional(),
-        readingTime: z.number().optional()
+        readingTime: z.number().optional(),
+        schemaType: z.string().optional(),
+        programmingLanguage: z.string().optional(),
+        runtimePlatform: z.string().optional(),
+        applicationCategory: z.string().optional(),
+        operatingSystem: z.string().optional(),
+        genre: z.string().optional(),
+        about: z.string().optional()
     })
     .strict();
 
@@ -238,6 +247,7 @@ export const ArticleContentMetaOutputSchema = z
         title: z.string(),
         excerpt: z.string(),
         date: z.string(),
+        updatedAt: z.string().optional(),
         author: z.string().optional(),
         metaTitle: z.string().optional(),
         metaDescription: z.string().optional(),
@@ -247,7 +257,14 @@ export const ArticleContentMetaOutputSchema = z
         contentType: z.array(z.string()).optional(),
         relatedProjects: z.array(z.string()).optional(),
         relatedArticles: z.array(z.string()).optional(),
-        readingTime: z.number().optional()
+        readingTime: z.number().optional(),
+        schemaType: z.string().optional(),
+        programmingLanguage: z.string().optional(),
+        runtimePlatform: z.string().optional(),
+        applicationCategory: z.string().optional(),
+        operatingSystem: z.string().optional(),
+        genre: z.string().optional(),
+        about: z.string().optional()
     })
     .strict();
 

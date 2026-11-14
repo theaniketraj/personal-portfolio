@@ -12,6 +12,7 @@ export interface MdxPreProps extends React.ComponentProps<'pre'> {
 
 export function MdxPre({ children, className, ...props }: Readonly<MdxPreProps>) {
     const preRef = React.useRef<HTMLPreElement>(null);
+    const codeId = React.useId();
     const [text, setText] = React.useState('');
     const [isCollapsible, setIsCollapsible] = React.useState(false);
     const [isCollapsed, setIsCollapsed] = React.useState(true);
@@ -60,6 +61,7 @@ export function MdxPre({ children, className, ...props }: Readonly<MdxPreProps>)
                             className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xs p-0.5 transition-opacity text-secondary hover:text-primary flex items-center justify-center cursor-pointer"
                             aria-label={isCollapsed ? 'Expand code block' : 'Collapse code block'}
                             aria-expanded={!isCollapsed}
+                            aria-controls={codeId}
                             title={isCollapsed ? 'Expand code' : 'Collapse code'}
                         >
                             <ChevronDown
@@ -81,6 +83,7 @@ export function MdxPre({ children, className, ...props }: Readonly<MdxPreProps>)
             <div className="relative">
                 <pre
                     ref={preRef}
+                    id={codeId}
                     className={cn(
                         'px-5 py-5 rounded-b-xl font-mono text-sm border border-primary/10 bg-primary/1.5 shadow-[inset_0_1px_4px_rgba(0,0,0,0.02)] transition-[max-height] duration-500 ease-in-out',
                         isCollapsible && isCollapsed ? 'max-h-87.5 overflow-hidden' : 'max-h-[5000px] overflow-x-auto',

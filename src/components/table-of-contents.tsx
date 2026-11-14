@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { Heading } from '@/lib/toc';
+import { getScrollBehavior } from '@/lib/scroll';
 
 interface TableOfContentsProps {
     headings: Heading[];
@@ -54,7 +55,7 @@ export function TableOfContents({ headings }: Readonly<TableOfContentsProps>) {
 
                 nav.scrollBy({
                     top: offset,
-                    behavior: 'smooth'
+                    behavior: getScrollBehavior()
                 });
             }
         }

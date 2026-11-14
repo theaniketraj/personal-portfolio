@@ -10,7 +10,7 @@ const AboutMe = () => {
                     <HardwareAnimated animation="slideInUp">
                         <div className="flex flex-col gap-9 sm:gap-12 max-w-3xl mx-auto px-4 sm:px-7 py-11 md:py-20 font-(family-name:--font-space-grotesk)">
                             <div className="flex flex-col gap-4">
-                                <h2 className="text-sm tracking-[2px] cursor-default text-primary uppercase font-medium">
+                                <h2 className="text-sm tracking-[2px] cursor-default select-none text-primary uppercase font-medium">
                                     About Me
                                 </h2>
                                 <p className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-normal cursor-default text-primary text-justify">

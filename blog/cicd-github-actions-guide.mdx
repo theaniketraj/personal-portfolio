@@ -297,7 +297,7 @@ Use `actions/upload-artifact` and `actions/download-artifact` to persist build o
 
 ### Conditional Execution and Expressions
 
-- Use **`if:`** to run steps or jobs only when conditions are met (e.g., **`if: contains(github.event.head_commit.message, '[deploy]')`**).
+- Use **`if:`** to run steps or jobs only when conditions are met (e.g., **`if: contains(github.event head_commit.message, '[deploy]')`**).
 
 - Leverage contexts (**`github`**, **`env`**, **`matrix`**) for dynamic behavior.
 

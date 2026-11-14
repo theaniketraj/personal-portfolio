@@ -1,49 +1,27 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact Form - Hidden for Netlify</title>
-  </head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Contact Form - Hidden for Netlify</title>
+    </head>
 
-  <body>
-    <!-- Hidden form used by Netlify for build-time form detection. -->
-    <form
-      name="sign-up-form"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      hidden
-    >
-      <input type="hidden" name="form-name" value="sign-up-form" />
+    <body>
+        <!-- Hidden form used by Netlify for build-time form detection. -->
+        <form name="sign-up-form" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+            <input type="hidden" name="form-name" value="sign-up-form" />
 
-      <!-- genuine users should never fill this field. -->
-      <div hidden>
-        <input
-          name="bot-field"
-          id="bot-field"
-          aria-label="bot-field"
-          tabindex="-1"
-          autocomplete="off"
-        />
-      </div>
+            <!-- genuine users should never fill this field. -->
+            <div hidden>
+                <input name="bot-field" id="bot-field" aria-label="bot-field" tabindex="-1" autocomplete="off" />
+            </div>
 
-      <input
-        type="text"
-        id="firstName"
-        aria-label="firstName"
-        name="firstName"
-      />
-      <input type="text" id="lastName" aria-label="lastName" name="lastName" />
-      <input type="email" id="email" aria-label="email" name="email" />
-      <input type="text" id="address" aria-label="address" name="address" />
-      <textarea name="message" id="message" aria-label="message"></textarea>
-      <input
-        type="checkbox"
-        id="updatesConsent"
-        aria-label="updatesConsent"
-        name="updatesConsent"
-      />
-    </form>
-  </body>
+            <input type="text" id="firstName" aria-label="firstName" name="firstName" maxlength="100" />
+            <input type="text" id="lastName" aria-label="lastName" name="lastName" maxlength="100" />
+            <input type="email" id="email" aria-label="email" name="email" maxlength="254" />
+            <input type="text" id="address" aria-label="address" name="address" maxlength="300" />
+            <textarea name="message" id="message" aria-label="message" maxlength="5000"></textarea>
+            <input type="checkbox" id="updatesConsent" aria-label="updatesConsent" name="updatesConsent" />
+        </form>
+    </body>
 </html>

@@ -68,6 +68,7 @@ export function ContactForm({
                         id="firstName"
                         name="firstName"
                         required
+                        maxLength={100}
                         placeholder="Tony"
                         aria-invalid={errorField === 'firstName' ? 'true' : undefined}
                         aria-describedby={errorField === 'firstName' ? 'contact-form-error' : undefined}
@@ -82,7 +83,10 @@ export function ContactForm({
                         type="text"
                         id="lastName"
                         name="lastName"
+                        maxLength={100}
                         placeholder="Stark"
+                        aria-invalid={errorField === 'lastName' ? 'true' : undefined}
+                        aria-describedby={errorField === 'lastName' ? 'contact-form-error' : undefined}
                         className="w-full flex h-12 rounded-xl border border-input bg-background/50 px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 hover:bg-background/80"
                     />
                 </div>
@@ -98,6 +102,7 @@ export function ContactForm({
                         id="email"
                         name="email"
                         required
+                        maxLength={254}
                         placeholder="tonystark@jarvis.com"
                         aria-invalid={errorField === 'email' ? 'true' : undefined}
                         aria-describedby={errorField === 'email' ? 'contact-form-error' : undefined}
@@ -112,7 +117,10 @@ export function ContactForm({
                         type="text"
                         id="address"
                         name="address"
+                        maxLength={300}
                         placeholder="City, Country"
+                        aria-invalid={errorField === 'address' ? 'true' : undefined}
+                        aria-describedby={errorField === 'address' ? 'contact-form-error' : undefined}
                         className="w-full flex h-12 rounded-xl border border-input bg-background/50 px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 hover:bg-background/80"
                     />
                 </div>
@@ -126,6 +134,7 @@ export function ContactForm({
                     id="message"
                     name="message"
                     required
+                    maxLength={5000}
                     placeholder="Tell me about your project..."
                     rows={5}
                     aria-invalid={errorField === 'message' ? 'true' : undefined}
@@ -195,7 +204,7 @@ export function ContactForm({
             <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full sm:w-auto px-8 h-12 text-sm font-semibold rounded-full mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="w-full sm:w-auto px-8 h-12 text-sm font-semibold rounded-full mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer select-none"
             >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>

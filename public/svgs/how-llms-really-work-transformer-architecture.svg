@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" width="2400" height="1260" viewBox="0 0 2400 1260" role="img" aria-labelledby="llm-title llm-desc">
+  <title id="llm-title">How LLMs Really Work: The Transformer Architecture</title>
+  <desc id="llm-desc">A monochromatic technical illustration showing input tokens with positional signals, query-key-value projections, parallel self-attention heads, a Transformer layer with residual normalization and feed-forward processing, and an autoregressive next-token prediction path.</desc>
+
+  <defs>
+    <pattern id="llm-grid-pattern" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#FFFFFF" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="llm-brand-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9282F8"/>
+      <stop offset="1" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <marker id="llm-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0L8 4.5L0 9" fill="none" stroke="#A1A1AA" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="llm-arrow-accent" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0L8 4.5L0 9" fill="none" stroke="#F3CA4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .display { font-family:"Space Grotesk","Inter",Arial,sans-serif; font-weight:700; letter-spacing:-2.4px; }
+      .sans { font-family:"Inter",Arial,sans-serif; }
+      .mono { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; }
+      .eyebrow { font-family:"Inter",Arial,sans-serif; font-size:27px; font-weight:600; letter-spacing:4px; }
+      .title { font-size:112px; fill:#F4F4F5; }
+      .subtitle { font-family:"Space Grotesk","Inter",Arial,sans-serif; font-size:43px; font-weight:500; fill:#D4D4D8; letter-spacing:-0.8px; }
+      .body { font-family:"Inter",Arial,sans-serif; font-size:30px; fill:#A1A1AA; }
+      .small { font-family:"Inter",Arial,sans-serif; font-size:24px; fill:#A1A1AA; }
+      .label { font-family:"Inter",Arial,sans-serif; font-size:25px; font-weight:600; fill:#F4F4F5; letter-spacing:1px; }
+      .micro { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-size:21px; letter-spacing:1.2px; }
+      .hair { stroke:#FFFFFF; stroke-opacity:0.13; stroke-width:2; fill:none; }
+      .connector { stroke:#A1A1AA; stroke-opacity:0.72; stroke-width:2.2; fill:none; marker-end:url(#llm-arrow); }
+      .node { fill:#111111; stroke:#FFFFFF; stroke-opacity:0.22; stroke-width:2; }
+    </style>
+  </defs>
+
+  <!-- Background and architectural rails -->
+  <g id="llm-background">
+    <rect width="2400" height="1260" fill="#0A0A0A"/>
+    <rect width="2400" height="1260" fill="url(#llm-grid-pattern)"/>
+    <path d="M120 92V1168M2280 92V1168" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2"/>
+    <path d="M120 92H2280M120 1168H2280" stroke="#FFFFFF" stroke-opacity="0.09" stroke-width="2"/>
+    <path d="M120 92H260" stroke="url(#llm-brand-accent)" stroke-width="3" opacity="0.8"/>
+  </g>
+
+  <!-- Editorial zone -->
+  <g id="llm-editorial">
+    <text x="160" y="190" class="eyebrow" fill="#A1A1AA">AI / ARCHITECTURE DEEP DIVE</text>
+    <path d="M160 222H302" stroke="url(#llm-brand-accent)" stroke-width="4"/>
+
+    <text x="160" y="365" class="display title">How LLMs Really</text>
+    <text x="160" y="492" class="display title">Work</text>
+
+    <text x="160" y="585" class="subtitle">The Transformer Architecture,</text>
+    <text x="160" y="642" class="subtitle">Explained Simply</text>
+
+    <text x="160" y="738" class="body">Self-attention replaces recurrence with</text>
+    <text x="160" y="782" class="body">parallel token-to-token context.</text>
+
+    <path d="M160 850H1210" class="hair"/>
+
+    <text x="160" y="908" class="mono micro" fill="#A1A1AA">COMMON TRANSFORMER FORMS</text>
+
+    <g id="llm-model-form-encoder">
+      <path d="M160 944V1050" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="3"/>
+      <text x="184" y="982" class="label">ENCODER</text>
+      <text x="184" y="1022" class="mono micro" fill="#A1A1AA">BERT · UNDERSTANDING</text>
+    </g>
+    <g id="llm-model-form-encoder-decoder">
+      <path d="M510 944V1050" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="3"/>
+      <text x="534" y="982" class="label">ENCODER–DECODER</text>
+      <text x="534" y="1022" class="mono micro" fill="#A1A1AA">ORIGINAL · SEQ2SEQ</text>
+    </g>
+    <g id="llm-model-form-decoder">
+      <path d="M900 944V1050" stroke="#F3CA4D" stroke-opacity="0.8" stroke-width="3"/>
+      <text x="924" y="982" class="label">DECODER</text>
+      <text x="924" y="1022" class="mono micro" fill="#A1A1AA">GPT · GENERATION</text>
+    </g>
+  </g>
+
+  <!-- Technical diagram zone -->
+  <g id="llm-diagram">
+    <rect x="1325" y="145" width="900" height="900" fill="#0C0C0C" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M1325 145H1600" stroke="#FFFFFF" stroke-opacity="0.36" stroke-width="3"/>
+    <text x="1375" y="205" class="eyebrow" fill="#F4F4F5" font-size="23">INSIDE THE TRANSFORMER</text>
+    <text x="1375" y="247" class="mono micro" fill="#71717A">INPUT REPRESENTATION  /  CONTEXTUAL MIXING</text>
+    <text x="2175" y="205" text-anchor="end" class="mono micro" fill="#71717A">SCHEMATIC</text>
+    <path d="M1375 270H2175" class="hair"/>
+
+    <!-- Token sequence and positional information -->
+    <text x="1385" y="300" class="mono micro" fill="#A1A1AA">INPUT TOKENS + POSITION SIGNALS</text>
+    <g id="llm-input-tokens">
+      <rect x="1385" y="325" width="166" height="58" class="node"/>
+      <rect x="1565" y="325" width="166" height="58" class="node"/>
+      <rect x="1745" y="325" width="166" height="58" class="node"/>
+      <rect x="1925" y="325" width="166" height="58" class="node"/>
+      <text x="1468" y="362" text-anchor="middle" class="sans" font-size="27" fill="#F4F4F5">The</text>
+      <text x="1648" y="362" text-anchor="middle" class="sans" font-size="27" fill="#F4F4F5">model</text>
+      <text x="1828" y="362" text-anchor="middle" class="sans" font-size="27" fill="#F4F4F5">learns</text>
+      <text x="2008" y="362" text-anchor="middle" class="sans" font-size="27" fill="#F4F4F5">context</text>
+
+      <path d="M1468 383V405M1648 383V405M1828 383V405M2008 383V405" stroke="#A1A1AA" stroke-opacity="0.55" stroke-width="2"/>
+      <circle cx="1468" cy="411" r="5" fill="#F3CA4D"/>
+      <circle cx="1648" cy="411" r="5" fill="#FFFFFF" fill-opacity="0.55"/>
+      <circle cx="1828" cy="411" r="5" fill="#FFFFFF" fill-opacity="0.55"/>
+      <circle cx="2008" cy="411" r="5" fill="#FFFFFF" fill-opacity="0.55"/>
+      <text x="1468" y="440" text-anchor="middle" class="mono micro" fill="#A1A1AA">P₀</text>
+      <text x="1648" y="440" text-anchor="middle" class="mono micro" fill="#A1A1AA">P₁</text>
+      <text x="1828" y="440" text-anchor="middle" class="mono micro" fill="#A1A1AA">P₂</text>
+      <text x="2008" y="440" text-anchor="middle" class="mono micro" fill="#A1A1AA">P₃</text>
+    </g>
+
+    <!-- QKV projections / attention formula -->
+    <path d="M1785 436V452" class="connector"/>
+    <g id="llm-qkv-projections">
+      <text x="1385" y="470" class="mono micro" fill="#A1A1AA">LEARNED PROJECTIONS</text>
+      <rect x="1385" y="486" width="110" height="48" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.24"/>
+      <rect x="1510" y="486" width="110" height="48" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.24"/>
+      <rect x="1635" y="486" width="110" height="48" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.24"/>
+      <text x="1440" y="517" text-anchor="middle" class="mono" font-size="26" fill="#F3CA4D">Q</text>
+      <text x="1565" y="517" text-anchor="middle" class="mono" font-size="26" fill="#F4F4F5">K</text>
+      <text x="1690" y="517" text-anchor="middle" class="mono" font-size="26" fill="#F4F4F5">V</text>
+      <text x="1785" y="517" class="mono" font-size="23" fill="#A1A1AA">softmax(QKᵀ / √dₖ) · V</text>
+    </g>
+
+    <!-- Multi-head attention matrices -->
+
+    <text x="1385" y="560" class="mono micro" fill="#A1A1AA">PARALLEL ATTENTION HEADS · ILLUSTRATIVE WEIGHTS</text>
+
+    <g id="llm-attention-head-1">
+      <text x="1390" y="596" class="mono micro" fill="#A1A1AA">HEAD 01</text>
+      <rect x="1378" y="614" width="222" height="128" fill="#FFFFFF" fill-opacity="0.012" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <rect x="1440" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.56" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1468" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.2" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1496" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.16" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1524" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.175" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1440" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.21" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1468" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.52" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1496" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.28" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1524" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.19" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1440" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.16" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1468" y="684" width="22" height="22" rx="2" fill="#F3CA4D" fill-opacity="0.76" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1496" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.55" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1524" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.33" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1440" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.15" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1468" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.18" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1496" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.27" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1524" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.57" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+    </g>
+    <g id="llm-attention-head-2">
+      <text x="1660" y="596" class="mono micro" fill="#A1A1AA">HEAD 02</text>
+      <rect x="1648" y="614" width="222" height="128" fill="#FFFFFF" fill-opacity="0.012" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <rect x="1710" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.53" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1738" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.34" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1766" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.19" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1794" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.14" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1710" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.275" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1738" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.55" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1766" y="656" width="22" height="22" rx="2" fill="#9282F8" fill-opacity="0.75" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1794" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.16" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1710" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.18" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1738" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.31" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1766" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.565" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1794" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.36" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1710" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.14" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1738" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.18" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1766" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.375" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1794" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.555" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+    </g>
+    <g id="llm-attention-head-3">
+      <text x="1930" y="596" class="mono micro" fill="#A1A1AA">HEAD 03</text>
+      <rect x="1918" y="614" width="222" height="128" fill="#FFFFFF" fill-opacity="0.012" stroke="#FFFFFF" stroke-opacity="0.10"/>
+      <rect x="1980" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.55" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2008" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.18" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2036" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.24" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2064" y="628" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.15" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1980" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.2" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2008" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.54" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2036" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.21" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2064" y="656" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.29" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1980" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.27" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2008" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.19" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2036" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.56" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2064" y="684" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.22" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="1980" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.16" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2008" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.33" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2036" y="712" width="22" height="22" rx="2" fill="#F3CA4D" fill-opacity="0.76" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+      <rect x="2064" y="712" width="22" height="22" rx="2" fill="#F4F4F5" fill-opacity="0.575" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+    </g>
+    <text x="1385" y="770" class="mono micro" fill="#A1A1AA">HEADS LEARN DIFFERENT RELATIONS · MASKING VARIES BY MODEL</text>
+
+    <!-- Concatenation and projection -->
+    <path d="M1785 780V798" class="connector"/>
+    <rect x="1390" y="808" width="780" height="56" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2"/>
+    <text x="1780" y="843" text-anchor="middle" class="mono" font-size="23" fill="#F4F4F5">CONCATENATE HEADS  +  OUTPUT PROJECTION  Wₒ</text>
+
+    <!-- Transformer layer -->
+    <path d="M1780 864V879" class="connector"/>
+    <text x="1385" y="900" class="mono micro" fill="#A1A1AA">TRANSFORMER LAYER × N</text>
+    <g id="llm-transformer-layer">
+      <rect x="1385" y="912" width="215" height="54" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.22"/>
+      <rect x="1635" y="912" width="215" height="54" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.22"/>
+      <rect x="1885" y="912" width="285" height="54" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.22"/>
+      <text x="1492" y="946" text-anchor="middle" class="mono" font-size="21" fill="#F4F4F5">ADD &amp; NORM</text>
+      <text x="1742" y="946" text-anchor="middle" class="mono" font-size="21" fill="#F4F4F5">FEED-FORWARD</text>
+      <text x="2027" y="946" text-anchor="middle" class="mono" font-size="21" fill="#F4F4F5">ADD &amp; NORM</text>
+      <path d="M1600 939H1625M1850 939H1875" stroke="#A1A1AA" stroke-width="2" marker-end="url(#llm-arrow)"/>
+    </g>
+    <text x="1385" y="992" class="mono micro" fill="#71717A">RESIDUAL CONNECTIONS PRESERVE INFORMATION</text>
+  </g>
+
+  <!-- Inference callout, distinct from the generic encoder path -->
+  <g id="llm-autoregressive-inference">
+    <path d="M1325 1068H2225" class="hair"/>
+    <text x="1375" y="1108" class="mono micro" fill="#A1A1AA">GPT-STYLE AUTOREGRESSIVE INFERENCE</text>
+    <g>
+      <rect x="1375" y="1130" width="190" height="50" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.20"/>
+      <rect x="1610" y="1130" width="190" height="50" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.20"/>
+      <rect x="1845" y="1130" width="300" height="50" fill="#111111" stroke="#F3CA4D" stroke-opacity="0.52"/>
+      <text x="1470" y="1162" text-anchor="middle" class="mono" font-size="23" fill="#F4F4F5">LOGITS</text>
+      <text x="1705" y="1162" text-anchor="middle" class="mono" font-size="23" fill="#F4F4F5">SOFTMAX</text>
+      <text x="1995" y="1162" text-anchor="middle" class="mono" font-size="23" fill="#F3CA4D">SAMPLE NEXT TOKEN</text>
+      <path d="M1565 1155H1600M1800 1155H1835" stroke="#A1A1AA" stroke-width="2" marker-end="url(#llm-arrow)"/>
+    </g>
+    <path d="M2145 1155H2200V350H2110" fill="none" stroke="#F3CA4D" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="7 9" marker-end="url(#llm-arrow-accent)"/>
+    <text x="2175" y="740" transform="rotate(-90 2175 740)" class="mono" font-size="18" fill="#A1A1AA" letter-spacing="1.5">APPEND TOKEN · REPEAT</text>
+  </g>
+
+  <!-- Bottom editorial journey rail -->
+  <g id="llm-journey-rail">
+    <path d="M160 1080H1210" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="2"/>
+    <text x="160" y="1130" class="mono micro" fill="#A1A1AA">THE CORE PATH</text>
+    <text x="160" y="1180" class="sans" font-size="25" fill="#F4F4F5">EMBED</text>
+    <path d="M270 1171H330" stroke="#A1A1AA" stroke-width="2" marker-end="url(#llm-arrow)"/>
+    <text x="355" y="1180" class="sans" font-size="25" fill="#F4F4F5">ATTEND</text>
+    <path d="M485 1171H545" stroke="#A1A1AA" stroke-width="2" marker-end="url(#llm-arrow)"/>
+    <text x="570" y="1180" class="sans" font-size="25" fill="#F4F4F5">TRANSFORM</text>
+    <path d="M750 1171H810" stroke="#A1A1AA" stroke-width="2" marker-end="url(#llm-arrow)"/>
+    <text x="835" y="1180" class="sans" font-size="25" fill="#F3CA4D">PREDICT</text>
+  </g>
+</svg>

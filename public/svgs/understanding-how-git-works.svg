@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" width="2400" height="1260" viewBox="0 0 2400 1260" role="img" aria-labelledby="git-title git-desc">
+  <title id="git-title">Understanding How Git Works Under the Hood</title>
+  <desc id="git-desc">A technical illustration of Git's commit graph, references, content-addressed objects, and the progression from working directory to index to repository.</desc>
+
+  <defs>
+    <pattern id="git-grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1.5"/>
+    </pattern>
+    <linearGradient id="git-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9282F8"/>
+      <stop offset="1" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <marker id="git-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#A1A1AA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="git-arrow-bright" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#F4F4F5" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .title { font-family: "Space Grotesk", "Inter", sans-serif; font-weight: 600; fill: #F4F4F5; }
+      .body { font-family: "Inter", Arial, sans-serif; fill: #A1A1AA; }
+      .label { font-family: "Inter", Arial, sans-serif; font-weight: 600; fill: #E4E4E7; letter-spacing: 2.5px; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; fill: #A1A1AA; }
+      .node-title { font-family: "Inter", Arial, sans-serif; font-weight: 600; fill: #F4F4F5; }
+      .hairline { stroke: #FFFFFF; stroke-opacity: .12; stroke-width: 2; fill: none; }
+      .connector { stroke: #71717A; stroke-width: 2.5; fill: none; marker-end: url(#git-arrow); }
+      .connector-bright { stroke: #D4D4D8; stroke-width: 2.5; fill: none; marker-end: url(#git-arrow-bright); }
+      .node { fill: #111111; stroke: #71717A; stroke-opacity: .72; stroke-width: 2; }
+      .node-active { fill: #151515; stroke: #F3CA4D; stroke-opacity: .9; stroke-width: 3; }
+      .small { font-size: 22px; }
+    </style>
+  </defs>
+
+  <!-- Canvas and restrained engineering grid -->
+  <g id="git-background">
+    <rect width="2400" height="1260" fill="#0A0A0A"/>
+    <rect width="2400" height="1260" fill="url(#git-grid)"/>
+    <rect x="62" y="58" width="2276" height="1144" rx="2" fill="none" stroke="#FFFFFF" stroke-opacity=".10" stroke-width="2"/>
+    <path d="M 1200 118 V 1014" stroke="#FFFFFF" stroke-opacity=".10" stroke-width="2"/>
+    <path d="M 160 128 H 390" stroke="url(#git-accent)" stroke-width="5"/>
+  </g>
+
+  <!-- Left editorial zone -->
+  <g id="git-editorial">
+    <text x="160" y="190" class="label" font-size="26">VERSION CONTROL / INTERNALS</text>
+    <text x="160" y="330" class="title" font-size="91" letter-spacing="-2.8">Understanding</text>
+    <text x="160" y="438" class="title" font-size="91" letter-spacing="-2.8">How Git Works</text>
+    <text x="160" y="546" class="title" font-size="91" letter-spacing="-2.8">Under the Hood</text>
+
+    <text x="164" y="660" class="body" font-size="34">
+      <tspan x="164" dy="0">Git is a content-addressable filesystem</tspan>
+      <tspan x="164" dy="48">built from immutable objects and references.</tspan>
+    </text>
+
+    <path d="M 160 790 H 1040" class="hairline"/>
+    <text x="160" y="850" class="label" font-size="23">THE PLUMBING BEHIND THE COMMANDS</text>
+
+    <g transform="translate(160 900)">
+      <circle cx="8" cy="0" r="5" fill="#F3CA4D"/>
+      <text x="28" y="8" class="mono" font-size="23">CONTENT HASHES</text>
+      <circle cx="300" cy="0" r="5" fill="#A1A1AA"/>
+      <text x="320" y="8" class="mono" font-size="23">IMMUTABLE SNAPSHOTS</text>
+      <circle cx="690" cy="0" r="5" fill="#A1A1AA"/>
+      <text x="710" y="8" class="mono" font-size="23">COMMIT DAG</text>
+    </g>
+
+    <text x="160" y="976" class="body" font-size="25">Blobs · Trees · Commits · Tags</text>
+  </g>
+
+  <!-- Right technical diagram -->
+  <g id="git-technical-diagram">
+    <text x="1300" y="190" class="label" font-size="25">REFERENCES &amp; COMMIT HISTORY</text>
+    <text x="1300" y="230" class="mono" font-size="20">BRANCHES ARE REFERENCES, NOT COPIES OF FILES</text>
+
+    <!-- HEAD -> branch -> tip commit -->
+    <rect x="1310" y="270" width="150" height="66" rx="7" class="node"/>
+    <text x="1385" y="311" text-anchor="middle" class="node-title" font-size="25">HEAD</text>
+    <path d="M 1460 303 H 1530" class="connector-bright"/>
+
+    <rect x="1540" y="270" width="250" height="66" rx="7" class="node"/>
+    <text x="1665" y="310" text-anchor="middle" class="node-title" font-size="24">refs/heads/main</text>
+    <path d="M 1790 303 H 2115 V 495" class="connector-bright"/>
+
+    <rect x="1525" y="365" width="170" height="58" rx="7" class="node"/>
+    <text x="1610" y="401" text-anchor="middle" class="node-title" font-size="22">tag v1.0</text>
+    <path d="M 1610 423 V 550" class="connector"/>
+
+    <!-- Commit DAG -->
+    <text x="1300" y="475" class="label" font-size="22">COMMIT DAG</text>
+    <path d="M 1425 590 H 1580" class="connector"/>
+    <path d="M 1640 573 C 1700 535 1738 495 1810 465" class="connector"/>
+    <path d="M 1640 608 C 1700 650 1738 682 1810 700" class="connector"/>
+    <path d="M 1870 465 C 1950 455 2000 476 2070 520" class="connector"/>
+    <path d="M 1870 700 C 1950 690 2000 655 2070 570" class="connector"/>
+
+    <g id="git-commit-c0">
+      <circle cx="1390" cy="590" r="39" class="node"/>
+      <text x="1390" y="598" text-anchor="middle" class="node-title" font-size="23">C0</text>
+      <text x="1390" y="650" text-anchor="middle" class="mono" font-size="18">root</text>
+    </g>
+    <g id="git-commit-c1">
+      <circle cx="1610" cy="590" r="39" class="node"/>
+      <text x="1610" y="598" text-anchor="middle" class="node-title" font-size="23">C1</text>
+      <text x="1610" y="650" text-anchor="middle" class="mono" font-size="18">parent</text>
+    </g>
+    <g id="git-commit-feature">
+      <circle cx="1840" cy="450" r="39" class="node"/>
+      <text x="1840" y="458" text-anchor="middle" class="node-title" font-size="23">C2</text>
+      <text x="1840" y="505" text-anchor="middle" class="mono" font-size="18">feature</text>
+    </g>
+    <g id="git-commit-main">
+      <circle cx="1840" cy="715" r="39" class="node"/>
+      <text x="1840" y="723" text-anchor="middle" class="node-title" font-size="23">C3</text>
+      <text x="1840" y="770" text-anchor="middle" class="mono" font-size="18">main</text>
+    </g>
+    <g id="git-commit-merge">
+      <circle cx="2110" cy="545" r="44" class="node-active"/>
+      <text x="2110" y="553" text-anchor="middle" class="node-title" font-size="23">C4</text>
+      <circle cx="2142" cy="514" r="6" fill="#F3CA4D"/>
+      <text x="2110" y="607" text-anchor="middle" class="mono" font-size="18">merge</text>
+    </g>
+
+    <text x="1770" y="410" class="mono" font-size="18">parent</text>
+    <text x="1770" y="665" class="mono" font-size="18">parent</text>
+    <text x="2110" y="362" text-anchor="middle" class="mono" font-size="18">main points to latest commit</text>
+
+    <!-- Commit object expands to a tree snapshot -->
+    <path d="M 2110 589 V 790 H 1637 V 840" class="connector-bright"/>
+    <text x="1810" y="820" class="mono" font-size="18">commit points to root tree</text>
+
+    <rect x="1510" y="850" width="255" height="86" rx="7" class="node"/>
+    <text x="1637" y="885" text-anchor="middle" class="node-title" font-size="24">TREE / root</text>
+    <text x="1637" y="915" text-anchor="middle" class="mono" font-size="18">directory snapshot</text>
+
+    <path d="M 1765 892 H 1850 V 860 H 1920" class="connector"/>
+    <path d="M 1850 892 V 950 H 1920" class="connector"/>
+
+    <rect x="1930" y="824" width="290" height="76" rx="6" class="node"/>
+    <text x="1970" y="855" class="node-title" font-size="21">BLOB</text>
+    <text x="1970" y="881" class="mono" font-size="18">README.md · file bytes</text>
+
+    <rect x="1930" y="914" width="290" height="76" rx="6" class="node"/>
+    <text x="1970" y="945" class="node-title" font-size="21">TREE</text>
+    <text x="1970" y="971" class="mono" font-size="18">src/ · nested directory</text>
+
+
+  </g>
+
+  <!-- Bottom state rail -->
+  <g id="git-state-rail">
+    <path d="M 160 1000 H 2240" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="2"/>
+    <text x="160" y="1040" class="label" font-size="22">THE THREE STATES</text>
+
+    <g transform="translate(160 1060)">
+      <rect x="0" y="0" width="540" height="72" rx="5" fill="#111111" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="2"/>
+      <text x="24" y="29" class="node-title" font-size="23">01  WORKING DIRECTORY</text>
+      <text x="24" y="55" class="mono" font-size="18">Editable files on disk</text>
+    </g>
+
+    <path d="M 710 1096 H 820" class="connector"/>
+
+    <g transform="translate(840 1060)">
+      <rect x="0" y="0" width="540" height="72" rx="5" fill="#111111" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="2"/>
+      <text x="24" y="29" class="node-title" font-size="23">02  INDEX / STAGING AREA</text>
+      <text x="24" y="55" class="mono" font-size="18">Prepared snapshot for commit</text>
+    </g>
+
+    <path d="M 1390 1096 H 1500" class="connector-bright"/>
+
+    <g transform="translate(1520 1060)">
+      <rect x="0" y="0" width="720" height="72" rx="5" fill="#111111" stroke="#F3CA4D" stroke-opacity=".65" stroke-width="2"/>
+      <text x="24" y="29" class="node-title" font-size="23">03  REPOSITORY  /  .git</text>
+      <text x="24" y="55" class="mono" font-size="18">Objects · commit DAG · refs · metadata</text>
+    </g>
+  </g>
+
+  <!-- Small signature marker -->
+  <g id="git-signature">
+
+  </g>
+</svg>

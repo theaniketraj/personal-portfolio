@@ -12,7 +12,7 @@ const Experience = () => {
                     <HardwareAnimated animation="slideInUp">
                         <div className="flex flex-col max-w-3xl mx-auto py-10 px-4 sm:px-7">
                             <div className="flex flex-col xs:flex-row gap-5 items-center justify-between">
-                                <h2 className="text-sm tracking-[2px] text-primary uppercase font-medium cursor-default">
+                                <h2 className="text-sm tracking-[2px] text-primary uppercase font-medium cursor-default select-none">
                                     Experience
                                 </h2>
                             </div>

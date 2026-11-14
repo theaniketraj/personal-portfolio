@@ -9,6 +9,7 @@ import type { Profile } from '@/lib/content/profile';
 import type { WebMCP } from 'webmcp-types';
 import { usePathname } from 'next/navigation';
 import { useContactDraft } from './contact-draft-context';
+import { scrollElementIntoView } from '@/lib/scroll';
 import {
     EmptySchema,
     ProfileOutputSchema,
@@ -38,7 +39,7 @@ interface WebMCPProviderProps {
 interface BrowserToolDefinition {
     inputSchema: z.ZodType<unknown>;
     outputSchema: z.ZodType<unknown>;
-    execute: (args: any) => Promise<unknown> | unknown;
+    execute: (args: any) => unknown;
 }
 
 export const WebMCPProvider = ({ profileData, projectsMeta, articlesMeta }: WebMCPProviderProps) => {
@@ -130,7 +131,7 @@ export const WebMCPProvider = ({ profileData, projectsMeta, articlesMeta }: WebM
                         // Scroll to contact form
                         const contactSection = document.getElementById('contact');
                         if (contactSection) {
-                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                            scrollElementIntoView(contactSection, { behavior: 'smooth' });
                         }
 
                         return {
@@ -237,9 +238,9 @@ export const WebMCPProvider = ({ profileData, projectsMeta, articlesMeta }: WebM
                                             }
 
                                             // 4. Return serialized string according to WebMCP browser convention
-                                            return typeof validatedResult === 'object'
-                                                ? JSON.stringify(validatedResult)
-                                                : String(validatedResult);
+                                            return typeof validatedResult === 'string'
+                                                ? validatedResult
+                                                : (JSON.stringify(validatedResult) ?? '');
                                         } catch (error: unknown) {
                                             console.error(`WebMCP tool ${tool.name} failed:`, error);
                                             const message =

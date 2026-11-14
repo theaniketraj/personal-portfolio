@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1260" viewBox="0 0 2400 1260" role="img" aria-labelledby="tsw-title tsw-desc">
+  <title id="tsw-title">Tech Stack Wars: Choosing the Right Stack for the Context</title>
+  <desc id="tsw-desc">A monochromatic engineering illustration showing five project constraints converging around a project context. It emphasizes that problem fit, team expertise, ecosystem maturity, maintainability, and budget and timeline determine an appropriate technology stack rather than a universal winner.</desc>
+  <defs>
+    <pattern id="tsw-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1.5"/>
+    </pattern>
+    <linearGradient id="tsw-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9282F8"/>
+      <stop offset="1" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <marker id="tsw-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#A1A1AA"/>
+    </marker>
+    <style>
+      .tsw-title { font-family: 'Space Grotesk', 'Inter', Arial, sans-serif; font-weight: 700; fill: #F4F4F5; letter-spacing: -2.5px; }
+      .tsw-body { font-family: 'Inter', Arial, sans-serif; fill: #A1A1AA; }
+      .tsw-label { font-family: 'Inter', Arial, sans-serif; fill: #E4E4E7; font-weight: 600; letter-spacing: 1.3px; }
+      .tsw-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #A1A1AA; }
+      .tsw-line { fill: none; stroke: #FFFFFF; stroke-opacity: .19; stroke-width: 2; }
+      .tsw-fine { fill: none; stroke: #FFFFFF; stroke-opacity: .105; stroke-width: 1.5; }
+      .tsw-node { fill: #0A0A0A; stroke: #A1A1AA; stroke-opacity: .7; stroke-width: 2; }
+      .tsw-node-hot { fill: #0A0A0A; stroke: #F3CA4D; stroke-width: 3; }
+      .tsw-card { fill: #111111; stroke: #FFFFFF; stroke-opacity: .15; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <!-- Background and architectural frame -->
+  <g id="tsw-background">
+    <rect width="2400" height="1260" fill="#0A0A0A"/>
+    <rect x="120" y="90" width="2160" height="1080" fill="url(#tsw-grid)" opacity=".72"/>
+    <rect x="120" y="90" width="2160" height="1080" fill="none" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="2"/>
+    <path d="M120 90H2280M120 1170H2280" stroke="#FFFFFF" stroke-opacity=".24" stroke-width="2"/>
+    <path d="M120 90V1170M2280 90V1170" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="2"/>
+    <path d="M120 125H145M2230 125H2280M120 1135H170M2230 1135H2280" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3"/>
+    <circle cx="120" cy="90" r="5" fill="#A1A1AA"/>
+    <circle cx="2280" cy="90" r="5" fill="#A1A1AA"/>
+    <circle cx="120" cy="1170" r="5" fill="#A1A1AA"/>
+    <circle cx="2280" cy="1170" r="5" fill="#A1A1AA"/>
+  </g>
+
+  <!-- Editorial block -->
+  <g id="tsw-editorial">
+    <rect x="160" y="164" width="12" height="32" fill="url(#tsw-accent)"/>
+    <text x="196" y="190" class="tsw-label" font-size="27">ENGINEERING / DECISION-MAKING</text>
+    <text x="160" y="340" class="tsw-title" font-size="112">Tech Stack Wars</text>
+    <text x="160" y="458" class="tsw-title" font-size="90">Why Choosing the “Best”</text>
+    <text x="160" y="565" class="tsw-title" font-size="90">Stack Often Backfires</text>
+    <path d="M160 625H1120" stroke="#FFFFFF" stroke-opacity=".2" stroke-width="2"/>
+    <text x="160" y="700" class="tsw-body" font-size="38">There is no universal winner.</text>
+    <text x="160" y="750" class="tsw-body" font-size="38">The right stack fits the problem, the team,</text>
+    <text x="160" y="800" class="tsw-body" font-size="38">and the reality of keeping it running.</text>
+    <text x="160" y="900" class="tsw-mono" font-size="25" letter-spacing="2">FIT OVER HYPE  /  TRADE-OFFS OVER RANKINGS</text>
+    <path d="M160 930H950" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="2"/>
+    <text x="160" y="982" class="tsw-mono" font-size="23">A PRACTICAL FRAMEWORK FOR TECHNOLOGY SELECTION</text>
+  </g>
+
+  <!-- Diagram header -->
+  <g id="tsw-diagram-heading">
+    <text x="1280" y="178" class="tsw-mono" font-size="22" letter-spacing="2">SELECTION IS A CONTEXT PROBLEM</text>
+    <path d="M1280 198H2220" stroke="#FFFFFF" stroke-opacity=".17" stroke-width="2"/>
+    <text x="2220" y="178" text-anchor="end" class="tsw-mono" font-size="20">FIG. 01</text>
+  </g>
+
+  <!-- Constraint geometry: five equal, non-scored criteria converge on a project context -->
+  <g id="tsw-constraint-field">
+    <!-- outer drafting boundary -->
+    <path d="M1760 260L2130 430L2055 835L1760 960L1450 835L1380 430Z" class="tsw-fine" stroke-dasharray="7 12"/>
+    <path d="M1760 300L2080 455L2010 800L1760 905L1510 800L1440 455Z" class="tsw-line" stroke-opacity=".17"/>
+
+    <!-- radial constraint rails -->
+    <path d="M1760 300V490" class="tsw-line"/>
+    <path d="M2080 455L1950 540" class="tsw-line"/>
+    <path d="M2010 800L1920 700" class="tsw-line"/>
+    <path d="M1760 905V710" class="tsw-line"/>
+    <path d="M1510 800L1600 700" class="tsw-line"/>
+    <path d="M1440 455L1570 540" class="tsw-line"/>
+
+    <!-- Central project context plate -->
+    <rect x="1580" y="490" width="360" height="220" rx="4" class="tsw-card"/>
+    <path d="M1580 490H1940" stroke="url(#tsw-accent)" stroke-width="4"/>
+    <path d="M1608 525H1650" stroke="#A1A1AA" stroke-width="3"/>
+    <text x="1760" y="580" text-anchor="middle" class="tsw-mono" font-size="22" letter-spacing="2">THE PROJECT</text>
+    <text x="1760" y="636" text-anchor="middle" class="tsw-title" font-size="42" letter-spacing="-1">CONTEXT</text>
+    <text x="1760" y="675" text-anchor="middle" class="tsw-body" font-size="22">requirements · constraints · goals</text>
+
+    <!-- Five criteria nodes and labels -->
+    <g id="tsw-problem-fit">
+      <circle cx="1760" cy="300" r="12" class="tsw-node-hot"/>
+      <circle cx="1760" cy="300" r="4" fill="#F3CA4D"/>
+      <path d="M1760 288V258" stroke="#F3CA4D" stroke-width="2"/>
+      <text x="1760" y="238" text-anchor="middle" class="tsw-label" font-size="24">01 / PROBLEM DOMAIN</text>
+      <text x="1760" y="270" text-anchor="middle" class="tsw-mono" font-size="18">WHAT MUST BE SOLVED?</text>
+    </g>
+
+    <g id="tsw-team-expertise">
+      <circle cx="2080" cy="455" r="11" class="tsw-node"/>
+      <path d="M2092 455H2140" class="tsw-fine"/>
+      <text x="2160" y="423" text-anchor="end" class="tsw-label" font-size="23">02 / TEAM EXPERTISE</text>
+      <text x="2160" y="456" text-anchor="end" class="tsw-mono" font-size="18">WHAT CAN WE USE WELL?</text>
+    </g>
+
+    <g id="tsw-ecosystem">
+      <circle cx="2010" cy="800" r="11" class="tsw-node"/>
+      <path d="M2022 800H2140" class="tsw-fine"/>
+      <text x="2160" y="776" text-anchor="end" class="tsw-label" font-size="23">03 / ECOSYSTEM</text>
+      <text x="2160" y="809" text-anchor="end" class="tsw-mono" font-size="18">LIBRARIES · COMMUNITY · HIRING</text>
+    </g>
+
+    <g id="tsw-maintainability">
+      <circle cx="1760" cy="905" r="11" class="tsw-node"/>
+      <path d="M1760 917V941" class="tsw-fine"/>
+      <text x="1760" y="980" text-anchor="middle" class="tsw-label" font-size="23">04 / LONG-TERM VIABILITY</text>
+      <text x="1760" y="1008" text-anchor="middle" class="tsw-mono" font-size="18">MAINTENANCE · MIGRATION · DEBT</text>
+    </g>
+
+    <g id="tsw-budget-timeline">
+      <circle cx="1510" cy="800" r="11" class="tsw-node"/>
+      <path d="M1498 800H1370" class="tsw-fine"/>
+      <text x="1350" y="776" text-anchor="start" class="tsw-label" font-size="23">05 / RESOURCES</text>
+      <text x="1350" y="809" text-anchor="start" class="tsw-mono" font-size="18">BUDGET · TIMELINE</text>
+    </g>
+
+    <!-- small technical registration marks -->
+    <path d="M1340 320H1390M1340 320V370M2180 320H2230M2230 320V370M1340 900H1390M1340 850V900M2180 900H2230M2230 850V900" class="tsw-fine"/>
+    <path d="M1760 220V238M1760 1020V1040M1300 620H1320M2200 620H2220" class="tsw-fine"/>
+  </g>
+
+  <!-- Examples are deliberately presented as alternatives, not a ranking -->
+  <g id="tsw-stack-examples">
+    <text x="1280" y="1054" class="tsw-mono" font-size="20" letter-spacing="1.5">EXAMPLES DISCUSSED</text>
+    <rect x="1510" y="1024" width="190" height="48" rx="3" fill="none" stroke="#FFFFFF" stroke-opacity=".2" stroke-width="2"/>
+    <text x="1605" y="1056" text-anchor="middle" class="tsw-label" font-size="20">JAVA / GO</text>
+    <rect x="1720" y="1024" width="230" height="48" rx="3" fill="none" stroke="#FFFFFF" stroke-opacity=".2" stroke-width="2"/>
+    <text x="1835" y="1056" text-anchor="middle" class="tsw-label" font-size="20">PYTHON / RUBY</text>
+    <rect x="1970" y="1024" width="130" height="48" rx="3" fill="none" stroke="#FFFFFF" stroke-opacity=".2" stroke-width="2"/>
+    <text x="2035" y="1056" text-anchor="middle" class="tsw-label" font-size="20">RUST</text>
+  </g>
+
+  <!-- Bottom journey rail -->
+  <g id="tsw-journey-rail">
+    <path d="M160 1100H2240" stroke="#FFFFFF" stroke-opacity=".23" stroke-width="2"/>
+    <text x="160" y="1140" class="tsw-mono" font-size="19" letter-spacing="1.6">A BETTER DECISION</text>
+    <text x="555" y="1140" class="tsw-label" font-size="21">PROBLEM</text>
+    <path d="M680 1132H735" stroke="#A1A1AA" stroke-opacity=".7" stroke-width="2" marker-end="url(#tsw-arrow)"/>
+    <text x="770" y="1140" class="tsw-label" font-size="21">TEAM</text>
+    <path d="M870 1132H925" stroke="#A1A1AA" stroke-opacity=".7" stroke-width="2" marker-end="url(#tsw-arrow)"/>
+    <text x="960" y="1140" class="tsw-label" font-size="21">ECOSYSTEM</text>
+    <path d="M1115 1132H1170" stroke="#A1A1AA" stroke-opacity=".7" stroke-width="2" marker-end="url(#tsw-arrow)"/>
+    <text x="1205" y="1140" class="tsw-label" font-size="21">MAINTAINABILITY</text>
+    <path d="M1420 1132H1475" stroke="#A1A1AA" stroke-opacity=".7" stroke-width="2" marker-end="url(#tsw-arrow)"/>
+    <text x="1510" y="1140" class="tsw-label" font-size="21">BUDGET &amp; TIME</text>
+    <text x="2240" y="1140" text-anchor="end" class="tsw-mono" font-size="19">FIT &gt; HYPE</text>
+  </g>
+</svg>

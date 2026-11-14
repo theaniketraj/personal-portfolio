@@ -48,6 +48,14 @@ export function normalizeSearchQuery(query: string): string[] {
     return tokenizeSearchQuery(query).tokens;
 }
 
+function matchesRawQueryToken(rawStored: string, normStored: string, rawQueryToken: string): boolean {
+    if (rawQueryToken.length <= 2) {
+        const wordRegex = new RegExp(`(^|[^a-z0-9])${rawQueryToken}([^a-z0-9]|$)`, 'i');
+        return wordRegex.test(rawStored);
+    }
+    return rawStored.includes(rawQueryToken) || normStored.includes(rawQueryToken);
+}
+
 export function matchesTerm(stored: string, queryToken: string, rawQueryToken?: string): boolean {
     const normStored = normalizeTerm(stored);
     const rawStored = stored.toLowerCase().trim();
@@ -57,21 +65,12 @@ export function matchesTerm(stored: string, queryToken: string, rawQueryToken?: 
     if (rawQueryToken && (normStored === rawQueryToken || rawStored === rawQueryToken)) return true;
 
     // 2. Substring match on normalized terms or raw terms
-    if (normStored.includes(queryToken) || queryToken.includes(normStored)) return true;
-    if (rawStored.includes(queryToken)) return true;
-
-    // 3. Match against raw query token if provided
-    if (rawQueryToken) {
-        if (rawQueryToken.length <= 2) {
-            const wordRegex = new RegExp(`(^|[^a-z0-9])${rawQueryToken}([^a-z0-9]|$)`, 'i');
-            if (wordRegex.test(rawStored)) return true;
-        } else {
-            if (rawStored.includes(rawQueryToken)) return true;
-            if (normStored.includes(rawQueryToken)) return true;
-        }
+    if (normStored.includes(queryToken) || queryToken.includes(normStored) || rawStored.includes(queryToken)) {
+        return true;
     }
 
-    return false;
+    // 3. Match against raw query token if provided
+    return Boolean(rawQueryToken && matchesRawQueryToken(rawStored, normStored, rawQueryToken));
 }
 
 const mapToProjectSummary = (p: ProjectMeta) => ({
@@ -124,6 +123,60 @@ const ROLE_ALIASES: Record<string, string[]> = {
     'fullstack developer': ['backend', 'frontend', 'api', 'react', 'database', 'web', 'typescript', 'fullstack'],
     'full stack developer': ['backend', 'frontend', 'api', 'react', 'database', 'web', 'typescript', 'fullstack'],
     'systems engineer': ['systems', 'distributed systems', 'infrastructure', 'rust', 'c++', 'control plane']
+};
+
+const compareFeatured = (aFeatured?: boolean, bFeatured?: boolean): number => {
+    if (aFeatured && !bFeatured) return -1;
+    if (!aFeatured && bFeatured) return 1;
+    return 0;
+};
+
+const compareDates = (dateA: string, dateB: string): number => {
+    return new Date(dateB).getTime() - new Date(dateA).getTime();
+};
+
+const compareProjects = (
+    a: { project: ProjectMeta; score: number },
+    b: { project: ProjectMeta; score: number },
+    sortOrder: 'relevance' | 'date' | 'featured',
+    hasQuery?: boolean
+): number => {
+    // 1. Sort by specified order
+    if (sortOrder === 'relevance' && hasQuery && b.score !== a.score) {
+        return b.score - a.score;
+    }
+
+    if (sortOrder === 'date') {
+        const dateDiff = compareDates(a.project.date, b.project.date);
+        if (dateDiff !== 0) return dateDiff;
+    }
+
+    // Tie Breakers: featured DESC -> date DESC -> slug ASC
+    const featuredDiff = compareFeatured(a.project.featured, b.project.featured);
+    if (featuredDiff !== 0) return featuredDiff;
+
+    const fallbackDateDiff = compareDates(a.project.date, b.project.date);
+    if (fallbackDateDiff !== 0) return fallbackDateDiff;
+
+    return a.project.slug.localeCompare(b.project.slug);
+};
+
+const compareArticles = (
+    a: { article: BlogPostMeta; score: number },
+    b: { article: BlogPostMeta; score: number },
+    sortOrder: 'relevance' | 'date',
+    hasQuery?: boolean
+): number => {
+    // 1. Sort by specified order
+    if (sortOrder === 'relevance' && hasQuery && b.score !== a.score) {
+        return b.score - a.score;
+    }
+
+    // Date sort and tie-breaker: date DESC -> slug ASC
+    const dateDiff = compareDates(a.article.date, b.article.date);
+    if (dateDiff !== 0) return dateDiff;
+
+    return a.article.slug.localeCompare(b.article.slug);
 };
 
 export const PortfolioService = {
@@ -209,27 +262,7 @@ export const PortfolioService = {
 
         // Sorting
         const sortOrder = params.sort || 'relevance';
-        scoredProjects.sort((a, b) => {
-            // 1. Sort by specified order
-            if (sortOrder === 'relevance' && params.query) {
-                if (b.score !== a.score) return b.score - a.score;
-            } else if (sortOrder === 'featured') {
-                if (a.project.featured && !b.project.featured) return -1;
-                if (!a.project.featured && b.project.featured) return 1;
-            } else if (sortOrder === 'date') {
-                const timeDiff = new Date(b.project.date).getTime() - new Date(a.project.date).getTime();
-                if (timeDiff !== 0) return timeDiff;
-            }
-
-            // Tie Breakers: featured DESC -> date DESC -> slug ASC
-            if (a.project.featured && !b.project.featured) return -1;
-            if (!a.project.featured && b.project.featured) return 1;
-
-            const dateDiff = new Date(b.project.date).getTime() - new Date(a.project.date).getTime();
-            if (dateDiff !== 0) return dateDiff;
-
-            return a.project.slug.localeCompare(b.project.slug);
-        });
+        scoredProjects.sort((a, b) => compareProjects(a, b, sortOrder, Boolean(params.query)));
 
         const finalProjects = scoredProjects.map((item) => mapToProjectSummary(item.project));
         return finalProjects.slice(0, Math.min(params.limit || 5, 10));
@@ -310,21 +343,7 @@ export const PortfolioService = {
 
         // Sorting
         const sortOrder = params.sort || 'relevance';
-        scoredArticles.sort((a, b) => {
-            // 1. Sort by specified order
-            if (sortOrder === 'relevance' && params.query) {
-                if (b.score !== a.score) return b.score - a.score;
-            } else if (sortOrder === 'date') {
-                const timeDiff = new Date(b.article.date).getTime() - new Date(a.article.date).getTime();
-                if (timeDiff !== 0) return timeDiff;
-            }
-
-            // Tie Breakers: date DESC -> slug ASC
-            const dateDiff = new Date(b.article.date).getTime() - new Date(a.article.date).getTime();
-            if (dateDiff !== 0) return dateDiff;
-
-            return a.article.slug.localeCompare(b.article.slug);
-        });
+        scoredArticles.sort((a, b) => compareArticles(a, b, sortOrder, Boolean(params.query)));
 
         const finalArticles = scoredArticles.map((item) => mapToArticleSummary(item.article));
         return finalArticles.slice(0, Math.min(params.limit || 5, 10));
@@ -439,10 +458,7 @@ export const PortfolioService = {
                 } else if (checkMatch(term, pEngAreas)) {
                     score += 4;
                     matched.push(term);
-                } else if (checkMatch(term, pDomains)) {
-                    score += 3;
-                    matched.push(term);
-                } else if (checkMatch(term, pCapabilities)) {
+                } else if (checkMatch(term, pDomains) || checkMatch(term, pCapabilities)) {
                     score += 3;
                     matched.push(term);
                 } else if (checkMatch(term, titleTerms)) {

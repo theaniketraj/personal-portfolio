@@ -14,7 +14,7 @@ const FeaturedWork = () => {
                     <HardwareAnimated animation="slideInUp">
                         <div className="flex flex-col max-w-3xl mx-auto py-10 px-4 sm:px-7">
                             <div className="flex flex-col xs:flex-row gap-5 items-center justify-between">
-                                <h2 className="text-sm tracking-[2px] text-primary uppercase font-medium cursor-default">
+                                <h2 className="text-sm tracking-[2px] text-primary uppercase font-medium cursor-default select-none">
                                     My Resume
                                 </h2>
                                 <Button asChild variant={'outline'} className="h-auto">
@@ -22,7 +22,7 @@ const FeaturedWork = () => {
                                         href="https://theaniketraj.github.io/vitae"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="py-3 px-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md"
+                                        className="py-3 px-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md select-none"
                                     >
                                         View Resume / CV
                                     </Link>
@@ -33,7 +33,7 @@ const FeaturedWork = () => {
                     <div className="border-t border-primary/10">
                         <HardwareAnimated animation="slideInUp">
                             <div className="flex flex-col max-w-3xl mx-auto py-10 px-4 sm:px-7">
-                                <h2 className="text-sm tracking-[2px] text-primary uppercase font-medium text-center sm:text-left cursor-default">
+                                <h2 className="text-sm tracking-[2px] text-primary uppercase font-medium text-center sm:text-left cursor-default select-none">
                                     Featured Work
                                 </h2>
                             </div>

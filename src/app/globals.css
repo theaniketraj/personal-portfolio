@@ -69,7 +69,8 @@ body {
     }
 
     .header-gradient-text,
-    .gradient-text {
+    .gradient-text,
+    .footer-char-gradient {
         background-image: linear-gradient(96.09deg, #5b45d6 12.17%, #b86e00 90.71%);
         -webkit-background-clip: text;
         background-clip: text;
@@ -78,7 +79,8 @@ body {
     }
 
     .dark .header-gradient-text,
-    .dark .gradient-text {
+    .dark .gradient-text,
+    .dark .footer-char-gradient {
         background-image: linear-gradient(96.09deg, #9282f8 12.17%, #f3ca4d 90.71%);
     }
 
@@ -213,6 +215,19 @@ body {
         @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background rounded-sm;
     }
 
+    /* Programmatic targets, terminal inputs, and skip-link targets must never display focus rings */
+    [tabindex='-1']:focus,
+    [tabindex='-1']:focus-visible,
+    [data-terminal-input]:focus,
+    [data-terminal-input]:focus-visible,
+    main:focus,
+    main:focus-visible,
+    #main-content:focus,
+    #main-content:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
     body {
         @apply bg-background text-foreground;
     }
@@ -323,6 +338,48 @@ body {
         opacity: 1;
         transform: scale3d(1, 1, 1) rotate(0deg);
     }
+}
+
+@keyframes popper-celebrate {
+    0% {
+        opacity: 0;
+        transform: scale(0.35) rotate(-22deg);
+    }
+
+    55% {
+        opacity: 1;
+        transform: scale(1.18) rotate(8deg);
+    }
+
+    75% {
+        transform: scale(0.95) rotate(-3deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes ambient-glow-pulse {
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(1.1);
+    }
+}
+
+.animate-popper-celebrate {
+    animation: popper-celebrate 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-glow-pulse {
+    animation: ambient-glow-pulse 4s ease-in-out infinite;
 }
 
 .animate-slideInUp {
@@ -779,14 +836,66 @@ figure[data-rehype-pretty-code-figure] code {
     }
 }
 
+/* Circular Theme Toggle View Transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
+}
+
 .animate-page-enter {
     animation: page-enter 200ms ease-out;
 }
 
+/* List Spotlight Effect: fade sibling items when hovering or keyboard-focusing an item */
+[data-spotlight-item] [data-spotlight-content] {
+    transition: opacity 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+    [data-spotlight-list]:has([data-spotlight-item]:hover)
+        [data-spotlight-item]:not(:hover)
+        [data-spotlight-content] {
+        opacity: 0.45;
+    }
+
+    [data-spotlight-list]:not(:has([data-spotlight-item]:hover)):has([data-spotlight-item]:has(:focus-visible))
+        [data-spotlight-item]:not(:has(:focus-visible))
+        [data-spotlight-content] {
+        opacity: 0.45;
+    }
+}
+
+@media (hover: none) {
+    [data-spotlight-list]:has([data-spotlight-item]:has(:focus-visible))
+        [data-spotlight-item]:not(:has(:focus-visible))
+        [data-spotlight-content] {
+        opacity: 0.45;
+    }
+}
+
 /* Accessibility: Global Reduced Motion Preferences */
 @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after,
     html {
         scroll-behavior: auto !important;
+    }
+
+    /* View transition disabled for reduced motion */
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
     }
 
     /* Route entrance animation */
@@ -821,5 +930,17 @@ figure[data-rehype-pretty-code-figure] code {
     .border-beam-rail-right {
         animation: none !important;
         display: none !important;
+    }
+
+    /* Contact form celebratory icon animations */
+    .animate-popper-celebrate,
+    .animate-glow-pulse {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    /* List Spotlight Effect transition disabled for reduced motion */
+    [data-spotlight-item] [data-spotlight-content] {
+        transition: none !important;
     }
 }

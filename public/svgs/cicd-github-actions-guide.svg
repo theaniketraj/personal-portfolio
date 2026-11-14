@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1260" viewBox="0 0 2400 1260" role="img" aria-labelledby="cicd-title cicd-desc">
+  <title id="cicd-title">A Developer's Guide to Efficient CI/CD Using GitHub Actions</title>
+  <desc id="cicd-desc">A restrained engineering diagram showing a repository event triggering a GitHub Actions workflow, parallel lint and test jobs on runners, a build artifact, and a permission-gated deployment. Supporting annotations identify caching, pinned actions, secrets, and branch protection.</desc>
+
+  <defs>
+    <linearGradient id="cicd-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9282F8"/>
+      <stop offset="100%" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <pattern id="cicd-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#FFFFFF" stroke-opacity=".035" stroke-width="1.5"/>
+    </pattern>
+    <marker id="cicd-arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1L10 6L1 11" fill="none" stroke="#A1A1AA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="cicd-arrow-accent" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1L10 6L1 11" fill="none" stroke="url(#cicd-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas and quiet engineering grid -->
+  <g id="background">
+    <rect width="2400" height="1260" fill="#0A0A0A"/>
+    <rect width="2400" height="1260" fill="url(#cicd-grid)"/>
+    <path d="M120 92H2280M120 1120H2280" stroke="#FFFFFF" stroke-opacity=".10" stroke-width="2"/>
+    <path d="M120 92V1120M2280 92V1120" stroke="#FFFFFF" stroke-opacity=".07" stroke-width="2"/>
+    <path d="M120 92h34M120 92v34M2280 92h-34M2280 92v34M120 1120h34M120 1120v-34M2280 1120h-34M2280 1120v-34" fill="none" stroke="#FFFFFF" stroke-opacity=".22" stroke-width="2"/>
+  </g>
+
+  <!-- Editorial column -->
+  <g id="editorial">
+    <text x="184" y="184" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="5">ENGINEERING DEEP DIVE</text>
+    <rect x="184" y="211" width="84" height="5" rx="2.5" fill="url(#cicd-accent)"/>
+    <text x="184" y="272" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="500" letter-spacing="3.5">DEVOPS / AUTOMATED DELIVERY</text>
+
+    <text x="178" y="405" fill="#F4F1FA" font-family="'Space Grotesk', Inter, Arial, sans-serif" font-size="91" font-weight="700" letter-spacing="-2.5">A Developer's Guide</text>
+    <text x="178" y="515" fill="#F4F1FA" font-family="'Space Grotesk', Inter, Arial, sans-serif" font-size="91" font-weight="700" letter-spacing="-2.5">to Efficient CI/CD</text>
+    <text x="178" y="625" fill="#F4F1FA" font-family="'Space Grotesk', Inter, Arial, sans-serif" font-size="91" font-weight="700" letter-spacing="-2.5">Using GitHub Actions</text>
+
+    <text x="184" y="716" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="35" font-weight="400">Automate verification, build repeatable workflows,</text>
+    <text x="184" y="766" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="35" font-weight="400">and gate releases with deliberate controls.</text>
+
+    <path d="M184 837H1055" stroke="#FFFFFF" stroke-opacity=".14" stroke-width="2"/>
+
+    <g id="principles">
+      <text x="184" y="895" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="600" letter-spacing="2.5">PIPELINE PRINCIPLES</text>
+
+      <g transform="translate(184 932)">
+        <rect width="258" height="78" rx="5" fill="#FFFFFF" fill-opacity=".025" stroke="#FFFFFF" stroke-opacity=".13" stroke-width="2"/>
+        <path d="M22 25h17M22 39h29M22 53h21" stroke="#F4F4F5" stroke-opacity=".8" stroke-width="3" stroke-linecap="round"/>
+        <text x="68" y="47" fill="#E4E4E7" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="500">Cache</text>
+      </g>
+      <g transform="translate(464 932)">
+        <rect width="258" height="78" rx="5" fill="#FFFFFF" fill-opacity=".025" stroke="#FFFFFF" stroke-opacity=".13" stroke-width="2"/>
+        <path d="M23 39l10 10 22-25" fill="none" stroke="#F4F4F5" stroke-opacity=".8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="68" y="47" fill="#E4E4E7" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="500">Test</text>
+      </g>
+      <g transform="translate(744 932)">
+        <rect width="311" height="78" rx="5" fill="#FFFFFF" fill-opacity=".025" stroke="#FFFFFF" stroke-opacity=".13" stroke-width="2"/>
+        <path d="M25 27h25v26H25zM31 21h25v26" fill="none" stroke="#F4F4F5" stroke-opacity=".8" stroke-width="2.5"/>
+        <text x="72" y="47" fill="#E4E4E7" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="500">Artifact</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Divider between editorial and diagram -->
+  <g id="column-divider">
+    <path d="M1110 160V1048" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="2"/>
+    <path d="M1102 160h16M1102 1048h16" stroke="#FFFFFF" stroke-opacity=".22" stroke-width="2"/>
+  </g>
+
+  <!-- Technical workflow diagram -->
+  <g id="diagram" font-family="Inter, Arial, sans-serif">
+    <text x="1190" y="184" fill="#A1A1AA" font-size="24" font-weight="600" letter-spacing="3">WORKFLOW ANATOMY</text>
+    <text x="2198" y="184" fill="#71717A" font-family="ui-monospace, monospace" font-size="20" text-anchor="end">.github/workflows/*.yml</text>
+
+    <!-- Trigger -->
+    <g id="trigger">
+      <rect x="1200" y="238" width="270" height="132" rx="6" fill="#111111" stroke="#FFFFFF" stroke-opacity=".22" stroke-width="2"/>
+      <circle cx="1245" cy="281" r="13" fill="none" stroke="#D4D4D8" stroke-width="2.5"/>
+      <path d="M1245 259v-9M1245 312v-9M1223 281h-9M1276 281h-9M1229 265l-7-7M1268 304l-7-7M1268 258l-7 7M1229 297l-7 7" stroke="#D4D4D8" stroke-width="2" stroke-linecap="round"/>
+      <text x="1280" y="286" fill="#F4F4F5" font-size="28" font-weight="600">Repository</text>
+      <text x="1230" y="337" fill="#A1A1AA" font-size="22">push · pull request</text>
+    </g>
+
+    <path d="M1470 304H1540" fill="none" stroke="#A1A1AA" stroke-opacity=".75" stroke-width="2.5" marker-end="url(#cicd-arrow)"/>
+
+    <!-- Workflow definition -->
+    <g id="workflow">
+      <rect x="1560" y="238" width="300" height="132" rx="6" fill="#111111" stroke="#FFFFFF" stroke-opacity=".22" stroke-width="2"/>
+      <path d="M1592 264h38M1592 282h54M1592 300h30" stroke="#A1A1AA" stroke-width="3" stroke-linecap="round"/>
+      <text x="1660" y="282" fill="#F4F4F5" font-size="29" font-weight="600">Workflow</text>
+      <text x="1592" y="337" fill="#A1A1AA" font-size="22">YAML orchestration</text>
+    </g>
+
+    <!-- Split into parallel jobs -->
+    <path d="M1710 370V421H1538V454M1710 421H1892V454" fill="none" stroke="#A1A1AA" stroke-opacity=".72" stroke-width="2.5"/>
+    <path d="M1538 438v16M1892 438v16" stroke="#A1A1AA" stroke-opacity=".72" stroke-width="2.5"/>
+
+    <g id="parallel-jobs">
+      <rect x="1378" y="454" width="320" height="156" rx="6" fill="#111111" stroke="#FFFFFF" stroke-opacity=".22" stroke-width="2"/>
+      <text x="1410" y="496" fill="#A1A1AA" font-size="21" letter-spacing="2">JOB 01</text>
+      <text x="1410" y="540" fill="#F4F4F5" font-size="32" font-weight="600">Lint</text>
+      <text x="1410" y="577" fill="#A1A1AA" font-size="22">Code quality checks</text>
+      <rect x="1644" y="475" width="24" height="24" rx="3" fill="none" stroke="#D4D4D8" stroke-width="2"/>
+      <path d="M1650 487l5 5 9-12" fill="none" stroke="#D4D4D8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <rect x="1732" y="454" width="320" height="156" rx="6" fill="#111111" stroke="#FFFFFF" stroke-opacity=".22" stroke-width="2"/>
+      <text x="1764" y="496" fill="#A1A1AA" font-size="21" letter-spacing="2">JOB 02</text>
+      <text x="1764" y="540" fill="#F4F4F5" font-size="32" font-weight="600">Test</text>
+      <text x="1764" y="577" fill="#A1A1AA" font-size="22">Unit / integration</text>
+      <circle cx="2010" cy="487" r="12" fill="none" stroke="#D4D4D8" stroke-width="2"/>
+      <path d="M2010 480v8l6 4" fill="none" stroke="#D4D4D8" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Runner rail -->
+    <path d="M1538 610V661H1892V610" fill="none" stroke="#FFFFFF" stroke-opacity=".20" stroke-width="2"/>
+    <path d="M1715 661V699" fill="none" stroke="#A1A1AA" stroke-opacity=".75" stroke-width="2.5" marker-end="url(#cicd-arrow)"/>
+    <text x="1715" y="648" fill="#71717A" font-family="ui-monospace, monospace" font-size="18" text-anchor="middle">RUNNERS</text>
+
+    <!-- Build artifact -->
+    <g id="artifact">
+      <rect x="1570" y="718" width="290" height="126" rx="6" fill="#111111" stroke="#FFFFFF" stroke-opacity=".24" stroke-width="2"/>
+      <path d="M1608 754h35l13 13v40h-48zM1643 754v14h13" fill="none" stroke="#D4D4D8" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M1620 785h23M1620 798h23" stroke="#A1A1AA" stroke-width="2" stroke-linecap="round"/>
+      <text x="1680" y="773" fill="#F4F4F5" font-size="29" font-weight="600">Artifact</text>
+      <text x="1680" y="811" fill="#A1A1AA" font-size="21">Build output</text>
+    </g>
+
+    <!-- Gate and deploy -->
+    <path d="M1860 781H1940" fill="none" stroke="#A1A1AA" stroke-opacity=".75" stroke-width="2.5" marker-end="url(#cicd-arrow)"/>
+    <g id="release-gate">
+      <path d="M1978 720L2050 781L1978 842L1906 781Z" fill="#111111" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="2"/>
+      <path d="M1962 778l11 11 23-25" fill="none" stroke="url(#cicd-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1978" y="878" fill="#A1A1AA" font-size="20" text-anchor="middle">needs: build</text>
+    </g>
+    <path d="M2050 781H2110" fill="none" stroke="url(#cicd-accent)" stroke-width="3" marker-end="url(#cicd-arrow-accent)"/>
+    <g id="deploy">
+      <rect x="2130" y="718" width="150" height="126" rx="6" fill="#111111" stroke="#F3CA4D" stroke-opacity=".52" stroke-width="2"/>
+      <path d="M2178 765h48M2187 753l-9 12 9 12M2217 753l9 12-9 12" fill="none" stroke="#D4D4D8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="2205" y="811" fill="#F4F4F5" font-size="24" font-weight="600" text-anchor="middle">Deploy</text>
+    </g>
+    <text x="2205" y="878" fill="#A1A1AA" font-size="20" text-anchor="middle">staging / prod</text>
+
+    <!-- Efficiency and security annotations -->
+    <g id="annotations">
+      <path d="M1378 545H1310V702H1260" fill="none" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="2" stroke-dasharray="6 8"/>
+      <rect x="1190" y="718" width="320" height="126" rx="5" fill="#FFFFFF" fill-opacity=".018" stroke="#FFFFFF" stroke-opacity=".13" stroke-width="2"/>
+      <text x="1220" y="758" fill="#F4F4F5" font-size="23" font-weight="600">Efficiency</text>
+      <text x="1220" y="795" fill="#A1A1AA" font-size="21">Dependency cache</text>
+      <text x="1220" y="824" fill="#A1A1AA" font-size="21">Lockfile-based keys</text>
+
+      <path d="M2205 844V918H2050" fill="none" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="2" stroke-dasharray="6 8"/>
+      <rect x="1728" y="922" width="552" height="112" rx="5" fill="#FFFFFF" fill-opacity=".018" stroke="#FFFFFF" stroke-opacity=".13" stroke-width="2"/>
+      <text x="1760" y="963" fill="#F4F4F5" font-size="23" font-weight="600">Release safeguards</text>
+      <text x="1760" y="1003" fill="#A1A1AA" font-size="21">Least privilege · protected branches · stored secrets</text>
+
+      <rect x="1190" y="922" width="480" height="112" rx="5" fill="#FFFFFF" fill-opacity=".018" stroke="#FFFFFF" stroke-opacity=".13" stroke-width="2"/>
+      <text x="1220" y="963" fill="#F4F4F5" font-size="23" font-weight="600">Workflow hygiene</text>
+      <text x="1220" y="1003" fill="#A1A1AA" font-size="21">Pin third-party actions to full commit SHAs</text>
+    </g>
+  </g>
+
+  <!-- Bottom journey rail -->
+  <g id="journey-rail">
+    <text x="184" y="1080" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" letter-spacing="2.5">THE DELIVERY LOOP</text>
+    <text x="520" y="1080" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="500">TRIGGER</text>
+    <path d="M650 1072h62" stroke="#71717A" stroke-width="2" marker-end="url(#cicd-arrow)"/>
+    <text x="744" y="1080" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="500">VERIFY</text>
+    <path d="M856 1072h62" stroke="#71717A" stroke-width="2" marker-end="url(#cicd-arrow)"/>
+    <text x="950" y="1080" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="500">PACKAGE</text>
+    <path d="M1088 1072h62" stroke="#71717A" stroke-width="2" marker-end="url(#cicd-arrow)"/>
+    <text x="1182" y="1080" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="500">GATE</text>
+    <path d="M1280 1072h62" stroke="url(#cicd-accent)" stroke-width="2.5" marker-end="url(#cicd-arrow-accent)"/>
+    <text x="1375" y="1080" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="500">RELEASE</text>
+    <text x="2280" y="1080" fill="#71717A" font-family="ui-monospace, monospace" font-size="18" text-anchor="end">ANIKET RAJ / ENGINEERING NOTES</text>
+  </g>
+</svg>

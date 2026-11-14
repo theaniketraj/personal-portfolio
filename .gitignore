@@ -25,6 +25,7 @@
 # misc
 .DS_Store
 *.pem
+ref/
 
 # debug
 npm-debug.log*
@@ -38,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated social preview (OG) images
+/public/og/
+/public/images/og/

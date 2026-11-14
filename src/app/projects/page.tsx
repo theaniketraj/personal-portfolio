@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getProjects } from '@/lib/mdx';
 import { HardwareAnimated } from '@/components/animations/hardware-animated';
 import { Metadata } from 'next';
@@ -39,7 +40,11 @@ export default function ProjectsPage() {
     const projects = getProjects();
 
     return (
-        <main id="main-content" tabIndex={-1} className="outline-none">
+        <main
+            id="main-content"
+            tabIndex={-1}
+            className="outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
+        >
             <section>
                 <div className="container">
                     <div className="border-x border-primary/10">
@@ -61,50 +66,59 @@ export default function ProjectsPage() {
                             </div>
                         </HardwareAnimated>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-primary/10">
+                        <div
+                            data-spotlight-list=""
+                            className="grid grid-cols-1 md:grid-cols-2 border-t border-primary/10"
+                        >
                             {projects.map((project, index) => {
                                 const isRightCol = index % 2 === 1;
                                 return (
                                     <HardwareAnimated key={project.slug} animation="fadeInScale" delay={index * 0.1}>
                                         <div
+                                            data-spotlight-item=""
                                             className={`group flex flex-col justify-between p-6 sm:p-8 ${
                                                 isRightCol ? 'md:border-l md:border-primary/10' : ''
-                                            } border-b border-primary/10 hover:bg-primary/5 transition-colors`}
+                                            } border-b border-primary/10 hover:bg-primary/5 has-focus-visible:bg-primary/5 transition-colors`}
                                         >
-                                            <div className="flex flex-col gap-3">
-                                                <div className="flex items-center justify-between">
-                                                    <span className="text-xs font-mono text-secondary border border-primary/10 rounded-md px-2.5 py-0.5 cursor-default">
-                                                        {project.date}
-                                                    </span>
+                                            <div
+                                                data-spotlight-content=""
+                                                className="flex flex-col justify-between h-full"
+                                            >
+                                                <div className="flex flex-col gap-3">
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-xs font-mono text-secondary border border-primary/10 rounded-md px-2.5 py-0.5 cursor-default">
+                                                            {project.date}
+                                                        </span>
+                                                    </div>
+                                                    <Link
+                                                        href={`/projects/${project.slug}`}
+                                                        className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                                    >
+                                                        <h2 className="text-xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 group-has-focus-visible:text-violet-600 dark:group-has-focus-visible:text-violet-400 transition-colors">
+                                                            {project.title}
+                                                        </h2>
+                                                    </Link>
+                                                    <p className="text-sm text-secondary line-clamp-3 cursor-default">
+                                                        {project.description}
+                                                    </p>
                                                 </div>
-                                                <Link
-                                                    href={`/projects/${project.slug}`}
-                                                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-                                                >
-                                                    <h2 className="text-xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                                                        {project.title}
-                                                    </h2>
-                                                </Link>
-                                                <p className="text-sm text-secondary line-clamp-3 cursor-default">
-                                                    {project.description}
-                                                </p>
-                                            </div>
-                                            <div className="pt-5 flex flex-col gap-5">
-                                                <Link
-                                                    href={`/projects/${project.slug}`}
-                                                    aria-label={`View case study: ${project.title}`}
-                                                    className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-                                                >
-                                                    <span>View Case Study / Docs</span>
-                                                    <img
-                                                        src="/images/icon/tile-arrow-icon.svg"
-                                                        alt=""
-                                                        aria-hidden="true"
-                                                        width={20}
-                                                        height={20}
-                                                        className="w-5 h-5 dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
-                                                    />
-                                                </Link>
+                                                <div className="pt-5 flex flex-col gap-5">
+                                                    <Link
+                                                        href={`/projects/${project.slug}`}
+                                                        aria-label={`View case study: ${project.title}`}
+                                                        className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 group-has-focus-visible:text-violet-600 dark:group-has-focus-visible:text-violet-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                                    >
+                                                        <span>View Case Study / Docs</span>
+                                                        <Image
+                                                            src="/images/icon/tile-arrow-icon.svg"
+                                                            alt=""
+                                                            aria-hidden="true"
+                                                            width={20}
+                                                            height={20}
+                                                            className="w-5 h-5 dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
+                                                        />
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </div>
                                     </HardwareAnimated>
@@ -122,23 +136,41 @@ export default function ProjectsPage() {
                                     Archived & Experimental
                                 </span>
                                 <span className="text-lg font-medium text-primary group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors flex items-center justify-center gap-2">
-                                    View Deprecated Projects
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="transition-transform group-hover:translate-x-1.5"
-                                    >
-                                        <path d="M5 12h14" />
-                                        <path d="m12 5 7 7-7 7" />
-                                    </svg>
+                                    View Deprecated Projects{' '}
+                                    <span className="relative inline-flex items-center justify-center w-4.5 h-4.5 overflow-hidden shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            aria-hidden="true"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="transition-all duration-300 ease-out group-hover:translate-x-full group-hover:opacity-0 group-focus-visible:translate-x-full group-focus-visible:opacity-0"
+                                        >
+                                            <path d="M5 12h14" />
+                                            <path d="m12 5 7 7-7 7" />
+                                        </svg>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            aria-hidden="true"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="absolute inset-0 -translate-x-full opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+                                        >
+                                            <path d="M5 12h14" />
+                                            <path d="m12 5 7 7-7 7" />
+                                        </svg>
+                                    </span>
                                 </span>
                             </Link>
                         </div>

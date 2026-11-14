@@ -71,10 +71,10 @@ export default function Contact() {
                         <HardwareAnimated animation="slideInUp">
                             {submitStatus !== 'success' && (
                                 <div className="space-y-4 mb-12 text-center xs:text-left">
-                                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight cursor-default">
+                                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight cursor-default select-none">
                                         Got an Interesting Project?
                                     </h2>
-                                    <p className="text-muted-foreground text-base cursor-default sm:text-lg">
+                                    <p className="text-muted-foreground text-base cursor-default select-none sm:text-lg">
                                         Tell me more about it. I&apos;m always open to discussing new projects, creative
                                         ideas, or opportunities to be part of your visions.
                                     </p>

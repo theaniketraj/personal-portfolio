@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getBlogPosts } from '@/lib/mdx';
 import { HardwareAnimated } from '@/components/animations/hardware-animated';
 import { Metadata } from 'next';
@@ -39,7 +40,11 @@ export default function BlogPage() {
     const posts = getBlogPosts();
 
     return (
-        <main id="main-content" tabIndex={-1} className="outline-none">
+        <main
+            id="main-content"
+            tabIndex={-1}
+            className="outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
+        >
             <section>
                 <div className="container">
                     <div className="border-x border-primary/10">
@@ -62,43 +67,49 @@ export default function BlogPage() {
                         </HardwareAnimated>
 
                         <div className="border-t border-primary/10">
-                            <div className="max-w-3xl mx-auto px-4 sm:px-7 py-10 flex flex-col gap-8">
+                            <div
+                                data-spotlight-list=""
+                                className="max-w-3xl mx-auto px-4 sm:px-7 py-10 flex flex-col gap-8"
+                            >
                                 {posts.map((post, index) => (
                                     <HardwareAnimated key={post.slug} animation="slideInUp" delay={index * 0.08}>
                                         <article
+                                            data-spotlight-item=""
                                             className={`group ${index !== posts.length - 1 ? 'border-b border-primary/15 pb-10' : ''}`}
                                         >
-                                            <div className="flex items-center gap-3 text-xs font-mono text-secondary mb-3">
-                                                <time dateTime={post.date} className="cursor-default">
-                                                    {post.date}
-                                                </time>
+                                            <div data-spotlight-content="">
+                                                <div className="flex items-center gap-3 text-xs font-mono text-secondary mb-3">
+                                                    <time dateTime={post.date} className="cursor-default">
+                                                        {post.date}
+                                                    </time>
+                                                </div>
+                                                <Link
+                                                    href={`/blog/${post.slug}`}
+                                                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                                >
+                                                    <h2 className="text-xl sm:text-2xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 group-has-focus-visible:text-violet-600 dark:group-has-focus-visible:text-violet-400 transition-colors mb-3">
+                                                        {post.title}
+                                                    </h2>
+                                                </Link>
+                                                <p className="text-secondary text-sm sm:text-base leading-relaxed mb-5 cursor-default">
+                                                    {post.excerpt}
+                                                </p>
+                                                <Link
+                                                    href={`/blog/${post.slug}`}
+                                                    aria-label={`Read article: ${post.title}`}
+                                                    className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 group-has-focus-visible:text-violet-600 dark:group-has-focus-visible:text-violet-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                                                >
+                                                    <span>Read Article</span>
+                                                    <Image
+                                                        src="/images/icon/tile-arrow-icon.svg"
+                                                        alt=""
+                                                        aria-hidden="true"
+                                                        width={20}
+                                                        height={20}
+                                                        className="w-5 h-5 dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
+                                                    />
+                                                </Link>
                                             </div>
-                                            <Link
-                                                href={`/blog/${post.slug}`}
-                                                className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-                                            >
-                                                <h2 className="text-xl sm:text-2xl font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors mb-3">
-                                                    {post.title}
-                                                </h2>
-                                            </Link>
-                                            <p className="text-secondary text-sm sm:text-base leading-relaxed mb-5 cursor-default">
-                                                {post.excerpt}
-                                            </p>
-                                            <Link
-                                                href={`/blog/${post.slug}`}
-                                                aria-label={`Read article: ${post.title}`}
-                                                className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-                                            >
-                                                <span>Read Article</span>
-                                                <img
-                                                    src="/images/icon/tile-arrow-icon.svg"
-                                                    alt=""
-                                                    aria-hidden="true"
-                                                    width={20}
-                                                    height={20}
-                                                    className="w-5 h-5 dark:invert group-hover:translate-x-1.5 group-hover:rotate-45 transition-all duration-300 ease-in"
-                                                />
-                                            </Link>
                                         </article>
                                     </HardwareAnimated>
                                 ))}

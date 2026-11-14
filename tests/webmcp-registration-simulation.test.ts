@@ -139,7 +139,7 @@ async function runBrowserSmokeTest() {
                     });
                 }
 
-                return typeof validatedResult === 'object' ? JSON.stringify(validatedResult) : String(validatedResult);
+                return typeof validatedResult === 'string' ? validatedResult : (JSON.stringify(validatedResult) ?? '');
             } catch (error: any) {
                 return JSON.stringify({
                     isError: true,

@@ -9,6 +9,7 @@ import { RouteBorderBeam } from '@/components/animations/route-border-beam';
 import { WebMCPProvider } from '@/components/webmcp-provider';
 import { ContactDraftProvider } from '@/components/contact-draft-context';
 import { getProjects, getBlogPosts } from '@/lib/mdx';
+import { serializeJsonLd } from '@/lib/jsonld';
 import { profileData, getSiteUrl, createOpenGraph } from '@/lib/content/profile';
 
 const inter = Inter({
@@ -55,6 +56,18 @@ export const metadata: Metadata = {
         description: profileData.description,
         creator: '@aniketfoundry',
         images: [getSiteUrl('/icon-512.png')]
+    },
+    icons: {
+        icon: [
+            { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+            { url: '/icon-512.png', sizes: '512x512', type: 'image/png' }
+        ],
+        apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }]
+    },
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: 'black-translucent',
+        title: profileData.name
     }
 };
 
@@ -116,7 +129,7 @@ export default function RootLayout({
     return (
         <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
             <body className={`${inter.className} ${spaceGrotesk.variable}`} suppressHydrationWarning>
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
                 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
                     <a
                         href="#main-content"

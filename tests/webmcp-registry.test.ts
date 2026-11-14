@@ -567,7 +567,11 @@ async function runTests() {
     );
     assert(
         !shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/deprecated'),
-        'project-detail scope blocked on /projects/deprecated'
+        'project-detail scope blocked on exact reserved route /projects/deprecated'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/tags'),
+        'project-detail scope blocked on exact reserved route /projects/tags'
     );
     assert(
         !shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/tags/ai'),
@@ -576,6 +580,32 @@ async function runTests() {
     assert(
         !shouldRegisterToolForRoute('get_project', 'project-detail', '/blog/tech-stack-wars'),
         'project-detail scope blocked on /blog/[slug]'
+    );
+    // Negative tests for nested paths
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/lawgic/extra'),
+        'project-detail scope blocked on nested path /projects/lawgic/extra'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/deprecated/extra'),
+        'project-detail scope blocked on nested path /projects/deprecated/extra'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/tags/ai/extra'),
+        'project-detail scope blocked on deeply nested path /projects/tags/ai/extra'
+    );
+    // Slugs that merely begin with a reserved word must match detail scope exactly
+    assert(
+        shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/deprecated-tokens'),
+        'project-detail scope works for slug starting with reserved word /projects/deprecated-tokens'
+    );
+    assert(
+        shouldRegisterToolForRoute('get_project', 'project-detail', '/projects/tags-system'),
+        'project-detail scope works for slug starting with reserved word /projects/tags-system'
+    );
+    assert(
+        !shouldRegisterToolForRoute('search_projects', 'project-list', '/projects/deprecated-tokens'),
+        'project-list scope blocked for slug /projects/deprecated-tokens'
     );
 
     // 4. Article List scope
@@ -592,6 +622,10 @@ async function runTests() {
         !shouldRegisterToolForRoute('search_articles', 'article-list', '/projects'),
         'article-list scope blocked on /projects'
     );
+    assert(
+        !shouldRegisterToolForRoute('search_articles', 'article-list', '/blog/tags-guide'),
+        'article-list scope blocked on /blog/tags-guide'
+    );
 
     // 5. Article Detail scope
     assert(
@@ -603,12 +637,30 @@ async function runTests() {
         'article-detail scope works on /blog/[slug]'
     );
     assert(
+        !shouldRegisterToolForRoute('get_article', 'article-detail', '/blog/tags'),
+        'article-detail scope blocked on exact reserved route /blog/tags'
+    );
+    assert(
         !shouldRegisterToolForRoute('get_article', 'article-detail', '/blog/tags/typescript'),
         'article-detail scope blocked on /blog/tags/[tag]'
     );
     assert(
         !shouldRegisterToolForRoute('get_article', 'article-detail', '/projects/lawgic'),
         'article-detail scope blocked on /projects/[slug]'
+    );
+    // Negative tests for nested paths
+    assert(
+        !shouldRegisterToolForRoute('get_article', 'article-detail', '/blog/tech-stack-wars/extra'),
+        'article-detail scope blocked on nested path /blog/tech-stack-wars/extra'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_article', 'article-detail', '/blog/tags/typescript/extra'),
+        'article-detail scope blocked on deeply nested path /blog/tags/typescript/extra'
+    );
+    // Slugs that merely begin with a reserved word must match detail scope exactly
+    assert(
+        shouldRegisterToolForRoute('get_article', 'article-detail', '/blog/tags-guide'),
+        'article-detail scope works for slug starting with reserved word /blog/tags-guide'
     );
 
     // 6. Contact scope
@@ -629,6 +681,10 @@ async function runTests() {
         'legacy project-route search_projects blocked on /projects/[slug]'
     );
     assert(
+        !shouldRegisterToolForRoute('search_projects', 'project-route', '/projects/lawgic/extra'),
+        'legacy project-route search_projects blocked on nested path /projects/lawgic/extra'
+    );
+    assert(
         shouldRegisterToolForRoute('get_project', 'project-route', '/projects/lawgic'),
         'legacy project-route get_project works on /projects/[slug]'
     );
@@ -637,12 +693,44 @@ async function runTests() {
         'legacy project-route get_project blocked on /projects'
     );
     assert(
+        !shouldRegisterToolForRoute('get_project', 'project-route', '/projects/lawgic/extra'),
+        'legacy project-route get_project blocked on nested path /projects/lawgic/extra'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-route', '/projects/deprecated'),
+        'legacy project-route get_project blocked on reserved route /projects/deprecated'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_project', 'project-route', '/projects/deprecated/extra'),
+        'legacy project-route get_project blocked on nested reserved path /projects/deprecated/extra'
+    );
+    assert(
+        shouldRegisterToolForRoute('get_project', 'project-route', '/projects/deprecated-tokens'),
+        'legacy project-route get_project works on slug starting with reserved word /projects/deprecated-tokens'
+    );
+    assert(
         shouldRegisterToolForRoute('search_articles', 'article-route', '/blog'),
         'legacy article-route search_articles works on /blog'
     );
     assert(
+        !shouldRegisterToolForRoute('search_articles', 'article-route', '/blog/tech-stack-wars/extra'),
+        'legacy article-route search_articles blocked on nested path /blog/tech-stack-wars/extra'
+    );
+    assert(
         shouldRegisterToolForRoute('get_article', 'article-route', '/blog/tech-stack-wars'),
         'legacy article-route get_article works on /blog/[slug]'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_article', 'article-route', '/blog/tech-stack-wars/extra'),
+        'legacy article-route get_article blocked on nested path /blog/tech-stack-wars/extra'
+    );
+    assert(
+        !shouldRegisterToolForRoute('get_article', 'article-route', '/blog/tags'),
+        'legacy article-route get_article blocked on reserved route /blog/tags'
+    );
+    assert(
+        shouldRegisterToolForRoute('get_article', 'article-route', '/blog/tags-guide'),
+        'legacy article-route get_article works on slug starting with reserved word /blog/tags-guide'
     );
 
     console.log(`\n=== Test Results ===`);

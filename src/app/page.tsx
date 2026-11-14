@@ -16,7 +16,11 @@ export const metadata: Metadata = {
 
 const page = () => {
     return (
-        <main id="main-content" tabIndex={-1} className="outline-none">
+        <main
+            id="main-content"
+            tabIndex={-1}
+            className="outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
+        >
             <h1 className="sr-only">
                 {profileData.name} - {profileData.title}
             </h1>

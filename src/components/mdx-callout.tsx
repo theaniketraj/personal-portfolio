@@ -1,10 +1,13 @@
 'use client';
 
 import { Lightbulb, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useId } from 'react';
 
 export function TLDR({ children }: Readonly<{ children: React.ReactNode }>) {
     const [isOpen, setIsOpen] = useState(false);
+    const uniqueId = useId();
+    const panelId = `tldr-panel-${uniqueId}`;
+    const headingId = `tldr-heading-${uniqueId}`;
 
     return (
         <div
@@ -15,7 +18,8 @@ export function TLDR({ children }: Readonly<{ children: React.ReactNode }>) {
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-expanded={isOpen}
-                aria-controls="tldr-panel"
+                aria-controls={panelId}
+                aria-label={isOpen ? 'Collapse TL;DR summary' : 'Expand TL;DR summary'}
                 className="w-full flex items-center justify-between p-4 md:p-5 cursor-pointer hover:bg-primary/4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset transition-colors"
             >
                 <div className="flex items-center gap-3">
@@ -33,7 +37,7 @@ export function TLDR({ children }: Readonly<{ children: React.ReactNode }>) {
                             }`}
                         />
                     </div>
-                    <span id="tldr-heading" className="m-0! mt-0! mb-0! border-0! text-lg font-semibold text-primary">
+                    <span id={headingId} className="m-0! mt-0! mb-0! border-0! text-lg font-semibold text-primary">
                         TL;DR
                     </span>
                 </div>
@@ -44,10 +48,9 @@ export function TLDR({ children }: Readonly<{ children: React.ReactNode }>) {
                     <ChevronRight className="w-5 h-5" />
                 </div>
             </button>
-            <div
-                id="tldr-panel"
-                role="region"
-                aria-labelledby="tldr-heading"
+            <section
+                id={panelId}
+                aria-labelledby={headingId}
                 className={`grid transition-all duration-300 ease-in-out ${
                     isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                 }`}
@@ -59,7 +62,7 @@ export function TLDR({ children }: Readonly<{ children: React.ReactNode }>) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     );
 }

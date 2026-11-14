@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Curved Ultra-Wide Monitor",
+        "description": "High-resolution curved ultrawide display for multi-window tiling, deep terminal sessions, code reviews, and ergonomic productivity.",
+        "link": "https://amzn.in/d/00rC7u9w",
+        "category": "tech"
+    },
+    {
+        "title": "Designing Data-Intensive Applications",
+        "description": "Martin Kleppmann's definitive guide on distributed systems architecture, storage engines, stream processing, replication, and fault tolerance.",
+        "link": "https://dataintensive.net",
+        "category": "books"
+    },
+    {
+        "title": "Raspberry Pi 5 (8GB RAM)",
+        "description": "Compact quad-core single-board computer for running local k3s clusters, lightweight edge AI models, homelab automation, and micro-services.",
+        "link": "https://www.raspberrypi.com/products/raspberry-pi-5/",
+        "category": "tech"
+    }
+]

@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1260" viewBox="0 0 2400 1260" role="img" aria-labelledby="mw-title mw-desc">
+  <title id="mw-title">Understanding Modern Web Delivery</title>
+  <desc id="mw-desc">A technical editorial illustration showing CMS and Git-based content branching into SSG, SSR, and ISR rendering strategies, then moving through CDN edge delivery to a visitor's browser.</desc>
+  <defs>
+    <pattern id="mw-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="mw-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9282F8"/>
+      <stop offset="1" stop-color="#F3CA4D"/>
+    </linearGradient>
+    <marker id="mw-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L8 4.5L0 9" fill="none" stroke="#A1A1AA" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="mw-arrow-bright" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L8 4.5L0 9" fill="none" stroke="#F4F4F5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas and restrained engineering grid -->
+  <g id="mw-background">
+    <rect width="2400" height="1260" fill="#0A0A0A"/>
+    <rect x="1260" y="120" width="1020" height="900" fill="url(#mw-grid)" opacity="0.72"/>
+    <path d="M120 120H2280M120 1020H2280" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="2"/>
+    <path d="M1260 120V1020" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="2"/>
+    <path d="M120 120V1020M2280 120V1020" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2"/>
+    <path d="M120 120h44M120 120v44M2280 120h-44M2280 120v44M120 1020h44M120 1020v-44M2280 1020h-44M2280 1020v-44" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Editorial title block -->
+  <g id="mw-editorial">
+    <text x="170" y="205" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="600" letter-spacing="4.2">WEB ARCHITECTURE / DELIVERY</text>
+    <path d="M170 244H290" stroke="url(#mw-accent)" stroke-width="4" stroke-linecap="round"/>
+
+    <text x="165" y="390" fill="#F4F4F5" font-family="'Space Grotesk', Inter, Arial, sans-serif" font-size="104" font-weight="600" letter-spacing="-3.8">Understanding</text>
+    <text x="165" y="515" fill="#F4F4F5" font-family="'Space Grotesk', Inter, Arial, sans-serif" font-size="104" font-weight="600" letter-spacing="-3.8">Modern Web</text>
+    <text x="165" y="640" fill="#F4F4F5" font-family="'Space Grotesk', Inter, Arial, sans-serif" font-size="104" font-weight="600" letter-spacing="-3.8">Delivery</text>
+
+    <text x="170" y="735" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="400">How content, rendering strategies, and</text>
+    <text x="170" y="786" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="400">edge networks work together to deliver</text>
+    <text x="170" y="837" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="400">fast, flexible web experiences.</text>
+
+    <g id="mw-editorial-meta" transform="translate(170 915)">
+      <circle cx="7" cy="0" r="5" fill="#F3CA4D"/>
+      <text x="28" y="8" fill="#D4D4D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" letter-spacing="1.2">CMS</text>
+      <text x="103" y="8" fill="#71717A" font-family="Inter, Arial, sans-serif" font-size="25">+</text>
+      <text x="135" y="8" fill="#D4D4D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" letter-spacing="1.2">SSG / SSR / ISR</text>
+      <text x="390" y="8" fill="#71717A" font-family="Inter, Arial, sans-serif" font-size="25">+</text>
+      <text x="420" y="8" fill="#D4D4D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" letter-spacing="1.2">CDN</text>
+    </g>
+  </g>
+
+  <!-- Diagram header -->
+  <g id="mw-diagram-header">
+    <text x="1330" y="185" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" letter-spacing="3.4">THE DELIVERY ARCHITECTURE</text>
+    <text x="2250" y="185" fill="#71717A" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="21">01 / 04</text>
+    <path d="M1330 210H2250" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2"/>
+  </g>
+
+  <!-- Content source -->
+  <g id="mw-content-source">
+    <rect x="1585" y="250" width="410" height="132" rx="8" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.20" stroke-width="2"/>
+    <g transform="translate(1620 282)" fill="none" stroke="#D4D4D8" stroke-width="3" stroke-linejoin="round">
+      <path d="M0 2H38L54 18V66H0Z"/>
+      <path d="M38 2V18H54M12 33H42M12 45H42M12 57H34" stroke="#A1A1AA" stroke-width="2.5"/>
+    </g>
+    <text x="1700" y="301" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="600">CONTENT SOURCE</text>
+    <text x="1700" y="340" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="24">Headless CMS / Git repository</text>
+    <text x="1700" y="367" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19">STRUCTURED DATA · MARKDOWN · API</text>
+  </g>
+
+  <!-- Source branching into rendering models -->
+  <g id="mw-source-routing" fill="none" stroke="#71717A" stroke-width="2.5">
+    <path d="M1790 382V430"/>
+    <path d="M1455 430H2125"/>
+    <path d="M1455 430V472" marker-end="url(#mw-arrow)"/>
+    <path d="M1790 430V472" marker-end="url(#mw-arrow)"/>
+    <path d="M2125 430V472" marker-end="url(#mw-arrow)"/>
+    <circle cx="1790" cy="430" r="5" fill="#D4D4D8" stroke="none"/>
+  </g>
+
+  <!-- SSG strategy -->
+  <g id="mw-ssg">
+    <rect x="1325" y="485" width="260" height="264" rx="7" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.20" stroke-width="2"/>
+    <path d="M1325 485H1585" stroke="#D4D4D8" stroke-width="4"/>
+    <text x="1352" y="528" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" letter-spacing="2.2">BUILD-TIME</text>
+    <text x="1352" y="598" fill="#F4F4F5" font-family="'Space Grotesk', Inter, Arial, sans-serif" font-size="60" font-weight="600">SSG</text>
+    <text x="1352" y="642" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="25">Pre-render once</text>
+    <g transform="translate(1352 670)" fill="none" stroke="#A1A1AA" stroke-width="2.2">
+      <path d="M0 0H46V43H0Z"/>
+      <path d="M9 11H36M9 21H36M9 31H29" stroke="#71717A"/>
+    </g>
+    <text x="1412" y="698" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19">STATIC HTML</text>
+    <text x="1412" y="723" fill="#71717A" font-family="Inter, Arial, sans-serif" font-size="17">Blogs · Docs</text>
+  </g>
+
+  <!-- SSR strategy -->
+  <g id="mw-ssr">
+    <rect x="1660" y="485" width="260" height="264" rx="7" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.20" stroke-width="2"/>
+    <path d="M1660 485H1920" stroke="#D4D4D8" stroke-width="4"/>
+    <text x="1687" y="528" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" letter-spacing="2.2">REQUEST-TIME</text>
+    <text x="1687" y="598" fill="#F4F4F5" font-family="'Space Grotesk', Inter, Arial, sans-serif" font-size="60" font-weight="600">SSR</text>
+    <text x="1687" y="642" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="25">Render per request</text>
+    <g transform="translate(1687 670)" fill="none" stroke="#A1A1AA" stroke-width="2.2">
+      <rect x="0" y="0" width="46" height="43" rx="3"/>
+      <path d="M0 12H46M10 7H12M18 7H20M9 23H37M9 32H30" stroke="#71717A"/>
+    </g>
+    <text x="1747" y="698" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19">FRESH HTML</text>
+    <text x="1747" y="723" fill="#71717A" font-family="Inter, Arial, sans-serif" font-size="17">Dynamic data</text>
+  </g>
+
+  <!-- ISR strategy -->
+  <g id="mw-isr">
+    <rect x="1995" y="485" width="260" height="264" rx="7" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.20" stroke-width="2"/>
+    <path d="M1995 485H2255" stroke="#D4D4D8" stroke-width="4"/>
+    <text x="2022" y="528" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" letter-spacing="2.2">HYBRID</text>
+    <text x="2022" y="598" fill="#F4F4F5" font-family="'Space Grotesk', Inter, Arial, sans-serif" font-size="60" font-weight="600">ISR</text>
+    <text x="2022" y="642" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="24">Pre-render + refresh</text>
+    <g transform="translate(2022 670)" fill="none" stroke="#A1A1AA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M37 10A18 18 0 0 0 6 17M5 8L6 18L16 17M9 33A18 18 0 0 0 40 26M41 35L40 25L30 26"/>
+    </g>
+    <text x="2082" y="698" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19">REVALIDATE</text>
+    <text x="2082" y="723" fill="#71717A" font-family="Inter, Arial, sans-serif" font-size="17">Webhook / TTL</text>
+    <circle cx="2230" cy="510" r="5" fill="#F3CA4D"/>
+  </g>
+
+  <!-- Outputs converge: HTML from the render strategies -->
+  <g id="mw-render-outputs" fill="none" stroke="#71717A" stroke-width="2.5">
+    <path d="M1455 749V785"/>
+    <path d="M1790 749V785"/>
+    <path d="M2125 749V785"/>
+    <path d="M1455 785H2125"/>
+    <path d="M1790 785V833" marker-end="url(#mw-arrow-bright)"/>
+    <circle cx="1790" cy="785" r="6" fill="#D4D4D8" stroke="none"/>
+  </g>
+  <text x="1790" y="817" text-anchor="middle" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="1.4">RENDERED OUTPUT</text>
+
+  <!-- CDN edge delivery -->
+  <g id="mw-cdn">
+    <rect x="1510" y="842" width="555" height="128" rx="7" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.24" stroke-width="2"/>
+    <g transform="translate(1545 875)" fill="none" stroke="#D4D4D8" stroke-width="2.5">
+      <circle cx="27" cy="12" r="9"/>
+      <circle cx="0" cy="55" r="9"/>
+      <circle cx="54" cy="55" r="9"/>
+      <circle cx="27" cy="55" r="9"/>
+      <path d="M27 21V46M19 19L5 48M35 19L49 48M9 55H18M36 55H45" stroke="#71717A"/>
+      <circle cx="27" cy="12" r="3" fill="#F3CA4D" stroke="none"/>
+    </g>
+    <text x="1635" y="891" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="600">CDN / EDGE DELIVERY</text>
+    <text x="1635" y="929" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="22">Nearby cache · Lower latency</text>
+    <text x="1635" y="954" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">STATIC ASSETS + CACHEABLE RESPONSES</text>
+  </g>
+
+  <!-- Visitor browser -->
+  <g id="mw-visitor">
+    <path d="M2065 906H2110" stroke="#A1A1AA" stroke-width="2.5" fill="none" marker-end="url(#mw-arrow)"/>
+    <rect x="2125" y="850" width="130" height="104" rx="6" fill="#111111" stroke="#FFFFFF" stroke-opacity="0.24" stroke-width="2"/>
+    <path d="M2125 874H2255" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="2"/>
+    <circle cx="2143" cy="862" r="3" fill="#A1A1AA"/>
+    <circle cx="2155" cy="862" r="3" fill="#71717A"/>
+    <path d="M2150 894H2230M2150 908H2218M2150 922H2225" stroke="#71717A" stroke-width="3" stroke-linecap="round"/>
+    <text x="2190" y="989" text-anchor="middle" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">VISITOR</text>
+  </g>
+
+  <!-- Bottom editorial journey rail -->
+  <g id="mw-journey-rail">
+    <text x="170" y="1100" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" letter-spacing="3">THE DELIVERY PATH</text>
+    <path d="M170 1130H2230" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="2"/>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" font-weight="500">
+      <circle cx="190" cy="1130" r="6" fill="#F3CA4D"/>
+      <text x="170" y="1182" fill="#F4F4F5">AUTHOR</text>
+      <text x="625" y="1182" fill="#71717A">→</text>
+      <circle cx="780" cy="1130" r="5" fill="#A1A1AA"/>
+      <text x="750" y="1182" fill="#D4D4D8">RENDER</text>
+      <text x="1190" y="1182" fill="#71717A">→</text>
+      <circle cx="1360" cy="1130" r="5" fill="#A1A1AA"/>
+      <text x="1325" y="1182" fill="#D4D4D8">DISTRIBUTE</text>
+      <text x="1815" y="1182" fill="#71717A">→</text>
+      <circle cx="2020" cy="1130" r="5" fill="#A1A1AA"/>
+      <text x="1985" y="1182" fill="#F4F4F5">DELIVER</text>
+    </g>
+    <text x="2230" y="1220" text-anchor="end" fill="#52525B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" letter-spacing="1.5">ANIKET RAJ / ENGINEERING NOTES</text>
+  </g>
+</svg>

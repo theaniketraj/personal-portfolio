@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 
 export interface ContactDraftData {
     firstName?: string;
@@ -17,7 +17,10 @@ const ContactDraftContext = createContext<ContactDraftContextType | undefined>(u
 
 export function ContactDraftProvider({ children }: Readonly<{ children: React.ReactNode }>) {
     const [draftData, setDraftData] = useState<ContactDraftData | null>(null);
-    return <ContactDraftContext.Provider value={{ draftData, setDraftData }}>{children}</ContactDraftContext.Provider>;
+
+    const contextValue = useMemo(() => ({ draftData, setDraftData }), [draftData]);
+
+    return <ContactDraftContext.Provider value={contextValue}>{children}</ContactDraftContext.Provider>;
 }
 
 export function useContactDraft() {
